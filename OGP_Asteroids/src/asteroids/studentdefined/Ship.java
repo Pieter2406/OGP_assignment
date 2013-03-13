@@ -157,7 +157,7 @@ public class Ship implements IShip {
 
 	public boolean overlap(Ship other){
 		throw new RuntimeException("NOT IMPLEMENTED");
-		//TODO: write getter overlap
+		//TODO: write method overlap
 	}
 
 	public double getTimeToCollision(Ship other){
