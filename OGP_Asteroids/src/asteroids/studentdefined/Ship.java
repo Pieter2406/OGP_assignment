@@ -68,20 +68,11 @@ public class Ship implements IShip {
 	 * 			The amount of velocity added to the current velocity in Km/h.
 	 * 
 	 * @post	If the given amount is higher than zero, this amount is added to the current velocity. If the new velocity 
-	 * 			exceeds the speed of light, it will take on the value of the speed of light.
-	 * 			|if(new.getVelocity > getVelocity().SPEED_OF_LIGHT)
-	 * 			|	new.getVelocity == getVelocity().SPEED_OF_Light
+	 * 			exceeds the speed of light (300'000 Km/s), it will take on the value of the speed of light.
 	 * 
 	 */
 	public void thrust(double amount){
-		double checkedAmount = 0.0;
-		if(amount < 0){
-			checkedAmount = 0;
-		}
-		getVelocity().setVelocity	(	getVelocity().getVelocityX() + checkedAmount * Math.cos(getAngle())
-										,
-										getVelocity().getVelocityY() + checkedAmount * Math.sin(getAngle())
-									);
+		//TODO: write method thrust
 	}
 
 	/**
@@ -134,37 +125,22 @@ public class Ship implements IShip {
 	}
 
 	/**
-	 * Set the new position of this ship based on a given x and y coordinate.
+	 * Sets the new position of this ship based on a given x and y coordinate.
 	 * @param 	x
 	 * 			Holds the new x coordinate for this ship.
 	 * @param 	y
 	 * 			Holds the new y coordinate for this ship.
-	 * @effect	If the given x and y values are valid numbers, the x and y values of this 
-	 * 			ships coordinates are set to the given x and y values.
+	 * @throws IllegalValueException 
+	 * @post 	The position of this ship is changed according to the given x and y coordinates.
 	 */
 	@Raw
 	public void setPosition(double x, double y){
-		getPosition().transformTo(x,y); // values will be checked in the coordinate class.
+		this.position.transformTo(x,y); // values will be checked in the coordinate class.
 	}
 
-	/**
-	 * Move this ship in its current direction for a given amount of time.
-	 * @param 	duration
-	 * 			The duration of how long the ship moves in its current direction.
-	 * @effect	The position of the ship is set to its new position according
-	 * 			to the time it would have moved.
-	 * 			|setPosition(newPositionX,newPositionY)
-	 * @throws	IllegalValueException
-	 * 			The given duration is not a valid duration.
-	 * 			|(duration < 0)
-	 */
-	public void move(double duration){
-		if(duration < 0){
-			throw new IllegalValueException(duration);
-		}
-		double newPositionX = getPosition().getX() + (duration * getVelocity().getVelocityX());
-		double newPositionY = getPosition().getY() + (duration * getVelocity().getVelocityY());
-		setPosition(newPositionX,newPositionY); 
+	//TODO: defensive documentation
+	public void move(double time){
+		//TODO: write method move
 	}
 
 	/**
@@ -185,8 +161,8 @@ public class Ship implements IShip {
 	}
 
 	public double getTimeToCollision(Ship other){
-		
-		
+		throw new RuntimeException("NOT IMPLEMENTED");
+		//TODO: write getter getTimeToCollision
 	}
 
 	public double getCollisionPosition(Ship other){

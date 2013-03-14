@@ -1,6 +1,5 @@
 package asteroids.studentdefined;
 
-import asteroids.Util;
 import be.kuleuven.cs.som.annotate.*;
 
 /**
@@ -44,7 +43,7 @@ public class Coordinate {
 		}
 		this.x = x;
 		this.y = y;
-		
+		System.out.println("test");
 	}
 	
 	/**
@@ -152,7 +151,7 @@ public class Coordinate {
 	 */
 	public boolean hasEqualPosition(Coordinate other)throws IllegalArgumentException{
 		try{
-			if(Util.fuzzyEquals(this.getX(),other.getX()) && Util.fuzzyEquals(this.getY(), other.getY())){
+			if(this.getX() == other.getX() && this.getY() == other.getY()){
 				return true;
 			}else{
 				return false;
@@ -165,7 +164,7 @@ public class Coordinate {
 	}
 
 	/**
-	 * Transform the position of this coordinate to the new position.
+	 * Set the position of this coordinate to the new position.
 	 * @param 	newPosition
 	 * 			The other coordinate to transform to.
 	 * @effect	The x and y values of the other coordinate are assigned to 
