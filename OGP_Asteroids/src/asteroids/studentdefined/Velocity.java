@@ -155,7 +155,7 @@ public class Velocity {
 	/**
 	 * Holds the speed of light.
 	 */
-	private static final double SPEED_OF_LIGHT = 299792.458;
+	public static final double SPEED_OF_LIGHT = 299792.458;
 	
 	/**
 	 * Return true if the given velocity is a valid value. In other words
