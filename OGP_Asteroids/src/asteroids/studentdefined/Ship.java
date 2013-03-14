@@ -9,7 +9,7 @@ import be.kuleuven.cs.som.annotate.*;
  * @invar 	The radius of a ship is always higher than the minimum radius of all ships, and is always a valid number.
  * 			| isValidRadius(getRadius())
  * @invar 	The angle of a ship must always be a valid number.
- * 			| isValidAngle(getAngle())
+ * 			| isValidAngle(getAngle()) 
  * 
  * @version 1.0
  * @author Kristof Bruyninckx
