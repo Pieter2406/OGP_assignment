@@ -1,5 +1,6 @@
 package asteroids.studentdefined;
 import asteroids.IShip;
+import asteroids.Util;
 import be.kuleuven.cs.som.annotate.*;
 
 
@@ -257,9 +258,60 @@ public class Ship implements IShip {
 		}
 	}
 
+	/**
+	 * Return when (in seconds), if ever, this ship will collide with the given other ship.
+	 * 
+	 * @param 	other
+	 * 			A given ship with which will be tested if this ship will collide with other ship.
+	 * @throws	illegalArgumentException
+	 * 			The other ship is not effective
+	 * 			|other == null
+	 * @return
+	 * 			The time in seconds of how long it would take for this ship and the given ship
+	 * 			(if ever) to collide.
+	 * 			If the ships never collide, this method will return infinity.
+	 * 			| dVx = this.getVelocity().getVelocityX() - other.getVelocity().getVelocityX()
+	 * 			| dVy = this.getVelocity().getVelocityY() - other.getVelocity().getVelocityY()
+	 * 			| dX = this.getPosition().getX() - other.getPosition().getX()
+	 * 			| dY = this.getPosition().getY() - other.getPosition().getY()
+	 * 			| dVdV = (Math.pow(dVx,2)) + (Math.pow(dVy, 2))
+	 * 			| dVdR = (dVx*dX) + (dVy*dY)
+	 * 			| dRdR = (Math.pow(dX, 2) + Math.pow(dY, 2))
+	 * 			| sigma = this.getRadius() + other.getRadius()
+	 * 			| discriminant = Math.pow(dVdR, 2) - (dVdV)*(dRdR - Math.pow(sigma, 2))
+	 * 			| dT = -(dVdR + Math.sqrt(discriminant))/dVdV
+	 * 			| result ==
+	 * 			|		if (dVdR >= 0)
+	 * 			|			Double.POSITIVE_INFINITY
+	 * 			|		else if(discriminant <= 0)
+	 * 			|			Double.POSITIVE_INFINITY
+	 * 			|		else
+	 * 			|			dT
+	 */
 	public double getTimeToCollision(Ship other){
-		throw new RuntimeException("NOT IMPLEMENTED");
-		//TODO: write getter getTimeToCollision
+		try{
+		double dVx = this.getVelocity().getVelocityX() - other.getVelocity().getVelocityX();
+		double dVy = this.getVelocity().getVelocityY() - other.getVelocity().getVelocityY();
+		double dX = this.getPosition().getX() - other.getPosition().getX();
+		double dY = this.getPosition().getY() - other.getPosition().getY();
+		double dVdV = (Math.pow(dVx,2)) + (Math.pow(dVy, 2));
+		double dVdR = (dVx*dX) + (dVy*dY);
+		double dRdR = (Math.pow(dX, 2) + Math.pow(dY, 2));
+		double sigma = this.getRadius() + other.getRadius();
+		double discriminant = Math.pow(dVdR, 2) - (dVdV)*(dRdR - Math.pow(sigma, 2));
+		
+		if(Util.fuzzyLessThanOrEqualTo(0, dVdR)){
+			return Double.POSITIVE_INFINITY;
+		}else if(Util.fuzzyLessThanOrEqualTo(0, discriminant)){
+			return Double.POSITIVE_INFINITY;
+		}else{
+			double dT = -(dVdR + Math.sqrt(discriminant))/dVdV;
+			return dT;
+		}
+		}catch (NullPointerException excError){
+			assert(other == null);
+			throw new IllegalArgumentException("Not an initialized ship");
+		}
 	}
 
 	/**
