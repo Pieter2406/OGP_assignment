@@ -52,8 +52,8 @@ public class Ship implements IShip {
 		this.velocity = new Velocity(velocityX,velocityY);
 		this.minimumRadius = 10;
 	}
-	
-	
+
+
 	/**
 	 * Initialize the position, the radius and the angle of this ship with respectively the given position, radius and angle. 
 	 * Initialize the velocity of this ship to zero.
@@ -86,11 +86,8 @@ public class Ship implements IShip {
 		return velocity;
 	}
 
-	/**
-	 * Variables holding the total speed of a ship.
-	 */
-	private Velocity velocity; // used for redundancy
-	
+
+
 	/**
 	 * The method thrust serves to change the current velocity
 	 * 
@@ -104,15 +101,19 @@ public class Ship implements IShip {
 	 * 
 	 */
 	public void thrust(double amount){
-		double checkedAmount = 0.0;
+		double checkedAmount = amount;
 		if(amount < 0){
 			checkedAmount = 0;
 		}
-		getVelocity().setVelocity	(	getVelocity().getVelocityX() + checkedAmount * Math.cos(getAngle())
-										,
-										getVelocity().getVelocityY() + checkedAmount * Math.sin(getAngle())
-									);
+		getVelocity().setVelocity	(	getVelocity().getVelocityX() + (checkedAmount * Math.cos(getAngle()))
+				,
+				getVelocity().getVelocityY() + (checkedAmount * Math.sin(getAngle()))
+				);
 	}
+	/**
+	 * Variables holding the total speed of a ship.
+	 */
+	private Velocity velocity; // used for redundancy
 
 	/**
 	 * Return this ship's angle.
@@ -191,7 +192,7 @@ public class Ship implements IShip {
 	 * 			The duration of how long the ship moves in its current direction.
 	 * @effect	The position of the ship is set to its new position according
 	 * 			to the time it would have moved.
-	 * 			|setPosition(newPositionX,newPositionY)
+	 * 			|new.setPosition(newPositionX,newPositionY)
 	 * @throws	IllegalValueException
 	 * 			The given duration is not a valid duration.
 	 * 			|(duration < 0)
@@ -205,7 +206,7 @@ public class Ship implements IShip {
 		setPosition(newPositionX,newPositionY); 
 	}
 
-	
+
 	/**
 	 * Variable holding a Coordinate object. 
 	 */
@@ -297,33 +298,32 @@ public class Ship implements IShip {
 	 * 			|		else
 	 * 			|			dT
 	 */
-	public double getTimeToCollision(Ship other){
+	public double getTimeToCollision(Ship other)throws IllegalArgumentException{
 		try{
-		double dVx = this.getVelocity().getVelocityX() - other.getVelocity().getVelocityX();
-		double dVy = this.getVelocity().getVelocityY() - other.getVelocity().getVelocityY();
-		double dX = this.getPosition().getX() - other.getPosition().getX();
-		double dY = this.getPosition().getY() - other.getPosition().getY();
-		double dVdV = (Math.pow(dVx,2)) + (Math.pow(dVy, 2));
-		double dVdR = (dVx*dX) + (dVy*dY);
-		double dRdR = (Math.pow(dX, 2) + Math.pow(dY, 2));
-		double sigma = this.getRadius() + other.getRadius();
-		double discriminant = Math.pow(dVdR, 2) - (dVdV)*(dRdR - Math.pow(sigma, 2));
-		
-		if(Util.fuzzyLessThanOrEqualTo(0, dVdR)){
-			return Double.POSITIVE_INFINITY;
-		}else if(Util.fuzzyLessThanOrEqualTo(0, discriminant)){
-			return Double.POSITIVE_INFINITY;
-		}else{
-			double dT = -(dVdR + Math.sqrt(discriminant))/dVdV;
-			return dT;
-		}
+			double dVx = this.getVelocity().getVelocityX() - other.getVelocity().getVelocityX();
+			double dVy = this.getVelocity().getVelocityY() - other.getVelocity().getVelocityY();
+			double dX = this.getPosition().getX() - other.getPosition().getX();
+			double dY = this.getPosition().getY() - other.getPosition().getY();
+			double dVdV = (Math.pow(dVx,2)) + (Math.pow(dVy, 2));
+			double dVdR = (dVx*dX) + (dVy*dY);
+			double dRdR = (Math.pow(dX, 2) + Math.pow(dY, 2));
+			double sigma = this.getRadius() + other.getRadius();
+			double discriminant = Math.pow(dVdR, 2) - (dVdV)*(dRdR - Math.pow(sigma, 2));
+
+			if(dVdR >= 0){
+				return Double.POSITIVE_INFINITY;
+			}else if(discriminant <= 0){
+				return Double.POSITIVE_INFINITY;
+			}else{
+				double dT = -(dVdR + Math.sqrt(discriminant))/dVdV;
+				return dT;
+			}
 		}catch (NullPointerException excError){
 			assert(other == null);
 			throw new IllegalArgumentException("Not an initialized ship");
 		}
 	}
 
-	//TODO: not correct algorithm
 	/**
 	 * Calculates the position of collision between this ship and a given ship, if they will ever collide
 	 * @param 	other
@@ -335,7 +335,7 @@ public class Ship implements IShip {
 	 * 			return a null pointer.
 	 * 			| if (colx == Double.POSITIVE_INFINITY)
 	 * 			| 	then null
-	 * 			| 	else Coordinate(getPosition().getX() + getVelocity().getVelocityX() * getTimeToCollision(other)
+	 * 			| else Coordinate(getPosition().getX() + getVelocity().getVelocityX() * getTimeToCollision(other)
 	 * 			|	,getPosition().getY() + getVelocity().getVelocityY() * getTimeToCollision(other))
 	 */
 	public Coordinate getCollisionPosition(Ship other) throws IllegalArgumentException  {
@@ -352,8 +352,8 @@ public class Ship implements IShip {
 				// use cos and sin to determine new position
 				double distancebetween = this.getRadius() + other.getRadius();
 				double newX = getPosition().getX() + this.getRadius() * (shipX - otherX) / distancebetween;
-			    double newY = getPosition().getY() + this.getRadius() * (shipY - otherY) / distancebetween;
-				
+				double newY = getPosition().getY() + this.getRadius() * (shipY - otherY) / distancebetween;
+
 				return new Coordinate(newX,newY);
 			}
 		}
@@ -385,8 +385,8 @@ public class Ship implements IShip {
 	 * Variable containing the radius of a ship. 
 	 */
 	private final double radius;
-	
-	
+
+
 	/**
 	 * @param 	minimumRadius
 	 * 			The given minimum radius for this ship.
@@ -396,7 +396,7 @@ public class Ship implements IShip {
 	public static boolean isValidMinimumRadius(double minimumRadius){
 		return !Double.isNaN(minimumRadius) && minimumRadius > 0;
 	}
-	
+
 	/**
 	 * Variable containing the minimum radius of a ship. 
 	 */
