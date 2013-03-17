@@ -35,8 +35,14 @@ public class Ship implements IShip {
 	 * 			The angle for this new ship.
 	 * @pre		The given radius must be a valid radius
 	 * 			| isValidRadius(radius)
-	 * @post		The Position, the radius and the angle of this ship are equal to respectively the given position, the given radius and the given angle.
+	 * @post	The Position, the radius and the angle of this ship are equal to respectively the given position, the given radius and the given angle.
 	 * 			The speed of this ship is initialized to zero.
+	 * 			| new.getPosition().getX == x
+	 * 			| new.getPosition().getY == y
+	 * 			| new.getRadius == radius
+	 * 			| new.getVelocity().getVelocityX() == velocityX
+	 * 			| new.getVelocity().getVelocityY() == velocityY
+	 * 			| new.getAngle() == angle
 	 * @note		Speed will always be zero at the creation of an object, it is therefore not included as a parameter.
 	 */
 	public Ship(double x, double y,double velocityX, double velocityY, double radius, double angle){
@@ -144,6 +150,8 @@ public class Ship implements IShip {
 	 * Turn the ship into another direction.
 	 * @param 	angle
 	 * 			The given angle to be added to the current angle.
+	 * @pre		The given angle must be a valid angle.
+	 * 		    | isValidAngle(angle)
 	 * @effect 	Set the angle to the current angle plus the given angle.
 	 * 			| setAngle(this.getAngle() + angle)
 	 */
@@ -360,7 +368,7 @@ public class Ship implements IShip {
 	 * Return the current radius.
 	 */
 	@Basic @Raw
-	private double getRadius() {
+	public double getRadius() {
 		return this.radius;
 	}
 	/**
@@ -386,7 +394,7 @@ public class Ship implements IShip {
 	 * 
 	 */
 	public static boolean isValidMinimumRadius(double minimumRadius){
-		return minimumRadius > 0;
+		return !Double.isNaN(minimumRadius) && minimumRadius > 0;
 	}
 	
 	/**

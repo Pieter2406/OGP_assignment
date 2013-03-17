@@ -415,5 +415,4 @@ public class Rational {
 			throw new IllegalArgumentException();
 		}
 	}
-
 }
