@@ -4,7 +4,9 @@
 
 package asteroids.studentdefined;
 import static org.junit.Assert.*;
-import org.junit.Test;
+
+import org.junit.*;
+
 
 import asteroids.Util;
 
@@ -36,8 +38,8 @@ public class ShipTest {
 	 * 			a minimum radius of 10 and and angle of PI.
 	 */
 	@Before 
-	public static void setUpMutableFixture(){
-		basicShip = new Ship(0,0,20,10,Math.PI);
+	public void setUpMutableFixture(){
+		basicShip = new Ship(0,0,20,20,10,Math.PI);
 	}
 	/**
 	 * Set up immutable test fixture
@@ -47,7 +49,7 @@ public class ShipTest {
 	 */
 	@BeforeClass // set up immutable test fixture
 	public static void setUpImmutableFixture(){
-		immutableShip = new Ship(20,15,10,10,0);
+		immutableShip = new Ship(20,15,10,10,10,0);
 	}
 	@Test
 	public void thrust_PositiveInput() {
@@ -71,7 +73,7 @@ public class ShipTest {
 	@Test
 	public void move_PositiveTime() {
 		basicShip.move(10);
-		assertEquals()
+		//assertEquals();
 	}
 	
 	@Test

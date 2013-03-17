@@ -74,8 +74,7 @@ public class Facade implements IFacade {
 
 	@Override
 	public double getDistanceBetween(IShip ship1, IShip ship2) {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((Ship) ship1).getDistanceBetween((Ship) ship2);
 	}
 
 	@Override
