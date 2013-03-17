@@ -169,8 +169,8 @@ public class Coordinate {
 	 * 			The other coordinate to transform to.
 	 * @effect	The x and y values of the other coordinate are assigned to 
 	 * 			the x and y values of this coordinate.
-	 * 			|this.setX(newPosition.getX());
-	 * 			|this.setY(newPosition.getY());
+	 * 			|new.setX(newPosition.getX());
+	 * 			|new.setY(newPosition.getY());
 	 * @throws IllegalArgumentException
 	 * 			The other coordinate is not effective
 	 * 			|newPosition == null

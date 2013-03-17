@@ -81,9 +81,15 @@ public class Facade implements IFacade {
 		double[] coordinates = new double[2];
 		Coordinate coordinate = new Coordinate();
 		coordinate = ((Ship)ship1).getCollisionPosition((Ship)ship2);
-		coordinates[0] = coordinate.getX();
-		coordinates[1] = coordinate.getY();
-		return coordinates;
+		if (coordinate == null){
+		}else{
+			coordinates[0] = coordinate.getX();
+			coordinates[1] = coordinate.getY();
+			return coordinates;
+		}
+		return null;
 	}
 
 }
+
+

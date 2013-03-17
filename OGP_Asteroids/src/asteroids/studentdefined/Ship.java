@@ -184,7 +184,7 @@ public class Ship implements IShip {
 	 * 			The duration of how long the ship moves in its current direction.
 	 * @effect	The position of the ship is set to its new position according
 	 * 			to the time it would have moved.
-	 * 			|setPosition(newPositionX,newPositionY)
+	 * 			|new.setPosition(newPositionX,newPositionY)
 	 * @throws	IllegalValueException
 	 * 			The given duration is not a valid duration.
 	 * 			|(duration < 0)
@@ -302,9 +302,9 @@ public class Ship implements IShip {
 			double sigma = this.getRadius() + other.getRadius();
 			double discriminant = Math.pow(dVdR, 2) - (dVdV)*(dRdR - Math.pow(sigma, 2));
 
-			if(Util.fuzzyLessThanOrEqualTo(0, dVdR)){
+			if(dVdR >= 0){
 				return Double.POSITIVE_INFINITY;
-			}else if(Util.fuzzyLessThanOrEqualTo(discriminant,0)){
+			}else if(discriminant <= 0){
 				return Double.POSITIVE_INFINITY;
 			}else{
 				double dT = -(dVdR + Math.sqrt(discriminant))/dVdV;
@@ -327,7 +327,7 @@ public class Ship implements IShip {
 	 * 			return a null pointer.
 	 * 			| if (colx == Double.POSITIVE_INFINITY)
 	 * 			| 	then null
-	 * 			| 	else Coordinate(getPosition().getX() + getVelocity().getVelocityX() * getTimeToCollision(other)
+	 * 			| else Coordinate(getPosition().getX() + getVelocity().getVelocityX() * getTimeToCollision(other)
 	 * 			|	,getPosition().getY() + getVelocity().getVelocityY() * getTimeToCollision(other))
 	 */
 	public Coordinate getCollisionPosition(Ship other) throws IllegalArgumentException  {
