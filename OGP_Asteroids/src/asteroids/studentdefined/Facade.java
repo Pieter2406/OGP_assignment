@@ -7,69 +7,58 @@ public class Facade implements IFacade {
 
 	@Override
 	public IShip createShip() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Ship(0,0,0,0);
 	}
 
 	@Override
 	public IShip createShip(double x, double y, double xVelocity,
 			double yVelocity, double radius, double angle) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Ship(x,y,xVelocity, yVelocity,radius,angle);
 	}
 
 	@Override
 	public double getX(IShip ship) {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((Ship) ship).getPosition().getX();
 	}
 
 	@Override
 	public double getY(IShip ship) {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((Ship) ship).getPosition().getY();
 	}
 
 	@Override
 	public double getXVelocity(IShip ship) {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((Ship) ship).getVelocity().getVelocityX();
 	}
 
 	@Override
 	public double getYVelocity(IShip ship) {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((Ship) ship).getVelocity().getVelocityY();
 	}
 
 	@Override
 	public double getRadius(IShip ship) {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((Ship) ship).getRadius();
 	}
 
 	@Override
 	public double getDirection(IShip ship) {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((Ship) ship).getAngle();
 	}
 
 	@Override
 	public void move(IShip ship, double dt) {
-		// TODO Auto-generated method stub
-
+		((Ship) ship).move(dt);
 	}
 
 	@Override
 	public void thrust(IShip ship, double amount) {
-		// TODO Auto-generated method stub
-
+		((Ship) ship).thrust(amount);
 	}
 
 	@Override
 	public void turn(IShip ship, double angle) {
-		// TODO Auto-generated method stub
-
+		((Ship) ship).turn(angle);
 	}
 
 	@Override
@@ -79,20 +68,22 @@ public class Facade implements IFacade {
 
 	@Override
 	public boolean overlap(IShip ship1, IShip ship2) {
-		// TODO Auto-generated method stub
-		return false;
+		return ((Ship)ship1).overlap((Ship)ship2);
 	}
 
 	@Override
 	public double getTimeToCollision(IShip ship1, IShip ship2) {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((Ship)ship1).getTimeToCollision((Ship)ship2);
 	}
 
 	@Override
 	public double[] getCollisionPosition(IShip ship1, IShip ship2) {
-		// TODO Auto-generated method stub
-		return null;
+		double[] coordinates = new double[2];
+		Coordinate coordinate = new Coordinate();
+		coordinate = ((Ship)ship1).getCollisionPosition((Ship)ship2);
+		coordinates[0] = coordinate.getX();
+		coordinates[1] = coordinate.getY();
+		return coordinates;
 	}
 
 }

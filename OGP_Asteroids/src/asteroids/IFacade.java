@@ -131,6 +131,7 @@ public interface IFacade {
    * Check whether <code>ship1</code> and <code>ship2</code> overlap. A ship
    * always overlaps with itself.
    */
+
   public boolean overlap(IShip ship1, IShip ship2);
 
   /**

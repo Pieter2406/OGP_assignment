@@ -171,7 +171,7 @@ public class Velocity {
 	 * 			|	!Double.isNaN(velocity)
 	 */
 	private boolean isValidVelocity(double velocity){
-		if(velocity <= getMaxVelocity() && velocity >= 0 && !Double.isNaN(velocity)){
+		if(velocity <= getMaxVelocity() && velocity >= -getMaxVelocity() && !Double.isNaN(velocity)){
 			return true;
 		}else{
 			return false;
