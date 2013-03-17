@@ -315,7 +315,7 @@ public class Ship implements IShip {
 	}
 
 	/**
-	 * Calculates the position of collision between this ship and a given ship
+	 * Calculates the position of collision between this ship and a given ship, if they will ever collide
 	 * @param 	other
 	 * 			A given ship used to calculate the position of collision with this ship.
 	 * @throws  IllegalArgumentException
@@ -330,12 +330,22 @@ public class Ship implements IShip {
 	 */
 	public Coordinate getCollisionPosition(Ship other) throws IllegalArgumentException  {
 		try {
-			double colX = getPosition().getX() + getVelocity().getVelocityX() * getTimeToCollision(other);
-			double colY = getPosition().getY() + getVelocity().getVelocityY() * getTimeToCollision(other);
-			if (colX == Double.POSITIVE_INFINITY) // one check is enough
+			if (getTimeToCollision(other) == Double.POSITIVE_INFINITY){
 				return null;
-			else 
-				return new Coordinate(colX,colY);
+			}
+			else {
+				// calculate each ship's position at the time of collision
+				double shipX = getPosition().getX() + getVelocity().getVelocityX() * getTimeToCollision(other);
+				double shipY = getPosition().getY() + getVelocity().getVelocityY() * getTimeToCollision(other);
+				double otherX = other.getPosition().getX() + other.getVelocity().getVelocityX() * getTimeToCollision(other);
+				double otherY = other.getPosition().getY() + other.getVelocity().getVelocityY() * getTimeToCollision(other);
+				// use cos and sin to determine new position
+				double distancebetween = this.getRadius() + other.getRadius();
+				double newX = getPosition().getX() + this.getRadius() * (shipX - otherX) / distancebetween;
+			    double newY = getPosition().getY() + this.getRadius() * (shipY - otherY) / distancebetween;
+				
+				return new Coordinate(newX,newY);
+			}
 		}
 		catch (NullPointerException excError){
 			assert (other == null);
