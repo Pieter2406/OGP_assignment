@@ -18,7 +18,6 @@ import be.kuleuven.cs.som.annotate.*;
  * 
  */
 public class Ship implements IShip {
-
 	/**
 	 * Initialize the position, the radius and the angle of this ship with respectively the given position, radius and angle. 
 	 * Initialize the velocity of this ship to zero.
@@ -26,28 +25,29 @@ public class Ship implements IShip {
 	 * 			The position on the x-as for this new ship.
 	 * @param 	y 
 	 * 			The position on the y-as for this new ship.
+	 * @param	velocityX
+	 * 			The velocity in the x direction.
+	 * @param	velocityY
+	 * 			The velocity in the y direction.
 	 * @param	radius
 	 * 			The radius for this new ship.
 	 * @param 	angle
 	 * 			The angle for this new ship.
-	 * @param 	minimumRadius
-	 * 			The minimum radius for this new ship.
 	 * @pre		The given radius must be a valid radius
 	 * 			| isValidRadius(radius)
-	 * @pre 	The given minimumradius must be a valid minimumradius
-	 * 			| isValidMinimumRadius(minimumRadius)
 	 * @post		The Position, the radius and the angle of this ship are equal to respectively the given position, the given radius and the given angle.
 	 * 			The speed of this ship is initialized to zero.
 	 * @note		Speed will always be zero at the creation of an object, it is therefore not included as a parameter.
 	 */
-	public Ship(double x, double y, double radius, double minimumRadius, double angle){
+	public Ship(double x, double y,double velocityX, double velocityY, double radius, double angle){
 		this.position = new Coordinate(x,y);
 		this.radius = radius; // no setRadius as it is final, only initialized once.
 		this.setAngle(angle);
-		this.velocity = new Velocity();
-		this.minimumRadius = minimumRadius;
+		this.velocity = new Velocity(velocityX,velocityY);
+		this.minimumRadius = 10;
 	}
-
+	
+	
 	/**
 	 * Initialize the position, the radius and the angle of this ship with respectively the given position, radius and angle. 
 	 * Initialize the velocity of this ship to zero.
@@ -63,12 +63,13 @@ public class Ship implements IShip {
 	 * 			The minimum radius for this new ship.
 	 * @pre		The given radius must be a valid radius
 	 * 			| isValidRadius(radius)
-	 * @effect 	This new ship is initialized with a given x coordinate, a given y coordinate,
-	 * 			a radius, a minimum radius equal to zero and a given angle.
-	 * 			| this(x,y,radius, 0, angle)
+	 * @effect 	This new ship is initialized with a given x coordinate, a given y coordinate, 
+	 * 			a velocity of zero in the x and y direction,
+	 * 			a radius and a given angle.
+	 * 			| this(x,y,0,0,radius, angle)
 	 */
 	public Ship(double x, double y, double radius, double angle){
-		this(x,y,radius, 0, angle);
+		this(x,y,0,0,radius,angle);
 	}
 
 	/**
@@ -314,6 +315,7 @@ public class Ship implements IShip {
 		}
 	}
 
+	//TODO: not correct algorithm
 	/**
 	 * Calculates the position of collision between this ship and a given ship, if they will ever collide
 	 * @param 	other
@@ -376,23 +378,7 @@ public class Ship implements IShip {
 	 */
 	private final double radius;
 	
-	//	/**
-	//	 * 
-	//	 * @param 	radius
-	//	 * 			The new radius for this ship
-	//	 * @post	The angle of this ship is set to the given angle
-	//	 * 			| new.getRadius() == radius
-	//	 * @throws 	IllegalValueException
-	//	 * 			The given radius is not a valid radius.
-	//	 * 			| !isValidRadius(radius)
-	//	 */
-	//	private void setRadius(double radius) throws IllegalValueException{
-	//		if (!isValidRadius(radius))
-	//			throw new IllegalValueException(radius);
-	//		this.radius = radius;
-	//	}
-
-
+	
 	/**
 	 * @param 	minimumRadius
 	 * 			The given minimum radius for this ship.
