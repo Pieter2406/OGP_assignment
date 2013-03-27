@@ -1,5 +1,14 @@
 package asteroids.studentdefined;
 
+/** 
+ * TODO: write World description.
+ * 
+ * @version 1.1
+ * 
+ * @author Kristof Bruynincks
+ * @author Wouter Bruyninckx
+ * @author Pieter Verlinden
+ */
 public class World {
 //TODO: write class world
 	/*

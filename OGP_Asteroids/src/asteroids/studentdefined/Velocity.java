@@ -2,6 +2,8 @@ package asteroids.studentdefined;
 import be.kuleuven.cs.som.annotate.*;
 
 /**
+ * TODO: write Velocity in total manner!!
+ * 
  * A class of velocity holds a velocity in the two-dimensional space, divided into an x-component
  * and an y-component
  * 
@@ -15,9 +17,10 @@ import be.kuleuven.cs.som.annotate.*;
  * 			speed of light.
  * 			| getMaxVelocity() <= SPEED_OF_LIGHT)
  * 
- * @version 1.0
+ * @version 1.1
  * 
  * @author Kristof Bruyninckx
+ * @author Wouter Bruyninckx
  * @author Pieter Verlinden
  *
  */

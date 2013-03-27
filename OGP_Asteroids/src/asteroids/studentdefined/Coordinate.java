@@ -10,9 +10,10 @@ import be.kuleuven.cs.som.annotate.*;
  * @invar	The value of y must always be legal
  * 			| isValidValue(getY())
  * 
- * @version 1.0
+ * @version 1.1
  * 
  * @author Kristof Bruynincks
+ * @author Wouter Bruyninckx
  * @author Pieter Verlinden
  *
  */
