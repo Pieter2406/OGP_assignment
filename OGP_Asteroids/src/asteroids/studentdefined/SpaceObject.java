@@ -25,34 +25,38 @@ public abstract class SpaceObject {
 	
 	/**
 	 * Initialize the position and the velocity of the SapceObject with a given x and y coordinate, 
-	 * a given x and y velocity, a given radius and a given minimum radius.
+	 * a given x and y velocity, a given radius, a given minimum radius and a given mass.
 	 * 
 	 * TODO: write @pre and @post.
 	 * 
-	 * @param x
-	 * @param y
-	 * @param velocityX
-	 * @param velocityY
-	 * @param radius
-	 * @param minimumRadius
+	 * @param 	x
+	 * @param 	y
+	 * @param 	velocityX
+	 * @param 	velocityY
+	 * @param 	radius
+	 * @param 	minimumRadius
+	 * @param 	mass
 	 */
-	public SpaceObject(double x, double y, double velocityX, double velocityY, double radius, double minimumRadius){
+	public SpaceObject(double x, double y, double velocityX, double velocityY, double radius, double minimumRadius, double mass){
 		this.position = new Coordinate(x,y);
 		this.velocity = new Velocity(velocityX,velocityY);
 		this.radius = radius;
 		this.minimumRadius = minimumRadius;
+		this.mass = new Mass(mass);
 	}
 	
 	/**
-	 * Initialize the position and the velocity of the SpaceObject with position(0,0) and velocity(0,0), a given radius and a given minimum radius.
+	 * Initialize the position and the velocity of the SpaceObject with position(0,0) and velocity(0,0), a given radius, 
+	 * a given minimum radius and a given mass.
 	 * 
 	 * @effect TODO write @effect.
 	 * 
-	 * @param radius
-	 * @param minimumRadius
+	 * @param 	radius
+	 * @param 	minimumRadius
+	 * @param	mass
 	 */
-	public SpaceObject(double radius, double minimumRadius){
-		this(0,0,0,0,radius,minimumRadius);
+	public SpaceObject(double radius, double minimumRadius, double mass){
+		this(0,0,0,0,radius,minimumRadius,mass);
 	}
 	
 	/**
@@ -61,7 +65,7 @@ public abstract class SpaceObject {
 	 * @effect TODO: write effect.
 	 */
 	public SpaceObject(){
-		this(0,0,0,0,0,0);
+		this(0,0,0,0,0,0,0);
 	}
 	
 	
@@ -117,6 +121,31 @@ public abstract class SpaceObject {
 	public void setPosition(double x, double y){
 		getPosition().transformTo(x,y); // values will be checked in the coordinate class.
 	}
+	
+	/**
+	 * Return this SpaceObject's mass.
+	 */
+	public Mass getMass(){
+		return mass;
+	}
+	
+	/**
+	 * Set the new mass of this SpaceOject.
+	 * 
+	 * @param 	newMass
+	 * 			Holds the new mass for this SpaceObject.	
+	 * @effect	If the given mass is a valid mass, the mass of this SpaceObject
+	 * 			is set to the given mass.
+	 */
+	@Raw
+	public void setMass(double newMass){
+		this.mass.setMass(newMass);
+	}
+	
+	/**
+	 * Variable holding the mass of the SpaceObject.
+	 */
+	protected Mass mass;
 	
 	public void move(double duration){
 		if(duration < 0){

@@ -1,5 +1,8 @@
 import be.kuleuven.cs.som.annotate.*;
-
+/****************************************************
+ * 				TOTAL PROGRAMMING					*
+ ****************************************************/
+ 
 /**
  * A class for dealing with digital clocks, displaying time in terms of
  * hours, minutes and seconds.

@@ -122,8 +122,7 @@ public class Facade implements IFacade {
 
 	@Override
 	public double getShipMass(Object ship) {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((Ship)ship).getMass().getMass();
 	}
 
 	@Override
@@ -146,7 +145,7 @@ public class Facade implements IFacade {
 
 	@Override
 	public void turn(Object ship, double angle) {
-		// TODO Auto-generated method stub
+		((Ship)ship).turn(angle);
 		
 	}
 

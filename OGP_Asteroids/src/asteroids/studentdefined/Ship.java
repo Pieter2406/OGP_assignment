@@ -7,6 +7,7 @@ import be.kuleuven.cs.som.annotate.*;
  **********************************************************************************
  *		- Implement mass														  *
  *		- Implement thruster (eventueel aparte klasse)							  *
+ *		- Implement fireBullet													  *
  *		- Bekijk aanpassingen van feedback !!									  *
  *		- Position: DEFENSIEF													  *
  *		- Velocity: TOTAAL														  *
@@ -46,21 +47,19 @@ public class Ship extends SpaceObject implements IShip {
 	 * 			The radius for this new ship.
 	 * @param 	angle
 	 * 			The angle for this new ship.
+	 * @param 	mass
+	 * 			The mass for this new ship.
 	 * @pre		The given radius must be a valid radius
 	 * 			| isValidRadius(radius)
 	 * @post	The Position, the radius and the angle of this ship are equal to respectively the given position, the given radius and the given angle.
-	 * 			The speed of this ship is initialized to zero.
-	 * 			| new.getPosition().getX == x
-	 * 			| new.getPosition().getY == y
-	 * 			| new.getRadius == radius
-	 * 			| new.getVelocity().getVelocityX() == velocityX
-	 * 			| new.getVelocity().getVelocityY() == velocityY
-	 * 			| new.getAngle() == angle
+	 * 			The speed of this ship is initialized with a given velocity in x and y directions. The mass is initialized with a given mass.
+	 * 			| super(x,y,velocityX,velocityY,radius, 10, mass)
+	 * 			| this.setAngle(angle)
 	 * 
 	 * TODO: write @effect with super class
 	 */
-	public Ship(double x, double y,double velocityX, double velocityY, double radius, double angle){
-		super(x,y,velocityX,velocityY,radius,10);
+	public Ship(double x, double y,double velocityX, double velocityY, double radius, double angle, double mass){
+		super(x,y,velocityX,velocityY,radius,10, mass);
 		this.setAngle(angle);
 	}
 
@@ -76,8 +75,8 @@ public class Ship extends SpaceObject implements IShip {
 	 * 			The radius for this new ship.
 	 * @param 	angle
 	 * 			The angle for this new ship.
-	 * @param 	minimumRadius
-	 * 			The minimum radius for this new ship.
+	 * @param	mass
+	 * 			The mass for this new ship.
 	 * @pre		The given radius must be a valid radius
 	 * 			| isValidRadius(radius)
 	 * @effect 	This new ship is initialized with a given x coordinate, a given y coordinate, 
@@ -85,8 +84,8 @@ public class Ship extends SpaceObject implements IShip {
 	 * 			a radius and a given angle.
 	 * 			| this(x,y,0,0,radius, angle)
 	 */
-	public Ship(double x, double y, double radius, double angle){
-		this(x,y,0,0,radius,angle);
+	public Ship(double x, double y, double radius, double angle, double mass){
+		this(x,y,0,0,radius,angle,mass);
 	}
 
 
