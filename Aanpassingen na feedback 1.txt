@@ -1,0 +1,14 @@
+delete @pre in constructor
+nominal setters : asserts statements
+turn: precondition on overflow
+thrust: @post => @effect
+setVelocity in Velocity @post : @effect
+Shiptest: thrust: boundary tests
+Extend velocity class with vector methods
+
+GetTimeCollision:
+	* Formal:
+		* explain in terms of other mehtods 
+		* move;
+		* overlap;
+Shiptest: setUpImmutableFixtures => delete
