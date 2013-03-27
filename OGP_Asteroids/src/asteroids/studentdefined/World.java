@@ -1,4 +1,21 @@
 package asteroids.studentdefined;
+/******************************************************************************************
+ * 								GENERAL TODO LIST:		              			          *
+ ******************************************************************************************
+ *		- Attributen:															          *
+ *			- width																		  *
+ *			- height																	  *
+ *			- maxWidthHeight = Double.MAX_VALUE											  *	
+ *		- Methodes:																		  *	
+ *			- addShip(Coordinate initLocation, Velocity initVelocity, Double angle)		  *	
+ *			- removeShip(Ship remShip)													  *		
+ *			- addAsteroid(Coordinate initLocation, Velocity initVelocity, Double angle)	  *	
+ *			- removeAsteroid(Asteroid remAsteroid)										  *	
+ *			- addBullet(Coordinate initLocation, Velocity initVelocity, Double angle)	  *
+ *			- removeBullet(Bullet remBullet)	 										  *
+ *			- evolve(double time) (zie p7 voor uitwerking)					  	 	 	  *
+ *		- Methodes voor powerUps														  *
+ ******************************************************************************************/	
 
 /** 
  * TODO: write World description.

@@ -3,6 +3,12 @@ package asteroids.studentdefined;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 
+/**********************************************************************************
+ * 								GENERAL TODO LIST:		              			  *
+ **********************************************************************************
+ *		- Implementeer mass														  *
+ **********************************************************************************/
+
 /**
  * A class of SpaceObject is an abstract class with a Coordinate and a Velocity.
  * 
@@ -19,7 +25,7 @@ public abstract class SpaceObject {
 	
 	/**
 	 * Initialize the position and the velocity of the SapceObject with a given x and y coordinate, 
-	 * a given x and y velocity and a given radius.
+	 * a given x and y velocity, a given radius and a given minimum radius.
 	 * 
 	 * TODO: write @pre and @post.
 	 * 
@@ -27,27 +33,35 @@ public abstract class SpaceObject {
 	 * @param y
 	 * @param velocityX
 	 * @param velocityY
+	 * @param radius
+	 * @param minimumRadius
 	 */
-	public SpaceObject(double x, double y, double velocityX, double velocityY, double radius){
-		//TODO: Write constructor
+	public SpaceObject(double x, double y, double velocityX, double velocityY, double radius, double minimumRadius){
+		this.position = new Coordinate(x,y);
+		this.velocity = new Velocity(velocityX,velocityY);
+		this.radius = radius;
+		this.minimumRadius = minimumRadius;
 	}
 	
 	/**
-	 * Initialize the position and the velocity of the SpaceObject with position(0,0) and velocity(0,0) and a given radius.
+	 * Initialize the position and the velocity of the SpaceObject with position(0,0) and velocity(0,0), a given radius and a given minimum radius.
+	 * 
+	 * @effect TODO write @effect.
 	 * 
 	 * @param radius
+	 * @param minimumRadius
 	 */
-	public SpaceObject(double radius){
-		this(0,0,0,0,radius);
+	public SpaceObject(double radius, double minimumRadius){
+		this(0,0,0,0,radius,minimumRadius);
 	}
 	
 	/**
-	 * Initialize the position and the velocity of the SpaceObject with position (0,0) and velocity (0,0) and a radius of 0;
+	 * Initialize the position and the velocity of the SpaceObject with position (0,0) and velocity (0,0), a radius of 0 and a minimum radius of 0.
 	 * 
-	 * TODO: write @effect
+	 * @effect TODO: write effect.
 	 */
 	public SpaceObject(){
-		this(0,0,0,0,0);
+		this(0,0,0,0,0,0);
 	}
 	
 	

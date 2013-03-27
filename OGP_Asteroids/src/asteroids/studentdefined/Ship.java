@@ -2,10 +2,21 @@ package asteroids.studentdefined;
 import asteroids.IShip;
 import asteroids.Util;
 import be.kuleuven.cs.som.annotate.*;
-
+/**********************************************************************************
+ * 								GENERAL TODO LIST:		              			  *
+ **********************************************************************************
+ *		- Implement mass														  *
+ *		- Implement thruster (eventueel aparte klasse)							  *
+ *		- Bekijk aanpassingen van feedback !!									  *
+ *		- Position: DEFENSIEF													  *
+ *		- Velocity: TOTAAL														  *
+ *		- Radius: DEFENSIEF														  *
+ *		- Angle/Direction: NOMINAAL												  *	
+ *																				  *
+ **********************************************************************************/
 
 /**
- * A class of a Ship is a SpaceObject involves a position in the two dimensional space, a velocity, a radius (the ship has a round form) and a direction.
+ * A class of a Ship extends to SpaceObject and involves a position in the two dimensional space, a velocity, a radius (the ship has a round form) and a direction.
  * 
  * @invar 	The radius of a ship is always higher than the minimum radius of all ships, and is always a valid number.
  * 			| isValidRadius(getRadius())
@@ -49,7 +60,7 @@ public class Ship extends SpaceObject implements IShip {
 	 * TODO: write @effect with super class
 	 */
 	public Ship(double x, double y,double velocityX, double velocityY, double radius, double angle){
-		super(x,y,velocityX,velocityY,radius);
+		super(x,y,velocityX,velocityY,radius,10);
 		this.setAngle(angle);
 	}
 

@@ -1,5 +1,12 @@
 package asteroids.studentdefined;
 
+/**********************************************************************************
+ * 								GENERAL TODO LIST:		              			  *
+ **********************************************************************************
+ *		- public static double massDensity = 2,65E12 kg/km³						  *	
+ *		- minimumRadius = 0														  *
+ **********************************************************************************/
+
 /**
  * A class of Asteroid extends to SpaceObject and involves a position and a velocity.
  * 
