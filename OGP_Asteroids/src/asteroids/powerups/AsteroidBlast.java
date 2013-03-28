@@ -25,16 +25,17 @@ public class AsteroidBlast extends SpaceObject {
 	 * @param minimumRadius
 	 */
 	public AsteroidBlast(double x, double y, double velocityX,
-			double velocityY, double radius, double minimumRadius) {
-		super(x, y, velocityX, velocityY, radius, minimumRadius);
+			double velocityY, double radius, double minimumRadius, double mass) {
+		super(x, y, velocityX, velocityY, radius, minimumRadius, mass);
 	}
 
 	/**
 	 * @param radius
 	 * @param minimumRadius
+	 * @param mass
 	 */
-	public AsteroidBlast(double radius, double minimumRadius) {
-		super(radius, minimumRadius);
+	public AsteroidBlast(double radius, double minimumRadius, double mass) {
+		super(radius, minimumRadius, mass);
 	}
 
 	/**

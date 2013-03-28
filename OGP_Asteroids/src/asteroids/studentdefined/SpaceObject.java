@@ -6,7 +6,7 @@ import be.kuleuven.cs.som.annotate.Raw;
 /**********************************************************************************
  * 								GENERAL TODO LIST:		              			  *
  **********************************************************************************
- *		- Implementeer mass														  *
+ *		- 													  *
  **********************************************************************************/
 
 /**
@@ -43,6 +43,7 @@ public abstract class SpaceObject {
 		this.radius = radius;
 		this.minimumRadius = minimumRadius;
 		this.mass = new Mass(mass);
+		this.pendingVelocityChange = true;
 	}
 	
 	/**
@@ -94,6 +95,7 @@ public abstract class SpaceObject {
 	@Raw
 	public void setVelocity(double velocityX, double velocityY){
 		getVelocity().setVelocity(velocityX, velocityY); // values will be checked in the Velocity class.
+		setPendingVelocityChange(true);
 	}
 	
 	/**
@@ -346,4 +348,28 @@ public abstract class SpaceObject {
 	 * Variable containing the minimum radius of a SpaceObject. 
 	 */
 	protected final double minimumRadius;
+	
+	/**
+	 * Set whether the velocity is changed over time.
+	 * 
+	 * @param 	bool
+	 * 			The given boolean value for the pending velocity change.
+	 */
+	public void setPendingVelocityChange(boolean bool){
+		this.pendingVelocityChange = bool;
+	}
+	
+	/**
+	 * Tell the caller whether this SpaceObject has a pending velocity change.
+	 * 
+	 * @return	true if and only if the velocity has changed over time.
+	 */
+	public boolean hasPendingVelocityChange(){
+		return pendingVelocityChange;
+	}
+	
+	/**
+	 * Boolean containing true if its velocity has changed.
+	 */
+	protected boolean pendingVelocityChange;
 }

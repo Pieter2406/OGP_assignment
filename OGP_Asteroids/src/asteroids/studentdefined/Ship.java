@@ -106,7 +106,7 @@ public class Ship extends SpaceObject implements IShip {
 		if(amount < 0){
 			checkedAmount = 0;
 		}
-		getVelocity().setVelocity	(	getVelocity().getVelocityX() + (checkedAmount * Math.cos(getAngle()))
+		setVelocity	(getVelocity().getVelocityX() + (checkedAmount * Math.cos(getAngle()))
 				,
 				getVelocity().getVelocityY() + (checkedAmount * Math.sin(getAngle()))
 				);
@@ -162,9 +162,6 @@ public class Ship extends SpaceObject implements IShip {
 	 */
 	private double angle; 
 
-	/**
-	 * Return this ship's position.
-	 */
 
 	/**
 	 * Move this ship in its current direction for a given amount of time.
