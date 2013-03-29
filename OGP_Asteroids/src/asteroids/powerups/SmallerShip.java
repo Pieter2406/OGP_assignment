@@ -6,13 +6,8 @@ package asteroids.powerups;
 import asteroids.studentdefined.SpaceObject;
 
 /**
- * 
- * @version 1.1
- * 
- * @author Kristof Bruyninckx
- * @author Wouter Bruyninckx
- * @author Pieter Verlinden
- * 
+ * @author Pieter
+ *
  */
 public class SmallerShip extends SpaceObject {
 
@@ -23,24 +18,29 @@ public class SmallerShip extends SpaceObject {
 	 * @param velocityY
 	 * @param radius
 	 * @param minimumRadius
+	 * @param mass
 	 */
 	public SmallerShip(double x, double y, double velocityX, double velocityY,
-			double radius, double minimumRadius) {
-		super(x, y, velocityX, velocityY, radius, minimumRadius);
+			double radius, double minimumRadius, double mass) {
+		super(x, y, velocityX, velocityY, radius, minimumRadius, mass);
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
 	 * @param radius
 	 * @param minimumRadius
+	 * @param mass
 	 */
-	public SmallerShip(double radius, double minimumRadius) {
-		super(radius, minimumRadius);
+	public SmallerShip(double radius, double minimumRadius, double mass) {
+		super(radius, minimumRadius, mass);
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
 	 * 
 	 */
 	public SmallerShip() {
+		// TODO Auto-generated constructor stub
 	}
 
 }

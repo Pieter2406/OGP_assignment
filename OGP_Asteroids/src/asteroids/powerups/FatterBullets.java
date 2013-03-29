@@ -6,16 +6,10 @@ package asteroids.powerups;
 import asteroids.studentdefined.SpaceObject;
 
 /**
- * 
- * @version 1.1
- * 
- * @author Kristof Bruyninckx
- * @author Wouter Bruyninckx
- * @author Pieter Verlinden
- * 
+ * @author Pieter
  *
  */
-public class EnergyShield extends SpaceObject {
+public class FatterBullets extends SpaceObject {
 
 	/**
 	 * @param x
@@ -24,11 +18,12 @@ public class EnergyShield extends SpaceObject {
 	 * @param velocityY
 	 * @param radius
 	 * @param minimumRadius
-	 * @param
+	 * @param mass
 	 */
-	public EnergyShield(double x, double y, double velocityX, double velocityY,
-			double radius, double minimumRadius, double mass) {
+	public FatterBullets(double x, double y, double velocityX,
+			double velocityY, double radius, double minimumRadius, double mass) {
 		super(x, y, velocityX, velocityY, radius, minimumRadius, mass);
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -36,14 +31,16 @@ public class EnergyShield extends SpaceObject {
 	 * @param minimumRadius
 	 * @param mass
 	 */
-	public EnergyShield(double radius, double minimumRadius, double mass) {
+	public FatterBullets(double radius, double minimumRadius, double mass) {
 		super(radius, minimumRadius, mass);
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
 	 * 
 	 */
-	public EnergyShield() {
+	public FatterBullets() {
+		// TODO Auto-generated constructor stub
 	}
 
 }
