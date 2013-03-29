@@ -159,7 +159,6 @@ public class World {
 			handleCollision(newCollision);
 			time -= firstCollisionTime;
 			evolve(time);
-
 		}
 	}
 
@@ -168,17 +167,44 @@ public class World {
 	 * @param newCollision
 	 */
 	private void handleCollision(Collision newCollision) {
-		// TODO Auto-generated method stub
-
+		// if (troll == true)
+		//	new sonicBoom(supernova);
+		
+		/* check wich objects collide:
+		 * 		bullet - boundary
+		 * 		bullet - asteroid
+		 * 		bullet - ship
+		 * 		asteroid - asteroid
+		 * 		asteroid - ship
+		 * 		asteroid - boundary
+		 * 		ship - boundary
+		 * 
+		 * 		toekomstig:
+		 * 		ship - powerups
+		 * 
+		 * Geen instanceof!! zie boek p499
+		 */
+		
+		
 	}
 
 	/**
-	 * 
-	 * @param time
+	 * Update the position of each spaceobject in this world.
+	 * @param 	time
+	 * 			Given time that determines the amount of movement of each object.
+	 * @effect	Each Object of this world has an updated position based on the
+	 * 			given time.
+	 * 			| for each spaceobject obj in visibleobjects
+	 * 			|	obj.move(time)
+	 * @throws 	IllegalArgumentException
+	 * 			The given time is not a valid time for an advancement.
+	 * 			| time <= 0
 	 */
-	private void advanceAll(double time) {
-		// TODO Auto-generated method stub
-
+	private void advanceAll(double time) throws IllegalArgumentException{
+		if (time <= 0)
+			throw new IllegalArgumentException("Time is not effective"); 
+		for (SpaceObject obj : visibleObjects)
+			obj.move(time);
 	}
 
 	/**
@@ -194,8 +220,8 @@ public class World {
 		 */
 		updateCollisions();
 		MinPQ<Collision> collisionPQ = new MinPQ<Collision>();
-		for(Collision cololol : upcomingCollisions){
-			collisionPQ.insert(cololol);
+		for(Collision col : upcomingCollisions){
+			collisionPQ.insert(col);
 
 		}
 		return collisionPQ.min();

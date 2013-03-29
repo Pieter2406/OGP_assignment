@@ -226,7 +226,7 @@ public abstract class SpaceObject {
 	 * @return
 	 * 			The time in seconds of how long it would take for this SpaceObject and the given SpaceObject
 	 * 			(if ever) to collide.
-	 * 			If the SpaceObjects never collide, this method will return infinity.
+	 * 			If the SpaceObjects never collide or if the same object is given as an argument, this method will return infinity.
 	 * 			| dVx = this.getVelocity().getVelocityX() - other.getVelocity().getVelocityX()
 	 * 			| dVy = this.getVelocity().getVelocityY() - other.getVelocity().getVelocityY()
 	 * 			| dX = this.getPosition().getX() - other.getPosition().getX()
@@ -247,6 +247,9 @@ public abstract class SpaceObject {
 	 */
 	public double getTimeToCollision(SpaceObject other)throws IllegalArgumentException{
 		try{
+			if (this.equals(other)) // An object can never collide with itself.
+				return Double.POSITIVE_INFINITY;
+			
 			double dVx = this.getVelocity().getVelocityX() - other.getVelocity().getVelocityX();
 			double dVy = this.getVelocity().getVelocityY() - other.getVelocity().getVelocityY();
 			double dX = this.getPosition().getX() - other.getPosition().getX();
