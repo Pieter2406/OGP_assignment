@@ -8,7 +8,7 @@ package asteroids.studentdefined;
  **********************************************************************************/
 
 /**
- * A class of Asteroid extends to SpaceObject and involves a position and a velocity.
+ * A class of Asteroid extends to SpaceObject and involves a position, a mass, a minimumradius and a velocity.
  * 
  * TODO: write @invar (if necessary)
  * 
@@ -19,5 +19,26 @@ package asteroids.studentdefined;
  * @author Pieter Verlinden
  */
 public class Asteroid extends SpaceObject {
-//TODO: Write class Asteroid
+	
+	/**
+	 * Initialise this new asteroid with a given position , a given velocity and a given radius.
+	 * @param 	x
+	 * 			The position on the x axis for this new asteroid.
+	 * @param 	y
+	 * 			The position on the y axis for this new asteroid.
+	 * @param 	velocityX
+	 * 			the velocity on the x axis for this new asteroid.
+	 * @param 	velocityY
+	 * 			the velocity on the y axis for this new asteroid.
+	 * @param 	radius
+	 * 			The given radius for this new asteroid.
+	 * @effect 	This asteroid is intialised as a spaceobject with the given parameters.
+	 */
+	public Asteroid(double x, double y, double velocityX, double velocityY, double radius){
+		super(x, y, velocityX, velocityY, radius, 0, Mass.computeCircularMass(MASS_DENSITY, radius));
+		
+	}
+	
+	private final static double MASS_DENSITY = 2.65E12;
+	
 }

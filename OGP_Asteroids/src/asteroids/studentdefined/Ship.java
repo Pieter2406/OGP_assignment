@@ -51,7 +51,7 @@ public class Ship extends SpaceObject implements IShip {
 	 * 			The mass for this new ship.
 	 * @pre		The given radius must be a valid radius
 	 * 			| isValidRadius(radius)
-	 * @post	The Position, the radius and the angle of this ship are equal to respectively the given position, the given radius and the given angle.
+	 * @effect	The Position, the radius and the angle of this ship are equal to respectively the given position, the given radius and the given angle.
 	 * 			The speed of this ship is initialized with a given velocity in x and y directions. The mass is initialized with a given mass.
 	 * 			| super(x,y,velocityX,velocityY,radius, 10, mass)
 	 * 			| this.setAngle(angle)

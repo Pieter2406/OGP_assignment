@@ -228,6 +228,13 @@ public class Velocity {
 	 * 			The new velocity in the y direction.
 	 */
 	private void setVelocityY(double velocityY){this.velocityY = velocityY;}
-		
 	
+	public static double computeXVelocity(double angle, double trueVelocity){
+		return Math.cos(angle) * trueVelocity;
+	}
+	
+	public static double computeYVelocity(double angle, double trueVelocity){
+		return Math.sin(angle) * trueVelocity;
+	}
+		
 }

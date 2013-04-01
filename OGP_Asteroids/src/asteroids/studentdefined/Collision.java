@@ -1,5 +1,17 @@
 package asteroids.studentdefined;
 
+/**
+ * A class of Collision extends to SpaceObject and involves a position and a velocity.
+ * 
+ * TODO: write @invar (if necessary)
+ * 
+ * @version 1.1
+ * 
+ * @author Kristof Bruynincks
+ * @author Wouter Bruyninckx
+ * @author Pieter Verlinden
+ */
+
 public class Collision implements Comparable<Collision> {
 
 	//TODO: Write contracts

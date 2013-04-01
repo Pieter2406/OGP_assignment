@@ -1,0 +1,769 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.2" icons="true" always-add-relationships="true" generalizations="true" realizations="true" 
+  associations="true" dependencies="true" nesting-relationships="true">  
+  <class id="1" language="java" name="asteroids.studentdefined.Asteroid" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/studentdefined/Asteroid.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="113" x="4151" y="2550"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="asteroids.studentdefined.Bullet" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/studentdefined/Bullet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="113" x="3998" y="2550"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="asteroids.studentdefined.Coordinate" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/studentdefined/Coordinate.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="315" width="237" x="1586" y="3445"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="asteroids.studentdefined.Collision" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/studentdefined/Collision.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="207" width="200" x="2095" y="1390"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="asteroids.studentdefined.Facade" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/studentdefined/Facade.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="873" width="362" x="1264" y="1637"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="asteroids.studentdefined.IllegalValueException" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/studentdefined/IllegalValueException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="166" x="1327" y="3818"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="asteroids.studentdefined.Mass" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/studentdefined/Mass.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="203" x="1040" y="2550"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="asteroids.studentdefined.Ship" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/studentdefined/Ship.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="297" x="1367" y="2550"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="asteroids.studentdefined.SpaceObject" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/studentdefined/SpaceObject.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="459" width="338" x="2116" y="1637"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="asteroids.studentdefined.Velocity" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/studentdefined/Velocity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="333" width="219" x="1327" y="3445"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="asteroids.studentdefined.World" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/studentdefined/World.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="351" width="175" x="2163" y="675"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="asteroids.Asteroids" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/Asteroids.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="279" width="359" x="1391" y="356"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="asteroids.AsteroidsMenu" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/AsteroidsMenu.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="279" width="384" x="1581" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <interface id="14" language="java" name="asteroids.CollisionListener" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/CollisionListener.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="260" x="651" y="3445"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface id="15" language="java" name="asteroids.Drawable" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/Drawable.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="140" x="402" y="1637"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <class id="16" language="java" name="asteroids.Explosion" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/Explosion.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="729" x="83" y="1390"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="asteroids.FileSoundManager.Request" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/FileSoundManager.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="111" x="1706" y="1390"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="asteroids.FileSoundManager.Loop" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/FileSoundManager.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="96" x="1666" y="1637"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="asteroids.FileSoundManager" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/FileSoundManager.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="312" x="1811" y="675"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="asteroids.FileSoundManager.Stop" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/FileSoundManager.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="96" x="1938" y="1637"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="asteroids.FileSoundManager.Play" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/FileSoundManager.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="96" x="1802" y="1637"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <interface id="22" language="java" name="asteroids.IFacade" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/IFacade.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="855" width="328" x="651" y="2550"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface id="23" language="java" name="asteroids.IShip" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/IShip.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="63" width="103" x="1884" y="3445"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <class id="24" language="java" name="asteroids.ModelException" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/ModelException.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="161" x="384" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="asteroids.NullSound" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/NullSound.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="106" x="1264" y="675"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <interface id="26" language="java" name="asteroids.Sound" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/Sound.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="106" x="1285" y="1390"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <class id="27" language="java" name="asteroids.Util" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/Util.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="267" x="929" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="asteroids.WorldView" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/WorldView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="675" width="351" x="852" y="675"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="asteroids.WorldView.Visualization" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/WorldView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="158" x="852" y="1390"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="asteroids.WorldView.BulletVisualization" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/WorldView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="174" x="582" y="1637"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="asteroids.WorldView.AsteroidVisualization" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/WorldView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="386" x="796" y="1637"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="asteroids.WorldView.ShipVisualization" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/WorldView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="195" x="167" y="1637"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="asteroids.powerups.AsteroidBlast" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/powerups/AsteroidBlast.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="341" x="1725" y="2550"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="asteroids.powerups.EnergyShield" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/powerups/EnergyShield.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="339" x="3619" y="2550"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="asteroids.powerups.FatterBullets" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/powerups/FatterBullets.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="336" x="3243" y="2550"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="asteroids.powerups.HigherBulletSpeed" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/powerups/HigherBulletSpeed.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="117" width="364" x="2106" y="2550"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="asteroids.powerups.ShipBlast" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/powerups/ShipBlast.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="321" x="2882" y="2550"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="asteroids.powerups.SmallerShip" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/powerups/SmallerShip.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="332" x="2510" y="2550"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <association id="39">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="40" name="requests"/>      
+      <multiplicity id="41" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="42">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="43">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <association id="44">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="45" name="upcomingCollisions"/>      
+      <multiplicity id="46" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="47">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="15"/>  
+  </realization>  
+  <association id="48">    
+    <bendpoint x="1694" y="2550"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="49" name="position"/>      
+      <multiplicity id="50" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="51">    
+    <bendpoint x="1675" y="1390"/>    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="18"/>  
+  </nesting>  
+  <realization id="52">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="22"/>  
+  </realization>  
+  <dependency id="53">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="54">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="55">    
+    <bendpoint x="2064" y="1390"/>    
+    <bendpoint x="2064" y="1637"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="56">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="26"/>  
+  </dependency>  
+  <generalization id="57">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <generalization id="58">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <association id="59">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="60" name="mass"/>      
+      <multiplicity id="61" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="62">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <nesting id="63">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="29"/>  
+  </nesting>  
+  <generalization id="64">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <nesting id="65">    
+    <bendpoint x="1847" y="1390"/>    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="21"/>  
+  </nesting>  
+  <generalization id="66">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="17"/>  
+  </generalization>  
+  <dependency id="67">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="25"/>  
+  </dependency>  
+  <nesting id="68">    
+    <bendpoint x="1884" y="1390"/>    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="20"/>  
+  </nesting>  
+  <association id="69">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="70" name="menu"/>      
+      <multiplicity id="71" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="72">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <association id="73">    
+    <bendpoint x="1233" y="675"/>    
+    <bendpoint x="1233" y="1390"/>    
+    <bendpoint x="1233" y="1637"/>    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="74" name="facade"/>      
+      <multiplicity id="75" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="76">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="77" name="game"/>      
+      <multiplicity id="78" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="79">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <generalization id="80">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <nesting id="81">    
+    <bendpoint x="1040" y="1390"/>    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="30"/>  
+  </nesting>  
+  <association id="82">    
+    <bendpoint x="2325" y="1390"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="83" name="visibleObjects"/>      
+      <multiplicity id="84" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="85">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="86">    
+    <bendpoint x="1315" y="2550"/>    
+    <bendpoint x="1296" y="3445"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="87">    
+    <bendpoint x="2347" y="1390"/>    
+    <bendpoint x="2484" y="1637"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <generalization id="88">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="17"/>  
+  </generalization>  
+  <dependency id="89">    
+    <bendpoint x="2368" y="675"/>    
+    <bendpoint x="2368" y="1390"/>    
+    <bendpoint x="2085" y="1637"/>    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <nesting id="90">    
+    <bendpoint x="52" y="1390"/>    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="32"/>  
+  </nesting>  
+  <realization id="91">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="23"/>  
+  </realization>  
+  <dependency id="92">    
+    <bendpoint x="1294" y="2550"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <association id="93">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="94" name="o1"/>      
+      <multiplicity id="95" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="96">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="97" name="explosions"/>      
+      <multiplicity id="98" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="99">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="15"/>  
+  </realization>  
+  <association id="100">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="101" name="view"/>      
+      <multiplicity id="102" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="103">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <realization id="104">    
+    <bendpoint x="31" y="1390"/>    
+    <bendpoint x="31" y="1637"/>    
+    <bendpoint x="31" y="2550"/>    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="14"/>  
+  </realization>  
+  <generalization id="105">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <nesting id="106">    
+    <bendpoint x="1061" y="1390"/>    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="31"/>  
+  </nesting>  
+  <dependency id="107">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <realization id="108">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="26"/>  
+  </realization>  
+  <generalization id="109">    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <generalization id="110">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="17"/>  
+  </generalization>  
+  <dependency id="111">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="19"/>  
+  </dependency>  
+  <dependency id="112">    
+    <bendpoint x="1853" y="3445"/>    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <association id="113">    
+    <bendpoint x="1336" y="2550"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="114" name="velocity"/>      
+      <multiplicity id="115" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="116">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <dependency id="117">    
+    <bendpoint x="1421" y="675"/>    
+    <bendpoint x="1421" y="1390"/>    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="118">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="119">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="120">    
+    <bendpoint x="1273" y="2550"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <association id="121">    
+    <bendpoint x="1212" y="1390"/>    
+    <bendpoint x="1212" y="1637"/>    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="122" name="facade"/>      
+      <multiplicity id="123" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="124">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <association id="125">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="126" name="game"/>      
+      <multiplicity id="127" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="128">    
+    <bendpoint x="2911" y="675"/>    
+    <bendpoint x="2911" y="1390"/>    
+    <bendpoint x="2911" y="1637"/>    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="129">    
+    <bendpoint x="2869" y="675"/>    
+    <bendpoint x="2869" y="1390"/>    
+    <bendpoint x="2869" y="1637"/>    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <nesting id="130">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="17"/>  
+  </nesting>  
+  <dependency id="131">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <dependency id="132">    
+    <bendpoint x="2848" y="1390"/>    
+    <bendpoint x="2890" y="1637"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="133">    
+    <bendpoint x="1400" y="675"/>    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="134" name="sound"/>      
+      <multiplicity id="135" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="136">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="137" name="o2"/>      
+      <multiplicity id="138" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="139">    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <association id="140">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="141" name="visualizations"/>      
+      <multiplicity id="142" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="143">    
+    <bendpoint x="1780" y="356"/>    
+    <bendpoint x="1780" y="675"/>    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="26"/>  
+  </dependency>  
+  <dependency id="144">    
+    <bendpoint x="1009" y="2550"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="145">    
+    <bendpoint x="1193" y="3445"/>    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="146">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <realization id="147">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="26"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

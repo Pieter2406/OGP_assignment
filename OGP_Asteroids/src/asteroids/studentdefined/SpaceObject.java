@@ -47,6 +47,21 @@ public abstract class SpaceObject {
 	}
 	
 	/**
+	 * Initialize the position and the velocity of the SapceObject with a given x and y coordinate, 
+	 *  a given radius and a given mass.
+	 * 
+	 * TODO: write @pre and @post.
+	 * 
+	 * @param 	x
+	 * @param 	y
+	 * @param 	radius
+	 * @param 	mass
+	 */
+	public SpaceObject(double x, double y, double radius, double mass){
+		this(x,y,0,0,radius,0,mass);
+	}
+	
+	/**
 	 * Initialize the position and the velocity of the SpaceObject with position(0,0) and velocity(0,0), a given radius, 
 	 * a given minimum radius and a given mass.
 	 * 

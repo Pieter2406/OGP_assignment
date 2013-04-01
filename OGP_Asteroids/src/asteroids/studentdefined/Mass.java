@@ -30,8 +30,8 @@ public class Mass {
 	 * 			The new computed mass is not a valid mass.
 	 * 			| !isValidMass(computeMass(massDensity, radius))
 	 */
-	public Mass(double massDensity,double radius){
-		double tempMass = computeMass(massDensity, radius);
+	public Mass(double massDensity,double radius){ // TODO: modify mass class to only use static methods and use check in cumputeCircularMass.
+		double tempMass = computeCircularMass(massDensity, radius);
 		if(!isValidMass(tempMass)){
 			throw new IllegalValueException(tempMass);
 		}else{
@@ -83,7 +83,7 @@ public class Mass {
 	 * 			The given radius is an illegal value.
 	 * 			| radius < 0 && radius > Double.POSITIVE_INFINITY && Double.isNaN(radius)
 	 */
-	public static double computeMass(double massDensity, double radius){
+	public static double computeCircularMass(double massDensity, double radius){
 		if(massDensity > 0 && massDensity < Double.POSITIVE_INFINITY && !Double.isNaN(massDensity)){
 			if(radius > 0 && radius < Double.POSITIVE_INFINITY && !Double.isNaN(radius)){
 				return (4/3) * Math.PI * Math.pow(radius, 3) * massDensity;
@@ -138,7 +138,7 @@ public class Mass {
 	 * 			not infinity and is a number.
 	 * 			|result == (mass >= 0 && mass < DOUBLE.POSITIVE_INFINITY && !Double.isNaN(mass))
 	 */
-	public boolean isValidMass(double mass){
+	public static boolean isValidMass(double mass){
 		return (mass >= 0 && mass < Double.POSITIVE_INFINITY && !Double.isNaN(mass));
 	}
 
