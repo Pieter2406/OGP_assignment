@@ -11,82 +11,73 @@ public class Facade implements IFacade {
 
 	@Override
 	public Object createWorld(double width, double height) {
-		// TODO write createWorld method
-		return null;
+		return new World(width, height);
 	}
 
 	@Override
 	public double getWorldWidth(Object world) {
-		// TODO write getWorldWidth method
-		return 0;
+		return ((World)world).getWidth();
 	}
 
 	@Override
 	public double getWorldHeight(Object world) {
-		// TODO write getWorldHeight method
-		return 0;
+		return ((World)world).getHeight();
 	}
 
 	@Override
 	public Set getShips(Object world) {
-		// TODO write getShips method
-		return null;
+		return (Set) ((World)world).getShips();
 	}
 
 	@Override
 	public Set getAsteroids(Object world) {
-		// TODO write getAsteroids method
-		return null;
+		return (Set) ((World)world).getAsteroids();
 	}
 
 	@Override
 	public Set getBullets(Object world) {
-		// TODO write getBullets method
-		return null;
+		return (Set) ((World)world).getBullets();
 	}
 
 	@Override
 	public void addShip(Object world, Object ship) {
-		// TODO write addShip method
+		((World)world).addShip((Ship)ship);
 		
 	}
 
 	@Override
 	public void addAsteroid(Object world, Object asteroid) {
-		// TODO write addAsteroid method
-		
+		((World)world).addAsteroid((Asteroid)asteroid);
 	}
 
 	@Override
 	public void removeShip(Object world, Object ship) {
-		// TODO write removeShip method
+		((World)world).removeShip((Ship)ship);
 		
 	}
 
 	@Override
 	public void removeAsteroid(Object world, Object asteroid) {
-		// TODO write removeAsteroid method
+		((World)world).removeAsteroid((Asteroid)asteroid);
 		
 	}
 
 	@Override
 	public void evolve(Object world, double dt,
 			CollisionListener collisionListener) {
-		// TODO write evolve method
+		((World)world).evolve(dt);
 		
 	}
 
 	@Override
 	public Object createShip(double x, double y, double xVelocity,
 			double yVelocity, double radius, double direction, double mass) {
-		// TODO write createShip method
-		return null;
+		return new Ship(x, y, xVelocity, yVelocity,  radius,  direction,  mass, null);
 	}
 
 	@Override
 	public boolean isShip(Object o) {
-		// TODO write isShip method
-		return false;
+		return (o instanceof Ship);
 	}
 
 	@Override
@@ -127,19 +118,20 @@ public class Facade implements IFacade {
 
 	@Override
 	public Object getShipWorld(Object ship) {
-		// TODO Auto-generated method stub
-		return null;
+		return ((Ship)ship).getWorld();
 	}
 
 	@Override
 	public boolean isShipThrusterActive(Object ship) {
-		// TODO Auto-generated method stub
-		return false;
+		return ((Ship)ship).isThrusterActive();
 	}
 
 	@Override
 	public void setThrusterActive(Object ship, boolean active) {
-		// TODO Auto-generated method stub
+		if (active)
+			((Ship)ship).enableThruster();
+		else
+			((Ship)ship).disableThruster();
 		
 	}
 
@@ -151,15 +143,14 @@ public class Facade implements IFacade {
 
 	@Override
 	public void fireBullet(Object ship) {
-		// TODO Auto-generated method stub
+		((Ship)ship).fireBullet();
 		
 	}
 
 	@Override
 	public Object createAsteroid(double x, double y, double xVelocity,
 			double yVelocity, double radius) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Asteroid(x, y, xVelocity, yVelocity, radius, null);
 	}
 
 	@Override
@@ -171,104 +162,95 @@ public class Facade implements IFacade {
 
 	@Override
 	public boolean isAsteroid(Object o) {
-		// TODO Auto-generated method stub
-		return false;
+		return o instanceof Asteroid;
 	}
 
 	@Override
 	public double getAsteroidX(Object asteroid) {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((Asteroid)asteroid).getPosition().getX();
 	}
 
 	@Override
 	public double getAsteroidY(Object asteroid) {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((Asteroid)asteroid).getPosition().getX();
 	}
 
 	@Override
 	public double getAsteroidXVelocity(Object asteroid) {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((Asteroid)asteroid).getVelocity().getVelocityX();
 	}
 
 	@Override
 	public double getAsteroidYVelocity(Object asteroid) {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((Asteroid)asteroid).getVelocity().getVelocityY();
+
 	}
 
 	@Override
 	public double getAsteroidRadius(Object asteroid) {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((Asteroid)asteroid).getRadius();
 	}
 
 	@Override
 	public double getAsteroidMass(Object asteroid) {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((Asteroid)asteroid).getMass().getMass();
+
 	}
 
 	@Override
 	public Object getAsteroidWorld(Object asteroid) {
-		// TODO Auto-generated method stub
-		return null;
+		return ((Asteroid)asteroid).getWorld();
+
 	}
 
 	@Override
 	public boolean isBullets(Object o) {
-		// TODO Auto-generated method stub
-		return false;
+		return o instanceof Bullet;
 	}
 
 	@Override
 	public double getBulletX(Object bullet) {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((Bullet)bullet).getPosition().getX();
 	}
 
 	@Override
 	public double getBulletY(Object bullet) {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((Bullet)bullet).getPosition().getY();
+
 	}
 
 	@Override
 	public double getBulletXVelocity(Object bullet) {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((Bullet)bullet).getVelocity().getVelocityX();
+
 	}
 
 	@Override
 	public double getBulletYVelocity(Object bullet) {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((Bullet)bullet).getVelocity().getVelocityY();
+
 	}
 
 	@Override
 	public double getBulletRadius(Object bullet) {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((Bullet)bullet).getRadius();
 	}
 
 	@Override
 	public double getBulletMass(Object bullet) {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((Bullet)bullet).getMass().getMass();
+
 	}
 
 	@Override
 	public Object getBulletWorld(Object bullet) {
-		// TODO Auto-generated method stub
-		return null;
+		return ((Bullet)bullet).getWorld();
+
 	}
 
 	@Override
 	public Object getBulletSource(Object bullet) {
-		// TODO Auto-generated method stub
-		return null;
+		return ((Bullet)bullet).getSource();
 	}
 
 }

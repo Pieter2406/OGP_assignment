@@ -5,9 +5,9 @@ import be.kuleuven.cs.som.annotate.*;
 /**********************************************************************************
  * 								GENERAL TODO LIST:		              			  *
  **********************************************************************************
- *		- Implement mass														  *
- *		- Implement thruster (eventueel aparte klasse)							  *
- *		- Implement fireBullet													  *
+ *		- Implement mass	(OK, in SpaceObject)								  *
+ *		- Implement thruster (eventueel aparte klasse)	(OK)					  *
+ *		- Implement fireBullet	(OK specificatie)								  *
  *		- Bekijk aanpassingen van feedback !!									  *
  *		- Position: DEFENSIEF													  *
  *		- Velocity: TOTAAL														  *
@@ -22,7 +22,9 @@ import be.kuleuven.cs.som.annotate.*;
  * @invar 	The radius of a ship is always higher than the minimum radius of all ships, and is always a valid number.
  * 			| isValidRadius(getRadius())
  * @invar 	The angle of a ship must always be a valid number.
- * 			| isValidAngle(getAngle()) 
+ * 			| isValidAngle(getAngle())
+ * @invar	Each ship is equipped with exactly one thruster. This thruster is a proper thruster that has this ship as its source.
+ * 			| getThruster() InstanceOf thruster && getThruster() != null && getThruster().getSource() == this
  * 
  * @version 1.1
  * 
@@ -58,9 +60,10 @@ public class Ship extends SpaceObject implements IShip {
 	 * 
 	 * TODO: write @effect with super class
 	 */
-	public Ship(double x, double y,double velocityX, double velocityY, double radius, double angle, double mass){
-		super(x,y,velocityX,velocityY,radius,10, mass);
+	public Ship(double x, double y,double velocityX, double velocityY, double radius, double angle, double mass, World world){
+		super(x,y,velocityX,velocityY,radius,10, mass, world);
 		this.setAngle(angle);
+		thruster = new Thruster(this);
 	}
 
 
@@ -84,8 +87,8 @@ public class Ship extends SpaceObject implements IShip {
 	 * 			a radius and a given angle.
 	 * 			| this(x,y,0,0,radius, angle)
 	 */
-	public Ship(double x, double y, double radius, double angle, double mass){
-		this(x,y,0,0,radius,angle,mass);
+	public Ship(double x, double y, double radius, double angle, double mass, World world){
+		this(x,y,0,0,radius,angle,mass, world);
 	}
 
 
@@ -111,6 +114,37 @@ public class Ship extends SpaceObject implements IShip {
 				getVelocity().getVelocityY() + (checkedAmount * Math.sin(getAngle()))
 				);
 	}
+	
+	/**
+	 * Enables the thruster that is attached to this ship.
+	 */
+	public void enableThruster() {
+		getThruster().enable();
+	}
+	
+	/**
+	 * Disables the thruster that is attached to this ship.
+	 */
+	public void disableThruster() {
+		getThruster().disable();
+	}
+	
+	/**
+	 * Returns the thruster that is currently attached to this ship.
+	 * @return The thruster that is attached to this ship.
+	 */
+	public Thruster getThruster() {
+		return thruster;
+	}
+	
+	public boolean isThrusterActive() {
+		return getThruster().isEnabled();
+	}
+	
+	/**
+	 * Holds the thruster that is attached to this ship.
+	 */
+	private Thruster thruster;
 	
 	/**
 	 * Return this ship's angle.
@@ -181,5 +215,21 @@ public class Ship extends SpaceObject implements IShip {
 		double newPositionX = getPosition().getX() + (duration * getVelocity().getVelocityX());
 		double newPositionY = getPosition().getY() + (duration * getVelocity().getVelocityY());
 		setPosition(newPositionX,newPositionY); 
+	}
+	
+	/**
+	 * Creates a bullet right next to the ship, at the direction the ship is currently facing.
+	 * @post 	An instance of Bullet is created in the world that is associated with this ship.
+	 * 			| this.getWorld().createSpaceObject(new bullet)
+	 * @post 	This world contains the new bullet that is created.
+	 * 			| this.getWorld().containsSpaceObject(new bullet)
+	 * @post 	The new bullet is associated with this ship.
+	 * 			| (new bullet).getSource() == this
+	 * @post	The new bullet has a location right next to this ship, where this ship is currently facing.
+	 * 			| (new bullet).getX() == this.getPosition().getX() + this.getRadius() * Math.cos(this.getAngle())
+	 * 			| (new bullet).getY() == this.getPosition().getY() + this.getRadius() * Math.sin(this.getAngle())
+	 */
+	public void fireBullet() {
+		
 	}
 }

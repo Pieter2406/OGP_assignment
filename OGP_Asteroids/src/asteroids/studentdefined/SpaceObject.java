@@ -19,13 +19,16 @@ import be.kuleuven.cs.som.annotate.Raw;
  * @author Kristof Bruyninckx
  * @author Wouter Bruyninckx
  * @author Pieter Verlinden
+ * 
+ * @invar The world associated with each SpaceObject must be either a proper World, or a null reference.
+ * 			| hasProperWorld()
  *
  */
 public abstract class SpaceObject {
 	
 	/**
-	 * Initialize the position and the velocity of the SapceObject with a given x and y coordinate, 
-	 * a given x and y velocity, a given radius, a given minimum radius and a given mass.
+	 * Initialize this new SpaceObject with a given x and y coordinate, 
+	 * a given x and y velocity, a given radius, a given minimum radius, a given mass and a given world.
 	 * 
 	 * TODO: write @pre and @post.
 	 * 
@@ -37,17 +40,18 @@ public abstract class SpaceObject {
 	 * @param 	minimumRadius
 	 * @param 	mass
 	 */
-	public SpaceObject(double x, double y, double velocityX, double velocityY, double radius, double minimumRadius, double mass){
+	public SpaceObject(double x, double y, double velocityX, double velocityY, double radius, double minimumRadius, double mass, World world){
 		this.position = new Coordinate(x,y);
 		this.velocity = new Velocity(velocityX,velocityY);
 		this.radius = radius;
 		this.minimumRadius = minimumRadius;
 		this.mass = new Mass(mass);
 		this.pendingVelocityChange = true;
+		this.setWorld(world);
 	}
 	
 	/**
-	 * Initialize the position and the velocity of the SapceObject with a given x and y coordinate, 
+	 * Initialize the position and the velocity of the SpaceObject with a given x and y coordinate, 
 	 *  a given radius and a given mass.
 	 * 
 	 * TODO: write @pre and @post.
@@ -57,8 +61,8 @@ public abstract class SpaceObject {
 	 * @param 	radius
 	 * @param 	mass
 	 */
-	public SpaceObject(double x, double y, double radius, double mass){
-		this(x,y,0,0,radius,0,mass);
+	public SpaceObject(double x, double y, double radius, double mass, World world){
+		this(x,y,0,0,radius,0,mass, world);
 	}
 	
 	/**
@@ -71,8 +75,8 @@ public abstract class SpaceObject {
 	 * @param 	minimumRadius
 	 * @param	mass
 	 */
-	public SpaceObject(double radius, double minimumRadius, double mass){
-		this(0,0,0,0,radius,minimumRadius,mass);
+	public SpaceObject(double radius, double minimumRadius, double mass, World world){
+		this(0,0,0,0,radius,minimumRadius,mass, world);
 	}
 	
 	/**
@@ -81,7 +85,7 @@ public abstract class SpaceObject {
 	 * @effect TODO: write effect.
 	 */
 	public SpaceObject(){
-		this(0,0,0,0,0,0,0);
+		this(0,0,0,0,0,0,0, null);
 	}
 	
 	
@@ -390,4 +394,37 @@ public abstract class SpaceObject {
 	 * Boolean containing true if its velocity has changed.
 	 */
 	protected boolean pendingVelocityChange;
+	
+	/**
+	 * Returns the World that is associated with this SpaceObject.
+	 * @return The World this SpaceObject is located in.
+	 */
+	public World getWorld() {
+		return this.world;
+	}
+	
+	/**
+	 * Sets the World of this SpaceObject to world.
+	 * @post The World associated with this SpaceObject is the given World.
+	 * @param world The world to associate this SpaceObject with.
+	 */
+	public void setWorld(World world) {
+		this.world = world;
+	}
+		
+	/**
+	 * Returns whether the World associated with this SpaceObject is either a null reference, or contains this SpaceObject.
+	 */
+	public boolean hasProperWorld() {
+		if (this.world == null)
+			return true;
+		else
+			return this.world.containsSpaceObject(this);
+	}
+	
+	/**
+	 * The world with which this SpaceObject is associated.
+	 * A SpaceObject can only be associated with one world, and can only appear once in that world.
+	 */
+	protected World world;
 }

@@ -1,6 +1,11 @@
 package asteroids.studentdefined;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Set;
+
+import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Raw;
 import edu.princeton.cs.algs4.MinPQ;;
 /******************************************************************************************
  * 								GENERAL TODO LIST:		              			          *
@@ -26,10 +31,10 @@ import edu.princeton.cs.algs4.MinPQ;;
  * 
  * @version 1.1
  * 
- * @invar 	The arraylist visibleObjects only contains every SpaceObject that is visible
+ * @invar 	visibleObjects only contains every SpaceObject that is visible
  * 			in this world.
  * 			| for each SpaceObject o1 in World:
- * 			|	visibleObjects.contains(o1);
+ * 			|	containsSpaceObject(o1);
  * 
  * @author Kristof Bruynincks
  * @author Wouter Bruyninckx
@@ -266,13 +271,102 @@ public class World {
 		}
 	}
 
+
+	//Collections are used to obtain a maximum amount of generality for passing and manipulating these data structures.
 	/**
-	 * Holds the spaceobjects in the world.
+	 * Holds the collisions between all SpaceObjects in this world.
 	 */
+	private Collection<Collision> upcomingCollisions = new ArrayList<Collision>();
+	/**
+	 * Holds all non-terminated SpaceObjects that are associated with this world.
+	 */
+	private Collection<SpaceObject> visibleObjects = new ArrayList<SpaceObject>();
 
 
-	private ArrayList<Collision> upcomingCollisions = new ArrayList<Collision>();
-	private ArrayList<SpaceObject> visibleObjects = new ArrayList<SpaceObject>();
+/**
+ * Returns True if the given SpaceObject is a member of the data structure that contains all SpaceObjects in this world.
+ * @param spaceObject The SpaceObject to be checked.
+ */
+	public boolean containsSpaceObject(SpaceObject spaceObject) {
+		// TODO Auto-generated method stub
+		return visibleObjects.contains(spaceObject);
+	}
+	
+	/**
+	 * Adds the given SpaceObject to this world.
+	 * @post 	This world contains the given SpaceObject.
+	 * 			| this.containsSpaceObject(spaceObject)
+	 * @post 	The given SpaceObject referenced this world as its associated world.
+	 * 			| spaceObject.getWorld() == this
+	 * @param spaceObject
+	 */
+	public void addSpaceObject(SpaceObject spaceObject) {
+		
+	}
+	
+	/**
+	 * Removes the given SpaceObject from this world.
+	 * @post 	This world no longer contains the given SpaceObject.
+	 * 			| !this.containsSpaceObject(spaceObject)
+	 * @post 	The given SpaceObject is no longer associated with an effective world.
+	 * 			| spaceObject.getWorld() == null
+	 * @param 	spaceObject
+	 */
+	public void removeSpaceObject(SpaceObject spaceObject) {
+		
+	}
+	
+	/**
+	 * Returns all bullets associated with this world.
+	 * @return A collection of all bullets that are currently associated with this world.
+	 */
+	public Collection<Bullet> getBullets() {
+		
+	}
+	
+	/**
+	 * Return all ships associated with this world.
+	 * @return A collection of all ships that are currently associated with this world.
+	 */
+	public Collection<Ship> getShips() {
+		
+	}
+	
+	/**
+	 * Returns all asteroids associated with this world.
+	 * @return A collection of all asteroids that are currently associated with this world.
+	 */
+	public Collection<Asteroid> getAsteroids() {
+		
+	}
+	
+	/**
+	 * Terminate this world.
+	 * @post 	This world is terminated.
+	 * 			| this.isTerminated()
+	 * @post 	No SpaceObjects are attached any longer to this world.
+	 * 			| this.getNbSpaceObjects() == 0
+	 * @effect 	Each non-terminated SpaceObject in this world no longer has a reference to this world.
+	 * 			| for each spaceobject in getAllSpaceObjects()
+	 * 			|	if (! spaceobject.isTerminated())
+	 * 			|		then spaceobject.setWorld(null)
+	 * @effect 	Each non-terminated SpaceObject in this world is removed from this world.
+	 * 			| for each spaceobject in getAllSpaceObjects()
+	 * 			|	if (! spaceobject.isTerminated())
+	 * 			|		then this.removeAsSpaceObject(spaceobject)
+	 */
+	public void terminate() {
+		
+	}
 
+	/**
+	 * Check whether this world is terminated.
+	 */
+	@Basic @Raw
+	public boolean isTerminated() {
+		return isTerminated;
+	}
+	
+	public boolean isTerminated;
 
 }

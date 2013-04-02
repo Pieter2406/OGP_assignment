@@ -34,8 +34,8 @@ public class Asteroid extends SpaceObject {
 	 * 			The given radius for this new asteroid.
 	 * @effect 	This asteroid is intialised as a spaceobject with the given parameters.
 	 */
-	public Asteroid(double x, double y, double velocityX, double velocityY, double radius){
-		super(x, y, velocityX, velocityY, radius, 0, Mass.computeCircularMass(MASS_DENSITY, radius));
+	public Asteroid(double x, double y, double velocityX, double velocityY, double radius, World world){
+		super(x, y, velocityX, velocityY, radius, 0, Mass.computeCircularMass(MASS_DENSITY, radius), world);
 		
 	}
 	
