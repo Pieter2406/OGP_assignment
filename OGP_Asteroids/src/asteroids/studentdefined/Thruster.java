@@ -30,7 +30,7 @@ public class Thruster {
 	 * 			| this.getSource() == source
 	 */
 	public Thruster(Ship source, double force) {
-		enable();
+		disable();
 		FORCE_EXERTED = force; 
 		ACCELERATION = FORCE_EXERTED / source.getMass().getMass();
 		setSource(source);

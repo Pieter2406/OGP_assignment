@@ -212,9 +212,13 @@ public class Ship extends SpaceObject implements IShip {
 		if(duration < 0){
 			throw new IllegalValueException(duration);
 		}
+		if(thruster.isEnabled()){
+			thrust(thruster.getAcceleration()*duration);
+		}
 		double newPositionX = getPosition().getX() + (duration * getVelocity().getVelocityX());
 		double newPositionY = getPosition().getY() + (duration * getVelocity().getVelocityY());
-		setPosition(newPositionX,newPositionY); 
+		setPosition(newPositionX,newPositionY);
+		
 	}
 	
 	/**
@@ -230,6 +234,8 @@ public class Ship extends SpaceObject implements IShip {
 	 * 			| (new bullet).getY() == this.getPosition().getY() + this.getRadius() * Math.sin(this.getAngle())
 	 */
 	public void fireBullet() {
-		
+		double bulletX = this.getPosition().getX() + this.getRadius() * Math.cos(this.getAngle());
+		double bulletY = this.getPosition().getY() + this.getRadius() * Math.sin(this.getAngle());
+		this.getWorld().addBullet(new Bullet(bulletX,bulletY,this,this.getWorld()));
 	}
 }

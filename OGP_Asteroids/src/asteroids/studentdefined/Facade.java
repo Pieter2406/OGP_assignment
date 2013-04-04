@@ -63,9 +63,8 @@ public class Facade implements IFacade {
 	}
 
 	@Override
-	public void evolve(Object world, double dt,
-			CollisionListener collisionListener) {
-		((World)world).evolve(dt);
+	public void evolve(Object world, double dt,CollisionListener collisionListener) {
+		((World)world).evolve(dt,collisionListener);
 		
 	}
 
@@ -157,7 +156,7 @@ public class Facade implements IFacade {
 	public Object createAsteroid(double x, double y, double xVelocity,
 			double yVelocity, double radius, Random random) {
 		// TODO Auto-generated method stub
-		return null;
+		return new Asteroid(x, y, xVelocity, yVelocity, radius, null);
 	}
 
 	@Override

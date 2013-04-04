@@ -87,7 +87,7 @@ public class Bullet extends SpaceObject{
 	 * 			| new.angle = getAngle();
 	 */
 	public void setAngle(double angle){
-		this.angle = getAngle();
+		this.angle = angle;
 	}
 	
 	private double angle;

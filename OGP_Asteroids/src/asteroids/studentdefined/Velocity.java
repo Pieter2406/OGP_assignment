@@ -57,15 +57,15 @@ public class Velocity {
 	 * 			| (maxVelocity > SPEED_OF_LIGHT || Double.isNaN(maxVelocity)) 
 	 */
 	public Velocity(double velocityX, double velocityY, double maxVelocity){
-		if(!isValidVelocity(velocityX)){
-			throw new IllegalValueException(velocityX);
-		}
-		if(!isValidVelocity(velocityY)){
-			throw new IllegalValueException(velocityY);
-		}
-		if(maxVelocity > SPEED_OF_LIGHT || Double.isNaN(maxVelocity)){
-			throw new IllegalValueException(maxVelocity);
-		}
+//		if(!isValidVelocity(velocityX)){
+//			throw new IllegalValueException(velocityX);
+//		}
+//		if(!isValidVelocity(velocityY)){
+//			throw new IllegalValueException(velocityY);
+//		}
+//		if(maxVelocity > SPEED_OF_LIGHT || Double.isNaN(maxVelocity)){
+//			throw new IllegalValueException(maxVelocity);
+//		}
 		
 		this.velocityX = velocityX;
 		this.velocityY = velocityY;

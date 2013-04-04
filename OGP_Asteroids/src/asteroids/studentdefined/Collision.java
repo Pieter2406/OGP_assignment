@@ -16,6 +16,16 @@ public class Collision implements Comparable<Collision> {
 
 	//TODO: Write contracts
 	
+	/**
+	 * Initialize a collision between 2 space objects.
+	 * @param 	o1
+	 * 			A first given object involved in a collision.
+	 * @param 	o2
+	 * 			A second given object involved in a collision.
+	 * @throws 	IllegalArgumentException
+	 * 			If one of the given space objects is not a space object.
+	 * 			| 
+	 */
 	public Collision(SpaceObject o1, SpaceObject o2) {
 		this.o1 = o1;
 		this.o2 = o2;
@@ -59,4 +69,23 @@ public class Collision implements Comparable<Collision> {
 			return false;
 	}
 
+	public boolean collidesWithSource(){
+		Bullet tempBullet = null;
+		SpaceObject other = null;
+		if(getObj1() instanceof Bullet){
+			tempBullet = (Bullet) getObj1();
+			other = getObj2();
+		}else if(getObj2() instanceof Bullet){
+			tempBullet = (Bullet) getObj2();
+			other = getObj1();
+		}else{
+			return false;
+		}
+		return (tempBullet.getSource().equals(other));
+	}
+	
+	public boolean permittedCollision(){
+		return false;
+		//TODO: write permittedCollision
+	}
 }

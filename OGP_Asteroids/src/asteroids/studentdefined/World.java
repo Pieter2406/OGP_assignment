@@ -2,8 +2,11 @@ package asteroids.studentdefined;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
+import asteroids.CollisionListener;
+import asteroids.Util;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 import edu.princeton.cs.algs4.MinPQ;;
@@ -38,6 +41,7 @@ import edu.princeton.cs.algs4.MinPQ;;
  * 
  * @author Kristof Bruynincks
  * @author Wouter Bruyninckx
+ * 
  * @author Pieter Verlinden
  */
 public class World {
@@ -94,6 +98,7 @@ public class World {
 	 */
 	public void addShip(Ship ship){
 		visibleObjects.add(ship);
+		ship.setWorld(this);
 	}
 
 	/**
@@ -114,6 +119,7 @@ public class World {
 	 */
 	public void addAsteroid(Asteroid asteroid){
 		visibleObjects.add(asteroid);
+		asteroid.setWorld(this);
 	}
 
 	/**
@@ -134,6 +140,7 @@ public class World {
 	 */
 	public void addBullet(Bullet bullet){
 		visibleObjects.add(bullet);
+		bullet.setWorld(this);
 	}
 
 	/**
@@ -154,16 +161,21 @@ public class World {
 	 * 
 	 * TODO: write full contract
 	 */
-	public void evolve(double time) {
+	public void evolve(double time, CollisionListener collisionListener) {
 		Collision newCollision = getFirstCollision();
-		double firstCollisionTime = newCollision.getTime();
-		if(firstCollisionTime > time){
+		if(newCollision == null){
 			advanceAll(time);
 		}else{
-			advanceAll(firstCollisionTime);
-			handleCollision(newCollision);
-			time -= firstCollisionTime;
-			evolve(time);
+			double firstCollisionTime = newCollision.getTime();
+			if(firstCollisionTime > time){
+				advanceAll(time);
+			}else{
+				advanceAll(firstCollisionTime);
+				//TODO: collisionlistener stuff
+				handleCollision(newCollision,collisionListener);
+				time -= firstCollisionTime;
+				evolve(time,collisionListener);
+			}
 		}
 	}
 
@@ -171,10 +183,10 @@ public class World {
 	 * 
 	 * @param newCollision
 	 */
-	private void handleCollision(Collision newCollision) {
+	private void handleCollision(Collision newCollision,CollisionListener collisionListener) {
 		// if (troll == true)
 		//	new sonicBoom(supernova);
-		
+
 		/* check wich objects collide:
 		 * 		bullet - boundary
 		 * 		bullet - asteroid
@@ -189,8 +201,8 @@ public class World {
 		 * 
 		 * Geen instanceof!! zie boek p499
 		 */
-		
-		
+		collisionListener.objectCollision(newCollision.getObj1(), newCollision.getObj2(), 100, 100);
+
 	}
 
 	/**
@@ -206,8 +218,9 @@ public class World {
 	 * 			| time <= 0
 	 */
 	private void advanceAll(double time) throws IllegalArgumentException{
-		if (time <= 0)
-			throw new IllegalArgumentException("Time is not effective"); 
+		if (Util.fuzzyLessThanOrEqualTo(time, 0))
+			//			throw new IllegalArgumentException("Time is not effective");
+			time = 0;
 		for (SpaceObject obj : visibleObjects)
 			obj.move(time);
 	}
@@ -229,7 +242,12 @@ public class World {
 			collisionPQ.insert(col);
 
 		}
-		return collisionPQ.min();
+		if(collisionPQ.isEmpty()){
+			return null;
+		}else{
+			return collisionPQ.min();
+		}
+
 	}
 	//TODO: fix it
 	/**
@@ -264,12 +282,16 @@ public class World {
 			for (SpaceObject obje : visibleObjects) {
 				if (!obj.equals(obje)) {
 					Collision newCollision = new Collision(obj, obje);
-					if(newCollision.getTime() != Double.POSITIVE_INFINITY && newCollision.getTime() != Double.NEGATIVE_INFINITY)
+					if(newCollision.getTime() != Double.POSITIVE_INFINITY && newCollision.getTime() != Double.NEGATIVE_INFINITY && !newCollision.collidesWithSource()){
 						upcomingCollisions.add(newCollision);
+					}
+
 				}
 			}
 		}
+
 	}
+
 
 
 	//Collections are used to obtain a maximum amount of generality for passing and manipulating these data structures.
@@ -283,15 +305,15 @@ public class World {
 	private Collection<SpaceObject> visibleObjects = new ArrayList<SpaceObject>();
 
 
-/**
- * Returns True if the given SpaceObject is a member of the data structure that contains all SpaceObjects in this world.
- * @param spaceObject The SpaceObject to be checked.
- */
+	/**
+	 * Returns True if the given SpaceObject is a member of the data structure that contains all SpaceObjects in this world.
+	 * @param spaceObject The SpaceObject to be checked.
+	 */
 	public boolean containsSpaceObject(SpaceObject spaceObject) {
 		// TODO Auto-generated method stub
 		return visibleObjects.contains(spaceObject);
 	}
-	
+
 	/**
 	 * Adds the given SpaceObject to this world.
 	 * @post 	This world contains the given SpaceObject.
@@ -301,9 +323,9 @@ public class World {
 	 * @param spaceObject
 	 */
 	public void addSpaceObject(SpaceObject spaceObject) {
-		
+
 	}
-	
+
 	/**
 	 * Removes the given SpaceObject from this world.
 	 * @post 	This world no longer contains the given SpaceObject.
@@ -313,33 +335,51 @@ public class World {
 	 * @param 	spaceObject
 	 */
 	public void removeSpaceObject(SpaceObject spaceObject) {
-		
+
 	}
-	
+
 	/**
 	 * Returns all bullets associated with this world.
 	 * @return A collection of all bullets that are currently associated with this world.
 	 */
 	public Collection<Bullet> getBullets() {
-		
+		Set<Bullet> setOfBullets = new HashSet<Bullet>();
+		for(SpaceObject blt : visibleObjects){
+			if(blt instanceof Bullet){
+				setOfBullets.add((Bullet) blt);
+			}
+		}
+		return setOfBullets;
 	}
-	
+
 	/**
 	 * Return all ships associated with this world.
 	 * @return A collection of all ships that are currently associated with this world.
 	 */
 	public Collection<Ship> getShips() {
-		
+		Set<Ship> setOfShips = new HashSet<Ship>();
+		for(SpaceObject shp : visibleObjects){
+			if(shp instanceof Ship){
+				setOfShips.add((Ship) shp);
+			}
+		}
+		return setOfShips;
 	}
-	
+
 	/**
 	 * Returns all asteroids associated with this world.
 	 * @return A collection of all asteroids that are currently associated with this world.
 	 */
 	public Collection<Asteroid> getAsteroids() {
-		
+		Set<Asteroid> setOfAsteroids = new HashSet<Asteroid>();
+		for(SpaceObject ast : visibleObjects){
+			if(ast instanceof Asteroid){
+				setOfAsteroids.add((Asteroid) ast);
+			}
+		}
+		return setOfAsteroids;
 	}
-	
+
 	/**
 	 * Terminate this world.
 	 * @post 	This world is terminated.
@@ -356,7 +396,7 @@ public class World {
 	 * 			|		then this.removeAsSpaceObject(spaceobject)
 	 */
 	public void terminate() {
-		
+
 	}
 
 	/**
@@ -366,7 +406,7 @@ public class World {
 	public boolean isTerminated() {
 		return isTerminated;
 	}
-	
+
 	public boolean isTerminated;
 
 }
