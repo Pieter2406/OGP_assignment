@@ -47,16 +47,6 @@ public class ShipTest {
 		basicShip3 = new Ship(40,0,1,0,10,0);
 		basicShip4 = new Ship(0,0,1,0,10,Math.PI); 
 	}
-	/**
-	 * Set up immutable test fixture
-	 * 
-	 * @post 	The variable basicShip references a new ship on position (0,0) with a radius of 20,
-	 * 			a minimum radius of 10 and and angle of PI.
-	 */
-	@BeforeClass // set up immutable test fixture
-	public static void setUpImmutableFixture(){
-		immutableShip = new Ship(20,15,10,10,10,0);
-	}
 	@Test
 	public final void extendedConstructor_LegalCase() throws Exception{
 		Ship newShip = new Ship(1,2,3,4,10,6);

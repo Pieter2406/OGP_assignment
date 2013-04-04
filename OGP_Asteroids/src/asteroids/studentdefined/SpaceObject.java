@@ -98,11 +98,6 @@ public abstract class SpaceObject {
 	}
 	
 	/**
-	 * Variables holding the total speed of a SpaceObject.
-	 */
-	protected Velocity velocity; // used for redundancy	
-	
-	/**
 	 * Set the new velocity of this SpaceObject based on a given x and y velocity.
 	 * @param 	velocityX
 	 * 			Holds the new x velocity for this SpaceObject.
@@ -116,6 +111,11 @@ public abstract class SpaceObject {
 		getVelocity().setVelocity(velocityX, velocityY); // values will be checked in the Velocity class.
 		setPendingVelocityChange(true);
 	}
+	
+	/**
+	 * Variables holding the total speed of a SpaceObject.
+	 */
+	protected Velocity velocity; // used for redundancy	
 	
 	/**
 	 * Return this SpaceObject's position.
@@ -246,29 +246,17 @@ public abstract class SpaceObject {
 	 * 			The time in seconds of how long it would take for this SpaceObject and the given SpaceObject
 	 * 			(if ever) to collide.
 	 * 			If the SpaceObjects never collide or if the same object is given as an argument, this method will return infinity.
-	 * 			| dVx = this.getVelocity().getVelocityX() - other.getVelocity().getVelocityX()
-	 * 			| dVy = this.getVelocity().getVelocityY() - other.getVelocity().getVelocityY()
-	 * 			| dX = this.getPosition().getX() - other.getPosition().getX()
-	 * 			| dY = this.getPosition().getY() - other.getPosition().getY()
-	 * 			| dVdV = (Math.pow(dVx,2)) + (Math.pow(dVy, 2))
-	 * 			| dVdR = (dVx*dX) + (dVy*dY)
-	 * 			| dRdR = (Math.pow(dX, 2) + Math.pow(dY, 2))
-	 * 			| sigma = this.getRadius() + other.getRadius()
-	 * 			| discriminant = Math.pow(dVdR, 2) - (dVdV)*(dRdR - Math.pow(sigma, 2))
-	 * 			| dT = -(dVdR + Math.sqrt(discriminant))/dVdV
-	 * 			| result ==
-	 * 			|		if (dVdR >= 0)
-	 * 			|			Double.POSITIVE_INFINITY
-	 * 			|		else if(discriminant <= 0)
-	 * 			|			Double.POSITIVE_INFINITY
-	 * 			|		else
-	 * 			|			dT
+	 * 			| colThis = this.move(collisiontime);
+	 * 			| colOther = other.move(collisiontime);
+	 * 			| if (newThis.overlaps(newOther))
+	 * 			|	result == collisiontime
+	 * 			| else 
+				|	result == Double.POSITIVE_INFINITY	
 	 */
 	public double getTimeToCollision(SpaceObject other)throws IllegalArgumentException{
 		try{
 			if (this.equals(other)) // An object can never collide with itself.
 				return Double.POSITIVE_INFINITY;
-			
 			double dVx = this.getVelocity().getVelocityX() - other.getVelocity().getVelocityX();
 			double dVy = this.getVelocity().getVelocityY() - other.getVelocity().getVelocityY();
 			double dX = this.getPosition().getX() - other.getPosition().getX();
@@ -302,9 +290,9 @@ public abstract class SpaceObject {
 	 * 			| other == null
 	 * @return  the Coordinate of collision between both SpaceObjects, if the SpaceObjects don't collide
 	 * 			return a null pointer.
-	 * 			| if (colx == Double.POSITIVE_INFINITY)
-	 * 			| 	then null
-	 * 			| else Coordinate(getPosition().getX() + getVelocity().getVelocityX() * getTimeToCollision(other)
+	 * 			| if (getTimeToCollision(other) == Double.POSITIVE_INFINITY)
+	 * 			| 	then result == null
+	 * 			| else result ==  Coordinate(getPosition().getX() + getVelocity().getVelocityX() * getTimeToCollision(other)
 	 * 			|	,getPosition().getY() + getVelocity().getVelocityY() * getTimeToCollision(other))
 	 */
 	public Coordinate getCollisionPosition(SpaceObject other) throws IllegalArgumentException  {
