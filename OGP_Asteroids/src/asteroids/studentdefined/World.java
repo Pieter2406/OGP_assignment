@@ -184,24 +184,11 @@ public class World {
 	 * @param newCollision
 	 */
 	private void handleCollision(Collision newCollision,CollisionListener collisionListener) {
-		// if (troll == true)
-		//	new sonicBoom(supernova);
-
-		/* check wich objects collide:
-		 * 		bullet - boundary
-		 * 		bullet - asteroid
-		 * 		bullet - ship
-		 * 		asteroid - asteroid
-		 * 		asteroid - ship
-		 * 		asteroid - boundary
-		 * 		ship - boundary
-		 * 
-		 * 		toekomstig:
-		 * 		ship - powerups
-		 * 
-		 * Geen instanceof!! zie boek p499
-		 */
-		collisionListener.objectCollision(newCollision.getObj1(), newCollision.getObj2(), 100, 100);
+		newCollision.collide();
+		double xPos = newCollision.getObj1().getCollisionPosition(newCollision.getObj2()).getX();
+		double yPos = newCollision.getObj1().getCollisionPosition(newCollision.getObj2()).getY();
+		collisionListener.objectCollision(newCollision.getObj1(), newCollision.getObj2(), xPos,yPos);
+		
 
 	}
 
@@ -218,8 +205,8 @@ public class World {
 	 * 			| time <= 0
 	 */
 	private void advanceAll(double time) throws IllegalArgumentException{
-		if (Util.fuzzyLessThanOrEqualTo(time, 0))
-			//			throw new IllegalArgumentException("Time is not effective");
+		if (time < 0)
+			//throw new IllegalArgumentException("Time is not effective");
 			time = 0;
 		for (SpaceObject obj : visibleObjects)
 			obj.move(time);
@@ -266,7 +253,7 @@ public class World {
 		for (Collision col: upcomingCollisions) {
 			//Recalculate all collisions that involve an object with a pending velocity change and set the flag to false.
 			for (SpaceObject ob : temp) {
-				if (col.contains(ob)) {
+				if (col.contains(ob) || col.getObj1().isTerminated() || col.getObj2().isTerminated()) {
 					tempcol.add(col);
 				}
 				ob.setPendingVelocityChange(false);
@@ -280,9 +267,9 @@ public class World {
 		//Add new collisions with all other objects, for every SpaceObject that has a pending velocity change.
 		for (SpaceObject obj: temp) {
 			for (SpaceObject obje : visibleObjects) {
-				if (!obj.equals(obje)) {
+				if (!obj.equals(obje) && !obj.isTerminated()) {
 					Collision newCollision = new Collision(obj, obje);
-					if(newCollision.getTime() != Double.POSITIVE_INFINITY && newCollision.getTime() != Double.NEGATIVE_INFINITY && !newCollision.collidesWithSource()){
+					if(newCollision.getTime() != Double.POSITIVE_INFINITY && newCollision.getTime() != Double.NEGATIVE_INFINITY){
 						upcomingCollisions.add(newCollision);
 					}
 
@@ -310,7 +297,6 @@ public class World {
 	 * @param spaceObject The SpaceObject to be checked.
 	 */
 	public boolean containsSpaceObject(SpaceObject spaceObject) {
-		// TODO Auto-generated method stub
 		return visibleObjects.contains(spaceObject);
 	}
 
@@ -335,7 +321,8 @@ public class World {
 	 * @param 	spaceObject
 	 */
 	public void removeSpaceObject(SpaceObject spaceObject) {
-
+		updateCollisions();
+		this.visibleObjects.remove(spaceObject);
 	}
 
 	/**

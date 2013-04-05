@@ -320,8 +320,8 @@ public abstract class SpaceObject {
 				double otherY = other.getPosition().getY() + other.getVelocity().getVelocityY() * getTimeToCollision(other);
 				// use cos and sin to determine new position
 				double distancebetween = this.getRadius() + other.getRadius();
-				double newX = getPosition().getX() + this.getRadius() * (SpaceObjectX - otherX) / distancebetween;
-				double newY = getPosition().getY() + this.getRadius() * (SpaceObjectY - otherY) / distancebetween;
+				double newX = SpaceObjectX + this.getRadius() * (otherX - SpaceObjectX) / distancebetween;
+				double newY = SpaceObjectY + this.getRadius() * (otherY - SpaceObjectY) / distancebetween;
 
 				return new Coordinate(newX,newY);
 			}
@@ -427,4 +427,26 @@ public abstract class SpaceObject {
 	 * A SpaceObject can only be associated with one world, and can only appear once in that world.
 	 */
 	protected World world;
+	
+	/**
+	 * Delete this SpaceObject from the current world and break its current associations.
+	 */
+	public void terminate(){
+		this.isTerminated = true;
+		this.getWorld().removeSpaceObject(this);
+		this.setWorld(null);
+	}	
+	
+	/**
+	 * 
+	 */
+	public boolean isTerminated(){
+		return isTerminated;
+	}
+	
+	/**
+	 * 
+	 */
+	private boolean isTerminated = false;
+	
 }

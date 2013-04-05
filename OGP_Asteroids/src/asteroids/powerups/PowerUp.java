@@ -10,7 +10,7 @@ import asteroids.studentdefined.World;
  * @author Pieter
  *
  */
-public class PowerUp extends SpaceObject {
+public abstract class PowerUp extends SpaceObject {
 
 	/**
 	 * @param x

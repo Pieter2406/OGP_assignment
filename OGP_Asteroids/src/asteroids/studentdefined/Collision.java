@@ -1,5 +1,8 @@
 package asteroids.studentdefined;
 
+import asteroids.collisions.CollisionFactory;
+import asteroids.collisions.CollisionType;
+
 /**
  * A class of Collision extends to SpaceObject and involves a position and a velocity.
  * 
@@ -45,9 +48,9 @@ public class Collision implements Comparable<Collision> {
 	private double time;
 	@Override
 	public int compareTo(Collision other) {
-		if (this.time > other.getTime()){
+		if (this.getTime() > other.getTime()){
 			return 1;
-		}else if(this.time < other.getTime()){
+		}else if(this.getTime() < other.getTime()){
 			return -1;
 		}else{
 			return 0;
@@ -68,24 +71,27 @@ public class Collision implements Comparable<Collision> {
 		else
 			return false;
 	}
-
-	public boolean collidesWithSource(){
-		Bullet tempBullet = null;
-		SpaceObject other = null;
-		if(getObj1() instanceof Bullet){
-			tempBullet = (Bullet) getObj1();
-			other = getObj2();
-		}else if(getObj2() instanceof Bullet){
-			tempBullet = (Bullet) getObj2();
-			other = getObj1();
-		}else{
-			return false;
-		}
-		return (tempBullet.getSource().equals(other));
+	public void collide(){
+		CollisionType c = CollisionFactory.collide(getObj1(), getObj2());
+		c.collide();
 	}
-	
-	public boolean permittedCollision(){
-		return false;
-		//TODO: write permittedCollision
-	}
+//	public boolean collidesWithSource(){
+//		Bullet tempBullet = null;
+//		SpaceObject other = null;
+//		if(getObj1() instanceof Bullet){
+//			tempBullet = (Bullet) getObj1();
+//			other = getObj2();
+//		}else if(getObj2() instanceof Bullet){
+//			tempBullet = (Bullet) getObj2();
+//			other = getObj1();
+//		}else{
+//			return false;
+//		}
+//		return (tempBullet.getSource().equals(other));
+//	}
+//	
+//	public boolean permittedCollision(){
+//		return false;
+//		//TODO: write permittedCollision
+//	}
 }

@@ -52,13 +52,13 @@ public class Facade implements IFacade {
 
 	@Override
 	public void removeShip(Object world, Object ship) {
-		((World)world).removeShip((Ship)ship);
+		((World)world).removeSpaceObject((SpaceObject)ship);
 		
 	}
 
 	@Override
 	public void removeAsteroid(Object world, Object asteroid) {
-		((World)world).removeAsteroid((Asteroid)asteroid);
+		((World)world).removeSpaceObject((SpaceObject)asteroid);
 		
 	}
 
