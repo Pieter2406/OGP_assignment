@@ -97,11 +97,13 @@ public class Ship extends SpaceObject implements IShip {
 	 * 
 	 * @param amount
 	 * 			The amount of velocity added to the current velocity in Km/h.
-	 * 
-	 * @post	If the given amount is higher than zero, this amount is added to the current velocity. If the new velocity 
+	 * @effect	If the given amount is higher than zero, this amount is added to the current velocity. If the new velocity 
 	 * 			exceeds the speed of light, it will take on the value of the speed of light.
+	 * 			| if (amount > 0 && amount < getVelocity().SPEED_OF_LIGHT)
+	 * 			|	setVelocity(getVelocity().getVelocityX() + (checkedAmount * Math.cos(getAngle()), getVelocity().getVelocityY() + (checkedAmount * Math.sin(getAngle()))
 	 * 			|if(new.getVelocity > getVelocity().SPEED_OF_LIGHT)
 	 * 			|	new.getVelocity == getVelocity().SPEED_OF_Light
+	 * 			
 	 * 
 	 */
 	public void thrust(double amount){
@@ -170,12 +172,21 @@ public class Ship extends SpaceObject implements IShip {
 	 * 			The new angle for this ship.
 	 * @pre		The given angle must be a valid angle.
 	 * 			| isValidAngle(angle)
-	 * @post	The angle of this ship is equal to the given angle
-	 * 			| new.getAngle() == angle
+	 * @post	If the given angle is smaller than 2PI and higher than -2PI,
+	 * 			the angle of this ship is equal to the given angle. If the given
+	 * 			angle is not within those boundaries the angle of this ship
+	 * 			is equal to the given angle modulo 2PI.
+	 * 			| if (angle < 2*Math.PI && angle > (-2)*Math.PI
+	 * 			| 	new.getAngle() == angle
+	 * 			| else 
+	 * 			| 	new.getAngle() == angle % 2*Math.PI
 	 */
 	@Raw
 	public void setAngle(double angle){
-		this.angle = angle;
+		if (angle < 2*Math.PI && angle > (-2)*Math.PI)
+			this.angle = angle;
+		else
+			this.angle = angle % 2*Math.PI;
 	}
 
 	/**
@@ -184,6 +195,11 @@ public class Ship extends SpaceObject implements IShip {
 	 * 			The given angle to be added to the current angle.
 	 * @pre		The given angle must be a valid angle.
 	 * 		    | isValidAngle(angle)
+	 * @pre		the ship's angle plus the given angle is not allowed to overflow.
+	 * 			| if (getAngle() > 0 && angle > 0)
+	 * 			| 	angle < Double.MAX_VALUE - getAngle().
+	 * 			| else if (getAngle() < 0 && angle < 0)
+	 * 			|	angle > Double.MIN_VALUE + getAngle()
 	 * @effect 	Set the angle to the current angle plus the given angle.
 	 * 			| setAngle(this.getAngle() + angle)
 	 */

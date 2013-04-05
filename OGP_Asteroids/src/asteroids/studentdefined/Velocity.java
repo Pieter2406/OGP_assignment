@@ -38,34 +38,36 @@ public class Velocity {
 	 * 			The value for the maximum velocity. This value may
 	 * 			never be higher than the speed of light.
 	 * @post	The velocity in the x direction is equal to the given 
-	 * 			velocity in the x direction.
-	 * 			| new.getVelocityX() == velocityX
+	 * 			velocity in the x direction, if the given velocity is valid.
+	 * 			If the given velocity is invalid the velocity of this ship in the x direction equals 0.
+	 * 			| if (isValidVelocity(velocityX))
+	 * 			| 	then new.getVelocityX() == velocityX
+	 * 			| else
+	 * 			| 	new.getVelocityX() == 0
 	 * @post	The velocity in the y direction is equal to the given
-	 * 			velocity in the y direction.
-	 * 			| new.getVelocityY() == velocityY
-	 * @post	The maximum velocity is equal to the given velocity.
-	 * 			| new.getMaxVelocity == maxVelocity
-	 * @throws	IllegalValueException
-	 * 			The given velocity in the x direction is not a valid velocity.
-	 * 			| ! isValidVelocity(velocityX)
-	 * @throws	IllegalValueException
-	 * 			The given velocity in the y direction is not a valid velocity.
-	 * 			| ! isValidVelocity(velocityY)
-	 * @throws	IllegalValueException
-	 * 			The given maximum velocity is higher than the speed of light or is not 
-	 * 			a number
-	 * 			| (maxVelocity > SPEED_OF_LIGHT || Double.isNaN(maxVelocity)) 
+	 * 			velocity in the y direction, if the given velocity is valid.
+	 * 			If the given velocity is invalid the velocity of this ship in the y direction equals 0.
+	 * 			| if (isValidVelocity(velocityY))
+	 * 			| 	then new.getVelocityY() == velocityY
+	 * 			| else
+	 * 			| 	new.getVelocityY() == 0
+	 * @post	If the given maximum velocity is valid, this ship's maximum velocity is equal to the given 
+	 * 			maximum velocity, else this ship's maximum velocity is equal to the speed of light.
+	 * 			| if (maxVelocity > SPEED_OF_LIGHT || Double.isNaN(maxVelocity)) 
+	 * 			| 	then new.getMaxVelocity == SPEED_OF_LIGHT
+	 * 			|else
+	 * 			|	new.getMaxVelocity == maxVelocity
 	 */
 	public Velocity(double velocityX, double velocityY, double maxVelocity){
-//		if(!isValidVelocity(velocityX)){
-//			throw new IllegalValueException(velocityX);
-//		}
-//		if(!isValidVelocity(velocityY)){
-//			throw new IllegalValueException(velocityY);
-//		}
-//		if(maxVelocity > SPEED_OF_LIGHT || Double.isNaN(maxVelocity)){
-//			throw new IllegalValueException(maxVelocity);
-//		}
+		if(!isValidVelocity(velocityX)){
+			velocityX = 0;
+		}
+		if(!isValidVelocity(velocityY)){
+			velocityY = 0;
+		}
+		if(maxVelocity > SPEED_OF_LIGHT || Double.isNaN(maxVelocity)){
+			maxVelocity = SPEED_OF_LIGHT; 
+		}
 		
 		this.velocityX = velocityX;
 		this.velocityY = velocityY;
@@ -83,13 +85,7 @@ public class Velocity {
 	 * 			The value for the velocity in the y-direction.
 	 * @effect	This new velocity is initialized with given velocities in x and y direction and
 	 * 			the speed of light as maximum velocity.
-	 * 			|this(velocityX,velocityY,SPEED_OF_LIGHT)
-	 * @throws	IllegalValueException
-	 * 			The given velocity in the x direction is not a valid velocity.
-	 * 			| ! isValidVelocity(velocityX)
-	 * @throws	IllegalValueException
-	 * 			The given velocity in the y direction is not a valid velocity.
-	 * 			| ! isValidVelocity(velocityY)
+	 * 			| this(velocityX,velocityY,SPEED_OF_LIGHT)
 	 */
 	
 	public Velocity(double velocityX, double velocityY){
@@ -191,28 +187,18 @@ public class Velocity {
 	 * 			the velocity in the x direction of this class is set to the
 	 * 			given value.
 	 * 			| if(isValidVelocity(velocityX)
-	 * 			|	then new.setVelocityX(velocityX)
+	 * 			|	then new.getVelocityX == velocityX
 	 * @post	if the given velocity in the Y direction is a valid velocity,
 	 * 			the velocity in the Y direction of this class is set to the
 	 * 			given value.
 	 * 			| if(isValidVelocity(velocityY)
-	 * 			|	then new.setVelocityY(velocityY)
-	 * @throws	IllegalValueException
-	 * 			The given velocity in the x direction is not a valid velocity.
-	 * 			| ! isValidVelocity(velocityX)
-	 * @throws	IllegalValueException
-	 * 			The given velocity in the y direction is not a valid velocity.
-	 * 			| ! isValidVelocity(velocityY)
+	 * 			|	then new.getVelocityY == velocityY
 	 */
 	public void setVelocity(double velocityX, double velocityY){
-		if(!isValidVelocity(velocityX)){
-			throw new IllegalValueException(velocityX);
-		}
-		if(!isValidVelocity(velocityY)){
-			throw new IllegalValueException(velocityY);
-		}
-		this.setVelocityX(velocityX);
-		this.setVelocityY(velocityY);
+		if(isValidVelocity(velocityX))
+			this.setVelocityX(velocityX);
+		if(!isValidVelocity(velocityY))
+			this.setVelocityY(velocityY);
 	}
 		
 	/**

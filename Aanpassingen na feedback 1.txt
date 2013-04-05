@@ -1,14 +1,17 @@
 delete @pre in constructor
 nominal setters : asserts statements
-turn: precondition on overflow
+turn: precondition on overflow DONE 
 thrust: @post => @effect
 setVelocity in Velocity @post : @effect
 Shiptest: thrust: boundary tests
-Extend velocity class with vector methods
+Make velocity class total DONE
 
-GetTimeCollision:
+GetTimeCollision: DONE
 	* Formal:
 		* explain in terms of other mehtods 
 		* move;
 		* overlap;
-Shiptest: setUpImmutableFixtures => delete
+Shiptest: setUpImmutableFixtures => delete DONE
+
+isValidVelocity is FOUT!!!!! Met de huidige isVelocity word overal velocityX en velocityY meegegeven, 
+dit word dan vergeleken met speed of light terwijl de totale velocity moet vergeleken worden.
