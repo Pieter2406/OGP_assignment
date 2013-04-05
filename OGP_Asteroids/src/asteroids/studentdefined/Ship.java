@@ -205,6 +205,7 @@ public class Ship extends SpaceObject implements IShip {
 	 */
 	public void turn(double angle){
 		setAngle(getAngle() + angle);
+		//TODO: implement overflow detection
 	}
 
 	/**
