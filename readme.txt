@@ -20,3 +20,11 @@ List of Issues:
 * Review World.java invariants and Data Structures
 	using methods for manipulating associated SpaceObjects in collision 
 	calculations, rather than manipulating the data structures directly.
+
+Changes:
+
+	*** Pieter ***
+* Updated TODO list;
+* Made templates for future testcases
+* Added tests in SpaceObjectTest and VelocityTest
+____________________________________________________

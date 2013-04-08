@@ -2,13 +2,16 @@
  * Black-box test case for the class ship using the principles of equivalence testing.
  */
 
-package asteroids.studentdefined;
+package asteroids.test;
 import static org.junit.Assert.*;
 
 import org.junit.*;
 
 
 import asteroids.Util;
+import asteroids.studentdefined.IllegalValueException;
+import asteroids.studentdefined.Ship;
+import asteroids.studentdefined.Velocity;
 
 /**
  * A class collecting tests for the class of ships.
@@ -19,7 +22,7 @@ import asteroids.Util;
  *
  */
 
-public class ShipTest {
+public class ShipOldTest {
 	
 	/**
 	 * Variable referencing a ship

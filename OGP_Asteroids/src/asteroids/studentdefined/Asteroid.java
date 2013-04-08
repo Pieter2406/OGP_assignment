@@ -10,7 +10,7 @@ package asteroids.studentdefined;
 /**
  * A class of Asteroid extends to SpaceObject and involves a position, a mass, a minimumradius and a velocity.
  * 
- * TODO: write @invar (if necessary)
+ * TODO: Write @invar (if necessary) in Asteroid class
  * 
  * @version 1.1
  * 

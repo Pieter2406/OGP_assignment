@@ -6,7 +6,7 @@ import asteroids.collisions.CollisionType;
 /**
  * A class of Collision extends to SpaceObject and involves a position and a velocity.
  * 
- * TODO: write @invar (if necessary)
+ * TODO: Write @invar (if necessary) in Collision class
  * 
  * @version 1.1
  * 
@@ -17,7 +17,7 @@ import asteroids.collisions.CollisionType;
 
 public class Collision implements Comparable<Collision> {
 
-	//TODO: Write contracts
+	//TODO: Write contracts in Collision class
 	
 	/**
 	 * Initialize a collision between 2 space objects.
@@ -92,6 +92,5 @@ public class Collision implements Comparable<Collision> {
 //	
 //	public boolean permittedCollision(){
 //		return false;
-//		//TODO: write permittedCollision
 //	}
 }

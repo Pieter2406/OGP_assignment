@@ -58,7 +58,6 @@ public class Ship extends SpaceObject implements IShip {
 	 * 			| super(x,y,velocityX,velocityY,radius, 10, mass)
 	 * 			| this.setAngle(angle)
 	 * 
-	 * TODO: write @effect with super class
 	 */
 	public Ship(double x, double y,double velocityX, double velocityY, double radius, double angle, double mass, World world){
 		super(x,y,velocityX,velocityY,radius,10, mass, world);
@@ -205,7 +204,6 @@ public class Ship extends SpaceObject implements IShip {
 	 */
 	public void turn(double angle){
 		setAngle(getAngle() + angle);
-		//TODO: implement overflow detection
 	}
 
 	/**

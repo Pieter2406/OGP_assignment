@@ -155,7 +155,6 @@ public class Facade implements IFacade {
 	@Override
 	public Object createAsteroid(double x, double y, double xVelocity,
 			double yVelocity, double radius, Random random) {
-		// TODO Auto-generated method stub
 		return new Asteroid(x, y, xVelocity, yVelocity, radius, null);
 	}
 

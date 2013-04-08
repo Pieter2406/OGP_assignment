@@ -57,7 +57,6 @@ public class Coordinate {
 		this(0,0);
 	}
 
-	//public Coordinate(double angle, double r){ //TODO: (Optional) write constructor for Coordinate for polar coordinates }
 
 	/**
 	 * Return the x-value of the coordinate.

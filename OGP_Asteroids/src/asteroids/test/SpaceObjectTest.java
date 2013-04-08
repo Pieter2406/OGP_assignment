@@ -1,9 +1,18 @@
-package asteroids.studentdefined;
+package asteroids.test;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
+import org.junit.Test;
+
 import asteroids.Util;
+import asteroids.studentdefined.Asteroid;
+import asteroids.studentdefined.Bullet;
+import asteroids.studentdefined.Coordinate;
+import asteroids.studentdefined.IllegalValueException;
+import asteroids.studentdefined.Ship;
+import asteroids.studentdefined.World;
+
 import org.junit.*;
 
 /**
@@ -19,7 +28,7 @@ public class SpaceObjectTest {
 	double leftangle = 0;
 	double rightangle = Math.PI;
 	World world;
-	Ship leftShip, rightShip, separatedShip;
+	Ship leftShip, rightShip, separatedShip, basicShip, basicShip2, basicShip3, basicShip4;
 	Asteroid leftAsteroid, rightAsteroid;
 	Bullet leftBullet, rightBullet;
 	
@@ -28,12 +37,15 @@ public class SpaceObjectTest {
 		world = new World(1000, 1000);
 		leftShip = new Ship(100, 100, 100, 0,  radius, leftangle, 100, world);
 		rightShip = new Ship(400, 100, -100, 0, radius, rightangle, 100, world);
+		basicShip = new Ship(0,0,1,1,radius,leftangle,100,world);
+		basicShip2 = new Ship(40,40,1,1,15,Math.PI/2, 100, world); 
+		basicShip3 = new Ship(40,0,1,0,10,0, 100, world);
+		basicShip4 = new Ship(0,0,1,0,10,Math.PI,100, world);
 		separatedShip = new Ship(700, 700, 300, 300, radius, rightangle, 100, world);
 		leftAsteroid = new Asteroid(100, 100, 100, 0, radius, world);
 		rightAsteroid = new Asteroid(400, 100, -100, 0, radius, world);
 		leftBullet = new Bullet( 47, 100, leftShip, world);
 		rightBullet = new Bullet(553, 100, rightShip, world);
-		
 	}
 	
 	@Test
@@ -94,5 +106,105 @@ public class SpaceObjectTest {
 		Coordinate position = leftAsteroid.getCollisionPosition(separatedShip);
 		assertNull("Position never collide", position);
 	}
+	
+	@Test
+	public void move_PositiveTime() {
+		basicShip.move(10.0);
+		assertEquals(10.0,basicShip.getPosition().getX(),Util.EPSILON);
+		assertEquals(10.0,basicShip.getPosition().getY(),Util.EPSILON);
+	}
+	
+	@Test (expected = IllegalValueException.class) // if this exception is thrown the test succeeds
+	public void move_NegativeTime() throws Exception{
+		basicShip.move(-10.0);
+	}
+	
+	@Test 
+	public void isValidAngle_LegalInput() {
+		assertTrue(Ship.isValidAngle(2.0));
+	}
+	
+	@Test 
+	public void isValidAngle_IllegalInput() {
+		assertFalse(Ship.isValidAngle(Double.NaN));
+	}
+	
+	@Test 
+	public void setAngle_LegalInput() {
+		basicShip.setAngle(10.0);
+		assertEquals(10.0,basicShip.getAngle(),Util.EPSILON);
+	}
 
+	@Test
+	public void isValidMinimumRadius_PositiveRadius(){
+		assertTrue(Ship.isValidMinimumRadius(10));
+	}
+	
+	@Test
+	public void isValidMinimumRadius_NegativeRadius(){
+		assertFalse(Ship.isValidMinimumRadius(-10));
+	}
+	
+	@Test
+	public void isValidMinimumRadius_IllegalInput(){
+		assertFalse(Ship.isValidMinimumRadius(Double.NaN));
+	}
+	
+	@Test
+	public void isValidRadius_IllegalInput(){
+		assertFalse(basicShip.isValidRadius(Double.NaN));
+	}
+	
+	@Test
+	public void isValidRadius_smallerThenMinimum(){
+		assertFalse(basicShip.isValidRadius(9)); // minimumradius -1
+	}
+	
+	@Test
+	public void isValidRadius_higherThenMinimum(){
+		assertTrue(basicShip.isValidRadius(20));
+	}
+	
+	@Test 
+	public void setPosition_LegalInput(){
+		basicShip.setPosition(10.0, 10.0);
+		assertEquals(10.0, basicShip.getPosition().getX(),Util.EPSILON);
+		assertEquals(10.0, basicShip.getPosition().getY(),Util.EPSILON);
+	}
+	@Test (expected = IllegalValueException.class) 
+	public void setPosition_IllegalLeftArgument(){
+		basicShip.setPosition(Double.NaN, 10);
+	}
+	
+	@Test (expected = IllegalValueException.class) 
+	public void setPosition_IllegalRightArgument(){
+		basicShip.setPosition(Double.NaN, 10);
+	}
+	
+	@Test
+	public void getDistanceBetween_legalInput(){
+		assertEquals(26.568542,basicShip.getDistanceBetween(basicShip2),Util.EPSILON);
+	}
+	
+	@Test (expected = IllegalArgumentException.class) 
+	public void getDistanceBetween_IllegalInput(){
+		basicShip.getDistanceBetween(null);
+	}
+	
+	@Test (expected = IllegalArgumentException.class) 
+	public void overlap_IllegalArgument(){
+		basicShip.overlap(null);
+	}
+	
+	@Test 
+	public void overlap_Overlapping(){
+		assertTrue(basicShip.overlap(basicShip3));
+	}
+	
+	@Test 
+	public void overlap_NotOverlapping(){
+		assertFalse(basicShip.overlap(basicShip2));
+	}
+	
+	
 }

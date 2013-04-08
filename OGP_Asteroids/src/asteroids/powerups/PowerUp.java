@@ -7,8 +7,13 @@ import asteroids.studentdefined.SpaceObject;
 import asteroids.studentdefined.World;
 
 /**
- * @author Pieter
- *
+ * Abstract class that holds methods and function for PowerUps and 
+ * inherits from SpaceObject
+ * @author Kristof Bruyninckx
+ * @author Wouter Bruyninckx
+ * @author Pieter Verlinden
+ * @version 1.1
+ * TODO: Write PowerUp class
  */
 public abstract class PowerUp extends SpaceObject {
 
@@ -25,7 +30,6 @@ public abstract class PowerUp extends SpaceObject {
 	public PowerUp(double x, double y, double velocityX, double velocityY,
 			double radius, double minimumRadius, double mass, World world) {
 		super(x, y, velocityX, velocityY, radius, minimumRadius, mass, world);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -37,7 +41,6 @@ public abstract class PowerUp extends SpaceObject {
 	 */
 	public PowerUp(double x, double y, double radius, double mass, World world) {
 		super(x, y, radius, mass, world);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -48,14 +51,12 @@ public abstract class PowerUp extends SpaceObject {
 	 */
 	public PowerUp(double radius, double minimumRadius, double mass, World world) {
 		super(radius, minimumRadius, mass, world);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
 	 * 
 	 */
 	public PowerUp() {
-		// TODO Auto-generated constructor stub
 	}
 
 }

@@ -3,16 +3,11 @@ package asteroids.studentdefined;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 
-/**********************************************************************************
- * 								GENERAL TODO LIST:		              			  *
- **********************************************************************************
- *		- 													  *
- **********************************************************************************/
 
 /**
  * A class of SpaceObject is an abstract class with a Coordinate and a Velocity.
  * 
- * TODO: Write @invar (if necessary)
+ * TODO: Write @invar (if necessary) in SpaceObject class
  * 
  * @version 1.1
  * 
@@ -30,7 +25,7 @@ public abstract class SpaceObject {
 	 * Initialize this new SpaceObject with a given x and y coordinate, 
 	 * a given x and y velocity, a given radius, a given minimum radius, a given mass and a given world.
 	 * 
-	 * TODO: write @pre and @post.
+	 * TODO: Write @pre and @post for constructor in SpaceObject class.
 	 * 
 	 * @param 	x
 	 * @param 	y
@@ -40,7 +35,8 @@ public abstract class SpaceObject {
 	 * @param 	minimumRadius
 	 * @param 	mass
 	 */
-	public SpaceObject(double x, double y, double velocityX, double velocityY, double radius, double minimumRadius, double mass, World world){
+	@Raw
+	protected SpaceObject(double x, double y, double velocityX, double velocityY, double radius, double minimumRadius, double mass, World world){
 		this.position = new Coordinate(x,y);
 		this.velocity = new Velocity(velocityX,velocityY);
 		this.radius = radius;
@@ -54,14 +50,15 @@ public abstract class SpaceObject {
 	 * Initialize the position and the velocity of the SpaceObject with a given x and y coordinate, 
 	 *  a given radius and a given mass.
 	 * 
-	 * TODO: write @pre and @post.
+	 * TODO: Write @effect for SpaceObject constructor.
 	 * 
 	 * @param 	x
 	 * @param 	y
 	 * @param 	radius
 	 * @param 	mass
 	 */
-	public SpaceObject(double x, double y, double radius, double mass, World world){
+	@Raw
+	protected SpaceObject(double x, double y, double radius, double mass, World world){
 		this(x,y,0,0,radius,0,mass, world);
 	}
 	
@@ -69,22 +66,24 @@ public abstract class SpaceObject {
 	 * Initialize the position and the velocity of the SpaceObject with position(0,0) and velocity(0,0), a given radius, 
 	 * a given minimum radius and a given mass.
 	 * 
-	 * @effect TODO write @effect.
+	 * @effect TODO write @effect in SpaceObject constructor.
 	 * 
 	 * @param 	radius
 	 * @param 	minimumRadius
 	 * @param	mass
 	 */
-	public SpaceObject(double radius, double minimumRadius, double mass, World world){
+	@Raw
+	protected SpaceObject(double radius, double minimumRadius, double mass, World world){
 		this(0,0,0,0,radius,minimumRadius,mass, world);
 	}
 	
 	/**
 	 * Initialize the position and the velocity of the SpaceObject with position (0,0) and velocity (0,0), a radius of 0 and a minimum radius of 0.
 	 * 
-	 * @effect TODO: write effect.
+	 * TODO: Write @effect for constructor in SpaceObject.
 	 */
-	public SpaceObject(){
+	@Raw
+	protected SpaceObject(){
 		this(0,0,0,0,0,0,0, null);
 	}
 	

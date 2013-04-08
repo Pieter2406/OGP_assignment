@@ -159,7 +159,7 @@ public class World {
 	 * @param 	time
 	 * 			The time over which the world changes.
 	 * 
-	 * TODO: write full contract
+	 * TODO: Write full contract for evolve in World.
 	 */
 	public void evolve(double time, CollisionListener collisionListener) {
 		Collision newCollision = getFirstCollision();
@@ -180,7 +180,7 @@ public class World {
 	}
 
 	/**
-	 * 
+	 * TODO: Write contract for handleCollision in World
 	 * @param newCollision
 	 */
 	private void handleCollision(Collision newCollision,CollisionListener collisionListener) {
@@ -236,7 +236,7 @@ public class World {
 		}
 
 	}
-	//TODO: fix it
+	//TODO: Fix collisions in world.
 	/**
 	 * Update the list of future collisions, so that every collision that involves a SpaceObject that has a pending velocity change,
 	 * is recalculated, while other collisions remain the same.
