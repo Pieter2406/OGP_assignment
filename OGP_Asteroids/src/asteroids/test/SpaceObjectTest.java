@@ -131,8 +131,8 @@ public class SpaceObjectTest {
 	
 	@Test 
 	public void setAngle_LegalInput() {
-		basicShip.setAngle(10.0);
-		assertEquals(10.0,basicShip.getAngle(),Util.EPSILON);
+		basicShip.setAngle(Math.PI/2.0);
+		assertEquals(Math.PI/2,basicShip.getAngle(),Util.EPSILON);
 	}
 
 	@Test
@@ -183,7 +183,7 @@ public class SpaceObjectTest {
 	
 	@Test
 	public void getDistanceBetween_legalInput(){
-		assertEquals(26.568542,basicShip.getDistanceBetween(basicShip2),Util.EPSILON);
+		assertEquals(100,leftShip.getDistanceBetween(rightShip),Util.EPSILON);
 	}
 	
 	@Test (expected = IllegalArgumentException.class) 
@@ -203,7 +203,7 @@ public class SpaceObjectTest {
 	
 	@Test 
 	public void overlap_NotOverlapping(){
-		assertFalse(basicShip.overlap(basicShip2));
+		assertFalse(rightShip.overlap(basicShip4));
 	}
 	
 	

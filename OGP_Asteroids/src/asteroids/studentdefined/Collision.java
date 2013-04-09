@@ -40,6 +40,7 @@ public class Collision implements Comparable<Collision> {
 		return time;
 	}
 	
+	
 	private void calculateTime() {
 		time = o1.getTimeToCollision(o2);
 	}

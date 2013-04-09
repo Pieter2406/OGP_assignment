@@ -196,7 +196,7 @@ public class Velocity {
 	public void setVelocity(double velocityX, double velocityY){
 		if(isValidVelocity(velocityX))
 			this.setVelocityX(velocityX);
-		if(!isValidVelocity(velocityY))
+		if(isValidVelocity(velocityY))
 			this.setVelocityY(velocityY);
 	}
 

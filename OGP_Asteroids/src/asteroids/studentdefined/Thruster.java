@@ -8,7 +8,7 @@ import be.kuleuven.cs.som.annotate.Raw;
  * @author Wouter Bruyninckx
  * @author Kristof Bruyninckx
  * @author Pieter Verlinden
- * @version 1.0
+ * @version 1.1
  * 
  * @invar	Each thruster is attached to exactly one space object.
  * 			| hasProperSource()

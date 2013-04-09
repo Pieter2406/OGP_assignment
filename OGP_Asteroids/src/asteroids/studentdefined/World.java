@@ -166,16 +166,25 @@ public class World {
 		if(newCollision == null){
 			advanceAll(time);
 		}else{
-			double firstCollisionTime = newCollision.getTime();
-			if(firstCollisionTime > time){
+			if(!newCollision.getObj1().overlap(newCollision.getObj2())){
 				advanceAll(time);
 			}else{
-				advanceAll(firstCollisionTime);
-				//TODO: collisionlistener stuff
 				handleCollision(newCollision,collisionListener);
-				time -= firstCollisionTime;
-				evolve(time,collisionListener);
 			}
+			/*
+			 * Misschien is dit een gemakkelijkere oplossing ge moet ma zien.
+			 * 
+			 */
+//			double firstCollisionTime = newCollision.getTime();
+//			if(firstCollisionTime > time){
+//				advanceAll(time);
+//			}else{
+//				advanceAll(firstCollisionTime);
+//				//TODO: collisionlistener stuff
+//				handleCollision(newCollision,collisionListener);
+//				time -= firstCollisionTime;
+//				evolve(time,collisionListener);
+//			}
 		}
 	}
 
@@ -261,7 +270,7 @@ public class World {
 		}
 		//Remove all collisions that involve a changed object from the list of upcoming collisions.
 		for (Collision col: tempcol) {
-			upcomingCollisions.remove(tempcol);
+			upcomingCollisions.remove(col);
 		}
 
 		//Add new collisions with all other objects, for every SpaceObject that has a pending velocity change.

@@ -27,4 +27,5 @@ Changes:
 * Updated TODO list;
 * Made templates for future testcases
 * Added tests in SpaceObjectTest and VelocityTest
+* CHANGED EVOLVE METHOD, MAYBE WORSE THAN BEFORE OR BETTER
 ____________________________________________________

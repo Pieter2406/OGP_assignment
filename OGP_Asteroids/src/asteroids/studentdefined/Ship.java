@@ -110,10 +110,10 @@ public class Ship extends SpaceObject implements IShip {
 		if(amount < 0){
 			checkedAmount = 0;
 		}
-		setVelocity	(getVelocity().getVelocityX() + (checkedAmount * Math.cos(getAngle()))
-				,
-				getVelocity().getVelocityY() + (checkedAmount * Math.sin(getAngle()))
-				);
+		double newVelocityX = getVelocity().getVelocityX() + (checkedAmount * Math.cos(getAngle()));
+		double newVelocityY = getVelocity().getVelocityY() + (checkedAmount * Math.sin(getAngle()));
+		System.out.println(getAngle());
+		setVelocity	(newVelocityX,newVelocityY);
 	}
 	
 	/**
