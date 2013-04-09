@@ -166,10 +166,11 @@ public class World {
 		if(newCollision == null){
 			advanceAll(time);
 		}else{
-			if(!newCollision.getObj1().overlap(newCollision.getObj2())){
+			if(newCollision.getObj1().overlap(newCollision.getObj2())){
+				handleCollision(newCollision,collisionListener);
 				advanceAll(time);
 			}else{
-				handleCollision(newCollision,collisionListener);
+				advanceAll(time);
 			}
 			/*
 			 * Misschien is dit een gemakkelijkere oplossing ge moet ma zien.
@@ -194,6 +195,7 @@ public class World {
 	 */
 	private void handleCollision(Collision newCollision,CollisionListener collisionListener) {
 		newCollision.collide();
+		updateCollisions();
 		double xPos = newCollision.getObj1().getCollisionPosition(newCollision.getObj2()).getX();
 		double yPos = newCollision.getObj1().getCollisionPosition(newCollision.getObj2()).getY();
 		collisionListener.objectCollision(newCollision.getObj1(), newCollision.getObj2(), xPos,yPos);

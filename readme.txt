@@ -20,6 +20,7 @@ List of Issues:
 * Review World.java invariants and Data Structures
 	using methods for manipulating associated SpaceObjects in collision 
 	calculations, rather than manipulating the data structures directly.
+* Collision not working.
 
 Changes:
 
@@ -28,4 +29,8 @@ Changes:
 * Made templates for future testcases
 * Added tests in SpaceObjectTest and VelocityTest
 * CHANGED EVOLVE METHOD, MAYBE WORSE THAN BEFORE OR BETTER
+* Changed Bullet:
+	* initialized with pendingVelocityChange = true;
+	* handleCollisions(): added method updateCollisions()
+* Added template methods for WorldTest
 ____________________________________________________

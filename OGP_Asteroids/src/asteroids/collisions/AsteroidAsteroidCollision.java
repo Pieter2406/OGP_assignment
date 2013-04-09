@@ -8,4 +8,9 @@ public class AsteroidAsteroidCollision implements CollisionType {
 		// TODO Write AsteroidAsteroidCollision
 	}
 
+	@Override
+	public void collide() {
+		
+	}
+
 }

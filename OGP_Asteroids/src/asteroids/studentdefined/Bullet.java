@@ -51,6 +51,7 @@ public class Bullet extends SpaceObject{
 			this.source = source; // source is final no setter.
 			this.setAngle(source.getAngle());
 			this.setVelocity(Velocity.computeXVelocity(this.getAngle(), REGULAR_BULLETSPEED),Velocity.computeYVelocity(this.getAngle(), REGULAR_BULLETSPEED));
+			this.setPendingVelocityChange(true);
 		}
 		else throw new IllegalArgumentException("Not a valid source.");
 		

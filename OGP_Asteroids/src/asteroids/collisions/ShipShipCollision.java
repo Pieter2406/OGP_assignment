@@ -8,4 +8,13 @@ public class ShipShipCollision implements CollisionType {
 		// TODO Write ShipShipCollision
 	}
 
+	/* (non-Javadoc)
+	 * @see asteroids.collisions.CollisionType#collide()
+	 */
+	@Override
+	public void collide() {
+	
+		
+	}
+
 }

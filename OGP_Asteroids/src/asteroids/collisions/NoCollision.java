@@ -6,4 +6,13 @@ public class NoCollision implements CollisionType {
 		// TODO Write NoCollision
 	}
 
+	/* (non-Javadoc)
+	 * @see asteroids.collisions.CollisionType#collide()
+	 */
+	@Override
+	public void collide() {
+		
+		
+	}
+
 }

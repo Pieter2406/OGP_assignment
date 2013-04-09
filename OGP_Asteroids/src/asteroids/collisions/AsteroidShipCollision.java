@@ -9,4 +9,13 @@ public class AsteroidShipCollision implements CollisionType {
 		// TODO Write AsteroidShipCollision
 	}
 
+	/* (non-Javadoc)
+	 * @see asteroids.collisions.CollisionType#collide()
+	 */
+	@Override
+	public void collide() {
+		
+		
+	}
+
 }
