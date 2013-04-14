@@ -28,14 +28,18 @@ public final class CollisionFactory {
 		}
 		//ShipBulletCollision
 		if((o1 instanceof Ship && o2 instanceof Bullet) || (o2 instanceof Ship && o1 instanceof Bullet)){
-			if(o1 instanceof Ship)
-				return new ShipBulletCollision((Ship) o1,(Bullet) o2);
-			else
-				return new ShipBulletCollision((Ship) o2, (Bullet) o1);
-		}
-		//ShipShipCollision
-		if(o1 instanceof Ship && o2 instanceof Ship){
-			return new ShipShipCollision((Ship) o1, (Ship) o2);
+			if(o1 instanceof Ship){
+				if (((Bullet) o2).getSource() != o1) // if a ship collides with its own bullets there is no collision.
+					return new ShipBulletCollision((Ship) o1,(Bullet) o2);
+				else 
+					return new NoCollision();
+			}
+			else {
+				if (((Bullet) o1).getSource() != o2)
+					return new ShipBulletCollision((Ship) o2, (Bullet) o1);
+				else 
+					return new NoCollision();
+			}
 		}
 		else{
 			return new NoCollision();

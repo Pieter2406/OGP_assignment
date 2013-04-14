@@ -44,7 +44,6 @@ public class Coordinate {
 		}
 		this.x = x;
 		this.y = y;
-		System.out.println("test");
 	}
 	
 	/**

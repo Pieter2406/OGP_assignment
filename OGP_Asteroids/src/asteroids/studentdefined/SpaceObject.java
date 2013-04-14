@@ -421,7 +421,6 @@ public abstract class SpaceObject {
 	public void terminate(){
 		this.isTerminated = true;
 		this.getWorld().removeSpaceObject(this);
-		this.setWorld(null);
 	}	
 	
 	/**

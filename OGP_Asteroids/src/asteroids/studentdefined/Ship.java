@@ -112,7 +112,6 @@ public class Ship extends SpaceObject implements IShip {
 		}
 		double newVelocityX = getVelocity().getVelocityX() + (checkedAmount * Math.cos(getAngle()));
 		double newVelocityY = getVelocity().getVelocityY() + (checkedAmount * Math.sin(getAngle()));
-		System.out.println(getAngle());
 		setVelocity	(newVelocityX,newVelocityY);
 	}
 	
@@ -185,7 +184,7 @@ public class Ship extends SpaceObject implements IShip {
 		if (angle < 2*Math.PI && angle > (-2)*Math.PI)
 			this.angle = angle;
 		else
-			this.angle = angle % 2*Math.PI;
+			this.angle = angle % (2*Math.PI);
 	}
 
 	/**

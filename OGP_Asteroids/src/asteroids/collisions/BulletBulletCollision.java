@@ -1,9 +1,11 @@
 package asteroids.collisions;
 
-import asteroids.studentdefined.Ship;
+import asteroids.studentdefined.Bullet;
 
-public class ShipShipCollision implements CollisionType{
-	public ShipShipCollision(){
+public class BulletBulletCollision implements CollisionType {
+
+	public BulletBulletCollision(){
+		
 	}
 	/* (non-Javadoc)
 	 * @see asteroids.collisions.CollisionType#collide()

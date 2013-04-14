@@ -170,7 +170,7 @@ public class Facade implements IFacade {
 
 	@Override
 	public double getAsteroidY(Object asteroid) {
-		return ((Asteroid)asteroid).getPosition().getX();
+		return ((Asteroid)asteroid).getPosition().getY();
 	}
 
 	@Override

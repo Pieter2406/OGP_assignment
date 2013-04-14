@@ -7,9 +7,10 @@ import java.util.Set;
 
 import asteroids.CollisionListener;
 import asteroids.Util;
+import asteroids.collisions.CollisionFactory;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
-import edu.princeton.cs.algs4.MinPQ;;
+import edu.princeton.cs.algs4.MinPQ;
 /******************************************************************************************
  * 								GENERAL TODO LIST:		              			          *
  ******************************************************************************************
@@ -163,6 +164,8 @@ public class World {
 	 */
 	public void evolve(double time, CollisionListener collisionListener) {
 		Collision newCollision = getFirstCollision();
+		
+		/*
 		if(newCollision == null){
 			advanceAll(time);
 		}else{
@@ -172,20 +175,29 @@ public class World {
 			}else{
 				advanceAll(time);
 			}
+		}
+		/*
 			/*
 			 * Misschien is dit een gemakkelijkere oplossing ge moet ma zien.
 			 * 
 			 */
-//			double firstCollisionTime = newCollision.getTime();
-//			if(firstCollisionTime > time){
-//				advanceAll(time);
-//			}else{
-//				advanceAll(firstCollisionTime);
-//				//TODO: collisionlistener stuff
-//				handleCollision(newCollision,collisionListener);
-//				time -= firstCollisionTime;
-//				evolve(time,collisionListener);
-//			}
+		if(newCollision == null){
+			advanceAll(time);
+		}else{
+			double firstCollisionTime = newCollision.getTime();
+			if(firstCollisionTime > time){
+				advanceAll(time);
+			}else{
+				advanceAll(firstCollisionTime);
+				//TODO: collisionlistener stuff
+				time -= firstCollisionTime;
+				if ((!(CollisionFactory.collide(newCollision.getObj1(), newCollision.getObj2()) instanceof asteroids.collisions.NoCollision))){
+					handleCollision(newCollision,collisionListener);
+					evolve(time,collisionListener);
+				}
+				else
+					advanceAll(time);
+			}
 		}
 	}
 
@@ -194,13 +206,13 @@ public class World {
 	 * @param newCollision
 	 */
 	private void handleCollision(Collision newCollision,CollisionListener collisionListener) {
-		newCollision.collide();
-		updateCollisions();
-		double xPos = newCollision.getObj1().getCollisionPosition(newCollision.getObj2()).getX();
-		double yPos = newCollision.getObj1().getCollisionPosition(newCollision.getObj2()).getY();
-		collisionListener.objectCollision(newCollision.getObj1(), newCollision.getObj2(), xPos,yPos);
-		
-
+		if (!(CollisionFactory.collide(newCollision.getObj1(), newCollision.getObj2()) instanceof asteroids.collisions.NoCollision)){
+			newCollision.collide();
+			updateCollisions();
+			double xPos = newCollision.getObj1().getCollisionPosition(newCollision.getObj2()).getX();
+			double yPos = newCollision.getObj1().getCollisionPosition(newCollision.getObj2()).getY();
+			collisionListener.objectCollision(newCollision.getObj1(), newCollision.getObj2(), xPos,yPos);
+		}
 	}
 
 	/**
@@ -217,7 +229,7 @@ public class World {
 	 */
 	private void advanceAll(double time) throws IllegalArgumentException{
 		if (time < 0)
-			//throw new IllegalArgumentException("Time is not effective");
+			//throw new IllegalArgumentException("Time is not effective"); // wie zet dit in commentaar en waarom?
 			time = 0;
 		for (SpaceObject obj : visibleObjects)
 			obj.move(time);
@@ -262,9 +274,13 @@ public class World {
 				temp.add(obj);
 		}
 		for (Collision col: upcomingCollisions) {
+			// Remove collision involving objects that are already terminated.
+			if (col.getObj1().isTerminated() || col.getObj2().isTerminated()){
+				tempcol.add(col);
+			}
 			//Recalculate all collisions that involve an object with a pending velocity change and set the flag to false.
 			for (SpaceObject ob : temp) {
-				if (col.contains(ob) || col.getObj1().isTerminated() || col.getObj2().isTerminated()) {
+				if (col.contains(ob)) {
 					tempcol.add(col);
 				}
 				ob.setPendingVelocityChange(false);
@@ -278,16 +294,22 @@ public class World {
 		//Add new collisions with all other objects, for every SpaceObject that has a pending velocity change.
 		for (SpaceObject obj: temp) {
 			for (SpaceObject obje : visibleObjects) {
-				if (!obj.equals(obje) && !obj.isTerminated()) {
+				if (!obj.equals(obje) && !obj.isTerminated() && !obje.isTerminated()) {
 					Collision newCollision = new Collision(obj, obje);
 					if(newCollision.getTime() != Double.POSITIVE_INFINITY && newCollision.getTime() != Double.NEGATIVE_INFINITY){
-						upcomingCollisions.add(newCollision);
+							boolean sameCollision = false; // make sure that the same collision isn't added with reversed parameters.
+							for (Collision col: upcomingCollisions){
+								if (col.getObj1() == obje && col.getObj2() == obj){
+									sameCollision = true;
+									break;
+								}
+							}
+							if (sameCollision == false)
+								upcomingCollisions.add(newCollision);
 					}
-
 				}
 			}
 		}
-
 	}
 
 
@@ -319,8 +341,8 @@ public class World {
 	 * 			| spaceObject.getWorld() == this
 	 * @param spaceObject
 	 */
-	public void addSpaceObject(SpaceObject spaceObject) {
-
+	public void addSpaceObject(SpaceObject spaceObject) { 
+		this.visibleObjects.add(spaceObject);
 	}
 
 	/**
@@ -331,9 +353,10 @@ public class World {
 	 * 			| spaceObject.getWorld() == null
 	 * @param 	spaceObject
 	 */
-	public void removeSpaceObject(SpaceObject spaceObject) {
-		updateCollisions();
+	public void removeSpaceObject(SpaceObject spaceObject) { 
+		updateCollisions(); // waarom hier?
 		this.visibleObjects.remove(spaceObject);
+		spaceObject.setWorld(null);
 	}
 
 	/**
@@ -405,6 +428,6 @@ public class World {
 		return isTerminated;
 	}
 
-	public boolean isTerminated;
+	private boolean isTerminated;
 
 }
