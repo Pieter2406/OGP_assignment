@@ -14,6 +14,6 @@ GetTimeCollision: DONE
 Shiptest: setUpImmutableFixtures => delete DONE
 
 isValidVelocity is FOUT!!!!! Met de huidige isVelocity word overal velocityX en velocityY meegegeven, 
-dit word dan vergeleken met speed of light terwijl de totale velocity moet vergeleken worden.
+dit word dan vergeleken met speed of light terwijl de totale velocity moet vergeleken: DONE
 
 shipcollision blijkt niet te werken (volledig genegeerd)

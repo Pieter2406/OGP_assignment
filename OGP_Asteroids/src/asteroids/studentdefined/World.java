@@ -164,19 +164,17 @@ public class World {
 	 */
 	public void evolve(double time, CollisionListener collisionListener) {
 		Collision newCollision = getFirstCollision();
-		
-		/*
-		if(newCollision == null){
-			advanceAll(time);
-		}else{
-			if(newCollision.getObj1().overlap(newCollision.getObj2())){
-				handleCollision(newCollision,collisionListener);
-				advanceAll(time);
-			}else{
-				advanceAll(time);
-			}
-		}
-		/*
+//		
+//		if(newCollision == null){
+//			advanceAll(time);
+//		}else{
+//			if(newCollision.getObj1().overlap(newCollision.getObj2())){
+//				handleCollision(newCollision,collisionListener);
+//				advanceAll(time);
+//			}else{
+//				advanceAll(time);
+//			}
+//		}
 			/*
 			 * Misschien is dit een gemakkelijkere oplossing ge moet ma zien.
 			 * 
@@ -189,14 +187,9 @@ public class World {
 				advanceAll(time);
 			}else{
 				advanceAll(firstCollisionTime);
-				//TODO: collisionlistener stuff
 				time -= firstCollisionTime;
-				if ((!(CollisionFactory.collide(newCollision.getObj1(), newCollision.getObj2()) instanceof asteroids.collisions.NoCollision))){
-					handleCollision(newCollision,collisionListener);
-					evolve(time,collisionListener);
-				}
-				else
-					advanceAll(time);
+				handleCollision(newCollision,collisionListener);
+				evolve(time,collisionListener);
 			}
 		}
 	}
@@ -297,6 +290,8 @@ public class World {
 				if (!obj.equals(obje) && !obj.isTerminated() && !obje.isTerminated()) {
 					Collision newCollision = new Collision(obj, obje);
 					if(newCollision.getTime() != Double.POSITIVE_INFINITY && newCollision.getTime() != Double.NEGATIVE_INFINITY){
+						 // don't add collisions that should be ignored
+						 if (!(CollisionFactory.collide(newCollision.getObj1(), newCollision.getObj2()) instanceof asteroids.collisions.NoCollision)){
 							boolean sameCollision = false; // make sure that the same collision isn't added with reversed parameters.
 							for (Collision col: upcomingCollisions){
 								if (col.getObj1() == obje && col.getObj2() == obj){
@@ -306,6 +301,7 @@ public class World {
 							}
 							if (sameCollision == false)
 								upcomingCollisions.add(newCollision);
+						 }
 					}
 				}
 			}

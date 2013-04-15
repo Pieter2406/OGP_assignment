@@ -41,6 +41,9 @@ public final class CollisionFactory {
 					return new NoCollision();
 			}
 		}
+		//BUlletBulletCollision
+		if(o1 instanceof Bullet && o2 instanceof Bullet)
+			return new BulletBulletCollision((Bullet) o1, (Bullet) o2);
 		else{
 			return new NoCollision();
 		}

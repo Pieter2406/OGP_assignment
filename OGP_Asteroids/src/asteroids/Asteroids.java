@@ -60,7 +60,7 @@ public class Asteroids<World, Ship, Asteroid, Bullet> extends JFrame {
     facade.addShip(world, player);
     Asteroid asteroid1 = facade.createAsteroid(100, 100, 25, 50, 60);
     facade.addAsteroid(world, asteroid1);
-    Asteroid asteroid2 = facade.createAsteroid(600, 100, -30, -40, 80);
+    Asteroid asteroid2 = facade.createAsteroid(600, 100, 30, 40, 180);
     facade.addAsteroid(world, asteroid2);
     view = new WorldView<World, Ship, Asteroid, Bullet>(this, world, player, null);
     if (!isUndecorated())
@@ -79,14 +79,14 @@ public class Asteroids<World, Ship, Asteroid, Bullet> extends JFrame {
     facade.addShip(world, player1);
     Ship player2 = facade.createShip(width / 5, height / 2., 0, 0, 40, 0, 5E15);
     facade.addShip(world, player2);
-    Asteroid asteroid1 = facade.createAsteroid(width / 2, height / 2, 25, 50, 75);
-    facade.addAsteroid(world, asteroid1);
-    Asteroid asteroid2 = facade.createAsteroid(600, 100, -30, -40, 40);
-    facade.addAsteroid(world, asteroid2);
-    Asteroid asteroid3 = facade.createAsteroid(990, 550, -20, -3, 25);
-    facade.addAsteroid(world, asteroid3);
-    Asteroid asteroid4 = facade.createAsteroid(40, height - 100, 10, -8, 15);
-    facade.addAsteroid(world, asteroid4);
+//    Asteroid asteroid1 = facade.createAsteroid(width / 2, height / 2, 25, 50, 75);
+//    facade.addAsteroid(world, asteroid1);
+//    Asteroid asteroid2 = facade.createAsteroid(600, 100, -30, -40, 40);
+//    facade.addAsteroid(world, asteroid2);
+//    Asteroid asteroid3 = facade.createAsteroid(990, 550, -20, -3, 25);
+//    facade.addAsteroid(world, asteroid3);
+//    Asteroid asteroid4 = facade.createAsteroid(40, height - 100, 10, -8, 15);
+//    facade.addAsteroid(world, asteroid4);
     view = new WorldView<World, Ship, Asteroid, Bullet>(this, world, player1, player2);
     if (!isUndecorated())
       view.setPreferredSize(new Dimension(width, height));
