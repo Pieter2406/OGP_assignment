@@ -49,6 +49,7 @@ public final class CollisionFactory {
 		if(o1 instanceof Bullet && o2 instanceof Bullet){
 			return new BulletBulletCollision((Bullet) o1, (Bullet) o2);
 		}
+
 		//ShipPowerUpCollision
 		if((o1 instanceof Ship && o2 instanceof PowerUp) || (o2 instanceof Ship && o1 instanceof PowerUp)){
 			if(o1 instanceof Ship){
@@ -63,8 +64,11 @@ public final class CollisionFactory {
 		//AsteroidWallCollision
 		if(o1 instanceof Asteroid && o2 instanceof Wall)
 			return new AsteroidWallCollision((Asteroid) o1, (Wall) o2);
-			
+		//BulletWallCollision
+		if(o1 instanceof Bullet && o2 instanceof Wall)
+			return new BulletWallCollision((Bullet) o1, (Wall) o2);
+
 		return new NoCollision();
 	}
-		
+
 }

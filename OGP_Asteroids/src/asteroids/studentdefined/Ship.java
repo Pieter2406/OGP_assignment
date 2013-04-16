@@ -224,9 +224,25 @@ public class Ship extends SpaceObject implements IShip {
 	 * 			| (new bullet).getY() == this.getPosition().getY() + this.getRadius() * Math.sin(this.getAngle())
 	 */
 	public void fireBullet() {
-		double bulletX = this.getPosition().getX() + this.getRadius() * Math.cos(this.getAngle());
-		double bulletY = this.getPosition().getY() + this.getRadius() * Math.sin(this.getAngle());
-		this.getWorld().addBullet(new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier, bulletScaler));
+		if(!isTriShotBulletsOn()){
+			double bulletX = this.getPosition().getX() + this.getRadius() * Math.cos(this.getAngle());
+			double bulletY = this.getPosition().getY() + this.getRadius() * Math.sin(this.getAngle());
+			this.getWorld().addBullet(new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier, bulletScaler, this.getAngle()));
+		}else{
+			//bullet position
+			double bulletX = this.getPosition().getX() + this.getRadius() * Math.cos(this.getAngle());
+			double bulletY = this.getPosition().getY() + this.getRadius() * Math.sin(this.getAngle());
+			//left bullet relative to Ship
+			Bullet leftBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaler, this.getAngle() - (Math.PI / 18));
+			//middle bullet relative to Ship
+			Bullet middleBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaler, this.getAngle());
+			//right bullet relative to Ship
+			Bullet rightBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaler, this.getAngle() + (Math.PI / 18));
+			this.getWorld().addBullet(leftBullet);
+			this.getWorld().addBullet(middleBullet);
+			this.getWorld().addBullet(rightBullet);
+		}
+		
 	}
 	/**
 	 * TODO Write speedMultiplyer contracts
@@ -240,12 +256,21 @@ public class Ship extends SpaceObject implements IShip {
 	public double getBulletSpeedMultiplier(){
 		return bulletSpeedMultiplier;
 	}
+	
+	/**
+	 * 
+	 * @param speedMultiplier
+	 */
 	public void setBulletSpeedMultiplier(double speedMultiplier){this.bulletSpeedMultiplier = speedMultiplier;};
 	
 	/**
 	 * TODO Write bulletScaler contracts
 	 */
 	private double bulletScaler = 1;
+	/**
+	 * 
+	 * @return
+	 */
 	public double getBulletScaler(){
 		return bulletScaler;
 	}
@@ -256,5 +281,21 @@ public class Ship extends SpaceObject implements IShip {
 	public void setBulletScaler(double bulletScaler){
 		this.bulletScaler = bulletScaler;
 	}
+	
+	/**
+	 * TODO Write contract for triShotBullets
+	 */
+	private boolean triShotBulletsOn = false;
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean isTriShotBulletsOn(){return triShotBulletsOn;}
+	/**
+	 * 
+	 * @param bool
+	 */
+	public void toggleTriShotBullets(boolean bool){this.triShotBulletsOn = bool;}
 	
 }

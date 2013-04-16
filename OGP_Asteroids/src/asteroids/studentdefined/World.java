@@ -186,19 +186,18 @@ public class World {
 			 * Misschien is dit een gemakkelijkere oplossing ge moet ma zien.
 			 * 
 			 */
-		if(rndBoolean(6)){
-			SpaceObject powerUp = generateRandomPowerup();
-			if(powerUp != null){
-				addSpaceObject(generateRandomPowerup());
-			}
-			
-		}
 		if(newCollision == null){
 			advanceAll(time);
 		}else{
 			double firstCollisionTime = newCollision.getTime();
 			if(firstCollisionTime > time){
 				advanceAll(time);
+				if(rndBoolean(2)){
+					SpaceObject powerUp = generateRandomPowerup();
+					if(powerUp != null){
+						addSpaceObject(generateRandomPowerup());
+					}
+				}
 			}else{
 				advanceAll(firstCollisionTime);
 				time -= firstCollisionTime;
@@ -257,11 +256,12 @@ public class World {
 		Random rnd = new Random();
 		double rndX = rnd.nextInt((int) getWidth() - 40) + 20;
 		double rndY = rnd.nextInt((int) getHeight() - 40) + 20;
-		switch(rnd.nextInt(3)){
+		switch(rnd.nextInt(4)){
 			
 			case 0: return new SmallerShipPowerUp(rndX,rndY,RADIUS, 0,this);
 			case 1: return new IncreaseBulletSpeedPowerUp(rndX,rndY,RADIUS, 0,this);
 			case 2: return new BiggerBulletSizePowerUp(rndX,rndY,RADIUS,0,this);
+			case 3: return new TriShotBulletsPowerUp(rndX, rndY, RADIUS,0,this);
 			default: return null;
 		}
 	}

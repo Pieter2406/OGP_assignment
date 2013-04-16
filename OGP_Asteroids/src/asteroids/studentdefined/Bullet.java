@@ -44,11 +44,11 @@ public class Bullet extends SpaceObject{
 	 * 			if source is not a valid ship
 	 * 			| !isValidSource()
 	 */
-	public Bullet(double x, double y, Ship source, World world,double speedMultiplier, double bulletScaler)	throws IllegalArgumentException{
+	public Bullet(double x, double y, Ship source, World world,double speedMultiplier, double bulletScaler, double angle)	throws IllegalArgumentException{
 		super(x, y, bulletScaler * BULLET_RADIUS, Mass.computeCircularMass(MASS_DENSITY, bulletScaler * BULLET_RADIUS), world);
 		if (isValidSource(source)){
 			this.source = source; // source is final no setter.
-			this.setAngle(source.getAngle());
+			this.setAngle(angle);
 			this.setVelocity(Velocity.computeXVelocity(this.getAngle(), REGULAR_BULLETSPEED * speedMultiplier),Velocity.computeYVelocity(this.getAngle(), REGULAR_BULLETSPEED* speedMultiplier));
 		}
 		else
