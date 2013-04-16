@@ -26,7 +26,7 @@ public class Wall {
 	@Raw
 	public Wall(Coordinate p1, String orientation) throws IllegalArgumentException {
 		setP1(p1);
-		if (orientation == "horizontal" || orientation == "vertical")
+		if (orientation.equals("horizontal") || orientation.equals("vertical"))
 			this.orientation = orientation;
 		else
 			throw new IllegalArgumentException("Not a valid wall orientation.");

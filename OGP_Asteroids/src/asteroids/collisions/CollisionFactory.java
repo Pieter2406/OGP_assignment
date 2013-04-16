@@ -20,7 +20,7 @@ public final class CollisionFactory {
 				return new AsteroidBulletCollision((Asteroid) o2, (Bullet) o1);
 		}
 		//AsteroidShipCollision
-		if((o1 instanceof Asteroid && o2 instanceof Ship) || (o2 instanceof Ship && o1 instanceof Asteroid)){
+		if((o1 instanceof Asteroid && o2 instanceof Ship) || (o1 instanceof Ship && o2 instanceof Asteroid)){
 			if(o1 instanceof Asteroid)
 				return new AsteroidShipCollision((Asteroid) o1,(Ship) o2);
 			else

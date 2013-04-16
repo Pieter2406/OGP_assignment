@@ -205,19 +205,17 @@ public class World {
 	 */
 	private void handleCollision(Collision newCollision,CollisionListener collisionListener) {
 		if (!(CollisionFactory.collide(newCollision.getObj1(), newCollision.getObj2()) instanceof asteroids.collisions.NoCollision)){
+			double xPos,yPos;
 			if (newCollision.getObj2() instanceof SpaceObject){
-				double xPos = newCollision.getObj1().getCollisionPosition((SpaceObject) newCollision.getObj2()).getX();
-				double yPos = newCollision.getObj1().getCollisionPosition((SpaceObject) newCollision.getObj2()).getY();
-				newCollision.collide();
-				collisionListener.objectCollision(newCollision.getObj1(), newCollision.getObj2(), xPos,yPos);
+				xPos = newCollision.getObj1().getCollisionPosition((SpaceObject) newCollision.getObj2()).getX();
+				yPos = newCollision.getObj1().getCollisionPosition((SpaceObject) newCollision.getObj2()).getY();
 			}
 			else { // collision with wall.
-				double xPos = newCollision.getObj1().getCollisionPosition((Wall) newCollision.getObj2()).getX();
-				double yPos = newCollision.getObj1().getCollisionPosition((Wall) newCollision.getObj2()).getY();
-				newCollision.collide();
-				collisionListener.objectCollision(newCollision.getObj1(), newCollision.getObj2(), xPos,yPos);
+				xPos = newCollision.getObj1().getCollisionPosition((Wall) newCollision.getObj2()).getX();
+				yPos = newCollision.getObj1().getCollisionPosition((Wall) newCollision.getObj2()).getY();
 			}
-				
+			newCollision.collide();
+			collisionListener.objectCollision(newCollision.getObj1(), newCollision.getObj2(), xPos,yPos);	
 		}
 	}
 
@@ -329,6 +327,7 @@ public class World {
 			for (Wall wall: boundaryWalls) {
 				try {
 					Collision newWallCollision = new Collision(obj, wall);
+					if(newWallCollision.getTime() != Double.POSITIVE_INFINITY && newWallCollision.getTime() != Double.NEGATIVE_INFINITY){
 					//Only add a wall collision if it will take place within the game room(walls are straight infinite lines)
 					//Not neccesary, because another wall collision will always happen first and result in a velocity change!!
 //					if (newWallCollision.getObj1().getCollisionPosition(wall).getX() >= 0
@@ -336,6 +335,7 @@ public class World {
 //							&& newWallCollision.getObj1().getCollisionPosition(wall).getY() >= 0
 //							&& newWallCollision.getObj1().getCollisionPosition(wall).getY() <= this.getHeight())
 						upcomingCollisions.add(newWallCollision);
+					}
 				} catch (IllegalArgumentException e) { //Wall is a null reference, ignore this collision
 					break;
 				}

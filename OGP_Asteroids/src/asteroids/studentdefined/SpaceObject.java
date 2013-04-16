@@ -298,16 +298,18 @@ public abstract class SpaceObject {
 		
 		double time;
 		Coordinate startposition = this.getPosition();
-		if (wall.getOrientation() == "horizontal") {
-			time = ( wall.getP1().getY() - this.getRadius() - startposition.getY() ) / this.getVelocity().getVelocityY();
+		if (wall.getOrientation().equals("horizontal")) {
+			time = ( Math.abs(wall.getP1().getY() - this.getRadius()) - startposition.getY() ) / this.getVelocity().getVelocityY();
 		}
-		else if (wall.getOrientation() == "vertical") {
-			time = ( wall.getP1().getX() - this.getRadius() - startposition.getX() ) / this.getVelocity().getVelocityX();
+		else if (wall.getOrientation().equals("vertical")) {
+			time = ( Math.abs(wall.getP1().getX() - this.getRadius()) - startposition.getX() ) / this.getVelocity().getVelocityX();
 
 		} else {
 			//Wall is not horizontal or vertical, return infinite collision time for now
 			return Double.POSITIVE_INFINITY;
 		}
+		if (time < 0)
+			return Double.POSITIVE_INFINITY;
 		return time;
 	}
 
@@ -352,7 +354,7 @@ public abstract class SpaceObject {
 	
 	public Coordinate getCollisionPosition(Wall wall) throws IllegalArgumentException  {
 		try {
-			if (getTimeToCollision(wall) == Double.POSITIVE_INFINITY){
+			if (getTimeToCollision(wall) == Double.POSITIVE_INFINITY || getTimeToCollision(wall) == Double.NEGATIVE_INFINITY){
 				return null;
 			}
 			else {
@@ -360,13 +362,10 @@ public abstract class SpaceObject {
 				//TODO: Radius moet niet altijd worden opgeteld! (kan ook moeten worden afgetrokken afhankelijk van beweging)
 				double newX = getPosition().getX() + getVelocity().getVelocityX() * getTimeToCollision(wall);
 				double newY = getPosition().getY() + getVelocity().getVelocityY() * getTimeToCollision(wall);
-				if (wall.getOrientation() == "horizontal")
+				if (wall.getOrientation().equals("horizontal"))
 					newY += this.getRadius();
-				if (wall.getOrientation() == "vertical")
+				if (wall.getOrientation().equals("vertical"))
 					newX += this.getRadius();
-
-				System.out.println(newX);
-				System.out.println(newY);
 				return new Coordinate(newX,newY);
 			}
 		}
