@@ -64,6 +64,11 @@ public class World {
 	public World(double width, double height){
 		this.width = width;
 		this.height = height;
+		boundaryWalls.add(new Wall(new Coordinate(0,0), "vertical"));
+		boundaryWalls.add(new Wall(new Coordinate(0,0), "horizontal"));
+		boundaryWalls.add(new Wall(new Coordinate(width, height), "vertical"));
+		boundaryWalls.add(new Wall(new Coordinate(width, height), "horizontal"));
+		
 	}
 
 
@@ -209,11 +214,17 @@ public class World {
 	 */
 	private void handleCollision(Collision newCollision,CollisionListener collisionListener) {
 		if (!(CollisionFactory.collide(newCollision.getObj1(), newCollision.getObj2()) instanceof asteroids.collisions.NoCollision)){
+			double xPos,yPos;
+			if (newCollision.getObj2() instanceof SpaceObject){
+				xPos = newCollision.getObj1().getCollisionPosition((SpaceObject) newCollision.getObj2()).getX();
+				yPos = newCollision.getObj1().getCollisionPosition((SpaceObject) newCollision.getObj2()).getY();
+			}
+			else { // collision with wall.
+				xPos = newCollision.getObj1().getCollisionPosition((Wall) newCollision.getObj2()).getX();
+				yPos = newCollision.getObj1().getCollisionPosition((Wall) newCollision.getObj2()).getY();
+			}
 			newCollision.collide();
-			updateCollisions();
-			double xPos = newCollision.getObj1().getCollisionPosition(newCollision.getObj2()).getX();
-			double yPos = newCollision.getObj1().getCollisionPosition(newCollision.getObj2()).getY();
-			collisionListener.objectCollision(newCollision.getObj1(), newCollision.getObj2(), xPos,yPos);
+			collisionListener.objectCollision(newCollision.getObj1(), newCollision.getObj2(), xPos,yPos);	
 		}
 	}
 
@@ -299,21 +310,28 @@ public class World {
 	 *
 	 */
 	private void updateCollisions() {
-		ArrayList<SpaceObject> temp = new ArrayList<SpaceObject>();
-		ArrayList<Collision> tempcol = new ArrayList<Collision>();
+		ArrayList<SpaceObject> temp = new ArrayList<SpaceObject>(); //Temp storage for objects with a pending velocity change.
+		ArrayList<Collision> tempcol = new ArrayList<Collision>(); //Temp storage for collisions to be removed after iterating.
 
 		for (SpaceObject obj : visibleObjects) {
 			if (obj.hasPendingVelocityChange())
 				temp.add(obj);
 		}
 		for (Collision col: upcomingCollisions) {
+			
 			// Remove collision involving objects that are already terminated.
-			if (col.getObj1().isTerminated() || col.getObj2().isTerminated()){
-				tempcol.add(col);
+			if (col.getObj2() instanceof SpaceObject){
+				if (col.getObj1().isTerminated() || ((SpaceObject)col.getObj2()).isTerminated()){
+					tempcol.add(col);
+				}
 			}
+			else
+				if (col.getObj1().isTerminated()){
+					tempcol.add(col);
+				}
 			//Recalculate all collisions that involve an object with a pending velocity change and set the flag to false.
 			for (SpaceObject ob : temp) {
-				if (col.contains(ob)) {
+				if (col.contains(ob)) { // make sure collisions are not added twice.
 					tempcol.add(col);
 				}
 				ob.setPendingVelocityChange(false);
@@ -345,6 +363,23 @@ public class World {
 					}
 				}
 			}
+			//Add collisions with every wall, for every SpaceObject that has a pending velocity change.
+			for (Wall wall: boundaryWalls) {
+				try {
+					Collision newWallCollision = new Collision(obj, wall);
+					if(newWallCollision.getTime() != Double.POSITIVE_INFINITY && newWallCollision.getTime() != Double.NEGATIVE_INFINITY){
+					//Only add a wall collision if it will take place within the game room(walls are straight infinite lines)
+					//Not neccesary, because another wall collision will always happen first and result in a velocity change!!
+//					if (newWallCollision.getObj1().getCollisionPosition(wall).getX() >= 0
+//							&& newWallCollision.getObj1().getCollisionPosition(wall).getX() <= this.getWidth()
+//							&& newWallCollision.getObj1().getCollisionPosition(wall).getY() >= 0
+//							&& newWallCollision.getObj1().getCollisionPosition(wall).getY() <= this.getHeight())
+						upcomingCollisions.add(newWallCollision);
+					}
+				} catch (IllegalArgumentException e) { //Wall is a null reference, ignore this collision
+					break;
+				}
+			}
 		}
 	}
 
@@ -359,6 +394,11 @@ public class World {
 	 * Holds all non-terminated SpaceObjects that are associated with this world.
 	 */
 	private Collection<SpaceObject> visibleObjects = new ArrayList<SpaceObject>();
+	
+	/**
+	 * Holds the (4) walls that form the boundary of the game room.
+	 */
+	private Collection<Wall> boundaryWalls = new ArrayList<Wall>();
 
 
 	/**
@@ -390,7 +430,6 @@ public class World {
 	 * @param 	spaceObject
 	 */
 	public void removeSpaceObject(SpaceObject spaceObject) { 
-		updateCollisions(); // waarom hier?
 		this.visibleObjects.remove(spaceObject);
 		spaceObject.setWorld(null);
 	}
