@@ -90,31 +90,6 @@ public class Ship extends SpaceObject implements IShip {
 		this(x,y,0,0,radius,angle,mass, world);
 	}
 
-
-	/**
-	 * The method thrust serves to change the current velocity
-	 * 
-	 * @param amount
-	 * 			The amount of velocity added to the current velocity in Km/h.
-	 * @effect	If the given amount is higher than zero, this amount is added to the current velocity. If the new velocity 
-	 * 			exceeds the speed of light, it will take on the value of the speed of light.
-	 * 			| if (amount > 0 && amount < getVelocity().SPEED_OF_LIGHT)
-	 * 			|	setVelocity(getVelocity().getVelocityX() + (checkedAmount * Math.cos(getAngle()), getVelocity().getVelocityY() + (checkedAmount * Math.sin(getAngle()))
-	 * 			|if(new.getVelocity > getVelocity().SPEED_OF_LIGHT)
-	 * 			|	new.getVelocity == getVelocity().SPEED_OF_Light
-	 * 			
-	 * 
-	 */
-	public void thrust(double amount){
-		double checkedAmount = amount;
-		if(amount < 0){
-			checkedAmount = 0;
-		}
-		double newVelocityX = getVelocity().getVelocityX() + (checkedAmount * Math.cos(getAngle()));
-		double newVelocityY = getVelocity().getVelocityY() + (checkedAmount * Math.sin(getAngle()));
-		setVelocity	(newVelocityX,newVelocityY);
-	}
-	
 	/**
 	 * Enables the thruster that is attached to this ship.
 	 */
@@ -227,7 +202,7 @@ public class Ship extends SpaceObject implements IShip {
 			throw new IllegalValueException(duration);
 		}
 		if(thruster.isEnabled()){
-			thrust(thruster.getAcceleration()*duration);
+			getThruster().thrust(duration);
 		}
 		double newPositionX = getPosition().getX() + (duration * getVelocity().getVelocityX());
 		double newPositionY = getPosition().getY() + (duration * getVelocity().getVelocityY());

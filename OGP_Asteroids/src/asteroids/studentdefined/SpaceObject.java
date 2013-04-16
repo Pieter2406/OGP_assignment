@@ -167,6 +167,7 @@ public abstract class SpaceObject {
 	 */
 	protected Mass mass;
 	
+	//TODO: write contract (zie ship)
 	public void move(double duration){
 		if(duration < 0){
 			throw new IllegalValueException(duration);
@@ -279,6 +280,36 @@ public abstract class SpaceObject {
 			throw new IllegalArgumentException("Not an initialized SpaceObject");
 		}
 	}
+	
+	/**
+	 * 
+	 * @param wall The wall to calculate collision time with.
+	 * @return
+	 * 	 * 		The time in seconds that it would take for this SpaceObject and the given Wall
+	 * 			(if ever) to collide.
+	 * 			If the SpaceObject never collides with this wall, this method will return infinity.
+	 * 			| colThis = this.move(collisiontime);
+	 * 			| if (newThis.overlaps(wall))
+	 * 			|	result == collisiontime
+	 * 			| else 
+	 *			|	result == Double.POSITIVE_INFINITY	
+	 */
+	public double getTimeToCollision(Wall wall){
+		
+		double time;
+		Coordinate startposition = this.getPosition();
+		if (wall.getOrientation() == "horizontal") {
+			time = ( wall.getP1().getY() - this.getRadius() - startposition.getY() ) / this.getVelocity().getVelocityY();
+		}
+		else if (wall.getOrientation() == "vertical") {
+			time = ( wall.getP1().getX() - this.getRadius() - startposition.getX() ) / this.getVelocity().getVelocityX();
+
+		} else {
+			//Wall is not horizontal or vertical, return infinite collision time for now
+			return Double.POSITIVE_INFINITY;
+		}
+		return time;
+	}
 
 	/**
 	 * Calculates the position of collision between this SpaceObject and a given SpaceObject, if they will ever collide
@@ -318,7 +349,32 @@ public abstract class SpaceObject {
 			throw new IllegalArgumentException ("Not an initialized given SpaceObject");
 		}
 	}
-	//}
+	
+	public Coordinate getCollisionPosition(Wall wall) throws IllegalArgumentException  {
+		try {
+			if (getTimeToCollision(wall) == Double.POSITIVE_INFINITY){
+				return null;
+			}
+			else {
+				// calculate this SpaceObject's position at the time of collision
+				//TODO: Radius moet niet altijd worden opgeteld! (kan ook moeten worden afgetrokken afhankelijk van beweging)
+				double newX = getPosition().getX() + getVelocity().getVelocityX() * getTimeToCollision(wall);
+				double newY = getPosition().getY() + getVelocity().getVelocityY() * getTimeToCollision(wall);
+				if (wall.getOrientation() == "horizontal")
+					newY += this.getRadius();
+				if (wall.getOrientation() == "vertical")
+					newX += this.getRadius();
+
+				System.out.println(newX);
+				System.out.println(newY);
+				return new Coordinate(newX,newY);
+			}
+		}
+		catch (NullPointerException excError){
+			assert (wall == null);
+			throw new IllegalArgumentException ("Not an existing wall.");
+		}
+	}
 
 	/**
 	 * Return the current radius.
@@ -378,7 +434,7 @@ public abstract class SpaceObject {
 	}
 	
 	/**
-	 * Boolean containing true if its velocity has changed.
+	 * Boolean containing true if its velocity has changed and is not updated in it's collisions.
 	 */
 	protected boolean pendingVelocityChange;
 	

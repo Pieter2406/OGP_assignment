@@ -5,13 +5,12 @@ import be.kuleuven.cs.som.annotate.Raw;
 
 /**
  * A class of thrusters that provide acceleration for space ships and possibly for other entities.
+ * @invar	Each thruster is attached to exactly one space object.
+ * 			| hasProperSource()
+ * @version 1.0
  * @author Wouter Bruyninckx
  * @author Kristof Bruyninckx
  * @author Pieter Verlinden
- * @version 1.1
- * 
- * @invar	Each thruster is attached to exactly one space object.
- * 			| hasProperSource()
  */
 public class Thruster {
 	
@@ -66,6 +65,31 @@ public class Thruster {
 	 * 			| source instanceOf Ship && getSource().getThruster() == this
 	 */
 	private Ship source;
+	
+
+	/**
+	 * The method thrust serves to change the current velocity
+	 * 
+	 * @param amount
+	 * 			The amount of velocity added to the current velocity in Km/h.
+	 * @effect	If the given amount is higher than zero, this amount is added to the current velocity. If the new velocity 
+	 * 			exceeds the speed of light, it will take on the value of the speed of light.
+	 * 			| if (amount > 0 && amount < getVelocity().SPEED_OF_LIGHT)
+	 * 			|	setVelocity(getVelocity().getVelocityX() + (checkedAmount * Math.cos(getAngle()), getVelocity().getVelocityY() + (checkedAmount * Math.sin(getAngle()))
+	 * 			|if(new.getVelocity > getVelocity().SPEED_OF_LIGHT)
+	 * 			|	new.getVelocity == getVelocity().SPEED_OF_Light
+	 * 			
+	 * 
+	 */
+	public void thrust(double amount){
+		double checkedAmount = amount * getAcceleration();
+		if(amount > 0){
+			double newVelocityX = getSource().getVelocity().getVelocityX() + (checkedAmount * Math.cos(getSource().getAngle()));
+			double newVelocityY = getSource().getVelocity().getVelocityY() + (checkedAmount * Math.sin(getSource().getAngle()));
+			getSource().setVelocity	(newVelocityX,newVelocityY);
+		}
+	}
+	
 	
 	public void enable(){
 		isEnabled = true;

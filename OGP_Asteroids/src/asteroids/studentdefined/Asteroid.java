@@ -21,7 +21,7 @@ package asteroids.studentdefined;
 public class Asteroid extends SpaceObject {
 	
 	/**
-	 * Initialise this new asteroid with a given position , a given velocity and a given radius.
+	 * Initialize this new asteroid with a given position , a given velocity and a given radius.
 	 * @param 	x
 	 * 			The position on the x axis for this new asteroid.
 	 * @param 	y

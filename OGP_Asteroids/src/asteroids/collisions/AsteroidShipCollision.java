@@ -18,5 +18,4 @@ public class AsteroidShipCollision implements CollisionType {
 	public void collide() {
 		o2.terminate(); 
 	}
-
 }

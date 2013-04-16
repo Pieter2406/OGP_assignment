@@ -7,12 +7,13 @@ import asteroids.collisions.CollisionType;
  * A class of Collision extends to SpaceObject and involves a position and a velocity.
  * 
  * TODO: Write @invar (if necessary) in Collision class
- * 
- * @version 1.1
- * 
  * @author Kristof Bruynincks
  * @author Wouter Bruyninckx
  * @author Pieter Verlinden
+ * @version 1.0
+ * @invar If a collision is between a SpaceObject and a Wall, the Wall is always the second object, and the SpaceObject is the first 
+ * object.
+ * 
  */
 
 public class Collision implements Comparable<Collision> {
@@ -34,6 +35,12 @@ public class Collision implements Comparable<Collision> {
 		this.o2 = o2;
 		this.time = o1.getTimeToCollision(o2);
 	}
+	
+	public Collision(SpaceObject o1, Wall wall) {
+		this.o1 = o1;
+		this.o2 = wall;
+		this.time = o1.getTimeToCollision(wall);
+	}
 
 	public double getTime() {
 		calculateTime();
@@ -42,10 +49,14 @@ public class Collision implements Comparable<Collision> {
 	
 	
 	private void calculateTime() {
-		time = o1.getTimeToCollision(o2);
+		if (o2 instanceof Wall)
+			time = ((SpaceObject)o1).getTimeToCollision((Wall)o2);
+		else
+			time = ((SpaceObject)o1).getTimeToCollision((SpaceObject)o2);
 	}
 
-	private SpaceObject o1, o2;
+	private SpaceObject o1;
+	private Object o2;
 	private double time;
 	@Override
 	public int compareTo(Collision other) {
@@ -62,11 +73,11 @@ public class Collision implements Comparable<Collision> {
 		return o1;
 	}
 
-	public SpaceObject getObj2() {
+	public Object getObj2() {
 		return o2;
 	}
 	
-	public boolean contains(SpaceObject obj) {
+	public boolean contains(Object obj) {
 		if (getObj1().equals(obj) || getObj2().equals(obj))
 			return true;
 		else
