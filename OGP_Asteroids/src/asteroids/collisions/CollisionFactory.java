@@ -3,8 +3,12 @@ package asteroids.collisions;
 import asteroids.studentdefined.*;
 
 /**
- * @author Pieter
- *
+ * A CollisionFactory handles the collisions between SpaceObjects.
+ * @version 1.1
+ * 
+ * @author Kristof Bruynincks
+ * @author Wouter Bruyninckx
+ * @author Pieter Verlinden
  */
 public final class CollisionFactory {
 
@@ -20,7 +24,7 @@ public final class CollisionFactory {
 				return new AsteroidBulletCollision((Asteroid) o2, (Bullet) o1);
 		}
 		//AsteroidShipCollision
-		if((o1 instanceof Asteroid && o2 instanceof Ship) || (o2 instanceof Ship && o1 instanceof Asteroid)){
+		if((o1 instanceof Asteroid && o2 instanceof Ship) || (o2 instanceof Asteroid && o1 instanceof Ship)){
 			if(o1 instanceof Asteroid)
 				return new AsteroidShipCollision((Asteroid) o1,(Ship) o2);
 			else
@@ -42,10 +46,20 @@ public final class CollisionFactory {
 			}
 		}
 		//BUlletBulletCollision
-		if(o1 instanceof Bullet && o2 instanceof Bullet)
+		if(o1 instanceof Bullet && o2 instanceof Bullet){
 			return new BulletBulletCollision((Bullet) o1, (Bullet) o2);
+		}
+		//ShipPowerUpCollision
+		if((o1 instanceof Ship && o2 instanceof PowerUp) || (o2 instanceof Ship && o1 instanceof PowerUp)){
+			if(o1 instanceof Ship){
+				return new ShipPowerUpCollision((Ship) o1, (PowerUp) o2);
+			}else{
+				return new ShipPowerUpCollision((Ship) o2, (PowerUp) o1);
+			}
+		}			
 		else{
 			return new NoCollision();
 		}
+		
 	}
 }

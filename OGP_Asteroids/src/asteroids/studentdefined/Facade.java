@@ -38,6 +38,10 @@ public class Facade implements IFacade {
 	public Set getBullets(Object world) {
 		return (Set) ((World)world).getBullets();
 	}
+	
+	public Set getPowerUps(Object world){
+		return (Set) ((World)world).getPowerUps();
+	}
 
 	@Override
 	public void addShip(Object world, Object ship) {
@@ -249,6 +253,45 @@ public class Facade implements IFacade {
 	@Override
 	public Object getBulletSource(Object bullet) {
 		return ((Bullet)bullet).getSource();
+	}
+
+	@Override
+	public double getPowerUpX(Object powerup) {
+		return ((PowerUp)powerup).getPosition().getX();
+	}
+
+	@Override
+	public double getPowerUpY(Object powerup) {
+		return ((PowerUp)powerup).getPosition().getY();
+	}
+
+	@Override
+	public double getPowerUpXVelocity(Object powerup) {
+		return ((PowerUp)powerup).getVelocity().getVelocityX();
+	}
+
+	@Override
+	public double getPowerUpYVelocity(Object powerup) {
+		return ((PowerUp)powerup).getVelocity().getVelocityY();
+	}
+	
+	@Override
+	public double getPowerUpRadius(Object powerup) {
+		return ((PowerUp)powerup).getRadius();
+	}
+
+	@Override
+	public double getPowerUpMass(Object powerup) {
+		return ((PowerUp)powerup).getMass().getMass();
+	}
+
+	@Override
+	public Object getPowerUpWorld(Object powerup) {
+		return ((PowerUp)powerup).getWorld();
+	}
+	@Override
+	public int getPowerUpType(Object powerup){
+		return ((PowerUp)powerup).getType();
 	}
 
 }

@@ -222,6 +222,7 @@ public class Ship extends SpaceObject implements IShip {
 	 * 			The given duration is not a valid duration.
 	 * 			|(duration < 0)
 	 */
+	@Override
 	public void move(double duration){
 		if(duration < 0){
 			throw new IllegalValueException(duration);
@@ -250,6 +251,35 @@ public class Ship extends SpaceObject implements IShip {
 	public void fireBullet() {
 		double bulletX = this.getPosition().getX() + this.getRadius() * Math.cos(this.getAngle());
 		double bulletY = this.getPosition().getY() + this.getRadius() * Math.sin(this.getAngle());
-		this.getWorld().addBullet(new Bullet(bulletX,bulletY,this,this.getWorld()));
+		this.getWorld().addBullet(new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier, bulletScaler));
 	}
+	/**
+	 * TODO Write speedMultiplyer contracts
+	 */
+	private double bulletSpeedMultiplier = 1;
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public double getBulletSpeedMultiplier(){
+		return bulletSpeedMultiplier;
+	}
+	public void setBulletSpeedMultiplier(double speedMultiplier){this.bulletSpeedMultiplier = speedMultiplier;};
+	
+	/**
+	 * TODO Write bulletScaler contracts
+	 */
+	private double bulletScaler = 1;
+	public double getBulletScaler(){
+		return bulletScaler;
+	}
+	/**
+	 * 
+	 * @param bulletScaler
+	 */
+	public void setBulletScaler(double bulletScaler){
+		this.bulletScaler = bulletScaler;
+	}
+	
 }

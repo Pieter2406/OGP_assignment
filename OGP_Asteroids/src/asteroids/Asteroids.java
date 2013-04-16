@@ -8,21 +8,21 @@ import java.awt.Rectangle;
 import javax.swing.JFrame;
 
 @SuppressWarnings("serial")
-public class Asteroids<World, Ship, Asteroid, Bullet> extends JFrame {
+public class Asteroids<World, Ship, Asteroid, Bullet, PowerUp> extends JFrame {
 
-  private AsteroidsMenu<World, Ship, Asteroid, Bullet> menu;
-  private WorldView<World, Ship, Asteroid, Bullet> view;
-  private IFacade<World, Ship, Asteroid, Bullet> facade;
+  private AsteroidsMenu<World, Ship, Asteroid, Bullet, PowerUp> menu;
+  private WorldView<World, Ship, Asteroid, Bullet, PowerUp> view;
+  private IFacade<World, Ship, Asteroid, Bullet, PowerUp> facade;
   private int width;
   private int height;
   private Sound sound;
 
-  public Asteroids(IFacade<World, Ship, Asteroid, Bullet> facade, int width, int height, boolean undecorated, Sound sound) {
+  public Asteroids(IFacade<World, Ship, Asteroid, Bullet, PowerUp> facade, int width, int height, boolean undecorated, Sound sound) {
     super("Asteroids");
     this.sound = sound;
     this.width = width;
     this.height = height;
-    menu = new AsteroidsMenu<World, Ship, Asteroid, Bullet>(this);
+    menu = new AsteroidsMenu<World, Ship, Asteroid, Bullet, PowerUp>(this);
     this.facade = facade;
     setUndecorated(undecorated);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -43,7 +43,7 @@ public class Asteroids<World, Ship, Asteroid, Bullet> extends JFrame {
     return sound;
   }
   
-  public IFacade<World, Ship, Asteroid, Bullet> getFacade() {
+  public IFacade<World, Ship, Asteroid, Bullet, PowerUp> getFacade() {
     return facade;
   }
 
@@ -62,7 +62,7 @@ public class Asteroids<World, Ship, Asteroid, Bullet> extends JFrame {
     facade.addAsteroid(world, asteroid1);
     Asteroid asteroid2 = facade.createAsteroid(600, 100, 30, 40, 180);
     facade.addAsteroid(world, asteroid2);
-    view = new WorldView<World, Ship, Asteroid, Bullet>(this, world, player, null);
+    view = new WorldView<World, Ship, Asteroid, Bullet,PowerUp>(this, world, player, null);
     if (!isUndecorated())
       view.setPreferredSize(new Dimension(width, height));
     getContentPane().remove(menu);
@@ -87,7 +87,7 @@ public class Asteroids<World, Ship, Asteroid, Bullet> extends JFrame {
 //    facade.addAsteroid(world, asteroid3);
 //    Asteroid asteroid4 = facade.createAsteroid(40, height - 100, 10, -8, 15);
 //    facade.addAsteroid(world, asteroid4);
-    view = new WorldView<World, Ship, Asteroid, Bullet>(this, world, player1, player2);
+    view = new WorldView<World, Ship, Asteroid, Bullet, PowerUp>(this, world, player1, player2);
     if (!isUndecorated())
       view.setPreferredSize(new Dimension(width, height));
     getContentPane().remove(menu);
@@ -133,18 +133,18 @@ public class Asteroids<World, Ship, Asteroid, Bullet> extends JFrame {
       return;
     }
     // <begin>
-    IFacade<asteroids.studentdefined.World, asteroids.studentdefined.Ship, asteroids.studentdefined.Asteroid, asteroids.studentdefined.Bullet> facade = new asteroids.studentdefined.Facade();
+    IFacade<asteroids.studentdefined.World, asteroids.studentdefined.Ship, asteroids.studentdefined.Asteroid, asteroids.studentdefined.Bullet,asteroids.studentdefined.PowerUp> facade = new asteroids.studentdefined.Facade();
     // <end>
     GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
     GraphicsDevice screen = env.getDefaultScreenDevice();
-    Asteroids<asteroids.studentdefined.World, asteroids.studentdefined.Ship, asteroids.studentdefined.Asteroid, asteroids.studentdefined.Bullet> asteroids;
+    Asteroids<asteroids.studentdefined.World, asteroids.studentdefined.Ship, asteroids.studentdefined.Asteroid, asteroids.studentdefined.Bullet, asteroids.studentdefined.PowerUp> asteroids;
     Sound sound = enableSound ? new FileSoundManager("asteroids/resources/sounds.txt") : new NullSound();
     if (tryFullscreen && screen.isFullScreenSupported()) {
       Rectangle dimensions = screen.getDefaultConfiguration().getBounds();
-      asteroids = new Asteroids<asteroids.studentdefined.World, asteroids.studentdefined.Ship, asteroids.studentdefined.Asteroid, asteroids.studentdefined.Bullet>(facade, dimensions.width, dimensions.height, true, sound);
+      asteroids = new Asteroids<asteroids.studentdefined.World, asteroids.studentdefined.Ship, asteroids.studentdefined.Asteroid, asteroids.studentdefined.Bullet,asteroids.studentdefined.PowerUp>(facade, dimensions.width, dimensions.height, true, sound);
       screen.setFullScreenWindow(asteroids);
     } else {
-      asteroids = new Asteroids<asteroids.studentdefined.World, asteroids.studentdefined.Ship, asteroids.studentdefined.Asteroid, asteroids.studentdefined.Bullet>(facade, 1024, 768, false, sound);
+      asteroids = new Asteroids<asteroids.studentdefined.World, asteroids.studentdefined.Ship, asteroids.studentdefined.Asteroid, asteroids.studentdefined.Bullet,asteroids.studentdefined.PowerUp>(facade, 1024, 768, false, sound);
     }
     asteroids.start();
   }

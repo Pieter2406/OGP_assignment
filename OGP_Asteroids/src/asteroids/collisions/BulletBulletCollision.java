@@ -10,9 +10,7 @@ public class BulletBulletCollision implements CollisionType {
 		this.o1 = o1;
 		this.o2 = o2;
 	}
-	/* (non-Javadoc)
-	 * @see asteroids.collisions.CollisionType#collide()
-	 */
+	
 	@Override
 	public void collide() {
 		o1.terminate();
