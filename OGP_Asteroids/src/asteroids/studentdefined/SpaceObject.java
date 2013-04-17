@@ -1,5 +1,6 @@
 package asteroids.studentdefined;
 
+import asteroids.Util;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 
@@ -267,9 +268,9 @@ public abstract class SpaceObject {
 			double sigma = this.getRadius() + other.getRadius();
 			double discriminant = Math.pow(dVdR, 2) - (dVdV)*(dRdR - Math.pow(sigma, 2));
 
-			if(dVdR >= 0){
+			if(Util.fuzzyLessThanOrEqualTo(0, dVdR)){
 				return Double.POSITIVE_INFINITY;
-			}else if(discriminant <= 0){
+			}else if(Util.fuzzyLessThanOrEqualTo(discriminant , 0)){
 				return Double.POSITIVE_INFINITY;
 			}else{
 				double dT = -(dVdR + Math.sqrt(discriminant))/dVdV;
@@ -299,11 +300,10 @@ public abstract class SpaceObject {
 		double time;
 		Coordinate startposition = this.getPosition();
 		if (wall.getOrientation().equals("horizontal")) {
-			time = ( Math.abs(wall.getP1().getY() - this.getRadius()) - startposition.getY() ) / this.getVelocity().getVelocityY();
+			time = (Math.abs(wall.getP1().getY() - startposition.getY()) - this.getRadius())  / this.getVelocity().getVelocityY();
 		}
 		else if (wall.getOrientation().equals("vertical")) {
-			time = ( Math.abs(wall.getP1().getX() - this.getRadius()) - startposition.getX() ) / this.getVelocity().getVelocityX();
-
+			time = (Math.abs(wall.getP1().getX() - startposition.getX()) - this.getRadius()) / this.getVelocity().getVelocityX();
 		} else {
 			//Wall is not horizontal or vertical, return infinite collision time for now
 			return Double.POSITIVE_INFINITY;

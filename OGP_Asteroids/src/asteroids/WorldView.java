@@ -367,6 +367,10 @@ public class WorldView<World, Ship, Asteroid, Bullet, PowerUp> extends JPanel im
         T.translate(-radius, -radius);
         T.preConcatenate(AffineTransform.getTranslateInstance(x - radius, y - radius));
         g2d.drawImage(this.getImage(),T,null);
+        if(facade.getisShieldActive(getObject())){
+        	 g2d.drawOval((int) (x - radius), (int) (y - radius), (int) (2 * radius), (int) (2 * radius));
+        }
+        
       }
       g2d.drawLine((int) x, (int) y, (int) (x + Math.cos(angle) * radius), (int) (y + sin(angle) * radius));
     }

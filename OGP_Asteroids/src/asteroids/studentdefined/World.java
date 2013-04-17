@@ -68,7 +68,7 @@ public class World {
 		boundaryWalls.add(new Wall(new Coordinate(0,0), "horizontal"));
 		boundaryWalls.add(new Wall(new Coordinate(width, height), "vertical"));
 		boundaryWalls.add(new Wall(new Coordinate(width, height), "horizontal"));
-		
+
 	}
 
 
@@ -171,21 +171,21 @@ public class World {
 	 */
 	public void evolve(double time, CollisionListener collisionListener) {
 		Collision newCollision = getFirstCollision();
-//		
-//		if(newCollision == null){
-//			advanceAll(time);
-//		}else{
-//			if(newCollision.getObj1().overlap(newCollision.getObj2())){
-//				handleCollision(newCollision,collisionListener);
-//				advanceAll(time);
-//			}else{
-//				advanceAll(time);
-//			}
-//		}
-			/*
-			 * Misschien is dit een gemakkelijkere oplossing ge moet ma zien.
-			 * 
-			 */
+		//		
+		//		if(newCollision == null){
+		//			advanceAll(time);
+		//		}else{
+		//			if(newCollision.getObj1().overlap(newCollision.getObj2())){
+		//				handleCollision(newCollision,collisionListener);
+		//				advanceAll(time);
+		//			}else{
+		//				advanceAll(time);
+		//			}
+		//		}
+		/*
+		 * Misschien is dit een gemakkelijkere oplossing ge moet ma zien.
+		 * 
+		 */
 		if(newCollision == null){
 			advanceAll(time);
 		}else{
@@ -212,20 +212,29 @@ public class World {
 	 * @param newCollision
 	 */
 	private void handleCollision(Collision newCollision,CollisionListener collisionListener) {
-		if (!(CollisionFactory.collide(newCollision.getObj1(), newCollision.getObj2()) instanceof asteroids.collisions.NoCollision)){
-			double xPos,yPos;
-			if (newCollision.getObj2() instanceof SpaceObject){
-				xPos = newCollision.getObj1().getCollisionPosition((SpaceObject) newCollision.getObj2()).getX();
-				yPos = newCollision.getObj1().getCollisionPosition((SpaceObject) newCollision.getObj2()).getY();
+		try{
+			if (!(CollisionFactory.collide(newCollision.getObj1(), newCollision.getObj2()) instanceof asteroids.collisions.NoCollision)){
+				double xPos,yPos;
+				if (newCollision.getObj2() instanceof SpaceObject){
+					xPos = newCollision.getObj1().getCollisionPosition((SpaceObject) newCollision.getObj2()).getX();
+					yPos = newCollision.getObj1().getCollisionPosition((SpaceObject) newCollision.getObj2()).getY();
+				}
+				else { // collision with wall.
+
+					xPos = newCollision.getObj1().getCollisionPosition((Wall) newCollision.getObj2()).getX();
+					yPos = newCollision.getObj1().getCollisionPosition((Wall) newCollision.getObj2()).getY();
+				}
+
+				newCollision.collide();
+				collisionListener.objectCollision(newCollision.getObj1(), newCollision.getObj2(), xPos,yPos);
 			}
-			else { // collision with wall.
-				xPos = newCollision.getObj1().getCollisionPosition((Wall) newCollision.getObj2()).getX();
-				yPos = newCollision.getObj1().getCollisionPosition((Wall) newCollision.getObj2()).getY();
-			}
-			newCollision.collide();
-			collisionListener.objectCollision(newCollision.getObj1(), newCollision.getObj2(), xPos,yPos);	
+		}catch (NullPointerException ex){
+			System.out.println(newCollision.getObj1().getCollisionPosition((Wall) newCollision.getObj2()).getX());
+		
 		}
+
 	}
+
 
 	/**
 	 * Update the position of each spaceobject in this world.
@@ -246,7 +255,7 @@ public class World {
 		for (SpaceObject obj : visibleObjects)
 			obj.move(time);
 	}
-	
+
 	/**
 	 * TODO: Write generateRandomePowerup contract
 	 * @return
@@ -257,16 +266,16 @@ public class World {
 		double rndX = rnd.nextInt((int) (getWidth() - 2 * RADIUS)) + RADIUS;
 		double rndY = rnd.nextInt((int) (getHeight() - 2 * RADIUS)) + RADIUS;
 		switch(rnd.nextInt(6)){			
-			case 0: return new SmallerShipPowerUp(rndX,rndY,RADIUS, 0,this);
-			case 1: return new IncreaseBulletSpeedPowerUp(rndX,rndY,RADIUS, 0,this);
-			case 2: return new BiggerBulletSizePowerUp(rndX,rndY,RADIUS,0,this);
-			case 3: return new TriShotBulletsPowerUp(rndX, rndY, RADIUS,0,this);
-			case 4: return new ShipShieldPowerUp(rndX,rndY,RADIUS,0,this);
-			case 5: return new RadiusAsteroidPushPowerUp(rndX,rndY,RADIUS,0,this);
-			default: return null;
+		case 0: return new SmallerShipPowerUp(rndX,rndY,RADIUS, 0,this);
+		case 1: return new IncreaseBulletSpeedPowerUp(rndX,rndY,RADIUS, 0,this);
+		case 2: return new BiggerBulletSizePowerUp(rndX,rndY,RADIUS,0,this);
+		case 3: return new TriShotBulletsPowerUp(rndX, rndY, RADIUS,0,this);
+		case 4: return new ShipShieldPowerUp(rndX,rndY,RADIUS,0,this);
+		case 5: return new RadiusAsteroidPushPowerUp(rndX,rndY,RADIUS,0,this);
+		default: return null;
 		}
 	}
-	
+
 	/**
 	 * TODO: Write rndBoolean contract.
 	 */
@@ -279,7 +288,7 @@ public class World {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * Get a Collision object with the objects that will collide first.
 	 * 
@@ -319,7 +328,7 @@ public class World {
 				temp.add(obj);
 		}
 		for (Collision col: upcomingCollisions) {
-			
+
 			// Remove collision involving objects that are already terminated.
 			if (col.getObj2() instanceof SpaceObject){
 				if (col.getObj1().isTerminated() || ((SpaceObject)col.getObj2()).isTerminated()){
@@ -349,8 +358,8 @@ public class World {
 				if (!obj.equals(obje) && !obj.isTerminated() && !obje.isTerminated()) {
 					Collision newCollision = new Collision(obj, obje);
 					if(newCollision.getTime() != Double.POSITIVE_INFINITY && newCollision.getTime() != Double.NEGATIVE_INFINITY){
-						 // don't add collisions that should be ignored
-						 if (!(CollisionFactory.collide(newCollision.getObj1(), newCollision.getObj2()) instanceof asteroids.collisions.NoCollision)){
+						// don't add collisions that should be ignored
+						if (!(CollisionFactory.collide(newCollision.getObj1(), newCollision.getObj2()) instanceof asteroids.collisions.NoCollision)){
 							boolean sameCollision = false; // make sure that the same collision isn't added with reversed parameters.
 							for (Collision col: upcomingCollisions){
 								if (col.getObj1() == obje && col.getObj2() == obj){
@@ -360,7 +369,7 @@ public class World {
 							}
 							if (sameCollision == false)
 								upcomingCollisions.add(newCollision);
-						 }
+						}
 					}
 				}
 			}
@@ -369,12 +378,12 @@ public class World {
 				try {
 					Collision newWallCollision = new Collision(obj, wall);
 					if(newWallCollision.getTime() != Double.POSITIVE_INFINITY && newWallCollision.getTime() != Double.NEGATIVE_INFINITY){
-					//Only add a wall collision if it will take place within the game room(walls are straight infinite lines)
-					//Not neccesary, because another wall collision will always happen first and result in a velocity change!!
-//					if (newWallCollision.getObj1().getCollisionPosition(wall).getX() >= 0
-//							&& newWallCollision.getObj1().getCollisionPosition(wall).getX() <= this.getWidth()
-//							&& newWallCollision.getObj1().getCollisionPosition(wall).getY() >= 0
-//							&& newWallCollision.getObj1().getCollisionPosition(wall).getY() <= this.getHeight())
+						//Only add a wall collision if it will take place within the game room(walls are straight infinite lines)
+						//Not neccesary, because another wall collision will always happen first and result in a velocity change!!
+						//					if (newWallCollision.getObj1().getCollisionPosition(wall).getX() >= 0
+						//							&& newWallCollision.getObj1().getCollisionPosition(wall).getX() <= this.getWidth()
+						//							&& newWallCollision.getObj1().getCollisionPosition(wall).getY() >= 0
+						//							&& newWallCollision.getObj1().getCollisionPosition(wall).getY() <= this.getHeight())
 						upcomingCollisions.add(newWallCollision);
 					}
 				} catch (IllegalArgumentException e) { //Wall is a null reference, ignore this collision
@@ -395,7 +404,7 @@ public class World {
 	 * Holds all non-terminated SpaceObjects that are associated with this world.
 	 */
 	private Collection<SpaceObject> visibleObjects = new ArrayList<SpaceObject>();
-	
+
 	/**
 	 * Holds the (4) walls that form the boundary of the game room.
 	 */
@@ -471,7 +480,7 @@ public class World {
 		}
 		return setOfPowerUps;
 	}
-	
+
 	/**
 	 * Returns all asteroids associated with this world.
 	 * @return A collection of all asteroids that are currently associated with this world.
@@ -514,7 +523,7 @@ public class World {
 	}
 
 	private boolean isTerminated;
-	
+
 	private static final double POWERUP_CHANCE = 2;
 
 }

@@ -169,6 +169,11 @@ public interface IFacade<World, Ship, Asteroid, Bullet, PowerUp> {
   public World getShipWorld(Ship ship);
 
   /**
+   * Return true if the <code>ships</code> shield is <code>active</code>.
+   */
+  public boolean getisShieldActive(Ship ship);
+  
+  /**
    * Return whether <code>ship</code>'s thruster is active.
    */
   public boolean isShipThrusterActive(Ship ship);
