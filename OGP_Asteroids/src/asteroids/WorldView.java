@@ -275,7 +275,7 @@ public class WorldView<World, Ship, Asteroid, Bullet, PowerUp> extends JPanel im
 
   @Override
   public void objectCollision(Object entity1, Object entity2, double x, double y) {
-    if ((facade.isBullets(entity1) && !facade.isBullets(entity2)) || (facade.isBullets(entity2) && !facade.isBullets(entity1))) {
+    if ((facade.isBullets(entity1) && !facade.isBullets(entity2)) || (facade.isBullets(entity2) && !facade.isBullets(entity1) || (facade.isAsteroid(entity1) && facade.isShip(entity2)) || facade.isAsteroid(entity2) && facade.isShip(entity1))) {
       game.getSound().play("explosion");
       explosions.add(new Explosion(x, facade.getWorldHeight(world) - y));
     }

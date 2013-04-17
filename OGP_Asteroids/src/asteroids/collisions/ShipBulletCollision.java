@@ -13,7 +13,11 @@ public class ShipBulletCollision implements CollisionType {
 
 	@Override
 	public void collide() {
-		o1.terminate();
+		if(o1.getShield() > 0){
+			o1.decShield();
+		}else{
+			o1.terminate();
+		}
 		o2.terminate();
 	}
 

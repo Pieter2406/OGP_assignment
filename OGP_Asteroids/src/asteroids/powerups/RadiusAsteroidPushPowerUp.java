@@ -10,8 +10,8 @@ import asteroids.studentdefined.World;
  * @author Pieter
  *
  */
-public class BiggerBulletSizePowerUp extends PowerUp {
-private static final int TYPE = 3;
+public class RadiusAsteroidPushPowerUp extends PowerUp {
+private final static int TYPE = 5;
 	/**
 	 * @param x
 	 * @param y
@@ -22,7 +22,7 @@ private static final int TYPE = 3;
 	 * @param mass
 	 * @param world
 	 */
-	public BiggerBulletSizePowerUp(double x, double y, double velocityX,
+	public RadiusAsteroidPushPowerUp(double x, double y, double velocityX,
 			double velocityY, double radius, double minimumRadius, double mass,
 			World world) {
 		super(x, y, velocityX, velocityY, radius, minimumRadius, mass, world,
@@ -36,7 +36,7 @@ private static final int TYPE = 3;
 	 * @param mass
 	 * @param world
 	 */
-	public BiggerBulletSizePowerUp(double x, double y, double radius,
+	public RadiusAsteroidPushPowerUp(double x, double y, double radius,
 			double mass, World world) {
 		super(x, y, radius, mass, world, TYPE);
 	}
@@ -47,7 +47,7 @@ private static final int TYPE = 3;
 	 * @param mass
 	 * @param world
 	 */
-	public BiggerBulletSizePowerUp(double radius, double minimumRadius,
+	public RadiusAsteroidPushPowerUp(double radius, double minimumRadius,
 			double mass, World world) {
 		super(radius, minimumRadius, mass, world, TYPE);
 	}
@@ -55,8 +55,8 @@ private static final int TYPE = 3;
 	/**
 	 * 
 	 */
-	public BiggerBulletSizePowerUp(int type) {
-		super(type);
+	public RadiusAsteroidPushPowerUp() {
+		super(TYPE);
 	}
 
 }

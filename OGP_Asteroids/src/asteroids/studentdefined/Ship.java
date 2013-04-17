@@ -298,4 +298,40 @@ public class Ship extends SpaceObject implements IShip {
 	 */
 	public void toggleTriShotBullets(boolean bool){this.triShotBulletsOn = bool;}
 	
+	/**
+	 * TODO Write contracts for Shield;
+	 */
+	private int shield = 0;
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public int getShield(){return shield;}
+	
+	/**
+	 * (max 5 shields)
+	 * @param shield
+	 */
+	public void setShield(int shield){
+		if(shield > 5){
+			this.shield = 5;
+		}else if(shield < 0){
+			this.shield = 0;
+		}else{
+			this.shield = shield;
+		}
+	}
+	/**
+	 * 
+	 */
+	public void incShield(){
+		setShield(getShield() + 1);
+	}
+	/**
+	 * 
+	 */
+	public void decShield(){
+		setShield(getShield() - 1);
+	}
 }

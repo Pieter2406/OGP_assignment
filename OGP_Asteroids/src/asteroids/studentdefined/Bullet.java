@@ -73,7 +73,6 @@ public class Bullet extends SpaceObject{
 	}
 	
 	private final Ship source;
-	//TODO review shitty code :p
 	@Basic
 	public double getAngle(){
 		return angle;
@@ -89,6 +88,21 @@ public class Bullet extends SpaceObject{
 	public void setAngle(double angle){
 		this.angle = angle;
 	}
+	/**
+	 * TODO write contract for hasHitWall
+	 */
+	private boolean hasHitWall = false;
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean getHasHitWall(){return hasHitWall;}
+	
+	/**
+	 * 
+	 */
+	public void setHasHitWall(boolean bool){this.hasHitWall = bool;}
 	
 	private double angle;
 	private final static double MASS_DENSITY = 7.8E12;

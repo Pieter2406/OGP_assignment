@@ -36,6 +36,12 @@ public final class PowerUpFactory {
 		if(o1 instanceof Ship && o2 instanceof TriShotBulletsPowerUp){
 			return new PowerUp_TriShotBulletsCollision((Ship)o1, (TriShotBulletsPowerUp)o2);
 		}
+		if(o1 instanceof Ship && o2 instanceof ShipShieldPowerUp){
+			return new PowerUp_ShipShieldCollision((Ship)o1, (ShipShieldPowerUp)o2);
+		}
+		if(o1 instanceof Ship && o2 instanceof RadiusAsteroidPushPowerUp){
+			return new PowerUp_RadiusAsteroidPushCollision((Ship)o1, (RadiusAsteroidPushPowerUp)o2);
+		}
 		else{
 			return new NoCollision();
 		}

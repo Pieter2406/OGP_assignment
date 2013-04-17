@@ -334,7 +334,12 @@ public interface IFacade<World, Ship, Asteroid, Bullet, PowerUp> {
   public World getPowerUpWorld(PowerUp powerup);
   
   /**
-   * Return the type of the powerup<code>powerup</code>.
+   * Return the type of the <code>powerup</code>.
    */
   public int getPowerUpType(PowerUp powerup);
+  
+  /**
+   * Check whether <code>object</code> is a wall;
+   */
+  public boolean isWall(Object o);
 }

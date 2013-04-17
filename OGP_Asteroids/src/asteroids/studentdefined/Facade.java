@@ -294,5 +294,10 @@ public class Facade implements IFacade {
 		return ((PowerUp)powerup).getType();
 	}
 
+	@Override
+	public boolean isWall(Object o) {
+		return o instanceof Wall;
+	}
+
 }
 

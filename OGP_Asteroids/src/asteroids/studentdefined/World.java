@@ -192,7 +192,7 @@ public class World {
 			double firstCollisionTime = newCollision.getTime();
 			if(firstCollisionTime > time){
 				advanceAll(time);
-				if(rndBoolean(2)){
+				if(rndBoolean(POWERUP_CHANCE * time)){
 					SpaceObject powerUp = generateRandomPowerup();
 					if(powerUp != null){
 						addSpaceObject(generateRandomPowerup());
@@ -254,14 +254,15 @@ public class World {
 	private PowerUp generateRandomPowerup(){
 		final double RADIUS = 30;
 		Random rnd = new Random();
-		double rndX = rnd.nextInt((int) getWidth() - 40) + 20;
-		double rndY = rnd.nextInt((int) getHeight() - 40) + 20;
-		switch(rnd.nextInt(4)){
-			
+		double rndX = rnd.nextInt((int) (getWidth() - 2 * RADIUS)) + RADIUS;
+		double rndY = rnd.nextInt((int) (getHeight() - 2 * RADIUS)) + RADIUS;
+		switch(rnd.nextInt(6)){			
 			case 0: return new SmallerShipPowerUp(rndX,rndY,RADIUS, 0,this);
 			case 1: return new IncreaseBulletSpeedPowerUp(rndX,rndY,RADIUS, 0,this);
 			case 2: return new BiggerBulletSizePowerUp(rndX,rndY,RADIUS,0,this);
 			case 3: return new TriShotBulletsPowerUp(rndX, rndY, RADIUS,0,this);
+			case 4: return new ShipShieldPowerUp(rndX,rndY,RADIUS,0,this);
+			case 5: return new RadiusAsteroidPushPowerUp(rndX,rndY,RADIUS,0,this);
 			default: return null;
 		}
 	}
@@ -269,7 +270,7 @@ public class World {
 	/**
 	 * TODO: Write rndBoolean contract.
 	 */
-	private boolean rndBoolean(int chance){
+	private boolean rndBoolean(double chance){
 		Random rnd = new Random();
 		double rndInt = rnd.nextInt(100);
 		if(rndInt < chance){
@@ -513,5 +514,7 @@ public class World {
 	}
 
 	private boolean isTerminated;
+	
+	private static final double POWERUP_CHANCE = 2;
 
 }
