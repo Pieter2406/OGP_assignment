@@ -363,9 +363,15 @@ public abstract class SpaceObject {
 				double newX = getPosition().getX() + getVelocity().getVelocityX() * getTimeToCollision(wall);
 				double newY = getPosition().getY() + getVelocity().getVelocityY() * getTimeToCollision(wall);
 				if (wall.getOrientation().equals("horizontal"))
-					newY += this.getRadius();
+					if (wall.getP1().getX() == 0)
+						newY += this.getRadius();
+					else
+						newY -= this.getRadius();
 				if (wall.getOrientation().equals("vertical"))
-					newX += this.getRadius();
+					if (wall.getP1().getY() == 0)
+						newX += this.getRadius();
+					else
+						newX -= this.getRadius();
 				return new Coordinate(newX,newY);
 			}
 		}

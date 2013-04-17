@@ -81,10 +81,10 @@ public class Asteroids<World, Ship, Asteroid, Bullet, PowerUp> extends JFrame {
     facade.addShip(world, player1);
     Ship player2 = facade.createShip(width / 5, height / 2., 0, 0, 40, 0, 5E15);
     facade.addShip(world, player2);
-    Asteroid asteroid1 = facade.createAsteroid(width / 2, height / 2, 1, 1, 75);
+    Asteroid asteroid1 = facade.createAsteroid(width / 2 + 60, height / 2, 20, 0, 60);
     facade.addAsteroid(world, asteroid1);
-//    Asteroid asteroid2 = facade.createAsteroid(600, 100, -30, -40, 40);
-//    facade.addAsteroid(world, asteroid2);
+    Asteroid asteroid2 = facade.createAsteroid(width / 2 - 60, height / 2, -20, 0, 60);
+    facade.addAsteroid(world, asteroid2);
 //    Asteroid asteroid3 = facade.createAsteroid(990, 550, -20, -3, 25);
 //    facade.addAsteroid(world, asteroid3);
 //    Asteroid asteroid4 = facade.createAsteroid(40, height - 100, 10, -8, 15);

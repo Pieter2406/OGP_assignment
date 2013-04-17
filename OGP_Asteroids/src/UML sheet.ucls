@@ -3,7 +3,7 @@
   associations="true" dependencies="true" nesting-relationships="true">  
   <class id="1" language="java" name="asteroids.studentdefined.Asteroid" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/studentdefined/Asteroid.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="113" x="4151" y="2550"/>    
+    <position height="99" width="278" x="5978" y="2375"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="asteroids.studentdefined.Bullet" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/studentdefined/Bullet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="113" x="3998" y="2550"/>    
+    <position height="279" width="287" x="6302" y="4682"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -22,7 +22,7 @@
   <class id="3" language="java" name="asteroids.studentdefined.Coordinate" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/studentdefined/Coordinate.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="315" width="237" x="1586" y="3445"/>    
+    <position height="315" width="237" x="6640" y="5001"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -32,7 +32,7 @@
   <class id="4" language="java" name="asteroids.studentdefined.Collision" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/studentdefined/Collision.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="207" width="200" x="2095" y="1390"/>    
+    <position height="261" width="200" x="5999" y="4075"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -41,7 +41,7 @@
   </class>  
   <class id="5" language="java" name="asteroids.studentdefined.Facade" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/studentdefined/Facade.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="873" width="362" x="1264" y="1637"/>    
+    <position height="1053" width="362" x="2006" y="356"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -51,7 +51,7 @@
   <class id="6" language="java" name="asteroids.studentdefined.IllegalValueException" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/studentdefined/IllegalValueException.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="135" width="166" x="1327" y="3818"/>    
+    <position height="135" width="166" x="2727" y="5410"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -60,7 +60,7 @@
   </class>  
   <class id="7" language="java" name="asteroids.studentdefined.Mass" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/studentdefined/Mass.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="207" width="203" x="1040" y="2550"/>    
+    <position height="207" width="240" x="4378" y="5001"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -69,7 +69,7 @@
   </class>  
   <class id="8" language="java" name="asteroids.studentdefined.Ship" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/studentdefined/Ship.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="225" width="297" x="1367" y="2550"/>    
+    <position height="567" width="328" x="2851" y="4075"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -79,7 +79,7 @@
   <class id="9" language="java" name="asteroids.studentdefined.SpaceObject" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/studentdefined/SpaceObject.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="459" width="338" x="2116" y="1637"/>    
+    <position height="639" width="369" x="2748" y="1696"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -88,7 +88,7 @@
   </class>  
   <class id="10" language="java" name="asteroids.studentdefined.Velocity" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/studentdefined/Velocity.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="333" width="219" x="1327" y="3445"/>    
+    <position height="369" width="223" x="6986" y="5001"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -97,7 +97,7 @@
   </class>  
   <class id="11" language="java" name="asteroids.studentdefined.World" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/studentdefined/World.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="351" width="175" x="2163" y="675"/>    
+    <position height="585" width="248" x="5364" y="3450"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -106,7 +106,7 @@
   </class>  
   <class id="12" language="java" name="asteroids.Asteroids" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/Asteroids.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="279" width="359" x="1391" y="356"/>    
+    <position height="279" width="407" x="2389" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -115,7 +115,7 @@
   </class>  
   <class id="13" language="java" name="asteroids.AsteroidsMenu" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/AsteroidsMenu.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="279" width="384" x="1581" y="37"/>    
+    <position height="279" width="384" x="1352" y="356"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -124,7 +124,7 @@
   </class>  
   <interface id="14" language="java" name="asteroids.CollisionListener" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/CollisionListener.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="260" x="651" y="3445"/>    
+    <position height="99" width="260" x="988" y="4075"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -133,7 +133,7 @@
   </interface>  
   <interface id="15" language="java" name="asteroids.Drawable" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/Drawable.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="140" x="402" y="1637"/>    
+    <position height="81" width="140" x="1028" y="1696"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -142,7 +142,7 @@
   </interface>  
   <class id="16" language="java" name="asteroids.Explosion" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/Explosion.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="207" width="729" x="83" y="1390"/>    
+    <position height="207" width="729" x="1007" y="1449"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -151,7 +151,7 @@
   </class>  
   <class id="17" language="java" name="asteroids.FileSoundManager.Request" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/FileSoundManager.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="111" x="1706" y="1390"/>    
+    <position height="135" width="111" x="4100" y="1449"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -160,7 +160,7 @@
   </class>  
   <class id="18" language="java" name="asteroids.FileSoundManager.Loop" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/FileSoundManager.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="96" x="1666" y="1637"/>    
+    <position height="99" width="96" x="3157" y="1696"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -169,7 +169,7 @@
   </class>  
   <class id="19" language="java" name="asteroids.FileSoundManager" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/FileSoundManager.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="225" width="312" x="1811" y="675"/>    
+    <position height="225" width="312" x="3983" y="356"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -178,7 +178,7 @@
   </class>  
   <class id="20" language="java" name="asteroids.FileSoundManager.Stop" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/FileSoundManager.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="96" x="1938" y="1637"/>    
+    <position height="99" width="96" x="3293" y="1696"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -187,7 +187,7 @@
   </class>  
   <class id="21" language="java" name="asteroids.FileSoundManager.Play" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/FileSoundManager.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="96" x="1802" y="1637"/>    
+    <position height="99" width="96" x="2591" y="1696"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -196,7 +196,7 @@
   </class>  
   <interface id="22" language="java" name="asteroids.IFacade" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/IFacade.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="855" width="328" x="651" y="2550"/>    
+    <position height="1035" width="328" x="639" y="2375"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -205,7 +205,7 @@
   </interface>  
   <interface id="23" language="java" name="asteroids.IShip" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/IShip.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="63" width="103" x="1884" y="3445"/>    
+    <position height="63" width="103" x="2891" y="4682"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -214,7 +214,7 @@
   </interface>  
   <class id="24" language="java" name="asteroids.ModelException" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/ModelException.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="161" x="384" y="37"/>    
+    <position height="99" width="161" x="1574" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -223,7 +223,7 @@
   </class>  
   <class id="25" language="java" name="asteroids.NullSound" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/NullSound.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="153" width="106" x="1264" y="675"/>    
+    <position height="153" width="106" x="1776" y="356"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -232,7 +232,7 @@
   </class>  
   <interface id="26" language="java" name="asteroids.Sound" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/Sound.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="106" x="1285" y="1390"/>    
+    <position height="135" width="106" x="1776" y="1449"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -241,7 +241,7 @@
   </interface>  
   <class id="27" language="java" name="asteroids.Util" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/Util.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="267" x="929" y="37"/>    
+    <position height="171" width="267" x="654" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -250,7 +250,7 @@
   </class>  
   <class id="28" language="java" name="asteroids.WorldView" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/WorldView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="675" width="351" x="852" y="675"/>    
+    <position height="711" width="399" x="547" y="356"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -259,7 +259,7 @@
   </class>  
   <class id="29" language="java" name="asteroids.WorldView.Visualization" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/WorldView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="189" width="158" x="852" y="1390"/>    
+    <position height="189" width="158" x="547" y="1449"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -268,7 +268,7 @@
   </class>  
   <class id="30" language="java" name="asteroids.WorldView.BulletVisualization" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/WorldView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="174" x="582" y="1637"/>    
+    <position height="99" width="174" x="772" y="1696"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -277,7 +277,7 @@
   </class>  
   <class id="31" language="java" name="asteroids.WorldView.AsteroidVisualization" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/WorldView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="386" x="796" y="1637"/>    
+    <position height="117" width="434" x="298" y="1696"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -286,480 +286,1695 @@
   </class>  
   <class id="32" language="java" name="asteroids.WorldView.ShipVisualization" project="OGP_assignment" 
     file="/OGP_assignment/OGP_Asteroids/src/asteroids/WorldView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="195" x="167" y="1637"/>    
+    <position height="99" width="195" x="42" y="1696"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="33" language="java" name="asteroids.powerups.AsteroidBlast" project="OGP_assignment" 
-    file="/OGP_assignment/OGP_Asteroids/src/asteroids/powerups/AsteroidBlast.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="341" x="1725" y="2550"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="34" language="java" name="asteroids.powerups.EnergyShield" project="OGP_assignment" 
-    file="/OGP_assignment/OGP_Asteroids/src/asteroids/powerups/EnergyShield.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="339" x="3619" y="2550"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="35" language="java" name="asteroids.powerups.FatterBullets" project="OGP_assignment" 
-    file="/OGP_assignment/OGP_Asteroids/src/asteroids/powerups/FatterBullets.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="336" x="3243" y="2550"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="36" language="java" name="asteroids.powerups.HigherBulletSpeed" project="OGP_assignment" 
-    file="/OGP_assignment/OGP_Asteroids/src/asteroids/powerups/HigherBulletSpeed.java" binary="false" 
+  <class id="33" language="java" name="asteroids.collisions.AsteroidAsteroidCollision" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/collisions/AsteroidAsteroidCollision.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="117" width="364" x="2106" y="2550"/>    
+    <position height="99" width="240" x="6993" y="1696"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="37" language="java" name="asteroids.powerups.ShipBlast" project="OGP_assignment" 
-    file="/OGP_assignment/OGP_Asteroids/src/asteroids/powerups/ShipBlast.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="321" x="2882" y="2550"/>    
+  <class id="34" language="java" name="asteroids.collisions.AsteroidBulletCollision" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/collisions/AsteroidBulletCollision.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="210" x="6722" y="1696"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="38" language="java" name="asteroids.powerups.SmallerShip" project="OGP_assignment" 
-    file="/OGP_assignment/OGP_Asteroids/src/asteroids/powerups/SmallerShip.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="332" x="2510" y="2550"/>    
+  <class id="35" language="java" name="asteroids.collisions.ShipShipCollision" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/collisions/ShipShipCollision.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="122" x="2069" y="4075"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <association id="39">    
-    <end type="SOURCE" refId="19" navigable="false">      
-      <attribute id="40" name="requests"/>      
-      <multiplicity id="41" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="42">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="3"/>  
+  <class id="36" language="java" name="asteroids.collisions.PowerUp_TriShotBulletsCollision" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/collisions/PowerUp_TriShotBulletsCollision.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="325" x="3369" y="1449"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <interface id="37" language="java" name="asteroids.collisions.CollisionType" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/collisions/CollisionType.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="81" width="103" x="3368" y="4682"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <class id="38" language="java" name="asteroids.collisions.ShipWallCollision" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/collisions/ShipWallCollision.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="158" x="7162" y="3450"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="asteroids.collisions.PowerUp_IncreaseBulletSpeedCollision" 
+    project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/collisions/PowerUp_IncreaseBulletSpeedCollision.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="391" x="2584" y="1449"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="asteroids.collisions.PowerUp_SmallerShipCollision" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/collisions/PowerUp_SmallerShipCollision.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="305" x="3734" y="1449"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="asteroids.collisions.ShipPowerUpCollision" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/collisions/ShipPowerUpCollision.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="208" x="4461" y="356"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="asteroids.collisions.PowerUp_ShipShieldCollision" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/collisions/PowerUp_ShipShieldCollision.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="293" x="3036" y="1449"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="asteroids.collisions.PowerUpFactory" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/collisions/PowerUpFactory.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="208" x="4379" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="44" language="java" name="asteroids.collisions.NoCollision" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/collisions/NoCollision.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="89" x="2231" y="4075"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="45" language="java" name="asteroids.collisions.CollisionFactory" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/collisions/CollisionFactory.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="194" x="6661" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="46" language="java" name="asteroids.collisions.AsteroidWallCollision" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/collisions/AsteroidWallCollision.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="198" x="7294" y="1696"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="47" language="java" name="asteroids.collisions.PowerUp_RadiusAsteroidPushCollision" 
+    project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/collisions/PowerUp_RadiusAsteroidPushCollision.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="389" x="5969" y="1696"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="48" language="java" name="asteroids.collisions.BulletWallCollision" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/collisions/BulletWallCollision.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="168" x="7131" y="4075"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="49" language="java" name="asteroids.collisions.AsteroidShipCollision" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/collisions/AsteroidShipCollision.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="200" x="6419" y="1696"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="50" language="java" name="asteroids.collisions.ShipBulletCollision" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/collisions/ShipBulletCollision.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="170" x="6344" y="3450"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="51" language="java" name="asteroids.collisions.BulletBulletCollision" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/collisions/BulletBulletCollision.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="180" x="6722" y="4075"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="52" language="java" name="asteroids.collisions.PowerUp_BiggerBulletSizeCollision" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/collisions/PowerUp_BiggerBulletSizeCollision.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="349" x="2174" y="1449"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="53" language="java" name="asteroids.powerups.RadiusAsteroidPushPowerUp" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/powerups/RadiusAsteroidPushPowerUp.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="450" x="5425" y="2375"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="54" language="java" name="asteroids.powerups.TriShotBulletsPowerUp" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/powerups/TriShotBulletsPowerUp.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="418" x="5343" y="1696"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="55" language="java" name="asteroids.powerups.IncreaseBulletSpeedPowerUp" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/powerups/IncreaseBulletSpeedPowerUp.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="451" x="3492" y="1696"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="56" language="java" name="asteroids.powerups.ShipShieldPowerUp" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/powerups/ShipShieldPowerUp.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="402" x="4901" y="1696"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="57" language="java" name="asteroids.powerups.SmallerShipPowerUp" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/powerups/SmallerShipPowerUp.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="408" x="4453" y="1696"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="58" language="java" name="asteroids.powerups.BiggerBulletSizePowerUp" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/powerups/BiggerBulletSizePowerUp.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="430" x="3983" y="1696"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="59" language="java" name="asteroids.studentdefined.PowerUp" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/studentdefined/PowerUp.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="366" x="4461" y="1449"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="60" language="java" name="asteroids.studentdefined.Wall" project="OGP_assignment" 
+    file="/OGP_assignment/OGP_Asteroids/src/asteroids/studentdefined/Wall.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="137" x="6786" y="4682"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <dependency id="61">    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="41"/>  
   </dependency>  
-  <dependency id="43">    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="14"/>  
-  </dependency>  
-  <association id="44">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="45" name="upcomingCollisions"/>      
-      <multiplicity id="46" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="47">    
-    <end type="SOURCE" refId="29"/>    
-    <end type="TARGET" refId="15"/>  
-  </realization>  
-  <association id="48">    
-    <bendpoint x="1694" y="2550"/>    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="49" name="position"/>      
-      <multiplicity id="50" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <nesting id="51">    
-    <bendpoint x="1675" y="1390"/>    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="18"/>  
-  </nesting>  
-  <realization id="52">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="22"/>  
-  </realization>  
-  <dependency id="53">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="10"/>  
-  </dependency>  
-  <dependency id="54">    
-    <end type="SOURCE" refId="31"/>    
-    <end type="TARGET" refId="22"/>  
-  </dependency>  
-  <dependency id="55">    
-    <bendpoint x="2064" y="1390"/>    
-    <bendpoint x="2064" y="1637"/>    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="8"/>  
-  </dependency>  
-  <dependency id="56">    
-    <end type="SOURCE" refId="28"/>    
-    <end type="TARGET" refId="26"/>  
-  </dependency>  
-  <generalization id="57">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="9"/>  
-  </generalization>  
-  <generalization id="58">    
-    <end type="SOURCE" refId="30"/>    
-    <end type="TARGET" refId="29"/>  
-  </generalization>  
-  <association id="59">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="60" name="mass"/>      
-      <multiplicity id="61" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="62">    
-    <end type="SOURCE" refId="38"/>    
-    <end type="TARGET" refId="9"/>  
-  </generalization>  
-  <nesting id="63">    
-    <end type="SOURCE" refId="28"/>    
-    <end type="TARGET" refId="29"/>  
-  </nesting>  
-  <generalization id="64">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="9"/>  
-  </generalization>  
-  <nesting id="65">    
-    <bendpoint x="1847" y="1390"/>    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="21"/>  
-  </nesting>  
-  <generalization id="66">    
-    <end type="SOURCE" refId="21"/>    
-    <end type="TARGET" refId="17"/>  
-  </generalization>  
-  <dependency id="67">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="25"/>  
-  </dependency>  
-  <nesting id="68">    
-    <bendpoint x="1884" y="1390"/>    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="20"/>  
-  </nesting>  
-  <association id="69">    
+  <association id="62">    
     <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="70" name="menu"/>      
-      <multiplicity id="71" minimum="0" maximum="1"/>    
+      <attribute id="63" name="menu"/>      
+      <multiplicity id="64" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="72">    
-    <end type="SOURCE" refId="35"/>    
-    <end type="TARGET" refId="9"/>  
-  </generalization>  
-  <association id="73">    
-    <bendpoint x="1233" y="675"/>    
-    <bendpoint x="1233" y="1390"/>    
-    <bendpoint x="1233" y="1637"/>    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="74" name="facade"/>      
-      <multiplicity id="75" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="22" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="76">    
-    <end type="SOURCE" refId="28" navigable="false">      
-      <attribute id="77" name="game"/>      
-      <multiplicity id="78" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="79">    
-    <end type="SOURCE" refId="32"/>    
-    <end type="TARGET" refId="29"/>  
-  </generalization>  
-  <generalization id="80">    
-    <end type="SOURCE" refId="37"/>    
-    <end type="TARGET" refId="9"/>  
-  </generalization>  
-  <nesting id="81">    
-    <bendpoint x="1040" y="1390"/>    
-    <end type="SOURCE" refId="28"/>    
-    <end type="TARGET" refId="30"/>  
-  </nesting>  
-  <association id="82">    
-    <bendpoint x="2325" y="1390"/>    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="83" name="visibleObjects"/>      
-      <multiplicity id="84" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="85">    
-    <end type="SOURCE" refId="30"/>    
-    <end type="TARGET" refId="22"/>  
-  </dependency>  
-  <dependency id="86">    
-    <bendpoint x="1315" y="2550"/>    
-    <bendpoint x="1296" y="3445"/>    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="6"/>  
-  </dependency>  
-  <dependency id="87">    
-    <bendpoint x="2347" y="1390"/>    
-    <bendpoint x="2484" y="1637"/>    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="2"/>  
-  </dependency>  
-  <generalization id="88">    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="17"/>  
-  </generalization>  
-  <dependency id="89">    
-    <bendpoint x="2368" y="675"/>    
-    <bendpoint x="2368" y="1390"/>    
-    <bendpoint x="2085" y="1637"/>    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="8"/>  
-  </dependency>  
-  <nesting id="90">    
-    <bendpoint x="52" y="1390"/>    
-    <end type="SOURCE" refId="28"/>    
-    <end type="TARGET" refId="32"/>  
-  </nesting>  
-  <realization id="91">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="23"/>  
-  </realization>  
-  <dependency id="92">    
-    <bendpoint x="1294" y="2550"/>    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="3"/>  
-  </dependency>  
-  <association id="93">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="94" name="o1"/>      
-      <multiplicity id="95" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="96">    
-    <end type="SOURCE" refId="28" navigable="false">      
-      <attribute id="97" name="explosions"/>      
-      <multiplicity id="98" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="99">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="15"/>  
-  </realization>  
-  <association id="100">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="101" name="view"/>      
-      <multiplicity id="102" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="28" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="103">    
-    <end type="SOURCE" refId="34"/>    
-    <end type="TARGET" refId="9"/>  
-  </generalization>  
-  <realization id="104">    
-    <bendpoint x="31" y="1390"/>    
-    <bendpoint x="31" y="1637"/>    
-    <bendpoint x="31" y="2550"/>    
-    <end type="SOURCE" refId="28"/>    
-    <end type="TARGET" refId="14"/>  
-  </realization>  
-  <generalization id="105">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="9"/>  
-  </generalization>  
-  <nesting id="106">    
-    <bendpoint x="1061" y="1390"/>    
-    <end type="SOURCE" refId="28"/>    
-    <end type="TARGET" refId="31"/>  
-  </nesting>  
-  <dependency id="107">    
-    <end type="SOURCE" refId="32"/>    
-    <end type="TARGET" refId="22"/>  
-  </dependency>  
-  <realization id="108">    
-    <end type="SOURCE" refId="25"/>    
-    <end type="TARGET" refId="26"/>  
-  </realization>  
-  <generalization id="109">    
+  <dependency id="65">    
+    <bendpoint x="7371" y="2375"/>    
+    <bendpoint x="7413" y="3450"/>    
+    <bendpoint x="7413" y="4075"/>    
+    <bendpoint x="7413" y="4682"/>    
     <end type="SOURCE" refId="33"/>    
-    <end type="TARGET" refId="9"/>  
-  </generalization>  
-  <generalization id="110">    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="17"/>  
-  </generalization>  
-  <dependency id="111">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="19"/>  
-  </dependency>  
-  <dependency id="112">    
-    <bendpoint x="1853" y="3445"/>    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="6"/>  
-  </dependency>  
-  <association id="113">    
-    <bendpoint x="1336" y="2550"/>    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="114" name="velocity"/>      
-      <multiplicity id="115" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="116">    
-    <end type="SOURCE" refId="31"/>    
-    <end type="TARGET" refId="29"/>  
-  </generalization>  
-  <dependency id="117">    
-    <bendpoint x="1421" y="675"/>    
-    <bendpoint x="1421" y="1390"/>    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="5"/>  
-  </dependency>  
-  <dependency id="118">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="6"/>  
-  </dependency>  
-  <dependency id="119">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="8"/>  
-  </dependency>  
-  <dependency id="120">    
-    <bendpoint x="1273" y="2550"/>    
-    <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="10"/>  
   </dependency>  
-  <association id="121">    
-    <bendpoint x="1212" y="1390"/>    
-    <bendpoint x="1212" y="1637"/>    
-    <end type="SOURCE" refId="28" navigable="false">      
-      <attribute id="122" name="facade"/>      
-      <multiplicity id="123" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="22" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="124">    
+  <nesting id="66">    
+    <bendpoint x="4262" y="1449"/>    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="20"/>  
+  </nesting>  
+  <generalization id="67">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <generalization id="68">    
+    <end type="SOURCE" refId="57"/>    
+    <end type="TARGET" refId="59"/>  
+  </generalization>  
+  <dependency id="69">    
+    <bendpoint x="4325" y="356"/>    
+    <bendpoint x="4325" y="1449"/>    
+    <bendpoint x="3440" y="1696"/>    
+    <bendpoint x="4559" y="2375"/>    
     <end type="SOURCE" refId="12"/>    
     <end type="TARGET" refId="11"/>  
   </dependency>  
-  <association id="125">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="126" name="game"/>      
-      <multiplicity id="127" minimum="0" maximum="1"/>    
+  <dependency id="70">    
+    <bendpoint x="6586" y="2375"/>    
+    <bendpoint x="6586" y="3450"/>    
+    <bendpoint x="6586" y="4075"/>    
+    <bendpoint x="6619" y="4682"/>    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="71">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="26"/>  
+  </dependency>  
+  <association id="72">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="73" name="source"/>      
+      <multiplicity id="74" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="128">    
-    <bendpoint x="2911" y="675"/>    
-    <bendpoint x="2911" y="1390"/>    
-    <bendpoint x="2911" y="1637"/>    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="1"/>  
+  <dependency id="75">    
+    <bendpoint x="4918" y="2375"/>    
+    <end type="SOURCE" refId="57"/>    
+    <end type="TARGET" refId="11"/>  
   </dependency>  
-  <dependency id="129">    
-    <bendpoint x="2869" y="675"/>    
-    <bendpoint x="2869" y="1390"/>    
-    <bendpoint x="2869" y="1637"/>    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="2"/>  
+  <dependency id="76">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="10"/>  
   </dependency>  
-  <nesting id="130">    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="17"/>  
-  </nesting>  
-  <dependency id="131">    
+  <realization id="77">    
+    <bendpoint x="2371" y="1696"/>    
+    <bendpoint x="2371" y="2375"/>    
+    <bendpoint x="2371" y="3450"/>    
+    <bendpoint x="2392" y="4075"/>    
+    <end type="SOURCE" refId="39"/>    
+    <end type="TARGET" refId="37"/>  
+  </realization>  
+  <association id="78">    
+    <end type="SOURCE" refId="52" navigable="false">      
+      <attribute id="79" name="o2"/>      
+      <multiplicity id="80" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="58" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="81">    
+    <bendpoint x="1975" y="356"/>    
+    <bendpoint x="1975" y="1449"/>    
+    <bendpoint x="1996" y="1696"/>    
+    <bendpoint x="2017" y="2375"/>    
+    <bendpoint x="2038" y="3450"/>    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="44"/>  
+  </dependency>  
+  <dependency id="82">    
+    <bendpoint x="756" y="1449"/>    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <dependency id="83">    
+    <bendpoint x="2017" y="1449"/>    
+    <bendpoint x="2017" y="1696"/>    
+    <bendpoint x="1996" y="2375"/>    
+    <bendpoint x="1975" y="3450"/>    
+    <bendpoint x="1975" y="4075"/>    
+    <bendpoint x="1996" y="4682"/>    
     <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="7"/>  
+    <end type="TARGET" refId="3"/>  
   </dependency>  
-  <dependency id="132">    
-    <bendpoint x="2848" y="1390"/>    
-    <bendpoint x="2890" y="1637"/>    
-    <end type="SOURCE" refId="11"/>    
+  <dependency id="84">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <realization id="85">    
+    <bendpoint x="6691" y="4075"/>    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="37"/>  
+  </realization>  
+  <generalization id="86">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <generalization id="87">    
+    <end type="SOURCE" refId="55"/>    
+    <end type="TARGET" refId="59"/>  
+  </generalization>  
+  <realization id="88">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="26"/>  
+  </realization>  
+  <dependency id="89">    
+    <bendpoint x="6649" y="2375"/>    
+    <bendpoint x="6649" y="3450"/>    
+    <bendpoint x="6649" y="4075"/>    
+    <bendpoint x="6649" y="4682"/>    
+    <end type="SOURCE" refId="49"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="90">    
+    <bendpoint x="5833" y="356"/>    
+    <bendpoint x="5896" y="1449"/>    
+    <bendpoint x="5938" y="1696"/>    
+    <end type="SOURCE" refId="12"/>    
     <end type="TARGET" refId="1"/>  
   </dependency>  
-  <association id="133">    
-    <bendpoint x="1400" y="675"/>    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="134" name="sound"/>      
-      <multiplicity id="135" minimum="0" maximum="1"/>    
+  <association id="91">    
+    <end type="SOURCE" refId="48" navigable="false">      
+      <attribute id="92" name="o2"/>      
+      <multiplicity id="93" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="26" navigable="true"/>    
+    <end type="TARGET" refId="60" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="136">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="137" name="o2"/>      
-      <multiplicity id="138" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="139">    
-    <end type="SOURCE" refId="36"/>    
+  <dependency id="94">    
+    <end type="SOURCE" refId="41"/>    
+    <end type="TARGET" refId="43"/>  
+  </dependency>  
+  <dependency id="95">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="96">    
+    <bendpoint x="2419" y="356"/>    
+    <bendpoint x="2080" y="1449"/>    
+    <bendpoint x="2080" y="1696"/>    
+    <bendpoint x="2080" y="2375"/>    
+    <bendpoint x="2080" y="3450"/>    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="44"/>  
+  </dependency>  
+  <dependency id="97">    
+    <bendpoint x="6549" y="356"/>    
+    <bendpoint x="6549" y="1449"/>    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="49"/>  
+  </dependency>  
+  <generalization id="98">    
+    <end type="SOURCE" refId="59"/>    
     <end type="TARGET" refId="9"/>  
   </generalization>  
-  <association id="140">    
+  <dependency id="99">    
+    <bendpoint x="3716" y="356"/>    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="42"/>  
+  </dependency>  
+  <realization id="100">    
+    <bendpoint x="6733" y="2375"/>    
+    <bendpoint x="6617" y="3450"/>    
+    <bendpoint x="6502" y="4075"/>    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="37"/>  
+  </realization>  
+  <nesting id="101">    
+    <bendpoint x="735" y="1449"/>    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="30"/>  
+  </nesting>  
+  <realization id="102">    
+    <end type="SOURCE" refId="48"/>    
+    <end type="TARGET" refId="37"/>  
+  </realization>  
+  <dependency id="103">    
+    <bendpoint x="3491" y="356"/>    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="39"/>  
+  </dependency>  
+  <realization id="104">    
+    <bendpoint x="6953" y="2375"/>    
+    <bendpoint x="6712" y="3450"/>    
+    <bendpoint x="6565" y="4075"/>    
+    <end type="SOURCE" refId="46"/>    
+    <end type="TARGET" refId="37"/>  
+  </realization>  
+  <association id="105">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="106" name="o1"/>      
+      <multiplicity id="107" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="108">    
+    <bendpoint x="4241" y="1449"/>    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="18"/>  
+  </nesting>  
+  <association id="109">    
+    <bendpoint x="2539" y="1696"/>    
+    <bendpoint x="2637" y="2375"/>    
+    <bendpoint x="2736" y="3450"/>    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="110" name="o1"/>      
+      <multiplicity id="111" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="112">    
+    <end type="SOURCE" refId="58"/>    
+    <end type="TARGET" refId="59"/>  
+  </generalization>  
+  <association id="113">    
     <end type="SOURCE" refId="28" navigable="false">      
-      <attribute id="141" name="visualizations"/>      
-      <multiplicity id="142" minimum="0" maximum="2147483647"/>    
+      <attribute id="114" name="visualizations"/>      
+      <multiplicity id="115" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="29" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="143">    
-    <bendpoint x="1780" y="356"/>    
-    <bendpoint x="1780" y="675"/>    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="26"/>  
+  <association id="116">    
+    <end type="SOURCE" refId="48" navigable="false">      
+      <attribute id="117" name="o1"/>      
+      <multiplicity id="118" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="119">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="37"/>  
   </dependency>  
-  <dependency id="144">    
-    <bendpoint x="1009" y="2550"/>    
+  <association id="120">    
+    <end type="SOURCE" refId="60" navigable="false">      
+      <attribute id="121" name="p1"/>      
+      <multiplicity id="122" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="123">    
+    <bendpoint x="267" y="1449"/>    
+    <bendpoint x="267" y="1696"/>    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="124" name="facade"/>      
+      <multiplicity id="125" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="126">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="127">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="128" name="game"/>      
+      <multiplicity id="129" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="130">    
+    <bendpoint x="6628" y="2375"/>    
+    <bendpoint x="6733" y="3450"/>    
+    <bendpoint x="6953" y="4075"/>    
+    <bendpoint x="6953" y="4682"/>    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <association id="131">    
+    <bendpoint x="3482" y="3450"/>    
+    <bendpoint x="3398" y="2375"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="132" name="o1"/>      
+      <multiplicity id="133" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="134">    
+    <bendpoint x="2413" y="1696"/>    
+    <bendpoint x="2392" y="2375"/>    
+    <bendpoint x="2392" y="3450"/>    
+    <bendpoint x="2413" y="4075"/>    
+    <end type="SOURCE" refId="42"/>    
+    <end type="TARGET" refId="37"/>  
+  </realization>  
+  <generalization id="135">    
+    <end type="SOURCE" refId="56"/>    
+    <end type="TARGET" refId="59"/>  
+  </generalization>  
+  <dependency id="136">    
+    <bendpoint x="7037" y="2375"/>    
+    <bendpoint x="7037" y="3450"/>    
+    <bendpoint x="7037" y="4075"/>    
+    <bendpoint x="6974" y="4682"/>    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="137">    
+    <bendpoint x="3005" y="1449"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <association id="138">    
+    <bendpoint x="2560" y="1696"/>    
+    <bendpoint x="2736" y="2375"/>    
+    <bendpoint x="2778" y="3450"/>    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="139" name="o1"/>      
+      <multiplicity id="140" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="141">    
+    <bendpoint x="1954" y="1449"/>    
+    <bendpoint x="1933" y="1696"/>    
+    <bendpoint x="1933" y="2375"/>    
+    <bendpoint x="1933" y="3450"/>    
     <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="14"/>  
   </dependency>  
-  <dependency id="145">    
-    <bendpoint x="1193" y="3445"/>    
-    <end type="SOURCE" refId="7"/>    
+  <dependency id="142">    
+    <bendpoint x="5938" y="356"/>    
+    <bendpoint x="5917" y="1449"/>    
+    <bendpoint x="5896" y="1696"/>    
+    <bendpoint x="5394" y="2375"/>    
+    <bendpoint x="5333" y="3450"/>    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="143">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="19"/>  
+  </dependency>  
+  <dependency id="144">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="44"/>  
+  </dependency>  
+  <nesting id="145">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="29"/>  
+  </nesting>  
+  <dependency id="146">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <association id="147">    
+    <bendpoint x="7206" y="2375"/>    
+    <bendpoint x="7111" y="3450"/>    
+    <bendpoint x="7016" y="4075"/>    
+    <end type="SOURCE" refId="46" navigable="false">      
+      <attribute id="148" name="o2"/>      
+      <multiplicity id="149" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="60" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="150">    
+    <bendpoint x="7329" y="4075"/>    
+    <bendpoint x="7287" y="4682"/>    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="151">    
+    <end type="SOURCE" refId="53"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <association id="152">    
+    <bendpoint x="2820" y="2375"/>    
+    <bendpoint x="2820" y="3450"/>    
+    <bendpoint x="2820" y="4075"/>    
+    <bendpoint x="2820" y="4682"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="153" name="velocity"/>      
+      <multiplicity id="154" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="155">    
+    <bendpoint x="2553" y="1449"/>    
+    <bendpoint x="2518" y="1696"/>    
+    <bendpoint x="2841" y="2375"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <dependency id="156">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="60"/>  
+  </dependency>  
+  <dependency id="157">    
+    <bendpoint x="4388" y="356"/>    
+    <bendpoint x="4388" y="1449"/>    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="55"/>  
+  </dependency>  
+  <dependency id="158">    
+    <bendpoint x="6271" y="3450"/>    
+    <bendpoint x="6271" y="4075"/>    
+    <bendpoint x="6271" y="4682"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <dependency id="159">    
+    <bendpoint x="5875" y="356"/>    
+    <bendpoint x="5875" y="1449"/>    
+    <bendpoint x="5875" y="1696"/>    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="53"/>  
+  </dependency>  
+  <dependency id="160">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="26"/>  
+  </dependency>  
+  <dependency id="161">    
+    <bendpoint x="5917" y="356"/>    
+    <bendpoint x="5959" y="1449"/>    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="47"/>  
+  </dependency>  
+  <association id="162">    
+    <bendpoint x="1912" y="356"/>    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="163" name="sound"/>      
+      <multiplicity id="164" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="165">    
+    <bendpoint x="7522" y="356"/>    
+    <bendpoint x="7522" y="1449"/>    
+    <bendpoint x="7522" y="1696"/>    
+    <bendpoint x="7392" y="2375"/>    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="38"/>  
+  </dependency>  
+  <association id="166">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="167" name="o1"/>      
+      <multiplicity id="168" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="169">    
+    <bendpoint x="4699" y="356"/>    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="59"/>  
+  </dependency>  
+  <dependency id="170">    
+    <bendpoint x="4409" y="356"/>    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="59"/>  
+  </dependency>  
+  <dependency id="171">    
+    <bendpoint x="2736" y="4682"/>    
+    <bendpoint x="2736" y="5001"/>    
+    <end type="SOURCE" refId="8"/>    
     <end type="TARGET" refId="6"/>  
   </dependency>  
-  <dependency id="146">    
+  <generalization id="172">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="17"/>  
+  </generalization>  
+  <dependency id="173">    
+    <bendpoint x="4538" y="2375"/>    
+    <bendpoint x="5968" y="3450"/>    
+    <bendpoint x="6523" y="4075"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="60"/>  
+  </dependency>  
+  <generalization id="174">    
+    <bendpoint x="2799" y="3450"/>    
+    <bendpoint x="2799" y="2375"/>    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <dependency id="175">    
+    <bendpoint x="6712" y="2375"/>    
+    <bendpoint x="6932" y="3450"/>    
+    <bendpoint x="6995" y="4075"/>    
+    <bendpoint x="6995" y="4682"/>    
+    <end type="SOURCE" refId="49"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <generalization id="176">    
+    <bendpoint x="3398" y="4075"/>    
+    <bendpoint x="3398" y="3450"/>    
+    <bendpoint x="3356" y="2375"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <association id="177">    
+    <bendpoint x="5947" y="2375"/>    
+    <bendpoint x="5947" y="3450"/>    
+    <end type="SOURCE" refId="47" navigable="false">      
+      <attribute id="178" name="o1"/>      
+      <multiplicity id="179" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="180">    
+    <bendpoint x="2398" y="356"/>    
+    <bendpoint x="2122" y="1449"/>    
+    <bendpoint x="2350" y="1696"/>    
+    <bendpoint x="2413" y="2375"/>    
+    <bendpoint x="2497" y="3450"/>    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="181">    
+    <bendpoint x="6388" y="356"/>    
+    <bendpoint x="6388" y="1449"/>    
+    <bendpoint x="6388" y="1696"/>    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <generalization id="182">    
+    <end type="SOURCE" refId="54"/>    
+    <end type="TARGET" refId="59"/>  
+  </generalization>  
+  <association id="183">    
+    <bendpoint x="3440" y="2375"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="184" name="visibleObjects"/>      
+      <multiplicity id="185" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="186">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <association id="187">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="188" name="explosions"/>      
+      <multiplicity id="189" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="190">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <dependency id="191">    
+    <bendpoint x="6974" y="2375"/>    
+    <bendpoint x="6974" y="3450"/>    
+    <bendpoint x="6974" y="4075"/>    
+    <bendpoint x="6755" y="4682"/>    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <dependency id="192">    
+    <bendpoint x="6229" y="4075"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="193">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <realization id="194">    
+    <bendpoint x="6334" y="4075"/>    
+    <end type="SOURCE" refId="50"/>    
+    <end type="TARGET" refId="37"/>  
+  </realization>  
+  <dependency id="195">    
+    <bendpoint x="4346" y="356"/>    
+    <bendpoint x="4283" y="1449"/>    
+    <bendpoint x="3419" y="1696"/>    
+    <bendpoint x="3377" y="2375"/>    
+    <bendpoint x="3377" y="3450"/>    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <association id="196">    
+    <bendpoint x="6349" y="2375"/>    
+    <bendpoint x="6229" y="3450"/>    
+    <end type="SOURCE" refId="49" navigable="false">      
+      <attribute id="197" name="o2"/>      
+      <multiplicity id="198" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="199">    
+    <bendpoint x="2434" y="1696"/>    
+    <bendpoint x="2518" y="2375"/>    
+    <bendpoint x="2581" y="3450"/>    
+    <end type="SOURCE" refId="39" navigable="false">      
+      <attribute id="200" name="o1"/>      
+      <multiplicity id="201" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="202">    
+    <bendpoint x="2539" y="2375"/>    
+    <bendpoint x="2413" y="3450"/>    
+    <bendpoint x="2017" y="4075"/>    
+    <bendpoint x="1975" y="4682"/>    
+    <bendpoint x="1975" y="5001"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="203">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="59"/>  
+  </dependency>  
+  <dependency id="204">    
+    <bendpoint x="7079" y="4682"/>    
+    <end type="SOURCE" refId="48"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="205">    
+    <bendpoint x="7284" y="356"/>    
+    <bendpoint x="7284" y="1449"/>    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="46"/>  
+  </dependency>  
+  <association id="206">    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="207" name="o2"/>      
+      <multiplicity id="208" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="59" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="209">    
+    <bendpoint x="6544" y="4075"/>    
+    <end type="SOURCE" refId="50" navigable="false">      
+      <attribute id="210" name="o2"/>      
+      <multiplicity id="211" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="212">    
+    <end type="SOURCE" refId="51" navigable="false">      
+      <attribute id="213" name="o2"/>      
+      <multiplicity id="214" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="215">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="216" name="view"/>      
+      <multiplicity id="217" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="218">    
+    <bendpoint x="6286" y="2375"/>    
+    <end type="SOURCE" refId="49"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <association id="219">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="220" name="o1"/>      
+      <multiplicity id="221" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="222">    
+    <bendpoint x="4304" y="1449"/>    
+    <bendpoint x="2717" y="1696"/>    
+    <bendpoint x="2715" y="2375"/>    
+    <bendpoint x="2715" y="3450"/>    
+    <bendpoint x="2778" y="4075"/>    
+    <end type="SOURCE" refId="41"/>    
+    <end type="TARGET" refId="37"/>  
+  </realization>  
+  <dependency id="223">    
+    <bendpoint x="3952" y="356"/>    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="40"/>  
+  </dependency>  
+  <dependency id="224">    
+    <bendpoint x="2440" y="356"/>    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="52"/>  
+  </dependency>  
+  <realization id="225">    
+    <bendpoint x="6670" y="2375"/>    
+    <bendpoint x="6565" y="3450"/>    
+    <bendpoint x="6460" y="4075"/>    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="37"/>  
+  </realization>  
+  <association id="226">    
+    <bendpoint x="2476" y="1696"/>    
+    <bendpoint x="2560" y="2375"/>    
+    <bendpoint x="2602" y="3450"/>    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="227" name="o1"/>      
+      <multiplicity id="228" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="229">    
+    <end type="SOURCE" refId="51"/>    
+    <end type="TARGET" refId="37"/>  
+  </realization>  
+  <generalization id="230">    
+    <bendpoint x="5833" y="1696"/>    
+    <end type="SOURCE" refId="53"/>    
+    <end type="TARGET" refId="59"/>  
+  </generalization>  
+  <dependency id="231">    
+    <bendpoint x="2059" y="1449"/>    
+    <bendpoint x="2187" y="1696"/>    
+    <bendpoint x="2329" y="2375"/>    
+    <bendpoint x="2434" y="3450"/>    
+    <bendpoint x="2497" y="4075"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="232">    
+    <bendpoint x="3377" y="4075"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="37"/>  
+  </dependency>  
+  <dependency id="233">    
+    <bendpoint x="6670" y="356"/>    
+    <bendpoint x="6670" y="1449"/>    
+    <bendpoint x="6670" y="1696"/>    
+    <bendpoint x="6607" y="2375"/>    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="50"/>  
+  </dependency>  
+  <realization id="234">    
+    <bendpoint x="2455" y="1696"/>    
+    <bendpoint x="2455" y="2375"/>    
+    <bendpoint x="2455" y="3450"/>    
+    <bendpoint x="2455" y="4075"/>    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="37"/>  
+  </realization>  
+  <dependency id="235">    
+    <bendpoint x="2101" y="1449"/>    
+    <bendpoint x="2329" y="1696"/>    
+    <bendpoint x="2434" y="2375"/>    
+    <bendpoint x="2518" y="3450"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="236">    
+    <bendpoint x="4580" y="2375"/>    
+    <end type="SOURCE" refId="55"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <association id="237">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="238" name="requests"/>      
+      <multiplicity id="239" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="240">    
+    <bendpoint x="5926" y="2375"/>    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <realization id="241">    
+    <bendpoint x="1912" y="1449"/>    
+    <bendpoint x="1912" y="1696"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="22"/>  
+  </realization>  
+  <dependency id="242">    
+    <bendpoint x="4346" y="1449"/>    
+    <bendpoint x="5812" y="1696"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <generalization id="243">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <dependency id="244">    
+    <bendpoint x="5352" y="2375"/>    
+    <end type="SOURCE" refId="54"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <dependency id="245">    
+    <bendpoint x="6962" y="356"/>    
+    <bendpoint x="6962" y="1449"/>    
+    <bendpoint x="6962" y="1696"/>    
+    <bendpoint x="6911" y="2375"/>    
+    <bendpoint x="6911" y="3450"/>    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="51"/>  
+  </dependency>  
+  <dependency id="246">    
+    <bendpoint x="7185" y="2375"/>    
+    <bendpoint x="7371" y="3450"/>    
+    <bendpoint x="7371" y="4075"/>    
+    <bendpoint x="7371" y="4682"/>    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <association id="247">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="248" name="o2"/>      
+      <multiplicity id="249" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="57" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="250">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="15"/>  
+  </realization>  
+  <realization id="251">    
+    <bendpoint x="6391" y="2375"/>    
+    <bendpoint x="6313" y="3450"/>    
+    <bendpoint x="6313" y="4075"/>    
+    <end type="SOURCE" refId="49"/>    
+    <end type="TARGET" refId="37"/>  
+  </realization>  
+  <association id="252">    
+    <bendpoint x="976" y="356"/>    
+    <bendpoint x="976" y="1449"/>    
+    <bendpoint x="976" y="1696"/>    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="253" name="facade"/>      
+      <multiplicity id="254" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="255">    
+    <bendpoint x="2308" y="1696"/>    
+    <bendpoint x="2308" y="2375"/>    
+    <bendpoint x="2340" y="3450"/>    
+    <bendpoint x="2371" y="4075"/>    
+    <end type="SOURCE" refId="52"/>    
+    <end type="TARGET" refId="37"/>  
+  </realization>  
+  <generalization id="256">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <dependency id="257">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <association id="258">    
+    <end type="SOURCE" refId="49" navigable="false">      
+      <attribute id="259" name="o1"/>      
+      <multiplicity id="260" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="261">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="17"/>  
+  </generalization>  
+  <dependency id="262">    
+    <bendpoint x="5141" y="2375"/>    
+    <end type="SOURCE" refId="56"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <association id="263">    
+    <bendpoint x="7079" y="4075"/>    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="264" name="o2"/>      
+      <multiplicity id="265" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="60" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="266">    
+    <bendpoint x="2757" y="2375"/>    
+    <bendpoint x="2757" y="3450"/>    
+    <bendpoint x="2757" y="4075"/>    
+    <bendpoint x="2757" y="4682"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="267" name="position"/>      
+      <multiplicity id="268" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="269">    
+    <bendpoint x="823" y="3450"/>    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="270">    
+    <bendpoint x="2860" y="4682"/>    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="271">    
+    <bendpoint x="6250" y="4075"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <association id="272">    
+    <end type="SOURCE" refId="39" navigable="false">      
+      <attribute id="273" name="o2"/>      
+      <multiplicity id="274" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="55" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="275">    
+    <bendpoint x="5854" y="356"/>    
+    <bendpoint x="5854" y="1449"/>    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="54"/>  
+  </dependency>  
+  <dependency id="276">    
+    <bendpoint x="5896" y="356"/>    
+    <bendpoint x="6409" y="1449"/>    
+    <bendpoint x="6691" y="1696"/>    
+    <bendpoint x="6691" y="2375"/>    
+    <bendpoint x="6670" y="3450"/>    
+    <bendpoint x="6607" y="4075"/>    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="277">    
+    <bendpoint x="5947" y="4075"/>    
+    <bendpoint x="5947" y="4682"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="278">    
+    <bendpoint x="5905" y="2375"/>    
+    <bendpoint x="5917" y="1696"/>    
+    <bendpoint x="5938" y="1449"/>    
+    <bendpoint x="5959" y="356"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="45"/>  
+  </dependency>  
+  <dependency id="279">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="6"/>  
   </dependency>  
-  <realization id="147">    
+  <association id="280">    
+    <end type="SOURCE" refId="47" navigable="false">      
+      <attribute id="281" name="o2"/>      
+      <multiplicity id="282" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="53" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="283">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="25"/>  
+  </dependency>  
+  <dependency id="284">    
+    <bendpoint x="6983" y="356"/>    
+    <bendpoint x="6983" y="1449"/>    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="33"/>  
+  </dependency>  
+  <association id="285">    
+    <bendpoint x="2392" y="1696"/>    
+    <bendpoint x="2476" y="2375"/>    
+    <bendpoint x="2560" y="3450"/>    
+    <end type="SOURCE" refId="52" navigable="false">      
+      <attribute id="286" name="o1"/>      
+      <multiplicity id="287" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="288">    
+    <bendpoint x="4683" y="2375"/>    
+    <end type="SOURCE" refId="58"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <realization id="289">    
+    <bendpoint x="955" y="1449"/>    
+    <bendpoint x="997" y="1696"/>    
+    <bendpoint x="997" y="2375"/>    
+    <bendpoint x="997" y="3450"/>    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="14"/>  
+  </realization>  
+  <association id="290">    
+    <end type="SOURCE" refId="51" navigable="false">      
+      <attribute id="291" name="o1"/>      
+      <multiplicity id="292" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="293">    
+    <bendpoint x="5791" y="1696"/>    
+    <bendpoint x="5373" y="2375"/>    
+    <end type="SOURCE" refId="59"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <nesting id="294">    
+    <bendpoint x="421" y="1449"/>    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="31"/>  
+  </nesting>  
+  <association id="295">    
+    <bendpoint x="3419" y="2375"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="296" name="world"/>      
+      <multiplicity id="297" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="298">    
+    <bendpoint x="4889" y="356"/>    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="59"/>  
+  </dependency>  
+  <dependency id="299">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <realization id="300">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="37"/>  
+  </realization>  
+  <association id="301">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="302" name="o2"/>      
+      <multiplicity id="303" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="54" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="304">    
+    <bendpoint x="4367" y="1449"/>    
+    <bendpoint x="5854" y="1696"/>    
+    <bendpoint x="6328" y="2375"/>    
+    <bendpoint x="6544" y="3450"/>    
+    <bendpoint x="6628" y="4075"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="60"/>  
+  </dependency>  
+  <dependency id="305">    
+    <bendpoint x="6701" y="356"/>    
+    <bendpoint x="6701" y="1449"/>    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="34"/>  
+  </dependency>  
+  <association id="306">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="307" name="game"/>      
+      <multiplicity id="308" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="309">    
+    <bendpoint x="246" y="1449"/>    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <association id="310">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="311" name="upcomingCollisions"/>      
+      <multiplicity id="312" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="313">    
+    <bendpoint x="2581" y="2375"/>    
+    <bendpoint x="2539" y="3450"/>    
+    <bendpoint x="2434" y="4075"/>    
+    <bendpoint x="2434" y="4682"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="314" name="mass"/>      
+      <multiplicity id="315" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="316">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="17"/>  
+  </nesting>  
+  <dependency id="317">    
+    <bendpoint x="442" y="1449"/>    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <realization id="318">    
+    <bendpoint x="6307" y="2375"/>    
+    <bendpoint x="6250" y="3450"/>    
+    <bendpoint x="5968" y="4075"/>    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="37"/>  
+  </realization>  
+  <dependency id="319">    
+    <bendpoint x="3883" y="356"/>    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="36"/>  
+  </dependency>  
+  <dependency id="320">    
+    <bendpoint x="4910" y="356"/>    
+    <bendpoint x="4910" y="1449"/>    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="56"/>  
+  </dependency>  
+  <realization id="321">    
+    <end type="SOURCE" refId="44"/>    
+    <end type="TARGET" refId="37"/>  
+  </realization>  
+  <association id="322">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="323" name="o2"/>      
+      <multiplicity id="324" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="56" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="325">    
+    <bendpoint x="7263" y="356"/>    
+    <bendpoint x="7263" y="1449"/>    
+    <bendpoint x="7263" y="1696"/>    
+    <bendpoint x="7016" y="2375"/>    
+    <bendpoint x="6953" y="3450"/>    
+    <bendpoint x="6932" y="4075"/>    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="326">    
+    <bendpoint x="7308" y="4682"/>    
+    <end type="SOURCE" refId="48"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <nesting id="327">    
+    <bendpoint x="4069" y="1449"/>    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="21"/>  
+  </nesting>  
+  <dependency id="328">    
+    <bendpoint x="7543" y="356"/>    
+    <bendpoint x="7543" y="1449"/>    
+    <bendpoint x="7543" y="1696"/>    
+    <bendpoint x="7413" y="2375"/>    
+    <bendpoint x="7350" y="3450"/>    
+    <bendpoint x="7100" y="4075"/>    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="60"/>  
+  </dependency>  
+  <dependency id="329">    
+    <bendpoint x="4857" y="356"/>    
+    <bendpoint x="4857" y="1449"/>    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="57"/>  
+  </dependency>  
+  <dependency id="330">    
+    <bendpoint x="1996" y="1449"/>    
+    <bendpoint x="1975" y="1696"/>    
+    <bendpoint x="1954" y="2375"/>    
+    <bendpoint x="1954" y="3450"/>    
+    <bendpoint x="1954" y="4075"/>    
+    <bendpoint x="1954" y="4682"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <dependency id="331">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <nesting id="332">    
+    <bendpoint x="225" y="1449"/>    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="32"/>  
+  </nesting>  
+  <association id="333">    
+    <end type="SOURCE" refId="50" navigable="false">      
+      <attribute id="334" name="o1"/>      
+      <multiplicity id="335" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="336">    
+    <bendpoint x="2799" y="4682"/>    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="337">    
+    <bendpoint x="1933" y="356"/>    
+    <bendpoint x="1933" y="1449"/>    
+    <bendpoint x="1954" y="1696"/>    
+    <bendpoint x="1975" y="2375"/>    
+    <bendpoint x="1996" y="3450"/>    
+    <bendpoint x="2038" y="4075"/>    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="37"/>  
+  </dependency>  
+  <association id="338">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="339" name="o2"/>      
+      <multiplicity id="340" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="341">    
+    <bendpoint x="6292" y="3450"/>    
+    <bendpoint x="6471" y="2375"/>    
+    <bendpoint x="6649" y="1696"/>    
+    <bendpoint x="6649" y="1449"/>    
+    <bendpoint x="6649" y="356"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="45"/>  
+  </dependency>  
+  <dependency id="342">    
+    <bendpoint x="4430" y="356"/>    
+    <bendpoint x="4430" y="1449"/>    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="58"/>  
+  </dependency>  
+  <association id="343">    
+    <bendpoint x="6754" y="2375"/>    
+    <bendpoint x="6754" y="3450"/>    
+    <bendpoint x="6670" y="4075"/>    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="344" name="o2"/>      
+      <multiplicity id="345" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="346">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="23"/>  
+  </realization>  
+  <generalization id="347">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="17"/>  
+  </generalization>  
+  <association id="348">    
+    <bendpoint x="6481" y="4075"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="349" name="boundaryWalls"/>      
+      <multiplicity id="350" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="60" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="351">    
+    <bendpoint x="2461" y="356"/>    
+    <bendpoint x="2143" y="1449"/>    
+    <bendpoint x="2208" y="1696"/>    
+    <bendpoint x="2256" y="2375"/>    
+    <bendpoint x="2303" y="3450"/>    
+    <bendpoint x="2350" y="4075"/>    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="37"/>  
+  </dependency>  
+  <dependency id="352">    
+    <bendpoint x="7350" y="4075"/>    
+    <bendpoint x="7350" y="4682"/>    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="353">    
+    <bendpoint x="7434" y="2375"/>    
+    <bendpoint x="7434" y="3450"/>    
+    <bendpoint x="7392" y="4075"/>    
+    <bendpoint x="7329" y="4682"/>    
+    <end type="SOURCE" refId="46"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="354">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="355">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <realization id="356">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="15"/>  
+  </realization>  
+  <dependency id="357">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="358">    
+    <end type="SOURCE" refId="46" navigable="false">      
+      <attribute id="359" name="o1"/>      
+      <multiplicity id="360" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="361">    
+    <bendpoint x="4409" y="1449"/>    
+    <bendpoint x="3461" y="1696"/>    
+    <bendpoint x="3461" y="2375"/>    
+    <bendpoint x="3461" y="3450"/>    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="362" name="o1"/>      
+      <multiplicity id="363" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="364">    
+    <bendpoint x="7455" y="2375"/>    
+    <bendpoint x="7455" y="3450"/>    
+    <bendpoint x="7455" y="4075"/>    
+    <bendpoint x="7455" y="4682"/>    
+    <end type="SOURCE" refId="46"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="365">    
+    <bendpoint x="2038" y="1449"/>    
+    <bendpoint x="2038" y="1696"/>    
+    <bendpoint x="2038" y="2375"/>    
+    <bendpoint x="2017" y="3450"/>    
+    <bendpoint x="1996" y="4075"/>    
+    <bendpoint x="2017" y="4682"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="366">    
+    <bendpoint x="6932" y="2375"/>    
+    <bendpoint x="6995" y="3450"/>    
+    <bendpoint x="7058" y="4075"/>    
+    <bendpoint x="7058" y="4682"/>    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="367">    
+    <bendpoint x="6370" y="2375"/>    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <realization id="368">    
+    <bendpoint x="2497" y="1696"/>    
+    <bendpoint x="2497" y="2375"/>    
+    <bendpoint x="2476" y="3450"/>    
+    <bendpoint x="2476" y="4075"/>    
+    <end type="SOURCE" refId="40"/>    
+    <end type="TARGET" refId="37"/>  
+  </realization>  
+  <realization id="369">    
     <end type="SOURCE" refId="19"/>    
     <end type="TARGET" refId="26"/>  
   </realization>  
+  <dependency id="370">    
+    <bendpoint x="7564" y="356"/>    
+    <bendpoint x="7564" y="1449"/>    
+    <bendpoint x="7564" y="1696"/>    
+    <bendpoint x="7478" y="2375"/>    
+    <bendpoint x="7392" y="3450"/>    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="48"/>  
+  </dependency>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
     accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true"/>    
