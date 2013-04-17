@@ -128,7 +128,12 @@ public class Facade implements IFacade {
 	public boolean isShipThrusterActive(Object ship) {
 		return ((Ship)ship).getThruster().isEnabled();
 	}
-
+	
+	@Override
+	public boolean getisShieldActive(Object ship) {
+		return ((Ship)ship).shieldIsActive();
+	}
+	
 	@Override
 	public void setThrusterActive(Object ship, boolean active) {
 		if (active)
