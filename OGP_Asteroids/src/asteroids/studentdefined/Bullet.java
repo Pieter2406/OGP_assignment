@@ -44,15 +44,15 @@ public class Bullet extends SpaceObject{
 	 * 			if source is not a valid ship
 	 * 			| !isValidSource()
 	 */
-	public Bullet(double x, double y, Ship source, World world)
-			throws IllegalArgumentException{
-		super(x, y, BULLET_RADIUS, Mass.computeCircularMass(MASS_DENSITY, BULLET_RADIUS), world);
+	public Bullet(double x, double y, Ship source, World world,double speedMultiplier, double bulletScaler, double angle)	throws IllegalArgumentException{
+		super(x, y, bulletScaler * BULLET_RADIUS, Mass.computeCircularMass(MASS_DENSITY, bulletScaler * BULLET_RADIUS), world);
 		if (isValidSource(source)){
 			this.source = source; // source is final no setter.
-			this.setAngle(source.getAngle());
-			this.setVelocity(Velocity.computeXVelocity(this.getAngle(), REGULAR_BULLETSPEED),Velocity.computeYVelocity(this.getAngle(), REGULAR_BULLETSPEED));
+			this.setAngle(angle);
+			this.setVelocity(Velocity.computeXVelocity(this.getAngle(), REGULAR_BULLETSPEED * speedMultiplier),Velocity.computeYVelocity(this.getAngle(), REGULAR_BULLETSPEED* speedMultiplier));
 		}
-		else throw new IllegalArgumentException("Not a valid source.");
+		else
+			throw new IllegalArgumentException("Not a valid source.");
 		
 	}
 	
@@ -73,25 +73,38 @@ public class Bullet extends SpaceObject{
 	}
 	
 	private final Ship source;
-	
 	@Basic
 	public double getAngle(){
 		return angle;
 	}
 	
 	/**
-	 * Sets the angle of this ship to the given angle.
+	 * Sets the angle of this bullet to the given angle.
 	 * @param 	angle
 	 * 			The given new angle for this ship
-	 * @post 	The angle of this ship is equal to the given angle.
+	 * @post 	The angle of this bullet is equal to the given angle.
 	 * 			| new.angle = getAngle();
 	 */
 	public void setAngle(double angle){
 		this.angle = angle;
 	}
+	/**
+	 * TODO write contract for hasHitWall
+	 */
+	private boolean hasHitWall = false;
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean getHasHitWall(){return hasHitWall;}
+	
+	/**
+	 * 
+	 */
+	public void setHasHitWall(boolean bool){this.hasHitWall = bool;}
 	
 	private double angle;
-	
 	private final static double MASS_DENSITY = 7.8E12;
 	private final static double BULLET_RADIUS = 3;
 	private final static double REGULAR_BULLETSPEED = 250;

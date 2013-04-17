@@ -3,11 +3,13 @@ package asteroids.studentdefined;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 import asteroids.CollisionListener;
 import asteroids.Util;
 import asteroids.collisions.CollisionFactory;
+import asteroids.powerups.*;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 import edu.princeton.cs.algs4.MinPQ;
@@ -190,6 +192,12 @@ public class World {
 			double firstCollisionTime = newCollision.getTime();
 			if(firstCollisionTime > time){
 				advanceAll(time);
+				if(rndBoolean(POWERUP_CHANCE * time)){
+					SpaceObject powerUp = generateRandomPowerup();
+					if(powerUp != null){
+						addSpaceObject(generateRandomPowerup());
+					}
+				}
 			}else{
 				advanceAll(firstCollisionTime);
 				time -= firstCollisionTime;
@@ -238,7 +246,40 @@ public class World {
 		for (SpaceObject obj : visibleObjects)
 			obj.move(time);
 	}
-
+	
+	/**
+	 * TODO: Write generateRandomePowerup contract
+	 * @return
+	 */
+	private PowerUp generateRandomPowerup(){
+		final double RADIUS = 30;
+		Random rnd = new Random();
+		double rndX = rnd.nextInt((int) (getWidth() - 2 * RADIUS)) + RADIUS;
+		double rndY = rnd.nextInt((int) (getHeight() - 2 * RADIUS)) + RADIUS;
+		switch(rnd.nextInt(6)){			
+			case 0: return new SmallerShipPowerUp(rndX,rndY,RADIUS, 0,this);
+			case 1: return new IncreaseBulletSpeedPowerUp(rndX,rndY,RADIUS, 0,this);
+			case 2: return new BiggerBulletSizePowerUp(rndX,rndY,RADIUS,0,this);
+			case 3: return new TriShotBulletsPowerUp(rndX, rndY, RADIUS,0,this);
+			case 4: return new ShipShieldPowerUp(rndX,rndY,RADIUS,0,this);
+			case 5: return new RadiusAsteroidPushPowerUp(rndX,rndY,RADIUS,0,this);
+			default: return null;
+		}
+	}
+	
+	/**
+	 * TODO: Write rndBoolean contract.
+	 */
+	private boolean rndBoolean(double chance){
+		Random rnd = new Random();
+		double rndInt = rnd.nextInt(100);
+		if(rndInt < chance){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
 	/**
 	 * Get a Collision object with the objects that will collide first.
 	 * 
@@ -421,7 +462,16 @@ public class World {
 		}
 		return setOfShips;
 	}
-
+	public Collection<PowerUp> getPowerUps(){
+		Set<PowerUp> setOfPowerUps = new HashSet<PowerUp>();
+		for(SpaceObject pwrUp : visibleObjects){
+			if(pwrUp instanceof PowerUp){
+				setOfPowerUps.add((PowerUp)pwrUp);
+			}
+		}
+		return setOfPowerUps;
+	}
+	
 	/**
 	 * Returns all asteroids associated with this world.
 	 * @return A collection of all asteroids that are currently associated with this world.
@@ -464,5 +514,7 @@ public class World {
 	}
 
 	private boolean isTerminated;
+	
+	private static final double POWERUP_CHANCE = 2;
 
 }

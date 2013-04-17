@@ -14,17 +14,23 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 @SuppressWarnings("serial")
-public class WorldView<World, Ship, Asteroid, Bullet> extends JPanel implements KeyListener, ActionListener, CollisionListener {
+public class WorldView<World, Ship, Asteroid, Bullet, PowerUp> extends JPanel implements KeyListener, ActionListener, CollisionListener {
 
   private static final int LEFT_P1 = KeyEvent.VK_LEFT;
   private static final int RIGHT_P1 = KeyEvent.VK_RIGHT;
@@ -37,8 +43,8 @@ public class WorldView<World, Ship, Asteroid, Bullet> extends JPanel implements 
 
   private static final int TIMER_DELAY = 1000 / 30;
 
-  private Asteroids<World, Ship, Asteroid, Bullet> game;
-  private IFacade<World, Ship, Asteroid, Bullet> facade;
+  private Asteroids<World, Ship, Asteroid, Bullet, PowerUp> game;
+  private IFacade<World, Ship, Asteroid, Bullet, PowerUp> facade;
   private World world;
   private Ship player1, player2;
   private double player1_angle, player2_angle;
@@ -50,7 +56,7 @@ public class WorldView<World, Ship, Asteroid, Bullet> extends JPanel implements 
   private Map<Object, Visualization<?>> visualizations = new HashMap<Object, Visualization<?>>();
   private Set<Explosion> explosions = new HashSet<Explosion>();
 
-  public WorldView(Asteroids<World, Ship, Asteroid, Bullet> game, World world, Ship player1, Ship player2) {
+  public WorldView(Asteroids<World, Ship, Asteroid, Bullet, PowerUp> game, World world, Ship player1, Ship player2) {
     this.game = game;
     this.facade = game.getFacade();
     this.world = world;
@@ -99,6 +105,7 @@ public class WorldView<World, Ship, Asteroid, Bullet> extends JPanel implements 
     g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
     g2d.drawImage(background, 0, 0, null);
     g2d.setColor(Color.WHITE);
+    
     for (Ship ship : facade.getShips(world)) {
       if (!visualizations.containsKey(ship)) {
         visualizations.put(ship, new ShipVisualization(Color.BLUE, ship, null));
@@ -111,6 +118,13 @@ public class WorldView<World, Ship, Asteroid, Bullet> extends JPanel implements 
       }
       visualizations.get(asteroid).draw(g2d);
     }
+    for (PowerUp powerup : facade.getPowerUps(world)) {
+        if (!visualizations.containsKey(powerup)) {
+          visualizations.put(powerup, new PowerUpVisualization(powerup));
+        }
+        visualizations.get(powerup).draw(g2d);
+      }
+    
     for (Bullet bullet : facade.getBullets(world)) {
       if (!visualizations.containsKey(bullet)) {
         Ship ship = facade.getBulletSource(bullet);
@@ -118,6 +132,7 @@ public class WorldView<World, Ship, Asteroid, Bullet> extends JPanel implements 
       }
       visualizations.get(bullet).draw(g2d);
     }
+    
     for (Explosion explosion : explosions) {
       explosion.draw(g2d);
     }
@@ -260,7 +275,7 @@ public class WorldView<World, Ship, Asteroid, Bullet> extends JPanel implements 
 
   @Override
   public void objectCollision(Object entity1, Object entity2, double x, double y) {
-    if ((facade.isBullets(entity1) && !facade.isBullets(entity2)) || (facade.isBullets(entity2) && !facade.isBullets(entity1))) {
+    if ((facade.isBullets(entity1) && !facade.isBullets(entity2)) || (facade.isBullets(entity2) && !facade.isBullets(entity1) || (facade.isAsteroid(entity1) && facade.isShip(entity2)) || facade.isAsteroid(entity2) && facade.isShip(entity1))) {
       game.getSound().play("explosion");
       explosions.add(new Explosion(x, facade.getWorldHeight(world) - y));
     }
@@ -294,14 +309,36 @@ public class WorldView<World, Ship, Asteroid, Bullet> extends JPanel implements 
     }
   }
   
-  private static Image[] getImages() {
+  private static Image[] getAsteroidImages() {
     Image[] images = new Image[1];
     ClassLoader loader = WorldView.class.getClassLoader();
     images[0] = Toolkit.getDefaultToolkit().createImage(loader.getResource("asteroids/resources/asteroid1.png"));
     return images;
   }
+  private static Image[] getPowerUpImages(){
+	  Image[] images = new Image[6];
+	 // ClassLoader loader = WorldView.class.getClassLoader();
+	  BufferedImage powerUpSheet;
+	try {
+		URL url = WorldView.class.getClassLoader().getResource("asteroids/resources/Powerups.png");
+		powerUpSheet = ImageIO.read(new File(url.toURI()));
+	    images[0] = powerUpSheet.getSubimage(0,0,64,64);
+	    images[1] = powerUpSheet.getSubimage(64,0,64,64);
+	    images[2] = powerUpSheet.getSubimage(128,0,64,64);
+	    images[3] = powerUpSheet.getSubimage(192,0,64,64);
+	    images[4] = powerUpSheet.getSubimage(0,64,64,64);
+	    images[5] = powerUpSheet.getSubimage(64,64,64,64);
+	} catch (IOException e) {
+		e.printStackTrace();
+	} catch (URISyntaxException e) {
+		e.printStackTrace();
+	}
+	    return images;
+  }
   
-  private static Image[] asteroidImages = getImages();
+  private static Image[] asteroidImages = getAsteroidImages();
+  private static Image[] powerupImages = getPowerUpImages();
+  // private int shipSize = 80;
   
   public class ShipVisualization extends Visualization<Ship> {
 
@@ -320,10 +357,16 @@ public class WorldView<World, Ship, Asteroid, Bullet> extends JPanel implements 
         g2d.drawOval((int) (x - radius), (int) (y - radius), (int) (2 * radius), (int) (2 * radius));
       } else {
         AffineTransform T = AffineTransform.getTranslateInstance(radius, radius);
-        T.rotate(angle);
+//        //40 is default radius of a ship
+//        if(shipSize == 80 && radius != 40){
+//        	shipSize = (int) (radius * 2);
+//        }else if(shipSize != 80 && radius == 40){
+//        	shipSize = 80;
+//        }  
+    	T.rotate(angle);
         T.translate(-radius, -radius);
         T.preConcatenate(AffineTransform.getTranslateInstance(x - radius, y - radius));
-        g2d.drawImage(getImage(), T, null);
+        g2d.drawImage(this.getImage(),T,null);
       }
       g2d.drawLine((int) x, (int) y, (int) (x + Math.cos(angle) * radius), (int) (y + sin(angle) * radius));
     }
@@ -331,7 +374,7 @@ public class WorldView<World, Ship, Asteroid, Bullet> extends JPanel implements 
   
   public class AsteroidVisualization extends Visualization<Asteroid> {
    
-    public AsteroidVisualization(IFacade<World, Ship, Asteroid, Bullet> facade,  Asteroid asteroid, Image image) {
+    public AsteroidVisualization(IFacade<World, Ship, Asteroid, Bullet, PowerUp> facade,  Asteroid asteroid, Image image) {
       super(Color.WHITE, asteroid, image);
     }
     
@@ -357,6 +400,36 @@ public class WorldView<World, Ship, Asteroid, Bullet> extends JPanel implements 
       }
     }
   }
+  
+  public class PowerUpVisualization extends Visualization<PowerUp> {
+	   
+	    public PowerUpVisualization(IFacade<World, Ship, Asteroid, Bullet, PowerUp> facade,  PowerUp powerup, Image image) {
+	      super(Color.WHITE, powerup, image);
+	    }
+	    
+	    //TODO: Geef powerup een instance integer Type op basis van het soort powerup, en gebruik powerupImages[powerup.getType()]
+	    public PowerUpVisualization(PowerUp powerup) {
+	      this(facade, powerup, powerupImages[facade.getPowerUpType(powerup)]);
+	    }
+
+	    @Override
+	    public void draw(Graphics2D g2d) {
+	      World world = facade.getPowerUpWorld(getObject());
+	      if(world != null) {
+	        double radius = facade.getPowerUpRadius(getObject());
+	        double x = facade.getPowerUpX(getObject());
+	        double y = facade.getWorldHeight(world) - facade.getPowerUpY(getObject());
+	        if(getImage() == null) {
+	          g2d.setColor(getColor());
+	          g2d.drawOval((int) (x - radius), (int) (y - radius), (int) (2 * radius), (int) (2 * radius));
+	        } else {
+	          AffineTransform T = AffineTransform.getScaleInstance(2*radius/getImage().getWidth(null), 2*radius / getImage().getHeight(null));
+	          T.preConcatenate(AffineTransform.getTranslateInstance(x - radius, y - radius));
+	          g2d.drawImage(this.getImage(), T, null);
+	        }
+	      }
+	    }
+	  }
   
   public class BulletVisualization extends Visualization<Bullet> {
     

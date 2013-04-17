@@ -3,6 +3,7 @@ package asteroids;
 import java.util.Random;
 import java.util.Set;
 
+
 /**
  * Implement this interface to connect your code to the user interface.
  * 
@@ -43,7 +44,7 @@ import java.util.Set;
  * in your class <code>Facade</code>.</li>
  * <ul>
  */
-public interface IFacade<World, Ship, Asteroid, Bullet> {
+public interface IFacade<World, Ship, Asteroid, Bullet, PowerUp> {
 
   /**
    * Create a new world with the given <code>width</code> and
@@ -77,6 +78,10 @@ public interface IFacade<World, Ship, Asteroid, Bullet> {
   public Set<Bullet> getBullets(World world);
 
   /**
+  * Return all PowerUpslocated in <code>world</code>
+  */
+  public Set<PowerUp> getPowerUps(World world);
+  /**
    * Add <code>ship</code> to <code>world</code>.
    */
   public void addShip(World world, Ship ship);
@@ -85,7 +90,7 @@ public interface IFacade<World, Ship, Asteroid, Bullet> {
    * Add <code>asteroid</code> to <code>world</code>.
    */
   public void addAsteroid(World world, Asteroid asteroid);
-
+  
   /**
    * Remove <code>ship</code> from <code>world</code>.
    */
@@ -95,7 +100,7 @@ public interface IFacade<World, Ship, Asteroid, Bullet> {
    * Remove <code>asteroid</code> from <code>world</code>.
    */
   public void removeAsteroid(World world, Asteroid asteroid);
-
+  
   /**
    * Advance <code>world</code> by <code>dt<code> seconds. 
    * 
@@ -292,4 +297,49 @@ public interface IFacade<World, Ship, Asteroid, Bullet> {
    * Return the source of <code>bullet</code>.
    */
   public Ship getBulletSource(Bullet bullet);
+  
+  /**
+   * Return the x-coordinate of <code>powerup</code>.
+   */
+  public double getPowerUpX(PowerUp powerup);
+
+  /**
+   * Return the y-coordinate of <code>powerup</code>.
+   */
+  public double getPowerUpY(PowerUp powerup);
+
+  /**
+   * Return the velocity of <code>powerup</code> along the X-axis.
+   */
+  public double getPowerUpXVelocity(PowerUp powerup);
+
+  /**
+   * Return the velocity of <code>powerup</code> along the Y-axis.
+   */
+  public double getPowerUpYVelocity(PowerUp powerup);
+
+  /**
+   * Return the radius of <code>powerup</code>.
+   */
+  public double getPowerUpRadius(PowerUp powerup);
+
+  /**
+   * Return the mass of <code>powerup</code>.
+   */
+  public double getPowerUpMass(PowerUp powerup);
+
+  /**
+   * Return the world of <code>powerup</code>.
+   */
+  public World getPowerUpWorld(PowerUp powerup);
+  
+  /**
+   * Return the type of the <code>powerup</code>.
+   */
+  public int getPowerUpType(PowerUp powerup);
+  
+  /**
+   * Check whether <code>object</code> is a wall;
+   */
+  public boolean isWall(Object o);
 }

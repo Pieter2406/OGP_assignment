@@ -15,7 +15,7 @@ import be.kuleuven.cs.som.annotate.Raw;
  * @author Wouter Bruyninckx
  * @author Pieter Verlinden
  * 
- * @invar The world associated with each SpaceObject must be either a proper World, or a null reference.
+ * @invar 	The world associated with each SpaceObject must be either a proper World, or a null reference.
  * 			| hasProperWorld()
  *
  */
@@ -376,6 +376,19 @@ public abstract class SpaceObject {
 	}
 
 	/**
+	 * Set the current radius.
+	 */
+	@Basic @Raw
+	public void setRadius(double radius) {
+		if(isValidRadius(radius)){
+			this.radius = radius;
+			//When radius changes, new collision times need to be reset
+			this.setPendingVelocityChange(true);
+		}
+		
+	}
+	
+	/**
 	 * Return the current radius.
 	 */
 	@Basic @Raw
@@ -395,7 +408,7 @@ public abstract class SpaceObject {
 	/**
 	 * Variable containing the radius of a SpaceObject. 
 	 */
-	protected final double radius;
+	protected double radius;
 
 
 	/**
