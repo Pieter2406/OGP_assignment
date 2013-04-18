@@ -212,6 +212,7 @@ public class World {
      * @param newCollision
      */
     private void handleCollision(Collision newCollision,CollisionListener collisionListener) {
+	try{
 	    if (!(CollisionFactory.collide(newCollision.getObj1(), newCollision.getObj2()) instanceof asteroids.collisions.NoCollision)){
 		double xPos,yPos;
 		if (newCollision.getObj2() instanceof SpaceObject){
@@ -224,9 +225,13 @@ public class World {
 		}
 
 		newCollision.collide();
-			collisionListener.objectCollision(newCollision.getObj1(), newCollision.getObj2(), xPos,yPos); // in factory?
+		collisionListener.objectCollision(newCollision.getObj1(), newCollision.getObj2(), xPos,yPos);
 	    }
 	}
+	catch (NullPointerException exc){
+	    System.out.println(newCollision.getObj1().getTimeToCollision(((Wall) newCollision.getObj2())));
+	}
+    }
 
 
     /**
@@ -322,6 +327,26 @@ public class World {
 	}
 	for (Collision col: upcomingCollisions) {
 
+<<<<<<< HEAD
+	/**
+	 * TODO: Write contract for handleCollision in World
+	 * @param newCollision
+	 */
+	private void handleCollision(Collision newCollision,CollisionListener collisionListener) {
+		if (!(CollisionFactory.collide(newCollision.getObj1(), newCollision.getObj2()) instanceof asteroids.collisions.NoCollision)){
+			double xPos,yPos;
+			if (newCollision.getObj2() instanceof SpaceObject){
+				xPos = newCollision.getObj1().getCollisionPosition((SpaceObject) newCollision.getObj2()).getX();
+				yPos = newCollision.getObj1().getCollisionPosition((SpaceObject) newCollision.getObj2()).getY();
+			}
+			else { // collision with wall.
+				xPos = newCollision.getObj1().getCollisionPosition((Wall) newCollision.getObj2()).getX();
+				yPos = newCollision.getObj1().getCollisionPosition((Wall) newCollision.getObj2()).getY();
+			}
+
+			newCollision.collide();
+			collisionListener.objectCollision(newCollision.getObj1(), newCollision.getObj2(), xPos,yPos); // in factory?
+=======
 	    // Remove collision involving objects that are already terminated.
 	    if (col.getObj2() instanceof SpaceObject){
 		if (col.getObj1().isTerminated() || ((SpaceObject)col.getObj2()).isTerminated()){
@@ -336,6 +361,7 @@ public class World {
 	    for (SpaceObject ob : temp) {
 		if (col.contains(ob)) { // make sure collisions are not added twice.
 		    tempcol.add(col);
+>>>>>>> b1a7a27c1a3f046c8b73a31a9a8c93f2718e168f
 		}
 		ob.setPendingVelocityChange(false);
 	    }	

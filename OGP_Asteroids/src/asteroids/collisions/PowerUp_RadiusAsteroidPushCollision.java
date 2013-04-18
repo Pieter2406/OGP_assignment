@@ -27,7 +27,7 @@ public class PowerUp_RadiusAsteroidPushCollision implements CollisionType {
 
 	@Override
 	public void collide() {
-		for(Asteroid ast : o1.getWorld().getAsteroids()){
+		for(Asteroid ast : o1.getWorld().getAllAsteroids()){
 			if(ast.getDistanceBetween(o1) < PUSH_RADIUS){
 				double dX = ast.getPosition().getX() - o1.getPosition().getX();
 				double dY = ast.getPosition().getY() - o1.getPosition().getY();

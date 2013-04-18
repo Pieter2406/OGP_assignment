@@ -285,13 +285,40 @@ public abstract class SpaceObject {
     public double getTimeToCollision(Wall wall){
 
 	double time;
-		Coordinate startposition = getPosition();
+	Coordinate startposition = this.getPosition();
 	if (wall.getOrientation().equals("horizontal")) {
 	    if (wall.getP1().getY() == 0)
 		time = (wall.getP1().getY() - startposition.getY() + this.getRadius())  / this.getVelocity().getVelocityY();
 	    else 
 		time = (wall.getP1().getY() - startposition.getY() - this.getRadius())  / this.getVelocity().getVelocityY();
 	}
+<<<<<<< HEAD
+
+	public double getTimeToCollision(Wall wall){
+		
+		double time;
+		Coordinate startposition = getPosition();
+		if (wall.getOrientation().equals("horizontal")) {
+			if (wall.getP1().getY() == 0)
+				time = (wall.getP1().getY() - startposition.getY() + this.getRadius())  / this.getVelocity().getVelocityY();
+			else 
+				time = (wall.getP1().getY() - startposition.getY() - this.getRadius())  / this.getVelocity().getVelocityY();
+		}
+		else if (wall.getOrientation().equals("vertical")) {
+			if (wall.getP1().getX() == 0)
+				time = (wall.getP1().getX() - startposition.getX() + this.getRadius()) / this.getVelocity().getVelocityX();
+			else
+				time = (wall.getP1().getX() - startposition.getX() - this.getRadius()) / this.getVelocity().getVelocityX();
+		} else {
+			//Wall is not horizontal or vertical, return infinite collision time for now
+			return Double.POSITIVE_INFINITY;
+		}
+		if (Util.fuzzyEquals(time, 0))
+			time = 0;
+		if (time < 0)
+			return Double.POSITIVE_INFINITY;
+		return time;
+=======
 	else if (wall.getOrientation().equals("vertical")) {
 	    if (wall.getP1().getX() == 0)
 		time = (wall.getP1().getX() - startposition.getX() + this.getRadius()) / this.getVelocity().getVelocityX();
@@ -300,6 +327,7 @@ public abstract class SpaceObject {
 	} else {
 	    //Wall is not horizontal or vertical, return infinite collision time for now
 	    return Double.POSITIVE_INFINITY;
+>>>>>>> b1a7a27c1a3f046c8b73a31a9a8c93f2718e168f
 	}
 	if (Util.fuzzyEquals(time, 0))
 	    time = 0;
