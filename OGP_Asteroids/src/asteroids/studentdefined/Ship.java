@@ -415,6 +415,10 @@ public class Ship extends SpaceObject implements IShip {
 	 * @param 	o 
 	 * 			The object to check.
 	 * @return 	True, if the given object is a valid ship.
+	 * 			| if(o == null || !(o instanceof Ship)
+	 * 			|		return false
+	 * 			| else
+	 * 			|		return true
 	 */
 	public static boolean isValidShip(Object o){
 		if(o == null || !(o instanceof Ship)){

@@ -32,7 +32,7 @@ public class ShipShipCollision implements CollisionType {
 	 * Instantiates a new ship ship collision.
 	 * 
 	 * @param 	o1
-	 *          A given Ship.
+	 *          A given ship.
 	 * @param 	o2
 	 *          A given ship.
 	 * @effect	The first ship is set with the given ship.
@@ -59,13 +59,13 @@ public class ShipShipCollision implements CollisionType {
 	 * Set the first ship in the collision.
 	 * 
 	 * @param 	o1 
-	 *		The new Ship to set.
+	 *			The new Ship to set.
 	 * @post	If the given argument is a valid Ship, the Ship is set to the given Ship.
-	 * 		|new.getO1() == o1
+	 * 			|new.getO1() == o1
 	 * @throws	IllegalArgumentException
-	 * 		The given argument is not a valid argument. in other words,
-	 * 		the argument is either null or not an Ship.
-	 * 		|! Ship.isValidShip()
+	 * 			The given argument is not a valid argument. in other words,
+	 * 			the argument is either null or not an Ship.
+	 * 			|! Ship.isValidShip()
 	 */
 	private void setO1(Ship o1) throws IllegalArgumentException{
 		if(!Ship.isValidShip(o1)){

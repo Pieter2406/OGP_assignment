@@ -431,7 +431,6 @@ public class World {
 				temp.add(obj);
 		}
 		for (Collision col: upcomingCollisions) {
-
 			// Remove collision involving objects that are already terminated.
 			if (col.getObj2() instanceof SpaceObject){
 				if (col.getObj1().isTerminated() || ((SpaceObject)col.getObj2()).isTerminated()){

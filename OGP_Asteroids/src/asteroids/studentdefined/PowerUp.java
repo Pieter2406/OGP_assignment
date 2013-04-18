@@ -66,4 +66,19 @@ protected final int type;
 	public int getType(){
 		return type;
 	}
+	
+	/**
+	 * Checks if the given object is a valid powerup.
+	 *
+	 * @param 	o 
+	 * 			The object to check.
+	 * @return 	True, if the given object is a valid powerup.
+	 */
+	public static boolean isValidPowerUp(Object o){
+		if(o == null || !(o instanceof PowerUp)){
+			return false;
+		}else{
+			return true;
+		}
+	}
 }

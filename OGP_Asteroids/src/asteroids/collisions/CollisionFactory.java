@@ -3,7 +3,7 @@ package asteroids.collisions;
 import asteroids.studentdefined.*;
 
 /**
- * A CollisionFactory handles the collisions between SpaceObjects.
+ * A CollisionFactory handles the collisions between space objects and walls.
  * @version 1.1
  * 
  * @author Kristof Bruynincks
@@ -12,6 +12,19 @@ import asteroids.studentdefined.*;
  */
 public final class CollisionFactory {
 
+	/**
+	 * This factory produces a collisiontype relative to the given objects.
+	 * 
+	 * @param 	o1
+	 * 			The first object that is given.
+	 * @param 	o2
+	 * 			The second object that is given.
+	 * 
+	 * @return	a collisiontype relative to the two given objects, in other
+	 * 			words an object of ObjectObjectCollision. 
+	 * 			| if(o1 instanceof Object && o2 instanceof Object)
+	 * 			|		result == ObjectObjectCollision
+	 */
 	public static CollisionType collide(Object o1, Object o2){
 		//AsteroidAsteroidCollision
 		if(o1 instanceof Asteroid && o2 instanceof Asteroid)
