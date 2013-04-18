@@ -212,7 +212,6 @@ public class World {
 	 * @param newCollision
 	 */
 	private void handleCollision(Collision newCollision,CollisionListener collisionListener) {
-		try{
 		if (!(CollisionFactory.collide(newCollision.getObj1(), newCollision.getObj2()) instanceof asteroids.collisions.NoCollision)){
 			double xPos,yPos;
 			if (newCollision.getObj2() instanceof SpaceObject){
@@ -225,11 +224,7 @@ public class World {
 			}
 
 			newCollision.collide();
-			collisionListener.objectCollision(newCollision.getObj1(), newCollision.getObj2(), xPos,yPos);
-		}
-		}
-		catch (NullPointerException exc){
-			System.out.println(newCollision.getObj1().getTimeToCollision(((Wall) newCollision.getObj2())));
+			collisionListener.objectCollision(newCollision.getObj1(), newCollision.getObj2(), xPos,yPos); // in factory?
 		}
 	}
 

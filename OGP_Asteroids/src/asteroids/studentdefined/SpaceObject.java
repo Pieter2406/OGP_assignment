@@ -285,7 +285,7 @@ public abstract class SpaceObject {
 	public double getTimeToCollision(Wall wall){
 		
 		double time;
-		Coordinate startposition = this.getPosition();
+		Coordinate startposition = getPosition();
 		if (wall.getOrientation().equals("horizontal")) {
 			if (wall.getP1().getY() == 0)
 				time = (wall.getP1().getY() - startposition.getY() + this.getRadius())  / this.getVelocity().getVelocityY();

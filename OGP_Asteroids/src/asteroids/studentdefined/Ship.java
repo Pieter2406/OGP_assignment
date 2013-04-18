@@ -423,4 +423,54 @@ public class Ship extends SpaceObject implements IShip {
 			return true;
 		}
 	}
+	
+	/**
+	 * TODO: documentation.
+	 */
+	@Override
+	public double getTimeToCollision(Wall wall){
+		if (!getThruster().isEnabled()){
+			return super.getTimeToCollision(wall);
+		}
+		else{
+			Coordinate startposition = getPosition();
+			double accel;
+			double difference;
+			double velocity;
+			if (wall.getOrientation().equals("vertical")){
+				velocity = getVelocity().getVelocityX();
+				accel = Math.cos(getAngle()) * getThruster().getAcceleration();
+				if (wall.getP1().getX() == 0)
+					difference = startposition.getX() - wall.getP1().getX() - this.getRadius();
+				else
+					difference = startposition.getX() - wall.getP1().getX() + this.getRadius();
+			}
+			else {
+				velocity = getVelocity().getVelocityY();
+				accel = Math.sin(getAngle()) * getThruster().getAcceleration();
+				if (wall.getP1().getY() == 0)
+					difference = wall.getP1().getY() - startposition.getY() - this.getRadius();
+				else 
+					difference = wall.getP1().getY() - startposition.getY() + this.getRadius();
+			}
+			double discriminant = Math.pow(velocity, 2) - 2 * accel * difference;
+			double solution1 = (-velocity + Math.sqrt(discriminant) / (accel));
+			double solution2 = (-velocity - Math.sqrt(discriminant) / (accel));
+			
+			if (Util.fuzzyEquals(solution1, 0))
+				solution1 = 0;
+			if (Util.fuzzyEquals(solution2, 0))
+				solution2 = 0;
+			if (solution1 < 0) {
+				if (solution2 < 0) {
+					return Double.POSITIVE_INFINITY;
+				} else {
+					return solution2;
+				}
+			} else {
+				return solution1;
+			}
+		}
+			
+	}
 }

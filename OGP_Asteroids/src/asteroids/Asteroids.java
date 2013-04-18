@@ -29,6 +29,7 @@ public class Asteroids<World, Ship, Asteroid, Bullet, PowerUp> extends JFrame {
     setResizable(false);
     getContentPane().add(menu);
     pack();
+    
   }
 
   public int getWidth() {
