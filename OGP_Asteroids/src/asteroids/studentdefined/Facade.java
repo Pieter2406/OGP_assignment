@@ -26,21 +26,21 @@ public class Facade implements IFacade {
 
 	@Override
 	public Set getShips(Object world) {
-		return (Set) ((World)world).getShips();
+		return (Set) ((World)world).getAllShips();
 	}
 
 	@Override
 	public Set getAsteroids(Object world) {
-		return (Set) ((World)world).getAsteroids();
+		return (Set) ((World)world).getAllAsteroids();
 	}
 
 	@Override
 	public Set getBullets(Object world) {
-		return (Set) ((World)world).getBullets();
+		return (Set) ((World)world).getAllBullets();
 	}
 	
 	public Set getPowerUps(Object world){
-		return (Set) ((World)world).getPowerUps();
+		return (Set) ((World)world).getAllPowerUps();
 	}
 
 	@Override
