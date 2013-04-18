@@ -42,7 +42,7 @@ public class AsteroidAsteroidCollision implements CollisionType {
 	this.setO2(o2);
     }
 
-    /*_____________________________FIRST ASTEROID_______________________________*/
+    /*_____________________________FIRST_ASTEROID_______________________________*/
 
     /**
      * Return the first asteroid in this collision.
@@ -79,7 +79,7 @@ public class AsteroidAsteroidCollision implements CollisionType {
 
 
 
-    /*_____________________________SECOND ASTEROID_____________________________*/
+    /*_____________________________SECOND_ASTEROID_____________________________*/
 
 
     /**

@@ -276,8 +276,10 @@ public class WorldView<World, Ship, Asteroid, Bullet, PowerUp> extends JPanel im
   @Override
   public void objectCollision(Object entity1, Object entity2, double x, double y) {
     if ((facade.isBullets(entity1) && !facade.isBullets(entity2)) || (facade.isBullets(entity2) && !facade.isBullets(entity1) || (facade.isAsteroid(entity1) && facade.isShip(entity2)) || facade.isAsteroid(entity2) && facade.isShip(entity1))) {
-      game.getSound().play("explosion");
-      explosions.add(new Explosion(x, facade.getWorldHeight(world) - y));
+    	game.getSound().play("explosion");
+      	explosions.add(new Explosion(x, facade.getWorldHeight(world) - y));
+    }else if(facade.isPowerUp(entity1) || facade.isPowerUp(entity2)){
+    	game.getSound().play("powerup");
     }
   }
   
@@ -341,9 +343,12 @@ public class WorldView<World, Ship, Asteroid, Bullet, PowerUp> extends JPanel im
   // private int shipSize = 80;
   
   public class ShipVisualization extends Visualization<Ship> {
-
+	  private Image smallerShip;
+	  private final double initialRadius;
     public ShipVisualization(Color color, Ship ship, Image image) {
       super(color, ship, image);
+      this.smallerShip = image.getScaledInstance(60,60, Image.SCALE_DEFAULT);
+      initialRadius = facade.getShipRadius(ship);
     }
 
     @Override
@@ -357,18 +362,16 @@ public class WorldView<World, Ship, Asteroid, Bullet, PowerUp> extends JPanel im
         g2d.drawOval((int) (x - radius), (int) (y - radius), (int) (2 * radius), (int) (2 * radius));
       } else {
         AffineTransform T = AffineTransform.getTranslateInstance(radius, radius);
-//        //40 is default radius of a ship
-//        if(shipSize == 80 && radius != 40){
-//        	shipSize = (int) (radius * 2);
-//        }else if(shipSize != 80 && radius == 40){
-//        	shipSize = 80;
-//        }  
     	T.rotate(angle);
         T.translate(-radius, -radius);
         T.preConcatenate(AffineTransform.getTranslateInstance(x - radius, y - radius));
-        g2d.drawImage(this.getImage(),T,null);
         if(facade.getisShieldActive(getObject())){
         	 g2d.drawOval((int) (x - radius), (int) (y - radius), (int) (2 * radius), (int) (2 * radius));
+        }
+        if(radius < this.initialRadius){
+        	g2d.drawImage(this.smallerShip,T,null);
+        }else{
+        	g2d.drawImage(this.getImage(),T,null);
         }
         
       }

@@ -26,9 +26,7 @@ public class PowerUp_SmallerShipCollision implements CollisionType {
 	public void collide() {
 		//NOT WORKING IN WORLDVIEW
 		o2.terminate();
-//		if(o1.getRadius() > 30){
-//			o1.setRadius(o1.getRadius()/1.5);
-//		}
+		o1.setRadius(30);
 	}
 
 }

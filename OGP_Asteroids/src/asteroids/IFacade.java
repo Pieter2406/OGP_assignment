@@ -304,6 +304,11 @@ public interface IFacade<World, Ship, Asteroid, Bullet, PowerUp> {
   public Ship getBulletSource(Bullet bullet);
   
   /**
+   * Check whether the given object is a powerup
+   */
+  public boolean isPowerUp(Object entity1);
+  
+  /**
    * Return the x-coordinate of <code>powerup</code>.
    */
   public double getPowerUpX(PowerUp powerup);

@@ -47,7 +47,15 @@ public final class CollisionFactory {
 		}
 		//BUlletBulletCollision
 		if(o1 instanceof Bullet && o2 instanceof Bullet){
-			return new BulletBulletCollision((Bullet) o1, (Bullet) o2);
+			if(((Bullet)o1).getSource() != ((Bullet)o2).getSource())
+				return new BulletBulletCollision((Bullet) o1, (Bullet) o2);
+			else
+				return new NoCollision();
+
+		}
+		//ShipShipCollision
+		if(o1 instanceof Ship && o2 instanceof Ship){
+			return new ShipShipCollision((Ship) o1, (Ship) o2);
 		}
 
 		//ShipPowerUpCollision
