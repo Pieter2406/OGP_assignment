@@ -213,26 +213,24 @@ public class World {
 	 */
 	private void handleCollision(Collision newCollision,CollisionListener collisionListener) {
 		try{
-			if (!(CollisionFactory.collide(newCollision.getObj1(), newCollision.getObj2()) instanceof asteroids.collisions.NoCollision)){
-				double xPos,yPos;
-				if (newCollision.getObj2() instanceof SpaceObject){
-					xPos = newCollision.getObj1().getCollisionPosition((SpaceObject) newCollision.getObj2()).getX();
-					yPos = newCollision.getObj1().getCollisionPosition((SpaceObject) newCollision.getObj2()).getY();
-				}
-				else { // collision with wall.
-
-					xPos = newCollision.getObj1().getCollisionPosition((Wall) newCollision.getObj2()).getX();
-					yPos = newCollision.getObj1().getCollisionPosition((Wall) newCollision.getObj2()).getY();
-				}
-
-				newCollision.collide();
-				collisionListener.objectCollision(newCollision.getObj1(), newCollision.getObj2(), xPos,yPos);
+		if (!(CollisionFactory.collide(newCollision.getObj1(), newCollision.getObj2()) instanceof asteroids.collisions.NoCollision)){
+			double xPos,yPos;
+			if (newCollision.getObj2() instanceof SpaceObject){
+				xPos = newCollision.getObj1().getCollisionPosition((SpaceObject) newCollision.getObj2()).getX();
+				yPos = newCollision.getObj1().getCollisionPosition((SpaceObject) newCollision.getObj2()).getY();
 			}
-		}catch (NullPointerException ex){
-			System.out.println(newCollision.getObj1().getCollisionPosition((Wall) newCollision.getObj2()).getX());
-		
-		}
+			else { // collision with wall.
+				xPos = newCollision.getObj1().getCollisionPosition((Wall) newCollision.getObj2()).getX();
+				yPos = newCollision.getObj1().getCollisionPosition((Wall) newCollision.getObj2()).getY();
+			}
 
+			newCollision.collide();
+			collisionListener.objectCollision(newCollision.getObj1(), newCollision.getObj2(), xPos,yPos);
+		}
+		}
+		catch (NullPointerException exc){
+			System.out.println(newCollision.getObj1().getTimeToCollision(((Wall) newCollision.getObj2())));
+		}
 	}
 
 

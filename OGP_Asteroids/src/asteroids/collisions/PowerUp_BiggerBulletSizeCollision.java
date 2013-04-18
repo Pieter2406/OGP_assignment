@@ -24,12 +24,12 @@ private BiggerBulletSizePowerUp o2;
 	@Override
 	public void collide() {
 		double scale;
-		if(o1.getBulletScaler() < 4){
-			scale = o1.getBulletScaler() + 1;
+		if(o1.getBulletScaleMultiplier() < 4){
+			scale = o1.getBulletScaleMultiplier() + 1;
 		}else{
-			scale = o1.getBulletScaler();
+			scale = o1.getBulletScaleMultiplier();
 		}
-		o1.setBulletScaler(scale);
+		o1.setBulletScaleMultiplier(scale);
 		o2.terminate();
 	}
 

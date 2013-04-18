@@ -283,7 +283,7 @@ public class Ship extends SpaceObject implements IShip {
 	 * 			| result == (multiplier <= 0)
 	 */
 	public static boolean isValidBulletSpeedMultiplier(double multiplier){
-		return multiplier <= 0;
+		return multiplier > 0;
 	}
 	
 	/**
@@ -313,7 +313,7 @@ public class Ship extends SpaceObject implements IShip {
 	 * 			| result == (multiplier <= 0)
 	 */
 	public static boolean isValidBulletScaleMultiplier(double multiplier){
-		return multiplier <= 0;
+		return multiplier > 0;
 	}
 	
 	/**
@@ -408,4 +408,19 @@ public class Ship extends SpaceObject implements IShip {
 	 * Holds the maximum amount of shields
 	 */
 	public static final int MAX_SHIELDS = 3; 
+	
+	/**
+	 * Checks if the given object is a valid ship.
+	 *
+	 * @param 	o 
+	 * 			The object to check.
+	 * @return 	True, if the given object is a valid ship.
+	 */
+	public static boolean isValidShip(Object o){
+		if(o == null || !(o instanceof Ship)){
+			return false;
+		}else{
+			return true;
+		}
+	}
 }

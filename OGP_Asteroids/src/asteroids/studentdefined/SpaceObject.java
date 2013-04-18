@@ -281,33 +281,28 @@ public abstract class SpaceObject {
 			throw new IllegalArgumentException("Not an initialized SpaceObject");
 		}
 	}
-	
-	/**
-	 * 
-	 * @param wall The wall to calculate collision time with.
-	 * @return
-	 * 	 * 		The time in seconds that it would take for this SpaceObject and the given Wall
-	 * 			(if ever) to collide.
-	 * 			If the SpaceObject never collides with this wall, this method will return infinity.
-	 * 			| colThis = this.move(collisiontime);
-	 * 			| if (newThis.overlaps(wall))
-	 * 			|	result == collisiontime
-	 * 			| else 
-	 *			|	result == Double.POSITIVE_INFINITY	
-	 */
+
 	public double getTimeToCollision(Wall wall){
 		
 		double time;
 		Coordinate startposition = this.getPosition();
 		if (wall.getOrientation().equals("horizontal")) {
-			time = (Math.abs(wall.getP1().getY() - startposition.getY()) - this.getRadius())  / this.getVelocity().getVelocityY();
+			if (wall.getP1().getY() == 0)
+				time = (wall.getP1().getY() - startposition.getY() + this.getRadius())  / this.getVelocity().getVelocityY();
+			else 
+				time = (wall.getP1().getY() - startposition.getY() - this.getRadius())  / this.getVelocity().getVelocityY();
 		}
 		else if (wall.getOrientation().equals("vertical")) {
-			time = (Math.abs(wall.getP1().getX() - startposition.getX()) - this.getRadius()) / this.getVelocity().getVelocityX();
+			if (wall.getP1().getX() == 0)
+				time = (wall.getP1().getX() - startposition.getX() + this.getRadius()) / this.getVelocity().getVelocityX();
+			else
+				time = (wall.getP1().getX() - startposition.getX() - this.getRadius()) / this.getVelocity().getVelocityX();
 		} else {
 			//Wall is not horizontal or vertical, return infinite collision time for now
 			return Double.POSITIVE_INFINITY;
 		}
+		if (Util.fuzzyEquals(time, 0))
+			time = 0;
 		if (time < 0)
 			return Double.POSITIVE_INFINITY;
 		return time;
@@ -362,16 +357,17 @@ public abstract class SpaceObject {
 				//TODO: Radius moet niet altijd worden opgeteld! (kan ook moeten worden afgetrokken afhankelijk van beweging)
 				double newX = getPosition().getX() + getVelocity().getVelocityX() * getTimeToCollision(wall);
 				double newY = getPosition().getY() + getVelocity().getVelocityY() * getTimeToCollision(wall);
+				
 				if (wall.getOrientation().equals("horizontal"))
-					if (wall.getP1().getX() == 0)
-						newY += this.getRadius();
-					else
-						newY -= this.getRadius();
-				if (wall.getOrientation().equals("vertical"))
 					if (wall.getP1().getY() == 0)
-						newX += this.getRadius();
+						newY -= this.getRadius();
 					else
+						newY += this.getRadius();
+				if (wall.getOrientation().equals("vertical"))
+					if (wall.getP1().getX() == 0)
 						newX -= this.getRadius();
+					else
+						newX += this.getRadius();
 				return new Coordinate(newX,newY);
 			}
 		}

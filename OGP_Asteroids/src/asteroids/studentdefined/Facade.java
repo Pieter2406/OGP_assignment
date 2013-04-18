@@ -131,7 +131,7 @@ public class Facade implements IFacade {
 	
 	@Override
 	public boolean getisShieldActive(Object ship) {
-		return ((Ship)ship).shieldIsActive();
+		return ((Ship)ship).getShield() > 0;
 	}
 	
 	@Override
