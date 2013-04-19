@@ -70,7 +70,8 @@ public class Asteroids<World, Ship, Asteroid, Bullet, PowerUp> extends JFrame {
       view.setPreferredSize(new Dimension(width, height));
     getContentPane().remove(menu);
     getContentPane().add(view);
-    revalidate();
+    invalidate();
+    validate();
     repaint();
     view.requestFocusInWindow();
     view.startGame();
@@ -95,7 +96,8 @@ public class Asteroids<World, Ship, Asteroid, Bullet, PowerUp> extends JFrame {
       view.setPreferredSize(new Dimension(width, height));
     getContentPane().remove(menu);
     getContentPane().add(view);
-    revalidate();
+    invalidate();
+    validate();
     repaint();
     view.requestFocusInWindow();
     view.startGame();
@@ -108,7 +110,8 @@ public class Asteroids<World, Ship, Asteroid, Bullet, PowerUp> extends JFrame {
     }
     menu.reset();
     getContentPane().add(menu);
-    revalidate();
+    invalidate();
+    validate();
     repaint();
     menu.requestFocusInWindow();
     pack();

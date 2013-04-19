@@ -9,12 +9,6 @@ import be.kuleuven.cs.som.annotate.*;
 /**********************************************************************************
  * 								GENERAL TODO LIST:		              			  *
  **********************************************************************************						  *
- *		- Bekijk aanpassingen van feedback !!									  *
- *		- Position: DEFENSIEF													  *
- *		- Velocity: TOTAAL														  *
- *		- Radius: DEFENSIEF														  *
- *		- Angle/Direction: NOMINAAL												  *	
- *																				  *
  **********************************************************************************/
 
 /**
@@ -31,8 +25,8 @@ import be.kuleuven.cs.som.annotate.*;
  * 			| isValidSpeedMultiplier(getBulletSpeedMultiplier())
  * @invar	The bulletScaleMultiplier of this ship must be valid.
  * 			| isValidbulletScaleMultiplier(getScaler())
- * @invar 	The number of shields of a ship must always be between zero and 5.
- * 			| shield > 0 && shield < 5
+ * @invar 	The number of shields of a ship must always be between zero and the MAX_SHIELDS constant.
+ * 			| shield > 0 && shield < MAX_SHIELDS
  * @version 1.1
  * 
  * @author Kristof Bruyninckx

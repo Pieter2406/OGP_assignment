@@ -9,8 +9,8 @@ import asteroids.studentdefined.Velocity;
  * A class of AsteroidAsteroidCollision implements CollisionType and handles the collision
  * between two asteroids in the world.
  * 
- * @invar	The collision is always between two asteroids. The first object needs to be an asteroid
- * 		and the second object needs to be an asteroid.
+ * @invar	The collision is always between two valid asteroids. The first object needs to be a valid asteroid
+ * 		and the second object needs to be a valid asteroid.
  * 		| Asteroid.isValidAsteroid(getO1())
  * 		| Asteroid.isValidAsteroid(getO2())
  * 
@@ -26,7 +26,7 @@ public class AsteroidAsteroidCollision implements CollisionType {
 
 
     /**
-     * Initializes object one and object two with the asteroids which will collide.
+     * Initializes object one and object two with the asteroids that will collide.
      *
      * @param 	o1 
      * 			The first asteroid of the collision.
