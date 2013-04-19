@@ -44,8 +44,8 @@ public class SpaceObjectTest {
 		separatedShip = new Ship(700, 700, 300, 300, radius, rightangle, 100, world);
 		leftAsteroid = new Asteroid(100, 100, 100, 0, radius, world);
 		rightAsteroid = new Asteroid(400, 100, -100, 0, radius, world);
-		leftBullet = new Bullet( 47, 100, leftShip, world);
-		rightBullet = new Bullet(553, 100, rightShip, world);
+		leftBullet = new Bullet(47, 100, leftShip, world, 1, 1, leftShip.getAngle());
+		rightBullet = new Bullet(553, 100, rightShip, world,1,1,rightShip.getAngle());
 	}
 	
 	@Test

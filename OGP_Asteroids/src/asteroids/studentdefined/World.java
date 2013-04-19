@@ -44,7 +44,6 @@ import edu.princeton.cs.algs4.MinPQ;
  * 
  * @author Kristof Bruynincks
  * @author Wouter Bruyninckx
- * 
  * @author Pieter Verlinden
  */
 public class World {
@@ -164,7 +163,62 @@ public class World {
 		removeSpaceObject(bullet);
 	}
 
-	
+	/**
+	 * Returns True if the given SpaceObject is a member of the data structure that contains all SpaceObjects in this world.
+	 * @param spaceObject The SpaceObject to be checked.
+	 */
+	public boolean containsSpaceObject(SpaceObject spaceObject) {
+		return visibleObjects.contains(spaceObject);
+	}
+
+	/**
+	 * Add the given SpaceObject to this world.
+	 * @post 	This world contains the given SpaceObject.
+	 * 			| this.containsSpaceObject(spaceObject)
+	 * @post 	The given SpaceObject references this world as its associated world.
+	 * 			| spaceObject.getWorld() == this
+	 * @param 	spaceObject
+	 * 			The space object to be added to this world.
+	 * @throws	IllegalArgumentException
+	 * 			This world cannot have the given space object as one of 
+	 * 			its visible objects.
+	 * 			| !canHaveAsVisibleObject(spaceObject)
+	 * @throws	IllegalArgumentException
+	 * 			The given space object is already attached to some world.
+	 * 			| spaceObject.getWorld() != this
+	 */
+	public void addSpaceObject(SpaceObject spaceObject) throws IllegalArgumentException {
+		if(!canHaveAsVisibleObject(spaceObject)){
+			throw new IllegalArgumentException("This world cannot contain the given object");
+		}
+		if(spaceObject.getWorld() != this && spaceObject.getWorld() != null){
+			throw new IllegalArgumentException("The given space object already exists in another world.");
+		}
+		this.visibleObjects.add(spaceObject);
+		spaceObject.setWorld(this);
+	}
+
+	/**
+	 * Remove the given SpaceObject from this world.
+	 * @post 	This world no longer contains the given SpaceObject.
+	 * 			| !this.containsSpaceObject(spaceObject)
+	 * @post 	The given SpaceObject is no longer associated with an effective world.
+	 * 			| spaceObject.getWorld() == null
+	 * @param 	spaceObject
+	 * 			The space object to be removed from this world.
+	 */
+	public void removeSpaceObject(SpaceObject spaceObject) { 
+		if(spaceObject != null){
+			this.visibleObjects.remove(spaceObject);
+			spaceObject.setWorld(null);
+		}		
+	}
+
+	/**
+	 * Return all space objects associated with this world.
+	 * @return A collection of all space objects that are currently associated with this world.
+	 */
+
 
 	/*_________________________________________Advance step methods__________________________________________*/
 
@@ -178,9 +232,14 @@ public class World {
 	 * 			If one or more collision(s) do take place during that time interval, all these collisions are
 	 * 			handled, and all visible objects are moved to their position after the given time has passed, and after
 	 * 			all collisions that take place during this time interval have been handled.
-	 * 			
+	 * @throws	IllegalValueException
+	 * 			The given time is negative, infinity or not a number.
+	 * 			| !((time >= 0) && (time < Double.POSITIVE_INFINITY))
 	 */
-	public void evolve(double time, CollisionListener collisionListener) {
+	public void evolve(double time, CollisionListener collisionListener) throws IllegalValueException {
+		if(!(time >= 0) && (time < Double.POSITIVE_INFINITY)){
+			throw new IllegalValueException(time);
+		}
 		//Find the collision that will happen first
 		Collision newCollision = getFirstCollision();
 
@@ -230,10 +289,13 @@ public class World {
 			newCollision.collide();
 
 			//Send collision positions to the handler of visual effects.
-			if (boundarycollision)
-				collisionListener.boundaryCollision(newCollision.getObj1(), xPos,yPos);
-			else
-				collisionListener.objectCollision(newCollision.getObj1(), newCollision.getObj2(), xPos,yPos);
+			if(collisionListener != null)
+			{			
+				if (boundarycollision)
+					collisionListener.boundaryCollision(newCollision.getObj1(), xPos,yPos);
+				else
+					collisionListener.objectCollision(newCollision.getObj1(), newCollision.getObj2(), xPos,yPos);
+			}
 		}
 	}
 
@@ -271,8 +333,7 @@ public class World {
 			do{
 				rndX = rnd.nextInt((int) (getWidth() - 2 * PowerUp.DEFAULT_RADIUS)) + PowerUp.DEFAULT_RADIUS;
 				rndY = rnd.nextInt((int) (getHeight() - 2 * PowerUp.DEFAULT_RADIUS)) + PowerUp.DEFAULT_RADIUS;
-			}while((shp.getPosition().getDistanceBetween(new Coordinate(rndX,rndY)) + shp.getRadius() + PowerUp.DEFAULT_RADIUS) < 0);
-
+			}while((shp.getPosition().getDistanceBetween(new Coordinate(rndX,rndY))) < 0);
 
 		}		
 		switch(rnd.nextInt(6)){			
@@ -450,59 +511,7 @@ public class World {
 	private Collection<Wall> boundaryWalls = new ArrayList<Wall>();
 
 
-	/**
-	 * Returns True if the given SpaceObject is a member of the data structure that contains all SpaceObjects in this world.
-	 * @param spaceObject The SpaceObject to be checked.
-	 */
-	public boolean containsSpaceObject(SpaceObject spaceObject) {
-		return visibleObjects.contains(spaceObject);
-	}
 
-	/**
-	 * Add the given SpaceObject to this world.
-	 * @post 	This world contains the given SpaceObject.
-	 * 			| this.containsSpaceObject(spaceObject)
-	 * @post 	The given SpaceObject references this world as its associated world.
-	 * 			| spaceObject.getWorld() == this
-	 * @param 	spaceObject
-	 * 		The space object to be added to this world.
-	 * @throws	IllegalArgumentException
-	 * 		This world cannot have the given space object as one of 
-	 * 		its visible objects.
-	 * 		| !canHaveAsVisibleObject(spaceObject)
-	 * @throws	IllegalArgumentException
-	 * 		The given space object is already attached to some world.
-	 * 		| spaceObject.getWorld() != this
-	 */
-	public void addSpaceObject(SpaceObject spaceObject) throws IllegalArgumentException {
-		if(!canHaveAsVisibleObject(spaceObject)){
-			throw new IllegalArgumentException("This world cannot contain the given object");
-		}
-		if(spaceObject.getWorld() != this && spaceObject.getWorld() != null){
-			throw new IllegalArgumentException("The given space object already exists in another world.");
-		}
-		this.visibleObjects.add(spaceObject);
-		spaceObject.setWorld(this);
-	}
-
-	/**
-	 * Remove the given SpaceObject from this world.
-	 * @post 	This world no longer contains the given SpaceObject.
-	 * 			| !this.containsSpaceObject(spaceObject)
-	 * @post 	The given SpaceObject is no longer associated with an effective world.
-	 * 			| spaceObject.getWorld() == null
-	 * @param 	spaceObject
-	 * 		The space object to be removed from this world.
-	 */
-	public void removeSpaceObject(SpaceObject spaceObject) { 
-		this.visibleObjects.remove(spaceObject);
-		spaceObject.setWorld(null);
-	}
-
-	/**
-	 * Return all space objects associated with this world.
-	 * @return A collection of all space objects that are currently associated with this world.
-	 */
 	public Collection<SpaceObject> getAllSpaceObjects() {
 		Set<SpaceObject> setOfSpaceObjects = new HashSet<SpaceObject>();
 		setOfSpaceObjects.addAll(visibleObjects);
@@ -565,44 +574,6 @@ public class World {
 		return setOfAsteroids;
 	}
 
-
-	/*_________________________________________Destruction__________________________________________*/
-
-	/**
-	 * Terminate this world.
-	 * @post 	This world is terminated.
-	 * 			| this.isTerminated()
-	 * @post 	No SpaceObjects are attached any longer to this world.
-	 * 			| this.visibleObjects.size == 0
-	 * @effect 	Each non-terminated SpaceObject in this world no longer has a reference to this world.
-	 * 			| for each spaceobject in getAllSpaceObjects()
-	 * 			|	if (! spaceobject.isTerminated())
-	 * 			|		then spaceobject.setWorld(null)
-	 * @effect 	Each non-terminated SpaceObject in this world is removed from this world.
-	 * 			| for each spaceobject in getAllSpaceObjects()
-	 * 			|	if (! spaceobject.isTerminated())
-	 * 			|		then this.removeAsSpaceObject(spaceobject)
-	 */
-	public void terminate() {
-		this.upcomingCollisions.clear();
-		for(SpaceObject o : visibleObjects){
-			o.terminate();
-		}
-		this.boundaryWalls.clear();
-		isTerminated = true;
-	}
-
-	/**
-	 * Check whether this world is terminated.
-	 */
-	@Basic @Raw
-	public boolean isTerminated() {
-		return isTerminated;
-	}
-
-	private boolean isTerminated;
-
-
 	/**
 	 * Checks if this world can have the given object as one of its visible objects.
 	 *
@@ -651,5 +622,44 @@ public class World {
 		}
 		return true;
 	}
+
+	/*_________________________________________Destruction__________________________________________*/
+
+	/**
+	 * Terminate this world.
+	 * @post 	This world is terminated.
+	 * 			| this.isTerminated()
+	 * @post 	No SpaceObjects are attached any longer to this world.
+	 * 			| this.visibleObjects.size == 0
+	 * @effect 	Each non-terminated SpaceObject in this world no longer has a reference to this world.
+	 * 			| for each spaceobject in getAllSpaceObjects()
+	 * 			|	if (! spaceobject.isTerminated())
+	 * 			|		then spaceobject.setWorld(null)
+	 * @effect 	Each non-terminated SpaceObject in this world is removed from this world.
+	 * 			| for each spaceobject in getAllSpaceObjects()
+	 * 			|	if (! spaceobject.isTerminated())
+	 * 			|		then this.removeAsSpaceObject(spaceobject)
+	 */
+	public void terminate() {
+		this.upcomingCollisions.clear();
+		for(SpaceObject o : visibleObjects){
+			o.terminate();
+		}
+		this.boundaryWalls.clear();
+		isTerminated = true;
+	}
+
+	/**
+	 * Check whether this world is terminated.
+	 */
+	@Basic @Raw
+	public boolean isTerminated() {
+		return isTerminated;
+	}
+
+	private boolean isTerminated;
+
+
+
 
 }

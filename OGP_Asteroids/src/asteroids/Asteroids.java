@@ -61,7 +61,7 @@ public class Asteroids<World, Ship, Asteroid, Bullet, PowerUp> extends JFrame {
     facade.addShip(world, player);
     Asteroid asteroid1 = facade.createAsteroid(100, 100, 50, 100, 60);
     facade.addAsteroid(world, asteroid1);
-    Asteroid asteroid2 = facade.createAsteroid(600, 100, 60, 80, 120);
+    Asteroid asteroid2 = facade.createAsteroid(600, 100, 60, 80, 30);
     facade.addAsteroid(world, asteroid2);
     view = new WorldView<World, Ship, Asteroid, Bullet,PowerUp>(this, world, player, null);
     Asteroid asteroid4 = facade.createAsteroid(1200, 800, 0, 0, 120);

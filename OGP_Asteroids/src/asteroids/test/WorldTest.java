@@ -4,9 +4,11 @@
 package asteroids.test;
 
 import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import asteroids.Util;
+import asteroids.studentdefined.*;
 
 /**
  * Test case for World class.
@@ -17,107 +19,60 @@ import org.junit.Test;
  * */
 
 public class WorldTest {
-	//TODO: Write WorldTest
-
+	static World testworld;
+	static Ship testship;
 	@Before
 	public void setUpMutableFixture(){
+		testworld = new World(1000,1000);
+		testship = new Ship(90, 100, 10, 0, 10, 0, 10, testworld);
 		
 	}
-	@Test
-	public final void extendedConstructor_LegalCase(){
-		
-	}
-	@Test
-	public final void addShip_LegalCase(){
-		
-	}
-	@Test
-	public final void addShip_IllegalCase(){
-		
-	}
-	@Test
-	public final void removeShip_LegalCase(){
-		
-	}
-	@Test
-	public final void removeShip_IllegalCase(){
-		
-	}
-	@Test
-	public final void addAsteroid_LegalCase(){
-		
-	}
-	@Test
-	public final void addAsteroid_IllegalCase(){
-		
-	}
-	@Test
-	public final void removeAsteroid_LegalCase(){
 	
+	@Test(expected = IllegalArgumentException.class)
+	public void addSpaceObject_IllegalCase() throws IllegalArgumentException{
+		testworld.addSpaceObject(null);
 	}
+	
 	@Test
-	public final void removeAsteroid_IllegalCase(){
+	public void add_RemoveSpaceObject_LegalCase(){
+		testworld.addSpaceObject(testship);
+		assertTrue(testworld.getAllSpaceObjects().contains(testship));
+		testworld.removeSpaceObject(testship);
+		assertFalse(testworld.getAllSpaceObjects().contains(testship));
+	}
+		
+	@Test(expected = IllegalValueException.class)
+	public void evolve_NegativeTime(){
+		testworld.evolve(-1, null);
+	}
+	
+	@Test
+	public void evolve_PositiveTime(){
+		Ship shiptest = new Ship(100,400,50, 0, 0, 0, 0, testworld);
+		Bullet bullettest = new Bullet(200, 400, shiptest, testworld, 1, 1, 0);
+		Asteroid asteroidtest = new Asteroid(450, 400, 0, 0, 29, null);
+		testworld.addShip(shiptest);
+		testworld.addAsteroid(asteroidtest);
+		testworld.addBullet(bullettest);
+		testworld.evolve(2,null);
+		assertEquals(200,shiptest.getPosition().getX(),Util.EPSILON);
+		assertEquals(400,shiptest.getPosition().getY(),Util.EPSILON);
+		testworld.evolve(2, null);
+		assertEquals(0,testworld.getAllAsteroids().size());
+		assertEquals(0,testworld.getAllBullets().size());
+		assertTrue(testworld.getAllShips().contains(shiptest));
 		
 	}
+	
 	@Test
-	public final void addBullet_LegalCase(){
-		
+	public void containsSpaceObject_LegalCase(){
+		Ship shiptest = new Ship(100,400,50, 0, 0, 0, 0, null);
+		testworld.addSpaceObject(shiptest);
+		assertTrue(testworld.containsSpaceObject(shiptest));
 	}
 	@Test
-	public final void addBullet_IllegalCase(){
-		
-	}
-	@Test
-	public final void removeBullet_LegalCase(){
-		
-	}
-	@Test
-	public final void removeBullet_IllegalCase(){
-		
-	}
-	@Test
-	public final void evolve_NegativeTime(){
-		
-	}
-	@Test
-	public final void evolve_PositiveTime(){
-		
-	}
-	@Test
-	public final void handleCollision_Test(){
-		
-	}
-	@Test
-	public final void advanceAll_NegativeTime(){
-		
-	}
-	@Test
-	public final void advanceAll_PositiveTime(){
-		
-	}
-	@Test
-	public final void getFirstCollision_Test(){
-		
-	}
-	@Test
-	public final void updateCollisions_Test(){
-		
-	}
-	@Test
-	public final void containsSpaceObject_LegalCase(){
-		
-	}
-	@Test
-	public final void containsSpaceObject_IllegalCase(){
-		
-	}
-	@Test
-	public final void addSpaceObject_LegalCase(){
-		
-	}
-	@Test
-	public final void addSpaceObject_IllegalCase(){
-		
+	public void containsSpaceObject_IllegalCase(){
+		assertFalse(testworld.containsSpaceObject(null));
 	}
 	
 }

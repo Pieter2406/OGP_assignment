@@ -18,7 +18,7 @@ import asteroids.studentdefined.World;
  */
 
 public class SmallerShipPowerUp extends PowerUp {
-	private final static int TYPE = 2;
+	private final static int TYPE = 4;
 	/**
 	 * @param 	x
 	 * 			The x coordinate of this powerup in the world.

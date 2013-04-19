@@ -34,14 +34,14 @@ public class ShipTest {
 	/**
 	 * Variable referencing a world.
 	 */
-	private World world;
+	private static World world;
 	/**
 	 * Variables referencing a ship.
 	 */
-	private Ship ship_Origin_1Vel;
-	private Ship ship_VertCol;
-	private Ship ship_HorCol;
-	private Ship ship_HorCol_Slowdown;
+	private static Ship ship_Origin_1Vel;
+	private static Ship ship_VertCol;
+	private static Ship ship_HorCol;
+	private static Ship ship_HorCol_Slowdown;
 	
 	/**
 	 * Set up mutable test fixture
@@ -175,8 +175,9 @@ public class ShipTest {
 	
 	@Test
 	public void incShield_HigherThenMax(){
-		while(ship_Origin_1Vel.getShield() <= Ship.MAX_SHIELDS)
+		while(ship_Origin_1Vel.getShield() < Ship.MAX_SHIELDS)
 			ship_Origin_1Vel.incShield(); // increase shields one more then maximum allowed.
+		ship_Origin_1Vel.incShield();
 		assertEquals(Ship.MAX_SHIELDS,ship_Origin_1Vel.getShield());
 	}
 	

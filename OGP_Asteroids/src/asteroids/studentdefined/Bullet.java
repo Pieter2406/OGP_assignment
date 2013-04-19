@@ -30,14 +30,16 @@ public class Bullet extends SpaceObject{
 	 * 			The position on the x axis for this new bullet.
 	 * @param 	y
 	 * 			The position on the y axis for this new bullet.
-	 * @param 	velocityX
-	 * 			the velocity on the x axis for this new bullet.
-	 * @param 	velocityY
-	 * 			the velocity on the y axis for this new bullet.
-	 * @param 	radius
-	 * 			The given radius for this new bullet.
 	 * @param 	source
 	 * 			The given ship that fired this bullet.
+	 * @param	world
+	 * 			the source world wherein this bullet exists.
+	 * @param	speedMultiplier
+	 * 			the multiplier for the speed of the bullet.
+	 * @param	bulletScaler
+	 * 			the scale factor of the bullet.
+	 * @param	angle
+	 * 			The angle under which the bullet is fired.
 	 * @effect 	This bullet is intialised as a spaceobject with the given parameters.
 	 * 			| super((x, y, velocityX, velocityY, radius, 0, Mass.computeCircularMass(MASS_DENSITY, radius))
 	 * @throws	IllegalArgumentException
