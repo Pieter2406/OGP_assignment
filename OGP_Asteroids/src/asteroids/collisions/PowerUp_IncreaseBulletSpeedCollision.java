@@ -24,10 +24,12 @@ public class PowerUp_IncreaseBulletSpeedCollision implements CollisionType {
 	@Override
 	public void collide() {
 		o2.terminate();
-		double speed = 1;
+		double speed;
 		if(o1.getBulletSpeedMultiplier() < 4){
 			speed = o1.getBulletSpeedMultiplier() + 1;
 		}
+		else
+			speed = 4;
 		o1.setBulletSpeedMultiplier(speed);
 	}
 
