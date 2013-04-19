@@ -64,6 +64,7 @@ public class World {
 	public World(double width, double height){
 		this.width = width;
 		this.height = height;
+		//Add four walls at the borders of the world.
 		boundaryWalls.add(new Wall(new Coordinate(0,0), "vertical"));
 		boundaryWalls.add(new Wall(new Coordinate(0,0), "horizontal"));
 		boundaryWalls.add(new Wall(new Coordinate(width, height), "vertical"));
@@ -71,6 +72,8 @@ public class World {
 
 	}
 
+	/*_________________________________________Basic World properties__________________________________________*/
+	// These basic properties are expressed in pixels, and each pixel represents a kilometer.
 
 	/**
 	 * @return the width of this world.
@@ -98,15 +101,17 @@ public class World {
 	 */
 	private final double height;
 
+	/*_________________________________________Add/remove objects__________________________________________*/
+	//Methods to add visible Objects to this world that should be drawn.
+
 	/**
 	 * Add a ship to the current world.
 	 * 
 	 * @param 	ship
-	 * 			The given ship that will be added.
+	 * 			The ship that will be added.
 	 */
 	public void addShip(Ship ship){
-		visibleObjects.add(ship);
-		ship.setWorld(this);
+		addSpaceObject(ship);
 	}
 
 	/**
@@ -116,18 +121,17 @@ public class World {
 	 * 			A reference to the ship that needs to be removed.
 	 */
 	public void removeShip(Ship ship){
-		visibleObjects.remove(ship);
+		removeSpaceObject(ship);
 	}
 
 	/**
 	 * Add an asteroid to the current world.
 	 * 
 	 * @param 	asteroid
-	 * 			The given asteroid that will be added.
+	 * 			The asteroid that will be added.
 	 */
 	public void addAsteroid(Asteroid asteroid){
-		visibleObjects.add(asteroid);
-		asteroid.setWorld(this);
+		addSpaceObject(asteroid);
 	}
 
 	/**
@@ -137,18 +141,17 @@ public class World {
 	 * 			A reference to the asteroid that needs to be removed.
 	 */
 	public void removeAsteroid(Asteroid asteroid){
-		visibleObjects.remove(asteroid);
+		removeSpaceObject(asteroid);
 	}
 
 	/**
 	 * Add a bullet to the current world.
 	 * 
 	 * @param 	bullet
-	 * 			The given bullet that will be added.
+	 * 			The bullet that will be added.
 	 */
 	public void addBullet(Bullet bullet){
-		visibleObjects.add(bullet);
-		bullet.setWorld(this);
+		addSpaceObject(bullet);
 	}
 
 	/**
@@ -158,26 +161,134 @@ public class World {
 	 * 			A reference to the bullet that needs to be removed.
 	 */
 	public void removeBullet(Bullet bullet){
-		visibleObjects.remove(bullet);
+		removeSpaceObject(bullet);
 	}
+
+	/**
+	 * Returns 	True if the given SpaceObject is a member of the data structure that contains all SpaceObjects in this world.
+	 * @param 	spaceObject 
+	 * 			The space object to be checked.
+	 * @return	| return == visibleObjects.contains(spaceObject)
+	 */
+	public boolean containsSpaceObject(SpaceObject spaceObject) {
+		return visibleObjects.contains(spaceObject);
+	}
+
+	/**
+	 * Add the given SpaceObject to this world.
+	 * @post 	This world contains the given SpaceObject.
+	 * 			| this.containsSpaceObject(spaceObject)
+	 * @post 	The given SpaceObject references this world as its associated world.
+	 * 			| spaceObject.getWorld() == this
+	 * @param 	spaceObject
+	 * 		The space object to be added to this world.
+	 * @throws	IllegalArgumentException
+	 * 		This world cannot have the given space object as one of 
+	 * 		its visible objects.
+	 * 		| !canHaveAsVisibleObject(spaceObject)
+	 * @throws	IllegalArgumentException
+	 * 		The given space object is already attached to some world.
+	 * 		| spaceObject.getWorld() != this
+	 */
+	public void addSpaceObject(SpaceObject spaceObject) throws IllegalArgumentException {
+		if(!canHaveAsVisibleObject(spaceObject)){
+			throw new IllegalArgumentException("This world cannot contain the given object");
+		}
+		if(spaceObject.getWorld() != this && spaceObject.getWorld() != null){
+			throw new IllegalArgumentException("The given space object already exists in another world.");
+		}
+		this.visibleObjects.add(spaceObject);
+		spaceObject.setWorld(this);
+	}
+
+	/**
+	 * Remove the given SpaceObject from this world.
+	 * @post 	This world no longer contains the given SpaceObject.
+	 * 			| !this.containsSpaceObject(spaceObject)
+	 * @post 	The given SpaceObject is no longer associated with an effective world.
+	 * 			| spaceObject.getWorld() == null
+	 * @param 	spaceObject
+	 * 		The space object to be removed from this world.
+	 */
+	public void removeSpaceObject(SpaceObject spaceObject) { 
+		this.visibleObjects.remove(spaceObject);
+		spaceObject.setWorld(null);
+	}
+
+	/**
+	 * Checks if this world can have the given object as one of its visible objects.
+	 *
+	 * @param 	o 
+	 * 		The object to check.
+	 * @return 	False, if the given object is not effective.
+	 * 		| if(o == null)
+	 * 		|	result == false
+	 * 		Otherwise false, if the given object is not a space object.
+	 *  	| else if (!(o instanceof SpaceObject))
+	 *  	|	result == false
+	 *  	Otherwise true, if this world and the given object are not terminated.
+	 *  	| else if(!this.isTerminated() && !o.isTerminated())
+	 *  	|	result == true
+	 *  		
+	 */
+	public boolean canHaveAsVisibleObject(Object o){
+		if(o == null){
+			return false;
+		}else if(!(o instanceof SpaceObject)){
+			return false;
+		}else if(this.isTerminated() || ((SpaceObject) o).isTerminated()){
+			return false;
+		}else{
+			return true;
+		}
+	}
+
+	/**
+	 * Checks whether this world has proper visible objects associated with it.
+	 * 
+	 * @return	True if and only if this world can have each of its visible objects as
+	 * 		a visible object.
+	 * 		|result == for each object o in visibleObjects
+	 * 		|	canHaveAsVisibleObject(o)
+	 * 		
+	 */
+	public boolean hasProperVisibleObjects(){
+		for(Object o : visibleObjects){
+			if(!canHaveAsVisibleObject(o)){
+				return false;
+			}
+			if(((SpaceObject)o).getWorld() != this){
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/*_________________________________________Advance step methods__________________________________________*/
 
 	/**
 	 * Evolves the world from its current state to a new state, - more specifically - 
 	 * the state that this world is in after the given amount of time has passed from the current state.
 	 * @param 	time
 	 * 			The time over which the world changes.
-	 * 
-	 * TODO: Write full contract for evolve in World.
+	 * @post	If no collision takes place between the moment of calling this method and the given time, all
+	 * 			visible objects are moved to their position after this given time has passed.
+	 * 			If one or more collision(s) do take place during that time interval, all these collisions are
+	 * 			handled, and all visible objects are moved to their position after the given time has passed, and after
+	 * 			all collisions that take place during this time interval have been handled.
+	 * 			
 	 */
 	public void evolve(double time, CollisionListener collisionListener) {
+		//Find the collision that will happen first
 		Collision newCollision = getFirstCollision();
+
 		if(newCollision == null){
 			advanceAll(time);
 		}else{
 			double firstCollisionTime = newCollision.getTime();
-			if(firstCollisionTime > time){
+			if(firstCollisionTime > time){ // It takes longer than the time of this evolve before the first collision happens
 				advanceAll(time);
-				if(rndBoolean(POWERUP_CHANCE * time)){
+				if(rndBoolean(POWERUP_CHANCE * time)){ //With the given chance of generating a powerup
 					SpaceObject powerUp = generateRandomPowerup();
 					if(powerUp != null){
 						addSpaceObject(generateRandomPowerup());
@@ -193,10 +304,15 @@ public class World {
 	}
 
 	/**
-	 * TODO: Write contract for handleCollision in World
-	 * @param newCollision
+	 * Handles all effects of a collision between two visible objects that are associated with this world.
+	 * @param	newCollision	
+	 * 			The collision to be handled.
+	 * @param 	collisionListener
+	 * 			The handler responsible for drawing visual effects of this collision.
+	 * @post	The given collision has been resolved.
 	 */
 	private void handleCollision(Collision newCollision,CollisionListener collisionListener) {
+		boolean boundarycollision = false;
 		if (!(CollisionFactory.collide(newCollision.getObj1(), newCollision.getObj2()) instanceof asteroids.collisions.NoCollision)){
 			double xPos,yPos;
 			if (newCollision.getObj2() instanceof SpaceObject){
@@ -204,35 +320,42 @@ public class World {
 				yPos = newCollision.getObj1().getCollisionPosition((SpaceObject) newCollision.getObj2()).getY();
 			}
 			else { // collision with wall.
+				boundarycollision = true;
 				xPos = newCollision.getObj1().getCollisionPosition((Wall) newCollision.getObj2()).getX();
 				yPos = newCollision.getObj1().getCollisionPosition((Wall) newCollision.getObj2()).getY();
 			}
 
 			newCollision.collide();
-			collisionListener.objectCollision(newCollision.getObj1(), newCollision.getObj2(), xPos,yPos); // in factory?
+			
+			//Send collision positions to the handler of visual effects.
+			if (boundarycollision)
+				collisionListener.boundaryCollision(newCollision.getObj1(), xPos,yPos);
+			else
+				collisionListener.objectCollision(newCollision.getObj1(), newCollision.getObj2(), xPos,yPos);
 		}
 	}
 
 
 	/**
-	 * Update the position of each spaceobject in this world.
+	 * Update the position of each space object in this world.
 	 * @param 	time
 	 * 			Given time that determines the amount of movement of each object.
 	 * @effect	Each Object of this world has an updated position based on the
 	 * 			given time.
-	 * 			| for each spaceobject obj in visibleobjects
+	 * 			| for each SpaceObject obj in visibleObjects
 	 * 			|	obj.move(time)
 	 * @throws 	IllegalArgumentException
 	 * 			The given time is not a valid time for an advancement.
 	 * 			| time <= 0
 	 */
-	private void advanceAll(double time) throws IllegalArgumentException{
-		if (time < 0)
-			//throw new IllegalArgumentException("Time is not effective"); // wie zet dit in commentaar en waarom?
+	private void advanceAll(double time) {
+		if (time < 0) //Cannot move over a negative amount of time.
 			time = 0;
 		for (SpaceObject obj : visibleObjects)
 			obj.move(time);
 	}
+
+	/*_________________________________________Powerup generating__________________________________________*/
 
 	/**
 	 * TODO: Write generateRandomePowerup contract
@@ -268,6 +391,13 @@ public class World {
 	}
 
 	/**
+	 * Percentage of chance that a new powerup spawns in this world each time a step is executed.
+	 */
+	private static final double POWERUP_CHANCE = 2;
+
+	/*_________________________________________Collision detecting__________________________________________*/
+
+	/**
 	 * Get a Collision object with the objects that will collide first.
 	 * 
 	 * @return the first collision that will take place.
@@ -291,47 +421,54 @@ public class World {
 		}
 
 	}
-	//TODO: Fix collisions in world.
+	
 	/**
 	 * Update the list of future collisions, so that every collision that involves a SpaceObject that has a pending velocity change,
 	 * is recalculated, while other collisions remain the same.
+	 * @post	The data structure of upcoming collisions contains only collisions that involve space objects with no pending
+	 * 			velocity change.
+	 * 			| for each collision in upcomingCollisions
+	 * 			|	collision.getObj1().hasPendingVelocityChange == false && collision.getObj2().hasPendingVelocityChange == false
+	 * @post	The data structure of upcoming collisions contains only collisions that involve non-terminated objects.
+	 * 			| for each collision in upcomingCollisions
+	 * 			|	!( collision.getObj1().isTerminated() || collision.getObj2().isTerminated() )
 	 *
 	 */
 	private void updateCollisions() {
-		ArrayList<SpaceObject> temp = new ArrayList<SpaceObject>(); //Temp storage for objects with a pending velocity change.
-		ArrayList<Collision> tempcol = new ArrayList<Collision>(); //Temp storage for collisions to be removed after iterating.
+		ArrayList<SpaceObject> toBeRecalculatedObj = new ArrayList<SpaceObject>(); //Temp storage for objects with a pending velocity change.
+		ArrayList<Collision> toBeRemovedCol = new ArrayList<Collision>(); //Temp storage for collisions to be removed after iterating.
 
 		for (SpaceObject obj : visibleObjects) {
 			if (obj.hasPendingVelocityChange())
-				temp.add(obj);
+				toBeRecalculatedObj.add(obj);
 		}
 		for (Collision col: upcomingCollisions) {
-
 			// Remove collision involving objects that are already terminated.
 			if (col.getObj2() instanceof SpaceObject){
 				if (col.getObj1().isTerminated() || ((SpaceObject)col.getObj2()).isTerminated()){
-					tempcol.add(col);
+					toBeRemovedCol.add(col);
 				}
 			}
-			else
+			else // The collision involves a wall instead of a second SpaceObject
 				if (col.getObj1().isTerminated()){
-					tempcol.add(col);
+					toBeRemovedCol.add(col);
 				}
-			//Recalculate all collisions that involve an object with a pending velocity change and set the flag to false.
-			for (SpaceObject ob : temp) {
-				if (col.contains(ob)) { // make sure collisions are not added twice.
-					tempcol.add(col);
+			//Add all collisions that involve an object with a pending velocity flag to the data set
+			//of collisions to be removed and set the flag to false.
+			for (SpaceObject recalcObj : toBeRecalculatedObj) {
+				if (col.contains(recalcObj)) {
+					toBeRemovedCol.add(col);
 				}
-				ob.setPendingVelocityChange(false);
+				recalcObj.setPendingVelocityChange(false);
 			}	
 		}
 		//Remove all collisions that involve a changed object from the list of upcoming collisions.
-		for (Collision col: tempcol) {
+		for (Collision col: toBeRemovedCol) {
 			upcomingCollisions.remove(col);
 		}
 
 		//Add new collisions with all other objects, for every SpaceObject that has a pending velocity change.
-		for (SpaceObject obj: temp) {
+		for (SpaceObject obj: toBeRecalculatedObj) {
 			for (SpaceObject obje : visibleObjects) {
 				if (!obj.equals(obje) && !obj.isTerminated() && !obje.isTerminated()) {
 					Collision newCollision = new Collision(obj, obje);
@@ -372,6 +509,7 @@ public class World {
 	}
 
 
+	/*_________________________________________Data structures associations__________________________________________*/
 
 	//Collections are used to obtain a maximum amount of generality for passing and manipulating these data structures.
 	/**
@@ -506,6 +644,7 @@ public class World {
 	/**
 	 * Returns all asteroids associated with this world.
 	 * @return A collection of all asteroids that are currently associated with this world.
+	 * 
 	 */
 	public Collection<Asteroid> getAllAsteroids() {
 		Set<Asteroid> setOfAsteroids = new HashSet<Asteroid>();
@@ -516,6 +655,9 @@ public class World {
 		}
 		return setOfAsteroids;
 	}
+	
+
+	/*_________________________________________Destruction__________________________________________*/
 
 	/**
 	 * Terminate this world.

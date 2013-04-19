@@ -28,9 +28,9 @@ public class AsteroidWallCollision implements CollisionType{
      * initializes the Asteroid wall collision with a given asteroid an given wall.
      *
      * @param 	o1 
-     * 		The asteroid of this collision.
+     * 			The asteroid of this collision.
      * @param 	o2 
-     * 		The wall of this collision.
+     * 			The wall of this collision.
      */
     public AsteroidWallCollision(Asteroid o1, Wall o2) {
 	this.setO1(o1);
@@ -87,14 +87,14 @@ public class AsteroidWallCollision implements CollisionType{
      * Set the asteroid in the collision.
      * 
      * @param 	o2 
-     *		The wall to set.
+     *			The wall to set.
      * @post	If the given argument is a valid wall, the wall is set to the new given asteroid.
-     * 		| if(Wall.isValidWall(o2){
+     * 			| if(Wall.isValidWall(o2){
      * 			new.getO1 == o2
      * @throws	IllegalArgumentException
-     * 		The given argument is not a valid argument. In other words, the
-     * 		argument is either null or not an asteroid.
-     * 		| ! Wall.isValidWall(o2)
+     * 			The given argument is not a valid argument. In other words, the
+     * 			argument is either null or not an asteroid.
+     * 			| ! Wall.isValidWall(o2)
      */
     private void setO2(Wall o2) {
 	if(!Wall.isValidWall(o2)){

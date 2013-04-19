@@ -1,16 +1,14 @@
 package asteroids.studentdefined;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+
 import asteroids.IShip;
 import asteroids.Util;
 import be.kuleuven.cs.som.annotate.*;
 /**********************************************************************************
  * 								GENERAL TODO LIST:		              			  *
  **********************************************************************************						  *
- *		- Bekijk aanpassingen van feedback !!									  *
- *		- Position: DEFENSIEF													  *
- *		- Velocity: TOTAAL														  *
- *		- Radius: DEFENSIEF														  *
- *		- Angle/Direction: NOMINAAL												  *	
- *																				  *
  **********************************************************************************/
 
 /**
@@ -27,7 +25,7 @@ import be.kuleuven.cs.som.annotate.*;
  * 			| isValidSpeedMultiplier(getBulletSpeedMultiplier())
  * @invar	The bulletScaleMultiplier of this ship must be valid.
  * 			| isValidbulletScaleMultiplier(getScaler())
- * @invar 	The number of shields of a ship must always be between zero and 5.
+ * @invar 	The number of shields of a ship must always be between zero and the MAX_SHIELDS constant.
  * 			| shield > 0 && shield < MAX_SHIELDS
  * @version 1.1
  * 
@@ -103,7 +101,7 @@ public class Ship extends SpaceObject implements IShip {
 	/**
 	 * Enables the thruster that is attached to this ship.
 	 * @effect	This ship's thruster is enabled.
-	 * 			| (new this).getThruster == true
+	 * 			| this.getThruster().enable()
 	 */
 	public void enableThruster() {
 		getThruster().enable();
@@ -112,7 +110,7 @@ public class Ship extends SpaceObject implements IShip {
 	/**
 	 * Disables the thruster that is attached to this ship.
 	 * @effect	This ship's thruster is disabled.
-	 * 			| (new this).getThruster == false
+	 * 			| this.getThruster().disable()
 	 */
 	public void disableThruster() {
 		getThruster().disable();
@@ -430,6 +428,10 @@ public class Ship extends SpaceObject implements IShip {
 	 * @param 	o 
 	 * 			The object to check.
 	 * @return 	True, if the given object is a valid ship.
+	 * 			| if(o == null || !(o instanceof Ship)
+	 * 			|		return false
+	 * 			| else
+	 * 			|		return true
 	 */
 	public static boolean isValidShip(Object o){
 		if(o == null || !(o instanceof Ship)){
@@ -491,10 +493,14 @@ public class Ship extends SpaceObject implements IShip {
 				else 
 					difference = startposition.getY() - wall.getP1().getY() + this.getRadius();
 			}
+			if(Util.fuzzyEquals(0, accel)){
+				return super.getTimeToCollision(wall);
+			}
 			double discriminant = Math.pow(velocity, 2) - 2 * accel * difference;
 			if (discriminant < 0)
 				return Double.POSITIVE_INFINITY;
 			double solution1 = (-velocity + Math.sqrt(discriminant)) / (accel);
+			double solution2 = (-velocity - Math.sqrt(discriminant)) / (accel);
 			double solution2 = (-velocity - Math.sqrt(discriminant)) / (accel);
 
 			if (Util.fuzzyEquals(solution1, 0))
@@ -523,4 +529,12 @@ public class Ship extends SpaceObject implements IShip {
 		this.thruster.setSource(null);
 		super.terminate();
 	}
+//	private Collection<PowerUp> activePowerUps = new ArrayList<PowerUp>();
+//
+//	public Collection<PowerUp> getActivePowerUps(){
+//		return activePowerUps;
+//	}
+//	public void addPowerUp(PowerUp powerup){
+//		activePowerUps.add(powerup);
+//	}
 }

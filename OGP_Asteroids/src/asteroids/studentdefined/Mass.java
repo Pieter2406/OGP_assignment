@@ -67,6 +67,8 @@ public class Mass {
 		this(0);
 	}
 	
+	/*____________________________METHODS____________________________*/
+	
 	/**
 	 * Compute the mass in terms of a given mass density and a given radius.
 	 * 
@@ -95,7 +97,8 @@ public class Mass {
 		}
 		
 	}
-
+	/*____________________________MASS____________________________*/
+	
 	/**
 	 * Set the current mass to the given mass.
 	 * 
@@ -130,6 +133,7 @@ public class Mass {
 	 */
 	private double mass;
 
+
 	/**
 	 * Check whether the given mass is a valid mass.
 	 * @param	mass
@@ -141,45 +145,5 @@ public class Mass {
 	public static boolean isValidMass(double mass){
 		return (mass >= 0 && mass < Double.POSITIVE_INFINITY && !Double.isNaN(mass));
 	}
-
-	//	/**
-	//	 * @return the accelResistance
-	//	 */
-	//	public double getAccelResistance() {
-	//		return accelResistance;
-	//	}
-	//	
-	//	/**
-	//	 * @param 	accelResistance 
-	//	 * 			The new value for the acceleration resistance.
-	//	 */
-	//	public void setAccelResistance(double accelResistance) {
-	//		this.accelResistance = accelResistance;
-	//	}
-	//	
-	//	/**
-	//	 * Holds the acceleration resistance.
-	//	 */
-	//	private double accelResistance;
-	//	
-	//	/**
-	//	 * @return the collisionEffect
-	//	 */
-	//	public double getCollisionEffect() {
-	//		return collisionEffect;
-	//	}
-	//	
-	//	/**
-	//	 * @param 	collisionEffect 
-	//	 * 			The new value for the collision effect.
-	//	 */
-	//	public void setCollisionEffect(double collisionEffect) {
-	//		this.collisionEffect = collisionEffect;
-	//	}
-	//	
-	//	/**
-	//	 * Holds the value for collision effect.
-	//	 */
-	//	private double collisionEffect;
-
+	
 }
