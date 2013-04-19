@@ -11,6 +11,7 @@ import asteroids.Util;
 import asteroids.collisions.CollisionFactory;
 import asteroids.powerups.*;
 import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Model;
 import be.kuleuven.cs.som.annotate.Raw;
 import edu.princeton.cs.algs4.MinPQ;
 
@@ -60,6 +61,7 @@ public class World {
 	/**
 	 * @return the width of this world.
 	 */
+	@Raw
 	public double getWidth() {
 		return width;
 	}
@@ -74,6 +76,7 @@ public class World {
 	/**
 	 * @return the height of this world.
 	 */
+	@Raw
 	public double getHeight() {
 		return height;
 	}
@@ -195,6 +198,7 @@ public class World {
 	 * 			The handler responsible for drawing visual effects of this collision.
 	 * @post	The given collision has been resolved.
 	 */
+	@Model
 	private void handleCollision(Collision newCollision,CollisionListener collisionListener) {
 		boolean boundarycollision = false;
 		if (!(CollisionFactory.collide(newCollision.getObj1(), newCollision.getObj2()) instanceof asteroids.collisions.NoCollision)){
@@ -232,6 +236,7 @@ public class World {
 	 * 			The given time is not a valid time for an advancement.
 	 * 			| time <= 0
 	 */
+	@Model
 	private void advanceAll(double time) {
 		if (time < 0) //Cannot move over a negative amount of time.
 			time = 0;
@@ -246,6 +251,7 @@ public class World {
 	 * @return 	a new object of a random powerup.
 	 * 			| new RandomPowerup(randomposX,randomposY, this)
 	 */
+	@Model
 	private PowerUp generateRandomPowerup(){
 		Random rnd = new Random();
 		double rndX = 0;
@@ -272,6 +278,7 @@ public class World {
 	/**
 	 * private function, has a given chance of returning true, else returns false.
 	 */
+	@Model
 	private boolean rndBoolean(double chance){
 		Random rnd = new Random();
 		double rndInt = rnd.nextInt(100);
@@ -300,6 +307,7 @@ public class World {
 	 * 			|		lowestTimeCol = collision
 	 * 			| result == lowestTimeCol
 	 */
+	@Model
 	private Collision getFirstCollision() {
 
 		/*
@@ -332,6 +340,7 @@ public class World {
 	 * 			|	!( collision.getObj1().isTerminated() || collision.getObj2().isTerminated() )
 	 *
 	 */
+	@Model
 	private void updateCollisions() {
 		ArrayList<SpaceObject> toBeRecalculatedObj = new ArrayList<SpaceObject>(); //Temp storage for objects with a pending velocity change.
 		ArrayList<Collision> toBeRemovedCol = new ArrayList<Collision>(); //Temp storage for collisions to be removed after iterating.
@@ -492,6 +501,7 @@ public class World {
 	 * Return all space objects associated with this world.
 	 * @return A collection of all space objects that are currently associated with this world.
 	 */
+	@Raw
 	public Collection<SpaceObject> getAllSpaceObjects() {
 		Set<SpaceObject> setOfSpaceObjects = new HashSet<SpaceObject>();
 		setOfSpaceObjects.addAll(visibleObjects);
@@ -502,6 +512,7 @@ public class World {
 	 * Returns all bullets associated with this world.
 	 * @return A collection of all bullets that are currently associated with this world.
 	 */
+	@Raw
 	public Collection<Bullet> getAllBullets() {
 		Set<Bullet> setOfBullets = new HashSet<Bullet>();
 		for(SpaceObject blt : visibleObjects){
@@ -516,6 +527,7 @@ public class World {
 	 * Return all ships associated with this world.
 	 * @return A collection of all ships that are currently associated with this world.
 	 */
+	@Raw
 	public Collection<Ship> getAllShips() {
 		Set<Ship> setOfShips = new HashSet<Ship>();
 		for(SpaceObject shp : visibleObjects){
@@ -529,6 +541,7 @@ public class World {
 	 * Returns all powerups associated with this world.
 	 * @return	A collection of all powerups that are currently associated with this world.
 	 */
+	@Raw
 	public Collection<PowerUp> getAllPowerUps(){
 		Set<PowerUp> setOfPowerUps = new HashSet<PowerUp>();
 		for(SpaceObject pwrUp : visibleObjects){
@@ -544,6 +557,7 @@ public class World {
 	 * @return A collection of all asteroids that are currently associated with this world.
 	 * 
 	 */
+	@Raw
 	public Collection<Asteroid> getAllAsteroids() {
 		Set<Asteroid> setOfAsteroids = new HashSet<Asteroid>();
 		for(SpaceObject ast : visibleObjects){

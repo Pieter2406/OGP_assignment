@@ -79,7 +79,6 @@ public abstract class SpaceObject {
 	 * 			radius, mass and world. This space object is initialized with an active pending velocity change.
 	 *			| this(x, y, 0, 0, radius, 0, mass, world)
 	 */
-	@Raw
 	protected SpaceObject(double x, double y, double radius, double mass, World world){
 		this(x,y,0,0,radius,0,mass, world);
 	}
