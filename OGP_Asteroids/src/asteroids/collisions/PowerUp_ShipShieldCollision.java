@@ -10,11 +10,6 @@ import asteroids.studentdefined.Ship;
  * A class of ship shield collision inherits from ShipPowerUpCollision
  * and holds a ship and a ship shield powerup.
  * 
- * @invar	The collision is always between a Ship and a powerup. The first object needs to be a Ship
- * 			and the second object needs to be a powerup.
- * 			| Ship.isValidShip(getO1())
- * 			| Ship.isValidPowerUp(getO2())
- * 
  * @author	Kristof Bruyninckx
  * @author 	Wouter Bruyninckx
  * @author 	Pieter Verlinden

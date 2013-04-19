@@ -6,18 +6,14 @@ import asteroids.studentdefined.Facade;
 import asteroids.studentdefined.Ship;
 import asteroids.studentdefined.Velocity;
 import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Raw;
 
 import java.util.Random;
 
 
 /**
  * A class of AsteroidBulletCollision implements CollisionType and handles the collision
- * between an asteroid and a bullet in the world.
- * 
- * @invar	The collision is always between an asteroid and a bullet. The first object needs to be an asteroid
- * 			and the second object needs to be a bullet.
- * 			| Asteroid.isValidAsteroid(getO1())
- * 			| Bullet.isValidBullet(getO2())
+ * between an asteroid and a bullet.
  * 
  * @author	Kristof Bruyninckx
  * @author 	Wouter Bruyninckx
@@ -49,7 +45,7 @@ public class AsteroidBulletCollision implements CollisionType {
     /**
      * @return the asteroid.
      */
-    @Basic
+    @Basic @Raw
     private Asteroid getO1() {
 	return o1;
     }
@@ -83,9 +79,9 @@ public class AsteroidBulletCollision implements CollisionType {
     /**
      * @return the bullet.
      */
-    @Basic
+    @Basic @Raw
     private Bullet getO2() {
-	return o2;
+    	return o2;
     }
 
     /**
@@ -119,12 +115,21 @@ public class AsteroidBulletCollision implements CollisionType {
      * Handle the collision between an asteroid and a bullet.
      * 
      * @post	The initial asteroid and bullet are terminated and two
-     * 			new asteroids are created if their radius is big enough.
-     * 			| o1.terminate()
-     * 			| o2.terminate()
+     * 			new asteroids are created if their radius is big enough. 
      * 			| if(o1.getRadius() >= 30)
      * 			| 	Asteroid newAsteroid1 = new Asteroid()
      * 			|	Asteroid newAsteroid2 = new Asteroid()
+     *      	| o1.terminate()
+     * 			| o2.terminate()
+     * @post	If two new asteroids are created, they have opposing velocities, 
+     * 			one of these is generated randomly.
+     * 			| newAsteroid1.getAngle() == randomAngle
+     * 			| newAsteroid1.getAngle() == -randomAngle
+     * @post	Both new asteroids have a new position based on their radius and angle.
+     * 			| newAsteroid1.getPosition().getX() = o1.getPosition().getX() + Math.cos(randomAngle) * o1.getRadius()/2;
+	 *  		| newAsteroid1.getPosition().getY()	= o1.getPosition().getY() + Math.sin(randomAngle) * o1.getRadius()/2;
+     * 			| newAsteroid2.getPosition().getX() = o1.getPosition().getX() - Math.cos(randomAngle) * o1.getRadius()/2;
+	 *  		| newAsteroid2.getPosition().getY()	= o1.getPosition().getY() - Math.sin(randomAngle) * o1.getRadius()/2;
      */
     @Override
     public void collide() {

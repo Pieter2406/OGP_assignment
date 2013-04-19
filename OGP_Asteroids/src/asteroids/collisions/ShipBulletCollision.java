@@ -3,6 +3,7 @@ package asteroids.collisions;
 import java.util.Random;
 
 import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Raw;
 
 import asteroids.studentdefined.Ship;
 import asteroids.studentdefined.Bullet;
@@ -12,11 +13,6 @@ import asteroids.studentdefined.Velocity;
 /**
  * The class ShipShipCollision implements CollisionType and handles the collision
  * between an ship and a ship.
- * 
- * @invar	The collision is always between an ship and a ship. The first object needs to be an ship
- * 		and the second object needs to be a ship.
- * 		| Ship.isValidShip(getO1())
- * 		| Bullet.isValidShip(getO2())
  * 
  * @author	Kristof Bruyninckx
  * @author 	Wouter Bruyninckx
@@ -49,7 +45,7 @@ public class ShipBulletCollision implements CollisionType {
 	/**
 	 * Return the ship.
 	 */
-	@Basic
+	@Basic @Raw
 	private Ship getO1() {
 		return o1;
 	}
@@ -84,7 +80,7 @@ public class ShipBulletCollision implements CollisionType {
 	/**
 	 * Return the bullet of this collision.
 	 */
-	@Basic
+	@Basic @Raw
 	private Bullet getO2() {
 		return o2;
 	}

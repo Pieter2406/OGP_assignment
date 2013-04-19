@@ -13,27 +13,9 @@ import asteroids.powerups.*;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 import edu.princeton.cs.algs4.MinPQ;
-/******************************************************************************************
- * 								GENERAL TODO LIST:		              			          *
- ******************************************************************************************
- *		- Attributen:															          *
- *			- width																		  *
- *			- height																	  *
- *			- maxWidthHeight = Double.MAX_VALUE											  *	
- *		- Methodes:																		  *	
- *			- addShip(Coordinate initLocation, Velocity initVelocity, Double angle)		  *	
- *			- removeShip(Ship remShip)													  *		
- *			- addAsteroid(Coordinate initLocation, Velocity initVelocity, Double angle)	  *	
- *			- removeAsteroid(Asteroid remAsteroid)										  *	
- *			- addBullet(Coordinate initLocation, Velocity initVelocity, Double angle)	  *
- *			- removeBullet(Bullet remBullet)	 										  *
- *			- evolve(double time) (zie p7 voor uitwerking)					  	 	 	  *
- *		- Methodes voor powerUps														  *
- ******************************************************************************************/	
 
 /** 
  * A class of world involves a screen with a given width and height.
- * 
  * 
  * @version 1.1
  * 
@@ -260,8 +242,9 @@ public class World {
 	/*_________________________________________Powerup generating__________________________________________*/
 
 	/**
-	 * TODO: Write generateRandomePowerup contract
-	 * @return
+	 * generates a random powerup 
+	 * @return 	a new object of a random powerup.
+	 * 			| new RandomPowerup(randomposX,randomposY, this)
 	 */
 	private PowerUp generateRandomPowerup(){
 		Random rnd = new Random();
@@ -287,7 +270,7 @@ public class World {
 	}
 
 	/**
-	 * TODO: Write rndBoolean contract.
+	 * private function, has a given chance of returning true, else returns false.
 	 */
 	private boolean rndBoolean(double chance){
 		Random rnd = new Random();
@@ -309,7 +292,13 @@ public class World {
 	/**
 	 * Get a Collision object with the objects that will collide first.
 	 * 
-	 * @return the first collision that will take place.
+	 * @return 	the first collision that will take place.
+	 * 			| updateCollisions()
+	 * 			| 	lowestTimeCol = Double.POSITIVE_INFINITY
+	 * 			| for each collision in updateCollisions
+	 * 			|	if collision.calculateTime() < lowestTimeCol.calculateTime()
+	 * 			|		lowestTimeCol = collision
+	 * 			| result == lowestTimeCol
 	 */
 	private Collision getFirstCollision() {
 

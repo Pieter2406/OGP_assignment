@@ -4,6 +4,7 @@
 package asteroids.collisions;
 
 import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Raw;
 import asteroids.powerups.*;
 import asteroids.studentdefined.PowerUp;
 import asteroids.studentdefined.Ship;
@@ -12,11 +13,6 @@ import asteroids.studentdefined.Ship;
  * A class of ship powerup collision implements CollisionType and handles the collision
  * between a ship and a powerup in the world by invoking a powerup factory which handles
  * the collisions between powerups.
- * 
- * @invar	The collision is always between a Ship and a powerup. The first object needs to be a Ship
- * 			and the second object needs to be a powerup.
- * 			| Ship.isValidShip(getO1())
- * 			| Ship.isValidPowerUp(getO2())
  * 
  * @author	Kristof Bruyninckx
  * @author 	Wouter Bruyninckx
@@ -47,7 +43,7 @@ public class ShipPowerUpCollision implements CollisionType {
 	/**
 	 * Return the ship of this collision.
 	 */
-	@Basic
+	@Basic @Raw
 	private Ship getO1() {
 		return o1;
 	}
@@ -81,7 +77,7 @@ public class ShipPowerUpCollision implements CollisionType {
 	/**
 	 * Return the powerup in the collision.
 	 */
-	@Basic
+	@Basic @Raw
 	private PowerUp getO2() {
 		return o2;
 	}
