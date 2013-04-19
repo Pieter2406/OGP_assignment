@@ -6,21 +6,21 @@ OGP Project
 
 List of Issues:
 
-* Running the game gives a NullPointerException for FileSoundLoader
-* Long and redundant method calls SpaceObject.getMass().getMass()
-	-> Make Mass methods static and make it return a double after calculating
-	A mass is just a double value, all calculations can be static!
-  and SpaceObject.getCoordinate().getX()
-  and SpaceObject.getVelocity().getVelocityX() | Use 2D vector math
-  	or shorten method calls.
+
 * Ship.fireBullet(): Handle immediate collision situations and situations where the 
 	new bullet is partly off the screen.
 * The revalidate() method in Asteroids.java is not recognized.
-* Test methods using black- and white-box testing JUnit suites
+	Fix: This method is introduced in java 7. While windows 7 and 8 versions are usually updated to java 7,
+	Mac OS versions before 10.7 have java 6 instead of java 7 installed. More importantly, versions prior to
+	10.7(Lion) cannot upgrade java to version 7.
+	Solution: replace "revalidate();" by "invalidate(); validate();"
+* Finish test cases for World
 * Review World.java invariants and Data Structures
 	using methods for manipulating associated SpaceObjects in collision 
 	calculations, rather than manipulating the data structures directly.
-* Collision not working.
+* Collisions with walls while thruster is enabled are not working correctly.
+* getTimeToCollision test cases do not pass.
+* Introduce timers for every powerup.
 
 Changes:
 
