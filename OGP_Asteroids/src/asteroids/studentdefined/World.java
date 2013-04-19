@@ -271,19 +271,24 @@ public class World {
 	 * the state that this world is in after the given amount of time has passed from the current state.
 	 * @param 	time
 	 * 			The time over which the world changes.
-	 * 
-	 * TODO: Write full contract for evolve in World.
+	 * @post	If no collision takes place between the moment of calling this method and the given time, all
+	 * 			visible objects are moved to their position after this given time has passed.
+	 * 			If one or more collision(s) do take place during that time interval, all these collisions are
+	 * 			handled, and all visible objects are moved to their position after the given time has passed, and after
+	 * 			all collisions that take place during this time interval have been handled.
+	 * 			
 	 */
 	public void evolve(double time, CollisionListener collisionListener) {
+		//Find the collision that will happen first
 		Collision newCollision = getFirstCollision();
 
 		if(newCollision == null){
 			advanceAll(time);
 		}else{
 			double firstCollisionTime = newCollision.getTime();
-			if(firstCollisionTime > time){
+			if(firstCollisionTime > time){ // It takes longer than the time of this evolve before the first collision happens
 				advanceAll(time);
-				if(rndBoolean(POWERUP_CHANCE * time)){
+				if(rndBoolean(POWERUP_CHANCE * time)){ //With the given chance of generating a powerup
 					SpaceObject powerUp = generateRandomPowerup();
 					if(powerUp != null){
 						addSpaceObject(generateRandomPowerup());
@@ -299,11 +304,12 @@ public class World {
 	}
 
 	/**
-	 * TODO: Write contract for handleCollision in World
+	 * Handles all effects of a collision between two visible objects that are associated with this world.
 	 * @param	newCollision	
 	 * 			The collision to be handled.
 	 * @param 	collisionListener
 	 * 			The handler responsible for drawing visual effects of this collision.
+	 * @post	The given collision has been resolved.
 	 */
 	private void handleCollision(Collision newCollision,CollisionListener collisionListener) {
 		boolean boundarycollision = false;
@@ -343,8 +349,7 @@ public class World {
 	 * 			| time <= 0
 	 */
 	private void advanceAll(double time) {
-		if (time < 0)
-			//throw new IllegalArgumentException("Time is not effective");
+		if (time < 0) //Cannot move over a negative amount of time.
 			time = 0;
 		for (SpaceObject obj : visibleObjects)
 			obj.move(time);
@@ -416,46 +421,54 @@ public class World {
 		}
 
 	}
-	//TODO: Fix collisions in world.
+	
 	/**
 	 * Update the list of future collisions, so that every collision that involves a SpaceObject that has a pending velocity change,
 	 * is recalculated, while other collisions remain the same.
+	 * @post	The data structure of upcoming collisions contains only collisions that involve space objects with no pending
+	 * 			velocity change.
+	 * 			| for each collision in upcomingCollisions
+	 * 			|	collision.getObj1().hasPendingVelocityChange == false && collision.getObj2().hasPendingVelocityChange == false
+	 * @post	The data structure of upcoming collisions contains only collisions that involve non-terminated objects.
+	 * 			| for each collision in upcomingCollisions
+	 * 			|	!( collision.getObj1().isTerminated() || collision.getObj2().isTerminated() )
 	 *
 	 */
 	private void updateCollisions() {
-		ArrayList<SpaceObject> temp = new ArrayList<SpaceObject>(); //Temp storage for objects with a pending velocity change.
-		ArrayList<Collision> tempcol = new ArrayList<Collision>(); //Temp storage for collisions to be removed after iterating.
+		ArrayList<SpaceObject> toBeRecalculatedObj = new ArrayList<SpaceObject>(); //Temp storage for objects with a pending velocity change.
+		ArrayList<Collision> toBeRemovedCol = new ArrayList<Collision>(); //Temp storage for collisions to be removed after iterating.
 
 		for (SpaceObject obj : visibleObjects) {
 			if (obj.hasPendingVelocityChange())
-				temp.add(obj);
+				toBeRecalculatedObj.add(obj);
 		}
 		for (Collision col: upcomingCollisions) {
 			// Remove collision involving objects that are already terminated.
 			if (col.getObj2() instanceof SpaceObject){
 				if (col.getObj1().isTerminated() || ((SpaceObject)col.getObj2()).isTerminated()){
-					tempcol.add(col);
+					toBeRemovedCol.add(col);
 				}
 			}
-			else
+			else // The collision involves a wall instead of a second SpaceObject
 				if (col.getObj1().isTerminated()){
-					tempcol.add(col);
+					toBeRemovedCol.add(col);
 				}
-			//Recalculate all collisions that involve an object with a pending velocity change and set the flag to false.
-			for (SpaceObject ob : temp) {
-				if (col.contains(ob)) { // make sure collisions are not added twice.
-					tempcol.add(col);
+			//Add all collisions that involve an object with a pending velocity flag to the data set
+			//of collisions to be removed and set the flag to false.
+			for (SpaceObject recalcObj : toBeRecalculatedObj) {
+				if (col.contains(recalcObj)) {
+					toBeRemovedCol.add(col);
 				}
-				ob.setPendingVelocityChange(false);
+				recalcObj.setPendingVelocityChange(false);
 			}	
 		}
 		//Remove all collisions that involve a changed object from the list of upcoming collisions.
-		for (Collision col: tempcol) {
+		for (Collision col: toBeRemovedCol) {
 			upcomingCollisions.remove(col);
 		}
 
 		//Add new collisions with all other objects, for every SpaceObject that has a pending velocity change.
-		for (SpaceObject obj: temp) {
+		for (SpaceObject obj: toBeRecalculatedObj) {
 			for (SpaceObject obje : visibleObjects) {
 				if (!obj.equals(obje) && !obj.isTerminated() && !obje.isTerminated()) {
 					Collision newCollision = new Collision(obj, obje);
