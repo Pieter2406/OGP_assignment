@@ -1,4 +1,8 @@
 package asteroids.studentdefined;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+
 import asteroids.IShip;
 import asteroids.Util;
 import be.kuleuven.cs.som.annotate.*;
@@ -489,5 +493,13 @@ public class Ship extends SpaceObject implements IShip {
 		this.thruster.setSource(null);
 		super.terminate();
 	}
+//	private Collection<PowerUp> activePowerUps = new ArrayList<PowerUp>();
+//
+//	public Collection<PowerUp> getActivePowerUps(){
+//		return activePowerUps;
+//	}
+//	public void addPowerUp(PowerUp powerup){
+//		activePowerUps.add(powerup);
+//	}
 
 }

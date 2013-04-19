@@ -15,9 +15,9 @@ import java.util.Random;
  * between an asteroid and a bullet in the world.
  * 
  * @invar	The collision is always between an asteroid and a bullet. The first object needs to be an asteroid
- * 		and the second object needs to be a bullet.
- * 		| Asteroid.isValidAsteroid(getO1())
- * 		| Bullet.isValidBullet(getO2())
+ * 			and the second object needs to be a bullet.
+ * 			| Asteroid.isValidAsteroid(getO1())
+ * 			| Bullet.isValidBullet(getO2())
  * 
  * @author	Kristof Bruyninckx
  * @author 	Wouter Bruyninckx
@@ -35,9 +35,9 @@ public class AsteroidBulletCollision implements CollisionType {
      * @param 	o2
      *          A given bullet.
      * @effect	The asteroid is set with the given asteroid.
-     * 		| setO1(o1)
+     * 			| setO1(o1)
      * @effect 	The bullet is set with the given bullet.
-     * 		| setO2(o2)
+     * 			| setO2(o2)
      */
     public AsteroidBulletCollision(Asteroid o1, Bullet o2) {
 	this.setO1(o1);
@@ -58,13 +58,13 @@ public class AsteroidBulletCollision implements CollisionType {
      * Set the asteroid in the collision.
      * 
      * @param 	o1 
-     *		The new asteroid to set.
+     *			The new asteroid to set.
      * @post	If the given argument is a valid asteroid, the asteroid is set to the given asteroid.
-     * 		|new.getO1() == o1
+     * 			|new.getO1() == o1
      * @throws	IllegalArgumentException
-     * 		The given argument is not a valid argument. in other words,
-     * 		the argument is either null or not an asteroid.
-     * 		|! Asteroid.isValidAsteroid()
+     * 			The given argument is not a valid argument. in other words,
+     * 			the argument is either null or not an asteroid.
+     * 			|! Asteroid.isValidAsteroid()
      */
     private void setO1(Asteroid o1) throws IllegalArgumentException{
 	if(!Asteroid.isValidAsteroid(o1)){
@@ -92,14 +92,14 @@ public class AsteroidBulletCollision implements CollisionType {
      * Set the bullet in the collision.
      * 
      * @param 	o2 
-     *		the bullet to set.
+     *			the bullet to set.
      * @post	If the given argument is a valid bullet, the bullet is set to the given new bullet.
-     * 		| if(Bullet.isVallidBullet())
-     * 		|	new.getO2() == o2
+     * 			| if(Bullet.isVallidBullet())
+     * 			|	new.getO2() == o2
      * @throws	IllegalArgumentException
-     * 		The given argument is not a valid argument. In other words
-     * 		the argument is either null or not a bullet.
-     * 		| ! Bullet.isValidBullet(o2)
+     * 			The given argument is not a valid argument. In other words
+     * 			the argument is either null or not a bullet.
+     * 			| ! Bullet.isValidBullet(o2)
      */
     private void setO2(Bullet o2) throws IllegalArgumentException {
 	if(!Bullet.isValidBullet(o2)){
@@ -119,12 +119,12 @@ public class AsteroidBulletCollision implements CollisionType {
      * Handle the collision between an asteroid and a bullet.
      * 
      * @post	The initial asteroid and bullet are terminated and two
-     * 		new asteroids are created if their radius is big enough.
-     * 		| o1.terminate()
-     * 		| o2.terminate()
-     * 		| if(o1.getRadius() >= 30)
-     * 		| 	Asteroid newAsteroid1 = new Asteroid()
-     * 		|	Asteroid newAsteroid2 = new Asteroid()
+     * 			new asteroids are created if their radius is big enough.
+     * 			| o1.terminate()
+     * 			| o2.terminate()
+     * 			| if(o1.getRadius() >= 30)
+     * 			| 	Asteroid newAsteroid1 = new Asteroid()
+     * 			|	Asteroid newAsteroid2 = new Asteroid()
      */
     @Override
     public void collide() {

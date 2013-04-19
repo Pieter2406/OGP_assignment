@@ -29,13 +29,13 @@ public class AsteroidAsteroidCollision implements CollisionType {
      * Initializes object one and object two with the asteroids which will collide.
      *
      * @param 	o1 
-     * 		The first asteroid of the collision.
+     * 			The first asteroid of the collision.
      * @param 	o2 
-     * 		the second asteroid of the collision.
+     * 			the second asteroid of the collision.
      * @effect	The first asteroid is set with the given parameter for the first asteroid.
-     * 		| setO1(o1)
+     * 			| setO1(o1)
      * @effect	The second asteroid is set with the second given parameter.
-     * 		| setO2(o2)
+     * 			| setO2(o2)
      */
     public AsteroidAsteroidCollision(Asteroid o1, Asteroid o2) {
 	this.setO1(o1);
@@ -56,14 +56,14 @@ public class AsteroidAsteroidCollision implements CollisionType {
      * Sets the first asteroid in the collision.
      *
      * @param 	o1 
-     * 		the new first asteroid.
+     * 			the new first asteroid.
      * @post	If the given argument is a valid asteroid, the first asteroid is set to the given new asteroid.
-     * 		| if(Asteroid.isValidAsteroid(o1)
-     * 		|	new.getO1() == o1
+     * 			| if(Asteroid.isValidAsteroid(o1)
+     * 			|	new.getO1() == o1
      * @throws	IllegalArgumentException
-     * 		The given argument is not a valid argument. In other words, the
-     * 		argument is either null or not an asteroid.
-     * 		| ! Asteroid.isValidAsteroid(o1)
+     * 			The given argument is not a valid argument. In other words, the
+     * 			argument is either null or not an asteroid.
+     * 			| ! Asteroid.isValidAsteroid(o1)
      */
     private void setO1(Asteroid o1) throws IllegalArgumentException {
 	if(!Asteroid.isValidAsteroid(o1)){
@@ -99,14 +99,14 @@ public class AsteroidAsteroidCollision implements CollisionType {
      * Set the second asteroid in the collision.
      *
      * @param 	o2 
-     * 		the new second asteroid.
+     * 			the new second asteroid.
      * @post	If the given argument is a valid asteroid, the second asteroid is set to the given new asteroid.
-     * 		| if(Asteroid.isValidAsteroid())
-     * 		|	new.getO2() == o2
+     * 			| if(Asteroid.isValidAsteroid())
+     * 			|	new.getO2() == o2
      * @throws	IllegalArgumentException
-     * 		The given argument is not a valid argument. In other words, the
-     * 		argument is either null or not an asteroid.
-     * 		| ! isValidAsteroid(o2)
+     * 			The given argument is not a valid argument. In other words, the
+     * 			argument is either null or not an asteroid.
+     * 			| ! isValidAsteroid(o2)
      */
     private void setO2(Asteroid o2) throws IllegalArgumentException {
 	if(!Asteroid.isValidAsteroid(o2)){
@@ -121,10 +121,10 @@ public class AsteroidAsteroidCollision implements CollisionType {
      * Handle the collision between two asteroids.
      * 
      * @post	The new velocity is equal to the calculated velocity.
-     * 		| new.o1.getVelocity().getVelocityX() = newVelocityX
-     * 		| new.o1.getVelocity().getVelocityY() = newVelocityY
-     * 		| new.o2.getVelocity().getVelocityX() = newVelocityX
-     * 		| new.o2.getVelocity().getVelocityY() = newVelocityY
+     * 			| new.o1.getVelocity().getVelocityX() = newVelocityX
+     * 			| new.o1.getVelocity().getVelocityY() = newVelocityY
+     * 			| new.o2.getVelocity().getVelocityX() = newVelocityX
+     * 			| new.o2.getVelocity().getVelocityY() = newVelocityY
      */
     @Override
     public void collide() {

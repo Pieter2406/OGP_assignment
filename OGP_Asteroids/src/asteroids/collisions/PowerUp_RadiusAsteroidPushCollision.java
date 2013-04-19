@@ -9,22 +9,52 @@ import asteroids.studentdefined.Ship;
 import asteroids.studentdefined.Velocity;
 
 /**
- * @author Pieter
+ * A class of radius asteroid push collision collision inherits from ShipPowerUpCollision
+ * and holds a ship and a radius asteroid push powerup.
+ * 
+ * @invar	The collision is always between a Ship and a powerup. The first object needs to be a Ship
+ * 			and the second object needs to be a powerup.
+ * 			| Ship.isValidShip(getO1())
+ * 			| Ship.isValidPowerUp(getO2())
+ * 
+ * @author	Kristof Bruyninckx
+ * @author 	Wouter Bruyninckx
+ * @author 	Pieter Verlinden
  *
+ * @version 1.0
  */
-public class PowerUp_RadiusAsteroidPushCollision implements CollisionType {
-	private Ship o1;
-	private RadiusAsteroidPushPowerUp o2;
-	private static final double PUSH_RADIUS = 1000;
+public class PowerUp_RadiusAsteroidPushCollision extends ShipPowerUpCollision  {
+	
 	/**
+	 * Initializes the radius asteroid push collision with a given ship and a 
+	 * given bigger bullet size powerup.
 	 * 
+	 * @effect	Initialize this collision with a given ship and given powerup.
+	 * 			| super(o1,o2)
 	 */
 	public PowerUp_RadiusAsteroidPushCollision(Ship o1, RadiusAsteroidPushPowerUp o2) {
-		this.o1 = o1;
-		this.o2 = o2;
+		super(o1,o2);
 	}
-
-
+	
+	/**
+	 * Holds the range in which the push effect is effective.
+	 */
+	private static final double PUSH_RADIUS = 1000;
+	
+	
+	
+	 /**
+	  * Handle the collision between a ship and a radius asteroid push powerup.
+	  * 
+	  * @post	The asteroids, surrounding the ship in a certain asteroid: PUSH_RADIUS,
+	  * 		are pushed away from the ship.
+	  * 		| angle = Math.atan(dY/dX)
+	  * 		| newVelocityX == velocity * Math.cos(angle)
+	  * 		| newVelocityY == velocity * Math.sin(angle)
+	  * 		| for each Asteroid ast in o1.getWorld().getAllAsteroids()
+	  * 		|		if ast.getDistanceBetween(o1) < PUSH_RADIUS
+	  * 		|			ast.setVelocity(newVelocityX, newVelocityY)
+	  */
 	@Override
 	public void collide() {
 		for(Asteroid ast : o1.getWorld().getAllAsteroids()){
@@ -33,7 +63,6 @@ public class PowerUp_RadiusAsteroidPushCollision implements CollisionType {
 				double dY = ast.getPosition().getY() - o1.getPosition().getY();
 				double astV = Velocity.computeVelocity(ast.getVelocity().getVelocityX(), ast.getVelocity().getVelocityY());
 				double angle = Math.atan(dY/dX);
-				System.out.println(angle);
 				if(dX < 0){
 					angle += Math.PI;
 				}

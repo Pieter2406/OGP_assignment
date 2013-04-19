@@ -74,7 +74,7 @@ public class ShipPowerUpCollision implements CollisionType {
 	/**
 	 * Holds the ship in this collision.
 	 */
-	private Ship o1;
+	protected Ship o1;
 		
 	/*_____________________________POWER_UP_____________________________*/
 	
@@ -108,7 +108,7 @@ public class ShipPowerUpCollision implements CollisionType {
 	/**
 	 * Holds the powerup of this collision.
 	 */
-	private PowerUp o2;
+	protected PowerUp o2;
 	
 
 	/*_____________________________METHOD_____________________________*/
