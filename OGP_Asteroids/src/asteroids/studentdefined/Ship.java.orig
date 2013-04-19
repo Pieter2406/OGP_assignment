@@ -25,7 +25,11 @@ import be.kuleuven.cs.som.annotate.*;
  * 			| isValidSpeedMultiplier(getBulletSpeedMultiplier())
  * @invar	The bulletScaleMultiplier of this ship must be valid.
  * 			| isValidbulletScaleMultiplier(getScaler())
+<<<<<<< HEAD
+ * @invar 	The number of shields of a ship must always be between zero and 5.
+=======
  * @invar 	The number of shields of a ship must always be between zero and the MAX_SHIELDS constant.
+>>>>>>> 7ae813dbb4591a1a7bfb04c00dc212b53cb550b8
  * 			| shield > 0 && shield < MAX_SHIELDS
  * @version 1.1
  * 
@@ -91,6 +95,7 @@ public class Ship extends SpaceObject implements IShip {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Returns the thruster that is currently attached to this ship.
 	 */
 	@Basic @Raw
@@ -101,7 +106,11 @@ public class Ship extends SpaceObject implements IShip {
 	/**
 	 * Enables the thruster that is attached to this ship.
 	 * @effect	This ship's thruster is enabled.
-	 * 			| this.getThruster().enable()
+=======
+	 * Enables the thruster that is attached to this ship.
+	 * @post	This ship's thruster is enabled.
+>>>>>>> 7ae813dbb4591a1a7bfb04c00dc212b53cb550b8
+	 * 			| (new this).getThruster == true
 	 */
 	public void enableThruster() {
 		getThruster().enable();
@@ -109,14 +118,19 @@ public class Ship extends SpaceObject implements IShip {
 
 	/**
 	 * Disables the thruster that is attached to this ship.
+<<<<<<< HEAD
 	 * @effect	This ship's thruster is disabled.
-	 * 			| this.getThruster().disable()
+=======
+	 * @post	This ship's thruster is enabled.
+>>>>>>> 7ae813dbb4591a1a7bfb04c00dc212b53cb550b8
+	 * 			| (new this).getThruster == false
 	 */
 	public void disableThruster() {
 		getThruster().disable();
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Sets a new thruster for this ship.
 	 * @param 	thruster
 	 * 			The new thruster for this ship.
@@ -130,6 +144,19 @@ public class Ship extends SpaceObject implements IShip {
 	 * Holds the thruster that is attached to this ship.
 	 */
 	private Thruster thruster;
+=======
+	 * Returns the thruster that is currently attached to this ship.
+	 */
+	@Basic @Raw
+	public Thruster getThruster() {
+		return thruster;
+	}
+
+	/**
+	 * Holds the thruster that is attached to this ship.
+	 */
+	private final Thruster thruster;
+>>>>>>> 7ae813dbb4591a1a7bfb04c00dc212b53cb550b8
 
 	/**
 	 * Return this ship's angle.
@@ -202,6 +229,7 @@ public class Ship extends SpaceObject implements IShip {
 	 * 			The duration of how long the ship moves in its current direction.
 	 * @effect	The position of the ship is set to its new position according
 	 * 			to the time it would have moved.
+<<<<<<< HEAD
 	 * 			| if(!thruster.isEnabled())
 	 *			|   new.getThruster().getAcceleration == 0;
 	 * 			| newPositionX = getPosition().getX() + duration * getVelocity().getVelocityX() + Math.cos(getAngle()) * getThruster().getAcceleration()* Math.pow(duration, 2)/2
@@ -209,6 +237,11 @@ public class Ship extends SpaceObject implements IShip {
 	 * 			| new.setPosition(newPositionX,newPositionY)
 	 * 			| if (getThruster().isEnabled()
 	 * 			| 	getThruster().thrust(duration)
+=======
+	 * 			| newPositionX = getPosition().getX() + duration * getVelocity().getVelocityX()
+	 * 			| newPositionY = getPosition().getY() + (duration * getVelocity().getVelocityY()
+	 * 			| new.setPosition(newPositionX,newPositionY)
+>>>>>>> 7ae813dbb4591a1a7bfb04c00dc212b53cb550b8
 	 * @throws	IllegalValueException
 	 * 			The given duration is not a valid duration.
 	 * 			|(duration < 0)
@@ -218,6 +251,7 @@ public class Ship extends SpaceObject implements IShip {
 		if(duration < 0){
 			throw new IllegalValueException(duration);
 		}
+<<<<<<< HEAD
 		double accel;
 		if(thruster.isEnabled())
 			accel = getThruster().getAcceleration();
@@ -236,6 +270,22 @@ public class Ship extends SpaceObject implements IShip {
 	 * this ship is facing. if tripleshot is activated 2 extra bullets are created at the same position 
 	 * diverting from the standard bullet. 
 	 * @effect 	An instance of Bullet is created in the world that is associated with this ship. if tripleshot is 
+=======
+		if(thruster.isEnabled()){
+			getThruster().thrust(duration);
+		}
+		double newPositionX = getPosition().getX() + (duration * getVelocity().getVelocityX());
+		double newPositionY = getPosition().getY() + (duration * getVelocity().getVelocityY());
+		setPosition(newPositionX,newPositionY);
+
+	}
+
+	/**
+	 * if trippleshot powerup is not activated a bullet is created next to this ship at the direction 
+	 * this ship is facing. if trippleshot is activated 2 extra bullets are created at the same position 
+	 * diverting from the standard bullet. 
+	 * @effect 	An instance of Bullet is created in the world that is associated with this ship. if trippleshot is 
+>>>>>>> 7ae813dbb4591a1a7bfb04c00dc212b53cb550b8
 	 * 			activated 2 extra bullets are created.
 	 * 			| this.getWorld().createSpaceObject(new bullet1)
 	 * 			| if (isTriShotBulletsActivated())
@@ -251,10 +301,17 @@ public class Ship extends SpaceObject implements IShip {
 	 * 			| (new bullet1).getX() == this.getPosition().getX() + this.getRadius() * Math.cos(this.getAngle())
 	 * 			| (new bullet1).getY() == this.getPosition().getY() + this.getRadius() * Math.sin(this.getAngle())
 	 * 			| if (isTriShotBulletsActivated())
+<<<<<<< HEAD
 	 * 			| 	(new bullet2).getX() == this.getPosition().getX() + this.getRadius() * Math.cos(this.getAngle() + Ship.tripleShotAngleOffset)
 	 * 			| 	(new bullet2).getY() == this.getPosition().getY() + this.getRadius() * Math.sin(this.getAngle() + Ship.tripleShotAngleOffset)
 	 * 			| 	(new bullet3).getX() == this.getPosition().getX() + this.getRadius() * Math.cos(this.getAngle() - Ship.tripleShotAngleOffset)
 	 * 			| 	(new bullet3).getY() == this.getPosition().getY() + this.getRadius() * Math.sin(this.getAngle() - Ship.tripleShotAngleOffset)
+=======
+	 * 			| 	(new bullet2).getX() == this.getPosition().getX() + this.getRadius() * Math.cos(this.getAngle() + Ship.trippleShotAngleOffset)
+	 * 			| 	(new bullet2).getY() == this.getPosition().getY() + this.getRadius() * Math.sin(this.getAngle() + Ship.trippleShotAngleOffset)
+	 * 			| 	(new bullet3).getX() == this.getPosition().getX() + this.getRadius() * Math.cos(this.getAngle() - Ship.trippleShotAngleOffset)
+	 * 			| 	(new bullet3).getY() == this.getPosition().getY() + this.getRadius() * Math.sin(this.getAngle() - Ship.trippleShotAngleOffset)
+>>>>>>> 7ae813dbb4591a1a7bfb04c00dc212b53cb550b8
 	 */
 	public void fireBullet() {
 		if(!isTriShotBulletsActivated()){
@@ -266,11 +323,19 @@ public class Ship extends SpaceObject implements IShip {
 			double bulletX = this.getPosition().getX() + this.getRadius() * Math.cos(this.getAngle());
 			double bulletY = this.getPosition().getY() + this.getRadius() * Math.sin(this.getAngle());
 			//left bullet relative to Ship
+<<<<<<< HEAD
 			Bullet leftBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaleMultiplier, this.getAngle() - TRIPLE_ANGLE_OFFSET);
 			//middle bullet relative to Ship
 			Bullet middleBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaleMultiplier, this.getAngle());
 			//right bullet relative to Ship
 			Bullet rightBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaleMultiplier, this.getAngle() + TRIPLE_ANGLE_OFFSET);
+=======
+	    Bullet leftBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaleMultiplier, this.getAngle() - (TRIPLE_ANGLE_OFFSET));
+			//middle bullet relative to Ship
+			Bullet middleBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaleMultiplier, this.getAngle());
+			//right bullet relative to Ship
+	    Bullet rightBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaleMultiplier, this.getAngle() + (TRIPLE_ANGLE_OFFSET));
+>>>>>>> 7ae813dbb4591a1a7bfb04c00dc212b53cb550b8
 			this.getWorld().addBullet(leftBullet);
 			this.getWorld().addBullet(middleBullet);
 			this.getWorld().addBullet(rightBullet);
@@ -283,7 +348,19 @@ public class Ship extends SpaceObject implements IShip {
 	 */
 	private double bulletSpeedMultiplier = 1;
 
+<<<<<<< HEAD
 	@Basic @Raw
+	public double getBulletSpeedMultiplier(){
+		return bulletSpeedMultiplier;
+	}
+
+	/**
+	 * Checks if the given bulletSpeedMultiplier is valid.
+=======
+	/**
+	 * 
+	 * @return
+	 */
 	public double getBulletSpeedMultiplier(){
 		return bulletSpeedMultiplier;
 	}
@@ -292,14 +369,50 @@ public class Ship extends SpaceObject implements IShip {
 	 * Checks if the given bulletSpeedMultiplier is valid.
 	 * @param 	multiplier
 	 * 			The given multiplier to be checked.
-	 * @return	True if the given multiplier is negative or zero.
-	 * 			| result == (multiplier <= 0)
+     * @return	True if the given multiplier is greater than zero.
+     * 			| result == (multiplier > 0)
 	 */
 	public static boolean isValidBulletSpeedMultiplier(double multiplier){
 		return multiplier > 0;
 	}
 
 	/**
+	 * Sets the bulletSpeedMultiplier of this ship to the given multiplier if the given multiplier is Valid.
+	 * @param	speedMultiplier
+	 * 			The given multiplier for the speed of this ship's bullets.
+	 * @post 	If the given multiplier is valid this ship's bulletSpeedMultiplier is equal to the given multiplier
+	 * 			| if (isValidSpeedMultiplier(getBulletSpeedMultiplier())
+	 * 			| 	(new this).getBulletSpeedMultiplier() == speedMultiplier	
+	 * 
+	 */
+	public void setBulletSpeedMultiplier(double bulletSpeedMultiplier){
+		if (isValidBulletSpeedMultiplier(bulletSpeedMultiplier))
+			this.bulletSpeedMultiplier = bulletSpeedMultiplier;
+	}
+
+	@Basic @Raw
+	public double getBulletScaleMultiplier(){
+		return bulletScaleMultiplier;
+	}
+
+	/**
+	 * Checks if the given bulletScaleMultiplier is valid.
+>>>>>>> 7ae813dbb4591a1a7bfb04c00dc212b53cb550b8
+	 * @param 	multiplier
+	 * 			The given multiplier to be checked.
+	 * @return	True if the given multiplier is negative or zero.
+	 * 			| result == (multiplier <= 0)
+	 */
+<<<<<<< HEAD
+	public static boolean isValidBulletSpeedMultiplier(double multiplier){
+=======
+	public static boolean isValidBulletScaleMultiplier(double multiplier){
+>>>>>>> 7ae813dbb4591a1a7bfb04c00dc212b53cb550b8
+		return multiplier > 0;
+	}
+
+	/**
+<<<<<<< HEAD
 	 * Sets the bulletSpeedMultiplier of this ship to the given multiplier if the given multiplier is Valid.
 	 * @param	speedMultiplier
 	 * 			The given multiplier for the speed of this ship's bullets.
@@ -327,6 +440,117 @@ public class Ship extends SpaceObject implements IShip {
 	 */
 	public static boolean isValidBulletScaleMultiplier(double multiplier){
 		return multiplier > 0;
+=======
+	 * Sets the bulletScaleMultiplier to the given multiplier if the given multiplier is valid.
+	 * @param 	bulletScaleMultiplier
+	 * 			The multiplier to change the scale of this ship's Bullets.
+	 * @post 	If the given multiplier is valid this ship's bulletScaleMultiplier is equal to the given multiplier
+	 * 			| 	(new this).getBulletScaleMultiplier() == scaleMultiplier	
+	 * @throws 	IllegalValueException
+	 * 			The given multiplier is invalid
+	 * 			| !isValidBulletScaleMultiplier(bulletScaleMultiplier)
+	 */
+	public void setBulletScaleMultiplier(double bulletScaleMultiplier){
+		if (!isValidBulletScaleMultiplier(bulletScaleMultiplier))
+			throw new IllegalValueException(bulletScaleMultiplier);
+		this.bulletScaleMultiplier = bulletScaleMultiplier;
+	}
+
+	/**
+	 * Holds the multiplier for the size of bullets shot by this ship.
+	 */
+	private double bulletScaleMultiplier = 1;
+
+	@Basic @Raw
+	public boolean isTriShotBulletsActivated(){return triShotBulletsState;}
+
+	/**
+	 * Toggles the triple shot powerup based on a given boolean.
+	 * @param 	bool
+	 * 			The given boolean for this ships triShotBulletsState.
+	 * @post	this ship's triShotBulletsState is equal to the given boolean.
+	 * 			| (new this).triShotBulletsState = bool
+	 */
+	public void toggleTriShotBullets(boolean bool){this.triShotBulletsState = bool;}
+
+	/**
+     * Holds whether the triple shot powerup is activated.
+	 */
+	private boolean triShotBulletsState = false;
+
+	/**
+     * Holds the offset of the extra bullets to be used for side bullets if triple shot is activated.
+	 */
+	public static final double TRIPLE_ANGLE_OFFSET=Math.PI/18;
+
+	@Basic @Raw
+	public int getShield(){return shield;}
+
+	/**
+	 * Holds the amount of shields of this ship.
+	 * @param 	shield
+	 * 			the given new shields fot this ship.
+	 * @post	This ships number of shields is equal to the given number if the given 
+	 * 			number is between zero and 5. If the given number is larger than the maximum shields
+	 * 			this ship's shields is equal to 5, if it is smaller than zero this ship's shields
+	 * 			is equal to zero.
+	 * 			| (new this).shield == shield
+	 */
+	@Model
+	private void setShield(int shield){ // this method should only be called by incShield and decShield.
+		if(shield > MAX_SHIELDS){
+			this.shield = MAX_SHIELDS;
+		}else if(shield < 0){
+			this.shield = 0;
+		}else{
+			this.shield = shield;
+		}
+	}
+	/**
+	 * Adds an extra shield to this ships amount of shields
+	 * @effect	Increments the number of shields.
+	 * 			| setShield(getShield() + 1);
+	 */
+	public void incShield(){
+		setShield(getShield() + 1);
+	}
+	/**
+	 * Removes a shield from this ships amount of shields
+	 * @effect	Decrements the number of shields.
+	 * 			| setShield(getShield() - 1);
+	 */
+	public void decShield(){
+		setShield(getShield() - 1);
+	}
+
+	/**
+	 * Holds the current number of shields of this ship.
+	 */
+	private int shield = 0;
+
+	/**
+	 * Holds the maximum amount of shields
+	 */
+	public static final int MAX_SHIELDS = 3; 
+
+	/**
+	 * Checks if the given object is a valid ship.
+	 *
+	 * @param 	o 
+	 * 			The object to check.
+	 * @return 	True, if the given object is a valid ship.
+	 * 			| if(o == null || !(o instanceof Ship)
+	 * 			|		return false
+	 * 			| else
+	 * 			|		return true
+	 */
+	public static boolean isValidShip(Object o){
+		if(o == null || !(o instanceof Ship)){
+			return false;
+		}else{
+			return true;
+		}
+>>>>>>> 7ae813dbb4591a1a7bfb04c00dc212b53cb550b8
 	}
 
 	/**
@@ -428,10 +652,6 @@ public class Ship extends SpaceObject implements IShip {
 	 * @param 	o 
 	 * 			The object to check.
 	 * @return 	True, if the given object is a valid ship.
-	 * 			| if(o == null || !(o instanceof Ship)
-	 * 			|		return false
-	 * 			| else
-	 * 			|		return true
 	 */
 	public static boolean isValidShip(Object o){
 		if(o == null || !(o instanceof Ship)){
@@ -492,15 +712,22 @@ public class Ship extends SpaceObject implements IShip {
 					difference = startposition.getY() - wall.getP1().getY() - this.getRadius();
 				else 
 					difference = startposition.getY() - wall.getP1().getY() + this.getRadius();
+<<<<<<< HEAD
+			}
+			double discriminant = Math.pow(velocity, 2) - 2 * accel * difference;
+			if (discriminant < 0)
+				return Double.POSITIVE_INFINITY;
+=======
 			}
 			if(Util.fuzzyEquals(0, accel)){
 				return super.getTimeToCollision(wall);
 			}
 			double discriminant = Math.pow(velocity, 2) - 2 * accel * difference;
-			if (discriminant < 0)
+			if(discriminant < 0){
 				return Double.POSITIVE_INFINITY;
+			}
+>>>>>>> 7ae813dbb4591a1a7bfb04c00dc212b53cb550b8
 			double solution1 = (-velocity + Math.sqrt(discriminant)) / (accel);
-			double solution2 = (-velocity - Math.sqrt(discriminant)) / (accel);
 			double solution2 = (-velocity - Math.sqrt(discriminant)) / (accel);
 
 			if (Util.fuzzyEquals(solution1, 0))
@@ -522,6 +749,10 @@ public class Ship extends SpaceObject implements IShip {
 					return solution1;
 			}
 		}
+<<<<<<< HEAD
+	}
+=======
+
 	}
 
 	@Override
@@ -537,4 +768,11 @@ public class Ship extends SpaceObject implements IShip {
 //	public void addPowerUp(PowerUp powerup){
 //		activePowerUps.add(powerup);
 //	}
+>>>>>>> 7ae813dbb4591a1a7bfb04c00dc212b53cb550b8
+
+	@Override
+	public void terminate(){
+		this.thruster.setSource(null);
+		super.terminate();
+	}
 }

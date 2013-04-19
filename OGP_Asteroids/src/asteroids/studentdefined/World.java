@@ -548,13 +548,58 @@ public class World {
 	private Collection<Wall> boundaryWalls = new ArrayList<Wall>();
 
 
+	/**
+	 * Returns True if the given SpaceObject is a member of the data structure that contains all SpaceObjects in this world.
+	 * @param spaceObject The SpaceObject to be checked.
+	 */
+	public boolean containsSpaceObject(SpaceObject spaceObject) {
+		return visibleObjects.contains(spaceObject);
+	}
 
+	/**
+	 * Add the given SpaceObject to this world.
+	 * @post 	This world contains the given SpaceObject.
+	 * 			| this.containsSpaceObject(spaceObject)
+	 * @post 	The given SpaceObject references this world as its associated world.
+	 * 			| spaceObject.getWorld() == this
+	 * @param 	spaceObject
+	 * 		The space object to be added to this world.
+	 * @throws	IllegalArgumentException
+	 * 		This world cannot have the given space object as one of 
+	 * 		its visible objects.
+	 * 		| !canHaveAsVisibleObject(spaceObject)
+	 * @throws	IllegalArgumentException
+	 * 		The given space object is already attached to some world.
+	 * 		| spaceObject.getWorld() != this
+	 */
+	public void addSpaceObject(SpaceObject spaceObject) throws IllegalArgumentException {
+		if(!canHaveAsVisibleObject(spaceObject)){
+			throw new IllegalArgumentException("This world cannot contain the given object");
+		}
+		if(spaceObject.getWorld() != this && spaceObject.getWorld() != null){
+			throw new IllegalArgumentException("The given space object already exists in another world.");
+		}
+		this.visibleObjects.add(spaceObject);
+		spaceObject.setWorld(this);
+	}
 
-	/*_________________________________________Associated Object inspectors__________________________________________*/
+	/**
+	 * Remove the given SpaceObject from this world.
+	 * @post 	This world no longer contains the given SpaceObject.
+	 * 			| !this.containsSpaceObject(spaceObject)
+	 * @post 	The given SpaceObject is no longer associated with an effective world.
+	 * 			| spaceObject.getWorld() == null
+	 * @param 	spaceObject
+	 * 		The space object to be removed from this world.
+	 */
+	public void removeSpaceObject(SpaceObject spaceObject) { 
+		this.visibleObjects.remove(spaceObject);
+		spaceObject.setWorld(null);
+	}
 
 	/**
 	 * Return all space objects associated with this world.
-	 * @return 	A collection of all space objects that are currently associated with this world.
+	 * @return A collection of all space objects that are currently associated with this world.
 	 */
 	public Collection<SpaceObject> getAllSpaceObjects() {
 		Set<SpaceObject> setOfSpaceObjects = new HashSet<SpaceObject>();
@@ -564,7 +609,7 @@ public class World {
 
 	/**
 	 * Returns all bullets associated with this world.
-	 * @return 	A collection of all bullets that are currently associated with this world.
+	 * @return A collection of all bullets that are currently associated with this world.
 	 */
 	public Collection<Bullet> getAllBullets() {
 		Set<Bullet> setOfBullets = new HashSet<Bullet>();
@@ -578,7 +623,7 @@ public class World {
 
 	/**
 	 * Return all ships associated with this world.
-	 * @return 	A collection of all ships that are currently associated with this world.
+	 * @return A collection of all ships that are currently associated with this world.
 	 */
 	public Collection<Ship> getAllShips() {
 		Set<Ship> setOfShips = new HashSet<Ship>();
@@ -605,7 +650,7 @@ public class World {
 
 	/**
 	 * Returns all asteroids associated with this world.
-	 * @return 	A collection of all asteroids that are currently associated with this world.
+	 * @return A collection of all asteroids that are currently associated with this world.
 	 * 
 	 */
 	public Collection<Asteroid> getAllAsteroids() {
@@ -655,7 +700,56 @@ public class World {
 
 	private boolean isTerminated;
 
+	private static final double POWERUP_CHANCE = 2;
 
 
+	/**
+	 * Checks if this world can have the given object as one of its visible objects.
+	 *
+	 * @param 	o 
+	 * 		The object to check.
+	 * @return 	False, if the given object is not effective.
+	 * 		| if(o == null)
+	 * 		|	result == false
+	 * 		Otherwise false, if the given object is not a space object.
+	 *  	| else if (!(o instanceof SpaceObject))
+	 *  	|	result == false
+	 *  	Otherwise true, if this world and the given object are not terminated.
+	 *  	| else if(!this.isTerminated() && !o.isTerminated())
+	 *  	|	result == true
+	 *  		
+	 */
+	public boolean canHaveAsVisibleObject(Object o){
+		if(o == null){
+			return false;
+		}else if(!(o instanceof SpaceObject)){
+			return false;
+		}else if(this.isTerminated() || ((SpaceObject) o).isTerminated()){
+			return false;
+		}else{
+			return true;
+		}
+	}
+
+	/**
+	 * Checks whether this world has proper visible objects associated with it.
+	 * 
+	 * @return	True if and only if this world can have each of its visible objects as
+	 * 		a visible object.
+	 * 		|result == for each object o in visibleObjects
+	 * 		|	canHaveAsVisibleObject(o)
+	 * 		
+	 */
+	public boolean hasProperVisibleObjects(){
+		for(Object o : visibleObjects){
+			if(!canHaveAsVisibleObject(o)){
+				return false;
+			}
+			if(((SpaceObject)o).getWorld() != this){
+				return false;
+			}
+		}
+		return true;
+	}
 
 }
