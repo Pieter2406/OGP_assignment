@@ -45,7 +45,7 @@ public class Bullet extends SpaceObject{
 	 * 			| !isValidSource()
 	 */
 	public Bullet(double x, double y, Ship source, World world,double speedMultiplier, double bulletScaler, double angle)	throws IllegalArgumentException{
-		super(x, y, bulletScaler * BULLET_RADIUS, Mass.computeCircularMass(MASS_DENSITY, bulletScaler * BULLET_RADIUS), world);
+		super(x, y, bulletScaler * DEFAULT_BULLET_RADIUS, Mass.computeCircularMass(MASS_DENSITY, bulletScaler * DEFAULT_BULLET_RADIUS), world);
 		if (isValidSource(source)){
 			this.source = source; // source is final no setter.
 			this.setAngle(angle);
@@ -56,6 +56,16 @@ public class Bullet extends SpaceObject{
 
 	}
 
+	 /*_____________________________SOURCE_____________________________*/
+	
+	/**
+	 * Return the source of this bullet.
+	 */
+	@Basic
+	public Ship getSource(){
+		return this.source;
+	}
+	
 	/**
 	 * Return whether the given source is a valid ship.
 	 * @param 	source
@@ -66,20 +76,23 @@ public class Bullet extends SpaceObject{
 			return false;
 		return true;
 	}
-
-	@Basic
-	public Ship getSource(){
-		return this.source;
-	}
-
+	
+	/**
+	 * Holds the source of the ship.
+	 */
 	private final Ship source;
+	
+	/*_____________________________ANGLE_____________________________*/
+	
+	/**
+	 * Return the angle of this bullet.
+	 */
 	@Basic
 	public double getAngle(){
 		return angle;
 	}
-
 	/**
-	 * Sets the angle of this bullet to the given angle.
+	 * Set the angle of this bullet to the given angle.
 	 * @param 	angle
 	 * 			The given new angle for this ship
 	 * @post 	The angle of this bullet is equal to the given angle.
@@ -89,21 +102,36 @@ public class Bullet extends SpaceObject{
 		this.angle = angle;
 	}
 	/**
-	 * TODO write contract for hasHitWall
+	 * Holds the angle of the bullet in which 
+	 * direction this bullet is fired.
 	 */
-	private boolean hasHitWall = false;
-
+	private double angle;
+	
+	/*_____________________________HAS_HIT_WALL_____________________________*/
+	
 	/**
-	 * 
-	 * @return
+	 * Return true if the bullet has hit a wall.
 	 */
+	@Basic
 	public boolean getHasHitWall(){return hasHitWall;}
 
 	/**
-	 * 
+	 * Set whether this bullet has hit a wall.
+	 * @param	bool
+	 * 			the boolean value (true or false)
+	 * @post	The boolean that holds whether the
+	 * 			bullet has hit a wall is set to
+	 * 			the given argument.
 	 */
 	public void setHasHitWall(boolean bool){this.hasHitWall = bool;}
 
+	/**
+	 * Holds the boolean value whether this bullet
+	 * has hit a wall.
+	 */
+	private boolean hasHitWall = false;
+	
+	
 	/**
 	 * Checks if the given object is a valid bullet.
 	 *
@@ -118,8 +146,8 @@ public class Bullet extends SpaceObject{
 			return true;
 		}
 	}
-	private double angle;
+	
 	private final static double MASS_DENSITY = 7.8E12;
-	private final static double BULLET_RADIUS = 3;
+	private final static double DEFAULT_BULLET_RADIUS = 3;
 	private final static double REGULAR_BULLETSPEED = 250;
 }

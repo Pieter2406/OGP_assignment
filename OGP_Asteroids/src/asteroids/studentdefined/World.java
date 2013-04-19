@@ -326,7 +326,7 @@ public class World {
 			}
 
 			newCollision.collide();
-			
+
 			//Send collision positions to the handler of visual effects.
 			if (boundarycollision)
 				collisionListener.boundaryCollision(newCollision.getObj1(), xPos,yPos);
@@ -362,17 +362,24 @@ public class World {
 	 * @return
 	 */
 	private PowerUp generateRandomPowerup(){
-		final double RADIUS = 30;
 		Random rnd = new Random();
-		double rndX = rnd.nextInt((int) (getWidth() - 2 * RADIUS)) + RADIUS;
-		double rndY = rnd.nextInt((int) (getHeight() - 2 * RADIUS)) + RADIUS;
+		double rndX = 0;
+		double rndY = 0;
+		for(Ship shp : getAllShips()){
+			do{
+				rndX = rnd.nextInt((int) (getWidth() - 2 * PowerUp.DEFAULT_RADIUS)) + PowerUp.DEFAULT_RADIUS;
+				rndY = rnd.nextInt((int) (getHeight() - 2 * PowerUp.DEFAULT_RADIUS)) + PowerUp.DEFAULT_RADIUS;
+			}while((shp.getPosition().getDistanceBetween(new Coordinate(rndX,rndY)) + shp.getRadius() + PowerUp.DEFAULT_RADIUS) < 0);
+
+
+		}		
 		switch(rnd.nextInt(6)){			
-		case 0: return new SmallerShipPowerUp(rndX,rndY,RADIUS, 0,this);
-		case 1: return new IncreaseBulletSpeedPowerUp(rndX,rndY,RADIUS, 0,this);
-		case 2: return new BiggerBulletSizePowerUp(rndX,rndY,RADIUS,0,this);
-		case 3: return new TriShotBulletsPowerUp(rndX, rndY, RADIUS,0,this);
-		case 4: return new ShipShieldPowerUp(rndX,rndY,RADIUS,0,this);
-		case 5: return new RadiusAsteroidPushPowerUp(rndX,rndY,RADIUS,0,this);
+		case 0: return new SmallerShipPowerUp(rndX,rndY,this);
+		case 1: return new IncreaseBulletSpeedPowerUp(rndX,rndY,this);
+		case 2: return new BiggerBulletSizePowerUp(rndX,rndY,this);
+		case 3: return new TriShotBulletsPowerUp(rndX, rndY,this);
+		case 4: return new ShipShieldPowerUp(rndX,rndY,this);
+		case 5: return new RadiusAsteroidPushPowerUp(rndX,rndY,this);
 		default: return null;
 		}
 	}
@@ -421,7 +428,7 @@ public class World {
 		}
 
 	}
-	
+
 	/**
 	 * Update the list of future collisions, so that every collision that involves a SpaceObject that has a pending velocity change,
 	 * is recalculated, while other collisions remain the same.
@@ -610,7 +617,7 @@ public class World {
 		}
 		return setOfAsteroids;
 	}
-	
+
 
 	/*_________________________________________Destruction__________________________________________*/
 

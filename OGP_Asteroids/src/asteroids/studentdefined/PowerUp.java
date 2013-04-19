@@ -3,66 +3,46 @@
  */
 package asteroids.studentdefined;
 
+import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 
 /**
  * Abstract class that holds methods and function for PowerUps and 
  * inherits from SpaceObject.
+ * 
  * @author Kristof Bruyninckx
  * @author Wouter Bruyninckx
  * @author Pieter Verlinden
+ * 
  * @version 1.1
  */
 public abstract class PowerUp extends SpaceObject {
 protected final int type;
+public static final double DEFAULT_RADIUS = 30;
+		
 	/**
-	 * @param x
-	 * @param y
-	 * @param velocityX
-	 * @param velocityY
-	 * @param radius
-	 * @param minimumRadius
-	 * @param mass
-	 * @param world
+	 * Initializes the power up with a given x and y coordinate, a world and a type.
+	 * @param	x
+	 * 			The x coordinate of this powerup.
+	 * @param	y
+	 * 			The y coordinate of this powerup.
+	 * @param 	world
+	 * 			The world where this powerup exists.
+	 * @param	type
+	 * 			The type of the powerup.
+	 * @effect	Initializes this powerup with 0 velocity and no mass.
+	 * 			|super(x,y,DEFAULT_RADIUS,0,world)
 	 */
 	@Raw
-	public PowerUp(double x, double y, double velocityX, double velocityY, double radius, double minimumRadius, double mass, World world, int type) {
-		super(x, y, velocityX, velocityY, radius, minimumRadius, mass, world);
+	public PowerUp(double x, double y, World world, int type) {
+		super(x,y,DEFAULT_RADIUS,0, world);
 		this.type = type;
 	}
 
 	/**
-	 * @param x
-	 * @param y
-	 * @param radius
-	 * @param mass
-	 * @param world
+	 * Return the type of this powerup.
 	 */
-	@Raw
-	public PowerUp(double x, double y, double radius, double mass, World world, int type) {
-		super(x, y, radius, mass, world);
-		this.type = type;
-	}
-
-	/**
-	 * @param radius
-	 * @param minimumRadius
-	 * @param mass
-	 * @param world
-	 */
-	@Raw
-	public PowerUp(double radius, double minimumRadius, double mass, World world, int type) {
-		super(radius, minimumRadius, mass, world);
-		this.type = type;
-	}
-
-	/**
-	 * 
-	 */
-	public PowerUp(int type) {
-		this.type = type;
-	}
-
+	@Basic
 	public int getType(){
 		return type;
 	}
