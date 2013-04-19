@@ -304,5 +304,11 @@ public class Facade implements IFacade {
 		return o instanceof Wall;
 	}
 
+	
+	@Override
+	public boolean isPowerUp(Object o) {
+		return o instanceof PowerUp;
+	}
+
 }
 

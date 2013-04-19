@@ -250,11 +250,11 @@ public class Ship extends SpaceObject implements IShip {
 			double bulletX = this.getPosition().getX() + this.getRadius() * Math.cos(this.getAngle());
 			double bulletY = this.getPosition().getY() + this.getRadius() * Math.sin(this.getAngle());
 			//left bullet relative to Ship
-	    Bullet leftBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaleMultiplier, this.getAngle() - (TRIPLEANGLEOFFSET));
+			Bullet leftBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaleMultiplier, this.getAngle() - (Math.PI / 18));
 			//middle bullet relative to Ship
 			Bullet middleBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaleMultiplier, this.getAngle());
 			//right bullet relative to Ship
-	    Bullet rightBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaleMultiplier, this.getAngle() + (TRIPLEANGLEOFFSET));
+			Bullet rightBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaleMultiplier, this.getAngle() + (Math.PI / 18));
 			this.getWorld().addBullet(leftBullet);
 			this.getWorld().addBullet(middleBullet);
 			this.getWorld().addBullet(rightBullet);
@@ -279,8 +279,8 @@ public class Ship extends SpaceObject implements IShip {
 	 * Checks if the given bulletSpeedMultiplier is valid.
 	 * @param 	multiplier
 	 * 			The given multiplier to be checked.
-     * @return	True if the given multiplier is greater than zero.
-     * 			| result == (multiplier > 0)
+	 * @return	True if the given multiplier is negative or zero.
+	 * 			| result == (multiplier <= 0)
 	 */
 	public static boolean isValidBulletSpeedMultiplier(double multiplier){
 		return multiplier > 0;
@@ -350,12 +350,12 @@ public class Ship extends SpaceObject implements IShip {
 	public void toggleTriShotBullets(boolean bool){this.triShotBulletsState = bool;}
 
 	/**
-     * Holds whether the triple shot powerup is activated.
+	 * Holds whether tripple shot powerup is activated
 	 */
 	private boolean triShotBulletsState = false;
 
 	/**
-     * Holds the offset of the extra bullets to be used for side bullets if triple shot is activated.
+	 * Holds the offset of the extra bullets if tripple shot is activated
 	 */
 	public static final double TRIPLE_ANGLE_OFFSET=Math.PI/18;
 

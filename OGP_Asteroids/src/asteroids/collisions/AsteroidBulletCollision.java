@@ -109,7 +109,7 @@ public class AsteroidBulletCollision implements CollisionType {
     }
 
     /** 
-     * The first bullet in the collision.
+     * The bullet in the collision.
      */
     private Bullet o2;
 
