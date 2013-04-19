@@ -28,9 +28,9 @@ public class AsteroidWallCollision implements CollisionType{
      * initializes the Asteroid wall collision with a given asteroid an given wall.
      *
      * @param 	o1 
-     * 		The asteroid of this collision.
+     * 			The asteroid of this collision.
      * @param 	o2 
-     * 		The wall of this collision.
+     * 			The wall of this collision.
      */
     public AsteroidWallCollision(Asteroid o1, Wall o2) {
 	this.setO1(o1);

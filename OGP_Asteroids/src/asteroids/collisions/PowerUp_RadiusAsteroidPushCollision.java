@@ -9,7 +9,7 @@ import asteroids.studentdefined.Ship;
 import asteroids.studentdefined.Velocity;
 
 /**
- * A class of radius asteroid push collision collision inherits from ShipPowerUpCollision
+ * A class of radius asteroid push collision inherits from ShipPowerUpCollision
  * and holds a ship and a radius asteroid push powerup.
  * 
  * @invar	The collision is always between a Ship and a powerup. The first object needs to be a Ship
@@ -27,7 +27,7 @@ public class PowerUp_RadiusAsteroidPushCollision extends ShipPowerUpCollision  {
 	
 	/**
 	 * Initializes the radius asteroid push collision with a given ship and a 
-	 * given bigger bullet size powerup.
+	 * given radius asteroid push powerup.
 	 * 
 	 * @effect	Initialize this collision with a given ship and given powerup.
 	 * 			| super(o1,o2)
@@ -54,6 +54,8 @@ public class PowerUp_RadiusAsteroidPushCollision extends ShipPowerUpCollision  {
 	  * 		| for each Asteroid ast in o1.getWorld().getAllAsteroids()
 	  * 		|		if ast.getDistanceBetween(o1) < PUSH_RADIUS
 	  * 		|			ast.setVelocity(newVelocityX, newVelocityY)
+	  * @effect	The powerup is terminated and thus deleted from the world of this ship.
+	  * 		| o2.terminate()
 	  */
 	@Override
 	public void collide() {

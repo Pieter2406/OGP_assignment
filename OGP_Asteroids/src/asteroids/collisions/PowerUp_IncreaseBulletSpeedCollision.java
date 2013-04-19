@@ -38,9 +38,9 @@ public class PowerUp_IncreaseBulletSpeedCollision extends ShipPowerUpCollision i
 	 * Handle the collision between the ship and the increase bullet speed powerup.
 	 * 
 	 * @post	The speed of the bullets, fired by the ship, is increased with a
-	 * 			factor upto a maximum of 4 times its initial speed. The powerup is terminated and thus
-	 * 			deleted out of the world of the ship.
+	 * 			factor upto a maximum of 4 times its initial speed. 
 	 * 			| o1.setBulletSpeedMultiplier(o1.getBulletSpeedMultiplier + 1)
+	 * 	@effect The powerup is terminated and thus deleted out of the world of the ship.
 	 * 			| o2.terminate()
 	 * 			
 	 */

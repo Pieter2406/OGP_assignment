@@ -254,11 +254,11 @@ public class Ship extends SpaceObject implements IShip {
 			double bulletX = this.getPosition().getX() + this.getRadius() * Math.cos(this.getAngle());
 			double bulletY = this.getPosition().getY() + this.getRadius() * Math.sin(this.getAngle());
 			//left bullet relative to Ship
-	    Bullet leftBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaleMultiplier, this.getAngle() - (TRIPLEANGLEOFFSET));
+	    Bullet leftBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaleMultiplier, this.getAngle() - (TRIPLE_ANGLE_OFFSET));
 			//middle bullet relative to Ship
 			Bullet middleBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaleMultiplier, this.getAngle());
 			//right bullet relative to Ship
-	    Bullet rightBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaleMultiplier, this.getAngle() + (TRIPLEANGLEOFFSET));
+	    Bullet rightBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaleMultiplier, this.getAngle() + (TRIPLE_ANGLE_OFFSET));
 			this.getWorld().addBullet(leftBullet);
 			this.getWorld().addBullet(middleBullet);
 			this.getWorld().addBullet(rightBullet);

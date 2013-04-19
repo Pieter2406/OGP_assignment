@@ -38,10 +38,11 @@ public class PowerUp_BiggerBulletSizeCollision extends ShipPowerUpCollision{
 	/**
 	 * Handle the collision between a ship and a bigger bullet size powerup.
 	 * 
-	 * @post	The scale of the bullets that the ship fires are scaled with a factor
-	 * 			upto a maximum of 4 times its initial size. The powerup is terminated and thus
-	 * 			deleted out of the world of the ship.
+	 * @effect	The scale of the bullets that the ship fires are scaled with a factor
+	 * 			upto a maximum of 4 times its initial size.
 	 * 			| o1.setBulletScaleMultiplier(o1.getBulletScaleMultiplier() + 1)
+	 * @effect	The powerup is terminated and thus
+	 * 			deleted out of the world of the ship.
 	 * 			| o2.terminate()
 	 */
 	@Override
