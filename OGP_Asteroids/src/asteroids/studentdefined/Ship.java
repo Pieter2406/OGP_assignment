@@ -501,7 +501,6 @@ public class Ship extends SpaceObject implements IShip {
 				return Double.POSITIVE_INFINITY;
 			double solution1 = (-velocity + Math.sqrt(discriminant)) / (accel);
 			double solution2 = (-velocity - Math.sqrt(discriminant)) / (accel);
-			double solution2 = (-velocity - Math.sqrt(discriminant)) / (accel);
 
 			if (Util.fuzzyEquals(solution1, 0))
 				solution1 = 0;
