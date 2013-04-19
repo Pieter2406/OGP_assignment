@@ -7,6 +7,7 @@ import asteroids.studentdefined.Facade;
 import asteroids.studentdefined.Ship;
 import asteroids.studentdefined.Velocity;
 import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Raw;
 
 import java.util.Random;
 
@@ -14,11 +15,6 @@ import java.util.Random;
 /**
  * A class of ShipShipCollision implements CollisionType and handles the collision
  * between a ship and a ship in the world.
- * 
- * @invar	The collision is always between a Ship and another ship. The first object needs to be a Ship
- * 			and the second object needs to be a ship.
- * 			| Ship.isValidShip(getO1())
- * 			| Ship.isValidShip(getO2())
  * 
  * @author	Kristof Bruyninckx
  * @author 	Wouter Bruyninckx
@@ -50,7 +46,7 @@ public class ShipShipCollision implements CollisionType {
 	/**
 	 * @return the first ship.
 	 */
-	@Basic
+	@Basic @Raw
 	private Ship getO1() {
 		return o1;
 	}
@@ -84,7 +80,7 @@ public class ShipShipCollision implements CollisionType {
 	/**
 	 * @return the second ship.
 	 */
-	@Basic
+	@Basic @Raw
 	private Ship getO2() {
 		return o2;
 	}

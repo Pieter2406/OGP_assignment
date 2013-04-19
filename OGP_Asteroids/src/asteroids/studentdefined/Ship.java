@@ -6,10 +6,6 @@ import java.util.HashSet;
 import asteroids.IShip;
 import asteroids.Util;
 import be.kuleuven.cs.som.annotate.*;
-/**********************************************************************************
- * 								GENERAL TODO LIST:		              			  *
- **********************************************************************************						  *
- **********************************************************************************/
 
 /**
  * A class of a Ship extends to SpaceObject and involves a position in the two dimensional space, a velocity, a radius (the ship has a round form)

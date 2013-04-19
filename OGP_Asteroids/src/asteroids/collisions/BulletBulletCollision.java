@@ -7,6 +7,7 @@ import asteroids.studentdefined.Facade;
 import asteroids.studentdefined.Ship;
 import asteroids.studentdefined.Velocity;
 import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Raw;
 
 import java.util.Random;
 
@@ -14,11 +15,6 @@ import java.util.Random;
 /**
  * A class of BulletBulletCollision implements CollisionType and handles the collision
  * between a bullet and a bullet in the world.
- * 
- * @invar	The collision is always between a Bullet and another bullet. The first object needs to be a Bullet
- * 			and the second object needs to be a bullet.
- * 			| Bullet.isValidBullet(getO1())
- * 			| Bullet.isValidBullet(getO2())
  * 
  * @author	Kristof Bruyninckx
  * @author 	Wouter Bruyninckx
@@ -50,7 +46,7 @@ public class BulletBulletCollision implements CollisionType {
 	/**
 	 * @return the first bullet.
 	 */
-	@Basic
+	@Basic @Raw
 	private Bullet getO1() {
 		return o1;
 	}
@@ -84,7 +80,7 @@ public class BulletBulletCollision implements CollisionType {
 	/**
 	 * @return the second bullet.
 	 */
-	@Basic
+	@Basic @Raw
 	private Bullet getO2() {
 		return o2;
 	}

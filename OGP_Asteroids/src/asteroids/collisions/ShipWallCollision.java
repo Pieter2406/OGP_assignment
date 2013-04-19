@@ -1,6 +1,7 @@
 package asteroids.collisions;
 
 import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Raw;
 import asteroids.studentdefined.Ship;
 import asteroids.studentdefined.Ship;
 import asteroids.studentdefined.Wall;
@@ -8,11 +9,6 @@ import asteroids.studentdefined.Wall;
 /**
  * The Class ShipWallCollision implements CollisionType and handles the collision
  * between an ship and a wall.
- * 
- * @invar	The collision is always between an ship and a wall. The first object needs to be an ship
- * 		and the second object needs to be a ship.
- * 		| Ship.isValidShip(getO1())
- * 		| Wall.isValidWall(getO2())
  * 
  * @author	Kristof Bruyninckx
  * @author 	Wouter Bruyninckx
@@ -43,7 +39,7 @@ public class ShipWallCollision implements CollisionType{
     /**
      * Return the ship.
      */
-    @Basic
+    @Basic @Raw
     private Ship getO1() {
         return o1;
     }
@@ -78,7 +74,7 @@ public class ShipWallCollision implements CollisionType{
     /**
      * Return the wall of this collision.
      */
-    @Basic
+    @Basic @Raw
     private Wall getO2() {
 	return o2;
     }

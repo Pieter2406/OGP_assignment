@@ -19,7 +19,17 @@ import asteroids.studentdefined.Ship;
 public final class PowerUpFactory {
 
 	/**
+	 * This factory produces a powerup type relative to the given objects.
 	 * 
+	 * @param 	o1
+	 * 			The first object that is given.
+	 * @param 	o2
+	 * 			The second object that is given.
+	 * 
+	 * @return	a powerup type relative to the two given objects, in other
+	 * 			words an object of ObjectObjectCollision. 
+	 * 			|  if (o1 instanceof Ship && o2 instanceof Object)
+	 * 			|		result == PowerUp_poweruptypeCollision
 	 */
 	public static CollisionType collide(Object o1, PowerUp o2){
 		if(o1 instanceof Ship && o2 instanceof SmallerShipPowerUp){

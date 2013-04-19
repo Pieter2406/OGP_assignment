@@ -3,6 +3,7 @@ package asteroids.collisions;
 import java.util.Random;
 
 import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Raw;
 
 import asteroids.studentdefined.Asteroid;
 import asteroids.studentdefined.Ship;
@@ -12,11 +13,6 @@ import asteroids.studentdefined.Velocity;
 /**
  * The class AsteroidShipCollision implements CollisionType and handles the collision
  * between an asteroid and a ship.
- * 
- * @invar	The collision is always between an asteroid and a ship. The first object needs to be an asteroid
- * 		and the second object needs to be a ship.
- * 		| Asteroid.isValidAsteroid(getO1())
- * 		| Ship.isValidShip(getO2())
  * 
  * @author	Kristof Bruyninckx
  * @author 	Wouter Bruyninckx
@@ -49,7 +45,7 @@ public class AsteroidShipCollision implements CollisionType {
     /**
      * Return the asteroid.
      */
-    @Basic
+    @Basic @Raw
     private Asteroid getO1() {
         return o1;
     }
@@ -84,7 +80,7 @@ public class AsteroidShipCollision implements CollisionType {
     /**
      * Return the ship of this collision.
      */
-    @Basic
+    @Basic @Raw
     private Ship getO2() {
         return o2;
     }
@@ -122,21 +118,21 @@ public class AsteroidShipCollision implements CollisionType {
      * Handle the collision between an asteroid and a ship.
      * 
      * @post	If the shield of the ship is not active, the ship will be
-     * 		terminated. The asteroid will divide in two smaller separate
-     * 		asteroids if its radius is large enough.
-     * 		| if(!o2.shieldIsActive())
-     * 		|	o2.terminate
-     * 		| if(o1.getRadius() >= 30)
-     * 		|	o1.terminate()
-     * 		|	Asteroid newAsteroid1 = new Asteroid()
-     * 		|	Asteroid newAsteroid2 = new Asteroid()
+     * 			terminated. The asteroid will divide in two smaller separate
+     * 			asteroids if its radius is large enough.
+     * 			| if(!o2.shieldIsActive())
+     * 			|	o2.terminate
+     * 			| if(o1.getRadius() >= 30)
+     * 			|	o1.terminate()
+     * 			|	Asteroid newAsteroid1 = new Asteroid()
+     * 			|	Asteroid newAsteroid2 = new Asteroid()
      */
     @Override
     public void collide() {
 	if(o2.getShield() > 0){
 	    o2.decShield();
 	}else{
-	    o2.terminate();
+	    o2.terminate(); // no shields ship is destroyed
 	}
 	if (o1.getRadius() >= 30){
 	    Random r = new Random(); 

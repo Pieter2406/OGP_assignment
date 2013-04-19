@@ -2,17 +2,13 @@
 package asteroids.collisions;
 
 import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Raw;
 import asteroids.studentdefined.Asteroid;
 import asteroids.studentdefined.Velocity;
 
 /**
  * A class of AsteroidAsteroidCollision implements CollisionType and handles the collision
- * between two asteroids in the world.
- * 
- * @invar	The collision is always between two valid asteroids. The first object needs to be a valid asteroid
- * 		and the second object needs to be a valid asteroid.
- * 		| Asteroid.isValidAsteroid(getO1())
- * 		| Asteroid.isValidAsteroid(getO2())
+ * between two asteroids.
  * 
  * @author	Kristof Bruyninckx
  * @author 	Wouter Bruyninckx
@@ -22,9 +18,6 @@ import asteroids.studentdefined.Velocity;
  */
 public class AsteroidAsteroidCollision implements CollisionType {
 
-
-
-
     /**
      * Initializes object one and object two with the asteroids that will collide.
      *
@@ -32,7 +25,7 @@ public class AsteroidAsteroidCollision implements CollisionType {
      * 			The first asteroid of the collision.
      * @param 	o2 
      * 			the second asteroid of the collision.
-     * @effect	The first asteroid is set with the given parameter for the first asteroid.
+     * @effect	The first asteroid is set with the given first parameter.
      * 			| setO1(o1)
      * @effect	The second asteroid is set with the second given parameter.
      * 			| setO2(o2)
@@ -47,7 +40,7 @@ public class AsteroidAsteroidCollision implements CollisionType {
     /**
      * Return the first asteroid in this collision.
      */
-    @Basic
+    @Basic @Raw
     private Asteroid getO1() {
 	return o1;
     }
@@ -81,16 +74,10 @@ public class AsteroidAsteroidCollision implements CollisionType {
 
     /*_____________________________SECOND_ASTEROID_____________________________*/
 
-
-    /**
-     * The second asteroid in the collision.
-     */
-    private Asteroid o2;
-
     /**
      * Return the second asteroid in this collision.
      */
-    @Basic
+    @Basic @Raw
     private Asteroid getO2() {
 	return o2;
     }
@@ -114,13 +101,20 @@ public class AsteroidAsteroidCollision implements CollisionType {
 	}
 	this.o2 = o2;
     }
+    
+    /**
+     * The second asteroid in the collision.
+     */
+    private Asteroid o2;
+
 
     /*_____________________________METHODS_____________________________*/
 
     /**
      * Handle the collision between two asteroids.
      * 
-     * @post	The new velocity is equal to the calculated velocity.
+     * @effect	The new velocity of both asteroids is set to the calculated velocity which makes
+     * 			the asteroids 'bounce' of each other.
      * 			| new.o1.getVelocity().getVelocityX() = newVelocityX
      * 			| new.o1.getVelocity().getVelocityY() = newVelocityY
      * 			| new.o2.getVelocity().getVelocityX() = newVelocityX

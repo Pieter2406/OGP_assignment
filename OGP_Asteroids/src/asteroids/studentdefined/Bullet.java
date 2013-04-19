@@ -1,15 +1,6 @@
 package asteroids.studentdefined;
 
 import be.kuleuven.cs.som.annotate.Basic;
-/**********************************************************************************
- * 								GENERAL TODO LIST:		              			  *
- **********************************************************************************
- *		- radius / minimumRadius = 3											  *
- *		- private final Ship sourceShip (mag nooit null zijn)					  *
- *		- public final double initVelocity = 250 km/s							  *	
- *		- public static final double massDensity = 7,8E12 kg/km³				  *
- *		- public double angle 													  *
- **********************************************************************************/
 
 /**
  * A class of Bullet extends to SpaceObject and involves a position and a velocity.
@@ -18,6 +9,8 @@ import be.kuleuven.cs.som.annotate.Basic;
  * 
  * @invar	The source of a ship must be valid.
  * 			| isValidSource()
+ * @invar	The angle of a bullet must be valid
+ * 			| isValidAngle(angle)
  * 
  * @author Kristof Bruynincks
  * @author Wouter Bruyninckx
@@ -25,7 +18,7 @@ import be.kuleuven.cs.som.annotate.Basic;
  */
 public class Bullet extends SpaceObject{
 	/**
-	 * Initialise this new bullet with a given position , a given velocity and a given radius.
+	 * Initialize this new bullet with a given position , a given velocity and a given radius.
 	 * @param 	x
 	 * 			The position on the x axis for this new bullet.
 	 * @param 	y
@@ -93,16 +86,40 @@ public class Bullet extends SpaceObject{
 	public double getAngle(){
 		return angle;
 	}
+	
+	/**
+	 * Checks if an angle is valid
+	 * @param 	angle
+	 * 			Given angle to be checked
+	 * @return 	True if angle is valid
+	 * 			| !Double.isNaN(angle)
+	 */
+	private boolean isValidAngle(double angle) {
+		if (!Double.isNaN(angle))
+			return true;
+		return false;
+	}
+	
 	/**
 	 * Set the angle of this bullet to the given angle.
 	 * @param 	angle
-	 * 			The given new angle for this ship
+	 * 			The given new angle for this bullet.
 	 * @post 	The angle of this bullet is equal to the given angle.
-	 * 			| new.angle = getAngle();
+	 *			| if (angle < 2*Math.PI && angle > (-2)*Math.PI)
+	 *			|	this.angle = angle;
+	 *			| else
+	 *			|   this.angle = angle % (2*Math.PI);
 	 */
+	
 	public void setAngle(double angle){
-		this.angle = angle;
+		if (!isValidAngle(angle))
+			throw new IllegalValueException(angle);
+		if (angle < 2*Math.PI && angle > (-2)*Math.PI)
+			this.angle = angle;
+		else
+			this.angle = angle % (2*Math.PI);
 	}
+
 	/**
 	 * Holds the angle of the bullet in which 
 	 * direction this bullet is fired.
