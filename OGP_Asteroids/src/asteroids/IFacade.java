@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.Random;
 import java.util.Set;
 
+
 /**
  * Implement this interface to connect your code to the user interface.
  * 
@@ -48,255 +49,314 @@ import java.util.Set;
  * implementation of this interface.</li>
  * <ul>
  */
-public interface IFacade<World, Ship, Asteroid, Bullet, Program> {
+public interface IFacade<World, Ship, Asteroid, Bullet, PowerUp, Program> {
   
-  /**
-   * Create a new world with the given <code>width</code> and
-   * <code>height</code>.
-   */
-  public World createWorld(double width, double height);
+	/**
+	   * Create a new world with the given <code>width</code> and
+	   * <code>height</code>.
+	   */
+	  public World createWorld(double width, double height);
 
-  /**
-   * Return the width of <code>world</code>.
-   */
-  public double getWorldWidth(World world);
+	  /**
+	   * Return the width of <code>world</code>.
+	   */
+	  public double getWorldWidth(World world);
 
-  /**
-   * Return the height of <code>world</code>.
-   */
-  public double getWorldHeight(World world);
+	  /**
+	   * Return the height of <code>world</code>.
+	   */
+	  public double getWorldHeight(World world);
 
-  /**
-   * Return all ships located within <code>world</code>.
-   */
-  public Set<Ship> getShips(World world);
+	  /**
+	   * Return all ships located within <code>world</code>.
+	   */
+	  public Set<Ship> getShips(World world);
 
-  /**
-   * Return all asteroids located in <code>world</code>.
-   */
-  public Set<Asteroid> getAsteroids(World world);
+	  /**
+	   * Return all asteroids located in <code>world</code>.
+	   */
+	  public Set<Asteroid> getAsteroids(World world);
 
-  /**
-   * Return all bullets located in <code>world</code>.
-   */
-  public Set<Bullet> getBullets(World world);
+	  /**
+	   * Return all bullets located in <code>world</code>.
+	   */
+	  public Set<Bullet> getBullets(World world);
 
-  /**
-   * Add <code>ship</code> to <code>world</code>.
-   */
-  public void addShip(World world, Ship ship);
+	  /**
+	  * Return all PowerUpslocated in <code>world</code>
+	  */
+	  public Set<PowerUp> getPowerUps(World world);
+	  /**
+	   * Add <code>ship</code> to <code>world</code>.
+	   */
+	  public void addShip(World world, Ship ship);
 
-  /**
-   * Add <code>asteroid</code> to <code>world</code>.
-   */
-  public void addAsteroid(World world, Asteroid asteroid);
+	  /**
+	   * Add <code>asteroid</code> to <code>world</code>.
+	   */
+	  public void addAsteroid(World world, Asteroid asteroid);
+	  
+	  /**
+	   * Remove <code>ship</code> from <code>world</code>.
+	   */
+	  public void removeShip(World world, Ship ship);
 
-  /**
-   * Remove <code>ship</code> from <code>world</code>.
-   */
-  public void removeShip(World world, Ship ship);
+	  /**
+	   * Remove <code>asteroid</code> from <code>world</code>.
+	   */
+	  public void removeAsteroid(World world, Asteroid asteroid);
+	  
+	  /**
+	   * Advance <code>world</code> by <code>dt<code> seconds. 
+	   * 
+	   * To enable explosions within the UI, notify <code>collisionListener</code>
+	   * whenever an entity collides with a boundary or another entity during this
+	   * method. <code>collisionListener</code> may be null. If
+	   * <code>collisionListener</code> is <code>null</code>, do not call its notify
+	   * methods.
+	   */
+	  public void evolve(World world, double dt, CollisionListener collisionListener);
 
-  /**
-   * Remove <code>asteroid</code> from <code>world</code>.
-   */
-  public void removeAsteroid(World world, Asteroid asteroid);
+	  /**
+	   * Create a new non-null ship with the given position, velocity, radius,
+	   * direction and mass.
+	   * 
+	   * The thruster of the new ship is initially inactive. The ship is not located
+	   * in a world.
+	   */
+	  public Ship createShip(double x, double y, double xVelocity, double yVelocity, double radius, double direction, double mass);
 
-  /**
-   * Advance <code>world</code> by <code>dt<code> seconds. 
-   * 
-   * To enable explosions within the UI, notify <code>collisionListener</code>
-   * whenever an entity collides with a boundary or another entity during this
-   * method. <code>collisionListener</code> may be null. If
-   * <code>collisionListener</code> is <code>null</code>, do not call its notify
-   * methods.
-   */
-  public void evolve(World world, double dt, CollisionListener collisionListener);
+	  /**
+	   * Check whether <code>o</code> is a ship.
+	   * 
+	   * You can use the <code>instanceof</code> operator to implement this method.
+	   */
+	  public boolean isShip(Object o);
 
-  /**
-   * Create a new non-null ship with the given position, velocity, radius,
-   * direction and mass.
-   * 
-   * The thruster of the new ship is initially inactive. The ship is not located
-   * in a world.
-   */
-  public Ship createShip(double x, double y, double xVelocity, double yVelocity, double radius, double direction, double mass);
+	  /**
+	   * Return the x-coordinate of <code>ship</code>.
+	   */
+	  public double getShipX(Ship ship);
 
-  /**
-   * Check whether <code>o</code> is a ship.
-   * 
-   * You can use the <code>instanceof</code> operator to implement this method.
-   */
-  public boolean isShip(Object o);
+	  /**
+	   * Return the y-coordinate of <code>ship</code>.
+	   */
+	  public double getShipY(Ship ship);
 
-  /**
-   * Return the x-coordinate of <code>ship</code>.
-   */
-  public double getShipX(Ship ship);
+	  /**
+	   * Return the velocity of <code>ship</code> along the X-axis.
+	   */
+	  public double getShipXVelocity(Ship ship);
 
-  /**
-   * Return the y-coordinate of <code>ship</code>.
-   */
-  public double getShipY(Ship ship);
+	  /**
+	   * Return the velocity of <code>ship</code> along the Y-axis.
+	   */
+	  public double getShipYVelocity(Ship ship);
 
-  /**
-   * Return the velocity of <code>ship</code> along the X-axis.
-   */
-  public double getShipXVelocity(Ship ship);
+	  /**
+	   * Return the radius of <code>ship</code>.
+	   */
+	  public double getShipRadius(Ship ship);
 
-  /**
-   * Return the velocity of <code>ship</code> along the Y-axis.
-   */
-  public double getShipYVelocity(Ship ship);
+	  /**
+	   * Return the direction of <code>ship</code> (in radians).
+	   */
+	  public double getShipDirection(Ship ship);
 
-  /**
-   * Return the radius of <code>ship</code>.
-   */
-  public double getShipRadius(Ship ship);
+	  /**
+	   * Return the mass of <code>ship</code>.
+	   */
+	  public double getShipMass(Ship ship);
 
-  /**
-   * Return the direction of <code>ship</code> (in radians).
-   */
-  public double getShipDirection(Ship ship);
+	  /**
+	   * Return the world of <code>ship</code>.
+	   */
+	  public World getShipWorld(Ship ship);
 
-  /**
-   * Return the mass of <code>ship</code>.
-   */
-  public double getShipMass(Ship ship);
+	  /**
+	   * Return true if the <code>ships</code> shield is <code>active</code>.
+	   */
+	  public boolean getisShieldActive(Ship ship);
+	  
+	  /**
+	   * Return whether <code>ship</code>'s thruster is active.
+	   */
+	  public boolean isShipThrusterActive(Ship ship);
 
-  /**
-   * Return the world of <code>ship</code>.
-   */
-  public World getShipWorld(Ship ship);
+	  /**
+	   * Enables or disables <code>ship</code>'s thruster depending on the value of
+	   * the parameter <code>active</code>.
+	   */
+	  public void setThrusterActive(Ship ship, boolean active);
 
-  /**
-   * Return whether <code>ship</code>'s thruster is active.
-   */
-  public boolean isShipThrusterActive(Ship ship);
+	  /**
+	   * Update the direction of <code>ship</code> by adding <code>angle</code> (in
+	   * radians) to its current direction. <code>angle</code> may be negative.
+	   */
+	  public void turn(Ship ship, double angle);
 
-  /**
-   * Enables or disables <code>ship</code>'s thruster depending on the value of
-   * the parameter <code>active</code>.
-   */
-  public void setThrusterActive(Ship ship, boolean active);
+	  /**
+	   * <code>ship</code> fires a bullet.
+	   */
+	  public void fireBullet(Ship ship);
 
-  /**
-   * Update the direction of <code>ship</code> by adding <code>angle</code> (in
-   * radians) to its current direction. <code>angle</code> may be negative.
-   */
-  public void turn(Ship ship, double angle);
+	  /**
+	   * Create a new non-null asteroid with the given position, velocity and
+	   * radius.
+	   * 
+	   * The asteroid is not located in a world.
+	   */
+	  public Asteroid createAsteroid(double x, double y, double xVelocity, double yVelocity, double radius);
 
-  /**
-   * <code>ship</code> fires a bullet.
-   */
-  public void fireBullet(Ship ship);
+	  /**
+	   * Create a new non-null asteroid with the given position, velocity and
+	   * radius.
+	   * 
+	   * The asteroid is not located in a world.
+	   * 
+	   * Use numbers generated by <code>random</code> to determine the direction of
+	   * the children (if any) when this asteroid dies.
+	   */
+	  public Asteroid createAsteroid(double x, double y, double xVelocity, double yVelocity, double radius, Random random);
 
-  /**
-   * Create a new non-null asteroid with the given position, velocity and
-   * radius.
-   * 
-   * The asteroid is not located in a world.
-   */
-  public Asteroid createAsteroid(double x, double y, double xVelocity, double yVelocity, double radius);
+	  /**
+	   * Check whether <code>o</code> is an asteroid.
+	   * 
+	   * You can use the <code>instanceof</code> operator to implement this method.
+	   */
+	  public boolean isAsteroid(Object o);
 
-  /**
-   * Create a new non-null asteroid with the given position, velocity and
-   * radius.
-   * 
-   * The asteroid is not located in a world.
-   * 
-   * Use numbers generated by <code>random</code> to determine the direction of
-   * the children (if any) when this asteroid dies.
-   */
-  public Asteroid createAsteroid(double x, double y, double xVelocity, double yVelocity, double radius, Random random);
+	  /**
+	   * Return the x-coordinate of <code>asteroid</code>.
+	   */
+	  public double getAsteroidX(Asteroid asteroid);
 
-  /**
-   * Check whether <code>o</code> is an asteroid.
-   * 
-   * You can use the <code>instanceof</code> operator to implement this method.
-   */
-  public boolean isAsteroid(Object o);
+	  /**
+	   * Return the y-coordinate of <code>asteroid</code>.
+	   */
+	  public double getAsteroidY(Asteroid asteroid);
 
-  /**
-   * Return the x-coordinate of <code>asteroid</code>.
-   */
-  public double getAsteroidX(Asteroid asteroid);
+	  /**
+	   * Return the velocity of <code>asteroid</code> along the X-axis.
+	   */
+	  public double getAsteroidXVelocity(Asteroid asteroid);
 
-  /**
-   * Return the y-coordinate of <code>asteroid</code>.
-   */
-  public double getAsteroidY(Asteroid asteroid);
+	  /**
+	   * Return the velocity of <code>asteroid</code> along the Y-axis.
+	   */
+	  public double getAsteroidYVelocity(Asteroid asteroid);
 
-  /**
-   * Return the velocity of <code>asteroid</code> along the X-axis.
-   */
-  public double getAsteroidXVelocity(Asteroid asteroid);
+	  /**
+	   * Return the radius of <code>asteroid</code>.
+	   */
+	  public double getAsteroidRadius(Asteroid asteroid);
 
-  /**
-   * Return the velocity of <code>asteroid</code> along the Y-axis.
-   */
-  public double getAsteroidYVelocity(Asteroid asteroid);
+	  /**
+	   * Return the mass of <code>asteroid</code>.
+	   */
+	  public double getAsteroidMass(Asteroid asteroid);
 
-  /**
-   * Return the radius of <code>asteroid</code>.
-   */
-  public double getAsteroidRadius(Asteroid asteroid);
+	  /**
+	   * Return the world of <code>asteroid</code>.
+	   */
+	  public World getAsteroidWorld(Asteroid asteroid);
 
-  /**
-   * Return the mass of <code>asteroid</code>.
-   */
-  public double getAsteroidMass(Asteroid asteroid);
+	  /**
+	   * Check whether <code>o</code> is a bullet.
+	   * 
+	   * You can use the <code>instanceof</code> operator to implement this method.
+	   */
+	  public boolean isBullets(Object o);
 
-  /**
-   * Return the world of <code>asteroid</code>.
-   */
-  public World getAsteroidWorld(Asteroid asteroid);
+	  /**
+	   * Return the x-coordinate of <code>bullet</code>.
+	   */
+	  public double getBulletX(Bullet bullet);
 
-  /**
-   * Check whether <code>o</code> is a bullet.
-   * 
-   * You can use the <code>instanceof</code> operator to implement this method.
-   */
-  public boolean isBullets(Object o);
+	  /**
+	   * Return the y-coordinate of <code>bullet</code>.
+	   */
+	  public double getBulletY(Bullet bullet);
 
-  /**
-   * Return the x-coordinate of <code>bullet</code>.
-   */
-  public double getBulletX(Bullet bullet);
+	  /**
+	   * Return the velocity of <code>bullet</code> along the X-axis.
+	   */
+	  public double getBulletXVelocity(Bullet bullet);
 
-  /**
-   * Return the y-coordinate of <code>bullet</code>.
-   */
-  public double getBulletY(Bullet bullet);
+	  /**
+	   * Return the velocity of <code>bullet</code> along the Y-axis.
+	   */
+	  public double getBulletYVelocity(Bullet bullet);
 
-  /**
-   * Return the velocity of <code>bullet</code> along the X-axis.
-   */
-  public double getBulletXVelocity(Bullet bullet);
+	  /**
+	   * Return the radius of <code>bullet</code>.
+	   */
+	  public double getBulletRadius(Bullet bullet);
 
-  /**
-   * Return the velocity of <code>bullet</code> along the Y-axis.
-   */
-  public double getBulletYVelocity(Bullet bullet);
+	  /**
+	   * Return the mass of <code>bullet</code>.
+	   */
+	  public double getBulletMass(Bullet bullet);
 
-  /**
-   * Return the radius of <code>bullet</code>.
-   */
-  public double getBulletRadius(Bullet bullet);
+	  /**
+	   * Return the world of <code>bullet</code>.
+	   */
+	  public World getBulletWorld(Bullet bullet);
 
-  /**
-   * Return the mass of <code>bullet</code>.
-   */
-  public double getBulletMass(Bullet bullet);
+	  /**
+	   * Return the source of <code>bullet</code>.
+	   */
+	  public Ship getBulletSource(Bullet bullet);
+	  
+	  /**
+	   * Check whether the given object is a powerup
+	   */
+	  public boolean isPowerUp(Object entity1);
+	  
+	  /**
+	   * Return the x-coordinate of <code>powerup</code>.
+	   */
+	  public double getPowerUpX(PowerUp powerup);
 
-  /**
-   * Return the world of <code>bullet</code>.
-   */
-  public World getBulletWorld(Bullet bullet);
-  
-  /**
-   * Return the source of <code>bullet</code>.
-   */
-  public Ship getBulletSource(Bullet bullet);
+	  /**
+	   * Return the y-coordinate of <code>powerup</code>.
+	   */
+	  public double getPowerUpY(PowerUp powerup);
+
+	  /**
+	   * Return the velocity of <code>powerup</code> along the X-axis.
+	   */
+	  public double getPowerUpXVelocity(PowerUp powerup);
+
+	  /**
+	   * Return the velocity of <code>powerup</code> along the Y-axis.
+	   */
+	  public double getPowerUpYVelocity(PowerUp powerup);
+
+	  /**
+	   * Return the radius of <code>powerup</code>.
+	   */
+	  public double getPowerUpRadius(PowerUp powerup);
+
+	  /**
+	   * Return the mass of <code>powerup</code>.
+	   */
+	  public double getPowerUpMass(PowerUp powerup);
+
+	  /**
+	   * Return the world of <code>powerup</code>.
+	   */
+	  public World getPowerUpWorld(PowerUp powerup);
+	  
+	  /**
+	   * Return the type of the <code>powerup</code>.
+	   */
+	  public int getPowerUpType(PowerUp powerup);
+	  
+	  /**
+	   * Check whether <code>object</code> is a wall;
+	   */
+	  public boolean isWall(Object o);
   
   /**
    * If parsing fails, message should be non-null; otherwise, program must be non-null.

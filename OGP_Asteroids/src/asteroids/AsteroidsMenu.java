@@ -14,14 +14,14 @@ import java.awt.geom.Rectangle2D;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class AsteroidsMenu<World, Ship, Asteroid, Bullet, Program> extends JPanel implements KeyListener {
+public class AsteroidsMenu<World, Ship, Asteroid, Bullet, PowerUp, Program> extends JPanel implements KeyListener {
   
   private String[] menu_options = { "Player vs Asteroids", "Player vs Player", "Player vs AI", "Exit" };
   private int selectedIndex = 0;
-  private final Asteroids<World, Ship, Asteroid, Bullet, Program> game;
+  private final Asteroids<World, Ship, Asteroid, Bullet, PowerUp, Program> game;
   private Image background;
   
-  public AsteroidsMenu(Asteroids<World, Ship, Asteroid, Bullet, Program> game) {
+  public AsteroidsMenu(Asteroids<World, Ship, Asteroid, Bullet, PowerUp, Program> game) {
     this.game = game;
     addKeyListener(this);
     setBackground(Color.BLACK);

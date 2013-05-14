@@ -15,23 +15,23 @@ import asteroids.IFacade.ParseOutcome;
 import asteroids.IFacade.TypeCheckOutcome;
 
 @SuppressWarnings("serial")
-public class Asteroids<World, Ship, Asteroid, Bullet, Program> extends JFrame {
+public class Asteroids<World, Ship, Asteroid, Bullet, PowerUp, Program> extends JFrame {
 
-  private AsteroidsMenu<World, Ship, Asteroid, Bullet, Program> menu;
-  private WorldView<World, Ship, Asteroid, Bullet, Program> view;
-  private IFacade<World, Ship, Asteroid, Bullet, Program> facade;
+  private AsteroidsMenu<World, Ship, Asteroid, Bullet, PowerUp, Program> menu;
+  private WorldView<World, Ship, Asteroid, Bullet, PowerUp, Program> view;
+  private IFacade<World, Ship, Asteroid, Bullet, PowerUp, Program> facade;
   private int width;
   private int height;
   private Sound sound;
   private URL aiProgramUrl;
 
-  public Asteroids(IFacade<World, Ship, Asteroid, Bullet, Program> facade, int width, int height, boolean undecorated, Sound sound, URL aiProgramUrl) {
+  public Asteroids(IFacade<World, Ship, Asteroid, Bullet, PowerUp, Program> facade, int width, int height, boolean undecorated, Sound sound, URL aiProgramUrl) {
     super("Asteroids");
     this.sound = sound;
     this.width = width;
     this.height = height;
     this.aiProgramUrl = aiProgramUrl;
-    menu = new AsteroidsMenu<World, Ship, Asteroid, Bullet, Program>(this);
+    menu = new AsteroidsMenu<World, Ship, Asteroid, Bullet, PowerUp, Program>(this);
     this.facade = facade;
     setUndecorated(undecorated);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -52,7 +52,7 @@ public class Asteroids<World, Ship, Asteroid, Bullet, Program> extends JFrame {
     return sound;
   }
   
-  public IFacade<World, Ship, Asteroid, Bullet, Program> getFacade() {
+  public IFacade<World, Ship, Asteroid, Bullet, PowerUp, Program> getFacade() {
     return facade;
   }
 
@@ -71,7 +71,7 @@ public class Asteroids<World, Ship, Asteroid, Bullet, Program> extends JFrame {
     facade.addAsteroid(world, asteroid1);
     Asteroid asteroid2 = facade.createAsteroid(600, 100, -30, -40, 80);
     facade.addAsteroid(world, asteroid2);
-    view = new WorldView<World, Ship, Asteroid, Bullet, Program>(this, world, player, null, false);
+    view = new WorldView<World, Ship, Asteroid, Bullet,PowerUp, Program>(this, world, player, null, false);
     if (!isUndecorated())
       view.setPreferredSize(new Dimension(width, height));
     getContentPane().remove(menu);
@@ -125,7 +125,7 @@ public class Asteroids<World, Ship, Asteroid, Bullet, Program> extends JFrame {
     facade.addAsteroid(world, asteroid3);
     Asteroid asteroid4 = facade.createAsteroid(40, height - 100, 10, -8, 15);
     facade.addAsteroid(world, asteroid4);
-    view = new WorldView<World, Ship, Asteroid, Bullet, Program>(this, world, player1, player2, vsAI);
+    view = new WorldView<World, Ship, Asteroid, Bullet, PowerUp, Program>(this, world, player1, player2, vsAI);
     if (!isUndecorated())
       view.setPreferredSize(new Dimension(width, height));
     getContentPane().remove(menu);
@@ -193,11 +193,11 @@ public class Asteroids<World, Ship, Asteroid, Bullet, Program> extends JFrame {
       return;
     }
     // <begin>
-    IFacade<asteroids.model.World, asteroids.model.Ship, asteroids.model.Asteroid, asteroids.model.Bullet, asteroids.model.programs.Program> facade = new asteroids.model.Facade();
+    IFacade<asteroids.studentdefined.World, asteroids.studentdefined.Ship, asteroids.studentdefined.Asteroid, asteroids.studentdefined.Bullet,asteroids.studentdefined.PowerUp, asteroids.model.programs.Program> facade = new asteroids.studentdefined.Facade();
     // <end>
     GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
     GraphicsDevice screen = env.getDefaultScreenDevice();
-    Asteroids<?, ?, ?, ?, ?> asteroids;
+    Asteroids<?, ?, ?, ?, ?, ?> asteroids;
     Sound sound = enableSound ? new FileSoundManager("asteroids/resources/sounds.txt") : new NullSound();
     if (tryFullscreen && screen.isFullScreenSupported()) {
       Rectangle dimensions = screen.getDefaultConfiguration().getBounds();

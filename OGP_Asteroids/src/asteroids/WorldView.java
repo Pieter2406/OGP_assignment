@@ -14,31 +14,37 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 @SuppressWarnings("serial")
-public class WorldView<World, Ship, Asteroid, Bullet, Program> extends JPanel implements KeyListener, ActionListener, CollisionListener {
+public class WorldView<World, Ship, Asteroid, Bullet, PowerUp, Program> extends JPanel implements KeyListener, ActionListener, CollisionListener {
 
   private static final int LEFT_P1 = KeyEvent.VK_LEFT;
   private static final int RIGHT_P1 = KeyEvent.VK_RIGHT;
   private static final int FIRE_P1 = KeyEvent.VK_SPACE;
   private static final int THRUSTER_P1 = KeyEvent.VK_UP;
-  private static final int LEFT_P2 = KeyEvent.VK_A; // change to Q on Azerty
+  private static final int LEFT_P2 = KeyEvent.VK_Q; // change to Q on Azerty
   private static final int RIGHT_P2 = KeyEvent.VK_D;
   private static final int FIRE_P2 = KeyEvent.VK_CONTROL;
-  private static final int THRUSTER_P2 = KeyEvent.VK_W; // change to Z on Azerty
+  private static final int THRUSTER_P2 = KeyEvent.VK_Z; // change to Z on Azerty
 
   private static final int TIMER_DELAY = 1000 / 30;
 
-  private Asteroids<World, Ship, Asteroid, Bullet, Program> game;
-  private IFacade<World, Ship, Asteroid, Bullet, Program> facade;
+  private Asteroids<World, Ship, Asteroid, Bullet,PowerUp, Program> game;
+  private IFacade<World, Ship, Asteroid, Bullet, PowerUp, Program> facade;
   private World world;
   private Ship player1, player2;
   private boolean player2IsAI;
@@ -51,7 +57,7 @@ public class WorldView<World, Ship, Asteroid, Bullet, Program> extends JPanel im
   private Map<Object, Visualization<?>> visualizations = new HashMap<Object, Visualization<?>>();
   private Set<Explosion> explosions = new HashSet<Explosion>();
 
-  public WorldView(Asteroids<World, Ship, Asteroid, Bullet, Program> game, World world, Ship player1, Ship player2, boolean player2IsAI) {
+  public WorldView(Asteroids<World, Ship, Asteroid, Bullet, PowerUp, Program> game, World world, Ship player1, Ship player2, boolean player2IsAI) {
     this.game = game;
     this.facade = game.getFacade();
     this.world = world;
@@ -101,6 +107,7 @@ public class WorldView<World, Ship, Asteroid, Bullet, Program> extends JPanel im
     g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
     g2d.drawImage(background, 0, 0, null);
     g2d.setColor(Color.WHITE);
+    
     for (Ship ship : facade.getShips(world)) {
       if (!visualizations.containsKey(ship)) {
         visualizations.put(ship, new ShipVisualization(Color.BLUE, ship, null));
@@ -113,6 +120,13 @@ public class WorldView<World, Ship, Asteroid, Bullet, Program> extends JPanel im
       }
       visualizations.get(asteroid).draw(g2d);
     }
+    for (PowerUp powerup : facade.getPowerUps(world)) {
+        if (!visualizations.containsKey(powerup)) {
+          visualizations.put(powerup, new PowerUpVisualization(powerup));
+        }
+        visualizations.get(powerup).draw(g2d);
+      }
+    
     for (Bullet bullet : facade.getBullets(world)) {
       if (!visualizations.containsKey(bullet)) {
         Ship ship = facade.getBulletSource(bullet);
@@ -120,6 +134,7 @@ public class WorldView<World, Ship, Asteroid, Bullet, Program> extends JPanel im
       }
       visualizations.get(bullet).draw(g2d);
     }
+    
     for (Explosion explosion : explosions) {
       explosion.draw(g2d);
     }
@@ -262,9 +277,11 @@ public class WorldView<World, Ship, Asteroid, Bullet, Program> extends JPanel im
 
   @Override
   public void objectCollision(Object entity1, Object entity2, double x, double y) {
-    if ((facade.isBullets(entity1) && !facade.isBullets(entity2)) || (facade.isBullets(entity2) && !facade.isBullets(entity1))) {
-      game.getSound().play("explosion");
-      explosions.add(new Explosion(x, facade.getWorldHeight(world) - y));
+    if ((facade.isBullets(entity1) && !facade.isBullets(entity2)) || (facade.isBullets(entity2) && !facade.isBullets(entity1) || (facade.isAsteroid(entity1) && facade.isShip(entity2)) || facade.isAsteroid(entity2) && facade.isShip(entity1))) {
+    	game.getSound().play("explosion");
+      	explosions.add(new Explosion(x, facade.getWorldHeight(world) - y));
+    }else if(facade.isPowerUp(entity1) || facade.isPowerUp(entity2)){
+    	game.getSound().play("powerup");
     }
   }
   
@@ -296,19 +313,44 @@ public class WorldView<World, Ship, Asteroid, Bullet, Program> extends JPanel im
     }
   }
   
-  private static Image[] getImages() {
+  private static Image[] getAsteroidImages() {
     Image[] images = new Image[1];
     ClassLoader loader = WorldView.class.getClassLoader();
     images[0] = Toolkit.getDefaultToolkit().createImage(loader.getResource("asteroids/resources/asteroid1.png"));
     return images;
   }
+  private static Image[] getPowerUpImages(){
+	  Image[] images = new Image[6];
+	 // ClassLoader loader = WorldView.class.getClassLoader();
+	  BufferedImage powerUpSheet;
+	try {
+		URL url = WorldView.class.getClassLoader().getResource("asteroids/resources/Powerups.png");
+		powerUpSheet = ImageIO.read(new File(url.toURI()));
+	    images[0] = powerUpSheet.getSubimage(0,0,64,64);
+	    images[1] = powerUpSheet.getSubimage(64,0,64,64);
+	    images[2] = powerUpSheet.getSubimage(128,0,64,64);
+	    images[3] = powerUpSheet.getSubimage(192,0,64,64);
+	    images[4] = powerUpSheet.getSubimage(0,64,64,64);
+	    images[5] = powerUpSheet.getSubimage(64,64,64,64);
+	} catch (IOException e) {
+		e.printStackTrace();
+	} catch (URISyntaxException e) {
+		e.printStackTrace();
+	}
+	    return images;
+  }
   
-  private static Image[] asteroidImages = getImages();
+  private static Image[] asteroidImages = getAsteroidImages();
+  private static Image[] powerupImages = getPowerUpImages();
+ 
   
   public class ShipVisualization extends Visualization<Ship> {
-
+	  private Image smallerShip;
+	  private final double initialRadius;
     public ShipVisualization(Color color, Ship ship, Image image) {
       super(color, ship, image);
+      this.smallerShip = image.getScaledInstance(60,60, Image.SCALE_DEFAULT);
+      initialRadius = facade.getShipRadius(ship);
     }
 
     @Override
@@ -322,10 +364,18 @@ public class WorldView<World, Ship, Asteroid, Bullet, Program> extends JPanel im
         g2d.drawOval((int) (x - radius), (int) (y - radius), (int) (2 * radius), (int) (2 * radius));
       } else {
         AffineTransform T = AffineTransform.getTranslateInstance(radius, radius);
-        T.rotate(angle);
+    	T.rotate(angle);
         T.translate(-radius, -radius);
         T.preConcatenate(AffineTransform.getTranslateInstance(x - radius, y - radius));
-        g2d.drawImage(getImage(), T, null);
+        if(facade.getisShieldActive(getObject())){
+        	 g2d.drawOval((int) (x - radius), (int) (y - radius), (int) (2 * radius), (int) (2 * radius));
+        }
+        if(radius < this.initialRadius){
+        	g2d.drawImage(this.smallerShip,T,null);
+        }else{
+        	g2d.drawImage(this.getImage(),T,null);
+        }
+        
       }
       g2d.drawLine((int) x, (int) y, (int) (x + Math.cos(angle) * radius), (int) (y + sin(angle) * radius));
     }
@@ -333,7 +383,7 @@ public class WorldView<World, Ship, Asteroid, Bullet, Program> extends JPanel im
   
   public class AsteroidVisualization extends Visualization<Asteroid> {
    
-    public AsteroidVisualization(IFacade<World, Ship, Asteroid, Bullet, Program> facade,  Asteroid asteroid, Image image) {
+    public AsteroidVisualization(IFacade<World, Ship, Asteroid, Bullet, PowerUp, Program> facade,  Asteroid asteroid, Image image) {
       super(Color.WHITE, asteroid, image);
     }
     
@@ -360,6 +410,36 @@ public class WorldView<World, Ship, Asteroid, Bullet, Program> extends JPanel im
     }
   }
   
+  public class PowerUpVisualization extends Visualization<PowerUp> {
+	   
+	    public PowerUpVisualization(IFacade<World, Ship, Asteroid, Bullet, PowerUp, Program> facade,  PowerUp powerup, Image image) {
+	      super(Color.WHITE, powerup, image);
+	    }
+	    
+	    //TODO: Geef powerup een instance integer Type op basis van het soort powerup, en gebruik powerupImages[powerup.getType()]
+	    public PowerUpVisualization(PowerUp powerup) {
+	      this(facade, powerup, powerupImages[facade.getPowerUpType(powerup)]);
+	    }
+
+	    @Override
+	    public void draw(Graphics2D g2d) {
+	      World world = facade.getPowerUpWorld(getObject());
+	      if(world != null) {
+	        double radius = facade.getPowerUpRadius(getObject());
+	        double x = facade.getPowerUpX(getObject());
+	        double y = facade.getWorldHeight(world) - facade.getPowerUpY(getObject());
+	        if(getImage() == null) {
+	          g2d.setColor(getColor());
+	          g2d.drawOval((int) (x - radius), (int) (y - radius), (int) (2 * radius), (int) (2 * radius));
+	        } else {
+	          AffineTransform T = AffineTransform.getScaleInstance(2*radius/getImage().getWidth(null), 2*radius / getImage().getHeight(null));
+	          T.preConcatenate(AffineTransform.getTranslateInstance(x - radius, y - radius));
+	          g2d.drawImage(this.getImage(), T, null);
+	        }
+	      }
+	    }
+	  }
+  
   public class BulletVisualization extends Visualization<Bullet> {
     
     public BulletVisualization(Color color,  Bullet bullet) {
@@ -376,3 +456,4 @@ public class WorldView<World, Ship, Asteroid, Bullet, Program> extends JPanel im
     }
   }
 }
+
