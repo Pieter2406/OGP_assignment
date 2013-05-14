@@ -1,8 +1,10 @@
 package asteroids;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.Random;
 import java.util.Set;
-
 
 /**
  * Implement this interface to connect your code to the user interface.
@@ -13,12 +15,13 @@ import java.util.Set;
  * class <code>Facade</code> should look as follows:
  * 
  * <p>
- * <code>class Facade implements IFacade&ltWorldImpl, ShipImpl, AsteroidImpl, BulletImpl&gt { ... }</code>
+ * <code>class Facade implements IFacade&ltWorldImpl, ShipImpl, AsteroidImpl, BulletImpl, ProgramImpl&gt { ... }</code>
  * </p>
  * 
  * The code snippet shown above assumes that your classes representing worlds,
  * ships, asteroids and bullets are respectively named <code>WorldImpl</code>,
- * <code>ShipImpl</code>, <code>AsteroidImpl</code> and <code>BulletImpl</code>.
+ * <code>ShipImpl</code>, <code>AsteroidImpl</code>, <code>BulletImpl</code> and
+ * <code>ProgramImpl</code>.
  * Consult the <a href=
  * "http://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html">Java
  * tutorial</a> for more information on interfaces.</li>
@@ -41,11 +44,12 @@ import java.util.Set;
  * <li>Do not modify the signatures of the methods defined in this interface.
  * You can however add additional methods, as long as these additional methods
  * do not overload the existing ones. Each additional method must be implemented
- * in your class <code>Facade</code>.</li>
+ * in your class <code>Facade</code>. We run our JUnit tests with respect to your
+ * implementation of this interface.</li>
  * <ul>
  */
-public interface IFacade<World, Ship, Asteroid, Bullet, PowerUp> {
-
+public interface IFacade<World, Ship, Asteroid, Bullet, Program> {
+  
   /**
    * Create a new world with the given <code>width</code> and
    * <code>height</code>.
@@ -78,10 +82,6 @@ public interface IFacade<World, Ship, Asteroid, Bullet, PowerUp> {
   public Set<Bullet> getBullets(World world);
 
   /**
-  * Return all PowerUpslocated in <code>world</code>
-  */
-  public Set<PowerUp> getPowerUps(World world);
-  /**
    * Add <code>ship</code> to <code>world</code>.
    */
   public void addShip(World world, Ship ship);
@@ -90,7 +90,7 @@ public interface IFacade<World, Ship, Asteroid, Bullet, PowerUp> {
    * Add <code>asteroid</code> to <code>world</code>.
    */
   public void addAsteroid(World world, Asteroid asteroid);
-  
+
   /**
    * Remove <code>ship</code> from <code>world</code>.
    */
@@ -100,7 +100,7 @@ public interface IFacade<World, Ship, Asteroid, Bullet, PowerUp> {
    * Remove <code>asteroid</code> from <code>world</code>.
    */
   public void removeAsteroid(World world, Asteroid asteroid);
-  
+
   /**
    * Advance <code>world</code> by <code>dt<code> seconds. 
    * 
@@ -168,11 +168,6 @@ public interface IFacade<World, Ship, Asteroid, Bullet, PowerUp> {
    */
   public World getShipWorld(Ship ship);
 
-  /**
-   * Return true if the <code>ships</code> shield is <code>active</code>.
-   */
-  public boolean getisShieldActive(Ship ship);
-  
   /**
    * Return whether <code>ship</code>'s thruster is active.
    */
@@ -297,59 +292,112 @@ public interface IFacade<World, Ship, Asteroid, Bullet, PowerUp> {
    * Return the world of <code>bullet</code>.
    */
   public World getBulletWorld(Bullet bullet);
-
+  
   /**
    * Return the source of <code>bullet</code>.
    */
   public Ship getBulletSource(Bullet bullet);
   
   /**
-   * Check whether the given object is a powerup
+   * If parsing fails, message should be non-null; otherwise, program must be non-null.
    */
-  public boolean isPowerUp(Object entity1);
+  public class ParseOutcome<Program> {
+    private final boolean success;
+    private final String message;
+    private final Program program;
+    
+    private ParseOutcome(boolean success, String message, Program program)
+    {
+      this.success = success;
+      this.message = message;
+      this.program = program;
+    }
+    
+    public boolean isSuccessful() {
+      return success;
+    }
+    
+    public String getMessage() {
+      return message;
+    }
+    
+    public Program getProgram() {
+      return program;
+    }
+    
+    public static <Program> ParseOutcome<Program> success(Program program) {
+      return new ParseOutcome<Program>(true, null, program);
+    }
+    
+    public static <Program> ParseOutcome<Program> failure(String message) {
+      return new ParseOutcome<Program>(false, message, null);
+    }
+  }
   
   /**
-   * Return the x-coordinate of <code>powerup</code>.
+   * Parse <code>text</code>. The result of this method is a non-null <code>ParseOutcome</code>.
    */
-  public double getPowerUpX(PowerUp powerup);
-
-  /**
-   * Return the y-coordinate of <code>powerup</code>.
-   */
-  public double getPowerUpY(PowerUp powerup);
-
-  /**
-   * Return the velocity of <code>powerup</code> along the X-axis.
-   */
-  public double getPowerUpXVelocity(PowerUp powerup);
-
-  /**
-   * Return the velocity of <code>powerup</code> along the Y-axis.
-   */
-  public double getPowerUpYVelocity(PowerUp powerup);
-
-  /**
-   * Return the radius of <code>powerup</code>.
-   */
-  public double getPowerUpRadius(PowerUp powerup);
-
-  /**
-   * Return the mass of <code>powerup</code>.
-   */
-  public double getPowerUpMass(PowerUp powerup);
-
-  /**
-   * Return the world of <code>powerup</code>.
-   */
-  public World getPowerUpWorld(PowerUp powerup);
+  public ParseOutcome<Program> parseProgram(String text);
   
   /**
-   * Return the type of the <code>powerup</code>.
+   * Parse the program from <code>stream</code>. The result of this method is a non-null <code>ParseOutcome</code>.
+   * 
+   * @throws IOException An error occurs while reading the stream.
    */
-  public int getPowerUpType(PowerUp powerup);
+  public ParseOutcome<Program> loadProgramFromStream(InputStream stream) throws IOException;
   
   /**
-   * Check whether <code>object</code> is a wall;
+   * Parse the program stored at <code>url</code>. The result of this method is a non-null <code>ParseOutcome</code>.
+   * 
+   * @throws IOException An error occurs while reading the url.
    */
-  public boolean isWall(Object o);
+  public ParseOutcome<Program> loadProgramFromUrl(URL url) throws IOException;
+ 
+  /**
+   * If type checking fails, message should be non-null.
+   */
+  public class TypeCheckOutcome {
+    private final boolean success;
+    private final String message;
+    
+    private TypeCheckOutcome(boolean success, String message) {
+      this.success = success;
+      this.message = message;
+    }
+    
+    public boolean isSuccessful() {
+      return success;
+    }
+    
+    public String getMessage() {
+      return message;
+    }
+    
+    public static TypeCheckOutcome success() {
+      return new TypeCheckOutcome(true, null);
+    }
+    
+    public static TypeCheckOutcome failure(String message) {
+      return new TypeCheckOutcome(false, message);
+    }
+  }
+  
+  /**
+   * Return whether typechecking (an optional feature) is implemented.
+   */
+  public boolean isTypeCheckingSupported();
+  
+  /**
+   * Typecheck <code>program</code>. The result of this method is a non-null <code>TypeCheckOutcome</code>.
+   * 
+   * This method is only called if <code>isTypeCheckingSupported</code> returns true.
+   */
+  public TypeCheckOutcome typeCheckProgram(Program program);
+  
+  /**
+   * Set the program of <code>ship</code> to <code>program</code>.
+   * 
+   * If type checking is supported, this method should throw <code>ModelException</code> if the given program is not type correct.
+   */
+  public void setShipProgram(Ship ship, Program program);
 }
