@@ -3,6 +3,7 @@
  */
 package asteroids.studentdefined;
 
+
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
 
@@ -19,6 +20,7 @@ import be.kuleuven.cs.som.annotate.Raw;
 public abstract class PowerUp extends SpaceObject {
 protected final int type;
 public static final double DEFAULT_RADIUS = 30;
+protected final long lifeTime;
 		
 	/**
 	 * Initializes the power up with a given x and y coordinate, a world and a type.
@@ -37,6 +39,7 @@ public static final double DEFAULT_RADIUS = 30;
 	public PowerUp(double x, double y, World world, int type) {
 		super(x,y,DEFAULT_RADIUS,0, world);
 		this.type = type;
+		lifeTime = System.currentTimeMillis();
 	}
 
 	/**
@@ -47,6 +50,13 @@ public static final double DEFAULT_RADIUS = 30;
 		return type;
 	}
 	
+	@Override
+	public void move(double time){
+		long timeDifference = System.currentTimeMillis() - lifeTime;
+		if (timeDifference > World.POWER_UP_LIFE_TIME){
+			terminate();
+		}
+	}
 	/**
 	 * Checks if the given object is a valid powerup.
 	 *

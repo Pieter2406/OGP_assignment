@@ -61,7 +61,8 @@ public class Ship extends SpaceObject implements IShip {
 	public Ship(double x, double y,double velocityX, double velocityY, double radius, double angle, double mass, World world){
 		super(x,y,velocityX,velocityY,radius,10, mass, world);
 		this.setAngle(angle);
-		thruster = new Thruster(this);
+		this.thruster = new Thruster(this);
+		this.program = new Program(this);
 	}
 
 	/**
@@ -126,6 +127,18 @@ public class Ship extends SpaceObject implements IShip {
 	 * Holds the thruster that is attached to this ship.
 	 */
 	private Thruster thruster;
+
+	@Basic @Raw
+	public Program getProgram(){
+		return program;
+	}
+
+	public void setProgram(Program program){
+		if(program != null)
+			this.program = program;
+	}
+
+	private Program program;
 
 	/**
 	 * Return this ship's angle.
@@ -473,7 +486,7 @@ public class Ship extends SpaceObject implements IShip {
 				velocity = getVelocity().getVelocityX();
 				accel = Math.cos(getAngle()) * getThruster().getAcceleration();
 				if (Util.fuzzyEquals(accel,0))
-						return super.getTimeToCollision(wall);
+					return super.getTimeToCollision(wall);
 				if (wall.getP1().getX() == 0)
 					difference = startposition.getX() - wall.getP1().getX() - this.getRadius();
 				else
@@ -483,7 +496,7 @@ public class Ship extends SpaceObject implements IShip {
 				velocity = getVelocity().getVelocityY();
 				accel = Math.sin(getAngle()) * getThruster().getAcceleration();
 				if (Util.fuzzyEquals(accel,0))
-						return super.getTimeToCollision(wall);
+					return super.getTimeToCollision(wall);
 				if (wall.getP1().getY() == 0)
 					difference = startposition.getY() - wall.getP1().getY() - this.getRadius();
 				else 
@@ -514,7 +527,7 @@ public class Ship extends SpaceObject implements IShip {
 					return solution2;
 				}
 			} else {
-					return solution1;
+				return solution1;
 			}
 		}
 	}
@@ -524,12 +537,12 @@ public class Ship extends SpaceObject implements IShip {
 		this.thruster.setSource(null);
 		super.terminate();
 	}
-//	private Collection<PowerUp> activePowerUps = new ArrayList<PowerUp>();
-//
-//	public Collection<PowerUp> getActivePowerUps(){
-//		return activePowerUps;
-//	}
-//	public void addPowerUp(PowerUp powerup){
-//		activePowerUps.add(powerup);
-//	}
+	//	private Collection<PowerUp> activePowerUps = new ArrayList<PowerUp>();
+	//
+	//	public Collection<PowerUp> getActivePowerUps(){
+	//		return activePowerUps;
+	//	}
+	//	public void addPowerUp(PowerUp powerup){
+	//		activePowerUps.add(powerup);
+	//	}
 }

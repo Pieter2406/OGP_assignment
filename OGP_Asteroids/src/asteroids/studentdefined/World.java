@@ -84,6 +84,11 @@ public class World {
 	 * Holds the height of this world.
 	 */
 	private final double height;
+	
+	/**
+	 * Holds the time, how long a powerup lasts in this world in milliseconds.
+	 */
+	public static final long POWER_UP_LIFE_TIME = 10000;
 
 	/*_________________________________________Add/remove objects__________________________________________*/
 	//Methods to add visible Objects to this world that should be drawn.
@@ -153,7 +158,7 @@ public class World {
 	 * @param spaceObject The SpaceObject to be checked.
 	 */
 	public boolean containsSpaceObject(SpaceObject spaceObject) {
-		return visibleObjects.contains(spaceObject);
+		return visibleObjects().contains(spaceObject);
 	}
 
 	/**
@@ -179,7 +184,15 @@ public class World {
 		if(spaceObject.getWorld() != this && spaceObject.getWorld() != null){
 			throw new IllegalArgumentException("The given space object already exists in another world.");
 		}
-		this.visibleObjects.add(spaceObject);
+		if(spaceObject instanceof Ship){
+			visibleShips.add((Ship)spaceObject);
+		}else if(spaceObject instanceof Asteroid){
+			visibleAsteroids.add((Asteroid)spaceObject);
+		}else if(spaceObject instanceof Bullet){
+			visibleBullets.add((Bullet)spaceObject);
+		}else if(spaceObject instanceof PowerUp){
+			visiblePowerUps.add((PowerUp)spaceObject);
+		}
 		spaceObject.setWorld(this);
 	}
 
@@ -194,7 +207,15 @@ public class World {
 	 */
 	public void removeSpaceObject(SpaceObject spaceObject) { 
 		if(spaceObject != null){
-			this.visibleObjects.remove(spaceObject);
+			if(spaceObject instanceof Ship){
+				visibleShips.remove((Ship)spaceObject);
+			}else if(spaceObject instanceof Asteroid){
+				visibleAsteroids.remove((Asteroid)spaceObject);
+			}else if(spaceObject instanceof Bullet){
+				visibleBullets.remove((Bullet)spaceObject);
+			}else if(spaceObject instanceof PowerUp){
+				visiblePowerUps.remove((PowerUp)spaceObject);
+			}
 			spaceObject.setWorld(null);
 		}		
 	}
@@ -225,9 +246,10 @@ public class World {
 		if(!(time >= 0) && (time < Double.POSITIVE_INFINITY)){
 			throw new IllegalValueException(time);
 		}
+		
+		
 		//Find the collision that will happen first
 		Collision newCollision = getFirstCollision();
-
 		if(newCollision == null){
 			advanceAll(time);
 		}else{
@@ -302,8 +324,15 @@ public class World {
 	private void advanceAll(double time) {
 		if (time < 0) //Cannot move over a negative amount of time.
 			time = 0;
-		for (SpaceObject obj : visibleObjects)
+		for (SpaceObject obj : visibleObjects())
 			obj.move(time);
+		
+		for(Ship ship : getAllShips()){
+			if(System.currentTimeMillis() - ship.getProgram().getLastRunTime() > Program.DEFAULT_RUN_FREQUENCY){
+				ship.getProgram().run();
+				ship.getProgram().setLastRunTime(System.currentTimeMillis());
+			}
+		}
 	}
 
 	/*_________________________________________Powerup generating__________________________________________*/
@@ -406,7 +435,7 @@ public class World {
 		ArrayList<SpaceObject> toBeRecalculatedObj = new ArrayList<SpaceObject>(); //Temp storage for objects with a pending velocity change.
 		ArrayList<Collision> toBeRemovedCol = new ArrayList<Collision>(); //Temp storage for collisions to be removed after iterating.
 
-		for (SpaceObject obj : visibleObjects) {
+		for (SpaceObject obj : visibleObjects()) {
 			if (obj.hasPendingVelocityChange())
 				toBeRecalculatedObj.add(obj);
 		}
@@ -437,7 +466,7 @@ public class World {
 
 		//Add new collisions with all other objects, for every SpaceObject that has a pending velocity change.
 		for (SpaceObject obj: toBeRecalculatedObj) {
-			for (SpaceObject obje : visibleObjects) {
+			for (SpaceObject obje : visibleObjects()) {
 				if (!obj.equals(obje) && !obj.isTerminated() && !obje.isTerminated()) {
 					Collision newCollision = new Collision(obj, obje);
 					if(newCollision.getTime() != Double.POSITIVE_INFINITY && newCollision.getTime() != Double.NEGATIVE_INFINITY){
@@ -501,22 +530,48 @@ public class World {
 	 * 		object for this world.
 	 * 		| hasProperVisibleObjects()
 	 */
-	private Collection<SpaceObject> visibleObjects = new ArrayList<SpaceObject>();
-
+	private Collection<SpaceObject> visibleObjects(){
+		Collection<SpaceObject> allVisibleObjects = new HashSet<SpaceObject>();
+		allVisibleObjects.addAll(getAllShips());
+		allVisibleObjects.addAll(getAllAsteroids());
+		allVisibleObjects.addAll(getAllBullets());
+		allVisibleObjects.addAll(getAllPowerUps());
+		return allVisibleObjects;		
+	}
+	/**
+	 * Holds the visible ships in this world.
+	 */
+	private Collection<Ship> visibleShips = new HashSet<Ship>();
+	
+	/**
+	 * Holds the visible asteroids in this world.
+	 */
+	private Collection<Asteroid> visibleAsteroids = new HashSet<Asteroid>();
+	
+	/**
+	 * Holds the visible bullets in this world.
+	 */
+	private Collection<Bullet> visibleBullets = new HashSet<Bullet>();
+	
+	/**
+	 * Holds the visible powerups in this world.
+	 */
+	private Collection<PowerUp> visiblePowerUps = new HashSet<PowerUp>();
+	
 	/**
 	 * Holds the (4) walls that form the boundary of the game room.
 	 */
 	private Collection<Wall> boundaryWalls = new ArrayList<Wall>();
 
 
-
 	@Raw
 	public Collection<SpaceObject> getAllSpaceObjects() {
 		Set<SpaceObject> setOfSpaceObjects = new HashSet<SpaceObject>();
-		setOfSpaceObjects.addAll(visibleObjects);
+		setOfSpaceObjects.addAll(visibleObjects());
 		return setOfSpaceObjects;
 	}
-
+	
+	
 	/**
 	 * Returns all bullets associated with this world.
 	 * @return A collection of all bullets that are currently associated with this world.
@@ -524,11 +579,7 @@ public class World {
 	@Raw
 	public Collection<Bullet> getAllBullets() {
 		Set<Bullet> setOfBullets = new HashSet<Bullet>();
-		for(SpaceObject blt : visibleObjects){
-			if(blt instanceof Bullet){
-				setOfBullets.add((Bullet) blt);
-			}
-		}
+		setOfBullets.addAll(visibleBullets);
 		return setOfBullets;
 	}
 
@@ -539,11 +590,7 @@ public class World {
 	@Raw
 	public Collection<Ship> getAllShips() {
 		Set<Ship> setOfShips = new HashSet<Ship>();
-		for(SpaceObject shp : visibleObjects){
-			if(shp instanceof Ship){
-				setOfShips.add((Ship) shp);
-			}
-		}
+		setOfShips.addAll(visibleShips);
 		return setOfShips;
 	}
 	/**
@@ -553,11 +600,7 @@ public class World {
 	@Raw
 	public Collection<PowerUp> getAllPowerUps(){
 		Set<PowerUp> setOfPowerUps = new HashSet<PowerUp>();
-		for(SpaceObject pwrUp : visibleObjects){
-			if(pwrUp instanceof PowerUp){
-				setOfPowerUps.add((PowerUp)pwrUp);
-			}
-		}
+		setOfPowerUps.addAll(visiblePowerUps);
 		return setOfPowerUps;
 	}
 
@@ -569,11 +612,7 @@ public class World {
 	@Raw
 	public Collection<Asteroid> getAllAsteroids() {
 		Set<Asteroid> setOfAsteroids = new HashSet<Asteroid>();
-		for(SpaceObject ast : visibleObjects){
-			if(ast instanceof Asteroid){
-				setOfAsteroids.add((Asteroid) ast);
-			}
-		}
+		setOfAsteroids.addAll(visibleAsteroids);
 		return setOfAsteroids;
 	}
 
@@ -615,7 +654,7 @@ public class World {
 	 * 		
 	 */
 	public boolean hasProperVisibleObjects(){
-		for(Object o : visibleObjects){
+		for(Object o : visibleObjects()){
 			if(!canHaveAsVisibleObject(o)){
 				return false;
 			}
@@ -645,7 +684,7 @@ public class World {
 	 */
 	public void terminate() {
 		this.upcomingCollisions.clear();
-		for(SpaceObject o : visibleObjects){
+		for(SpaceObject o : visibleObjects()){
 			o.terminate();
 		}
 		this.boundaryWalls.clear();

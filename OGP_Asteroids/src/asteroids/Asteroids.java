@@ -193,7 +193,7 @@ public class Asteroids<World, Ship, Asteroid, Bullet, PowerUp, Program> extends 
       return;
     }
     // <begin>
-    IFacade<asteroids.studentdefined.World, asteroids.studentdefined.Ship, asteroids.studentdefined.Asteroid, asteroids.studentdefined.Bullet,asteroids.studentdefined.PowerUp, asteroids.model.programs.Program> facade = new asteroids.studentdefined.Facade();
+    IFacade<asteroids.studentdefined.World, asteroids.studentdefined.Ship, asteroids.studentdefined.Asteroid, asteroids.studentdefined.Bullet,asteroids.studentdefined.PowerUp, asteroids.studentdefined.Program> facade = new asteroids.studentdefined.Facade();
     // <end>
     GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
     GraphicsDevice screen = env.getDefaultScreenDevice();
