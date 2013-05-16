@@ -154,8 +154,14 @@ public class Facade implements IFacade {
 
 	@Override
 	public void fireBullet(Object ship) {
-		((Ship)ship).fireBullet();
-		
+		((Ship)ship).fireBullet();	
+	}
+	
+	@Override
+	public boolean canFireBullet(Object ship){
+		if (((Ship)ship).canFireBullet())	
+			return true;
+		return false;
 	}
 
 	@Override

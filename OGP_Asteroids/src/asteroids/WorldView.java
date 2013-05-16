@@ -229,13 +229,17 @@ public class WorldView<World, Ship, Asteroid, Bullet, PowerUp, Program> extends 
     }
     if (player1_fire && facade.getShips(world).contains(player1)) {
       player1_fire = false;
-      facade.fireBullet(player1);
-      game.getSound().play("torpedo");
+      if (facade.canFireBullet(player1)){
+	      facade.fireBullet(player1);
+	      game.getSound().play("torpedo");
+      }
     }
     if (player2 != null && player2_fire && facade.getShips(world).contains(player2)) {
       player2_fire = false;
-      facade.fireBullet(player2);
-      game.getSound().play("torpedo");
+      if (facade.canFireBullet(player2)){
+	      facade.fireBullet(player2);
+	      game.getSound().play("torpedo");
+      }
     }
     facade.evolve(world, millisSinceLastEvolve / 1000., this);
     Iterator<Explosion> iter = explosions.iterator();

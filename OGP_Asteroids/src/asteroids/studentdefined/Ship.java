@@ -250,6 +250,9 @@ public class Ship extends SpaceObject implements IShip {
 	 * 			| if (isTriShotBulletsActivated())
 	 * 			|   this.getWorld().createSpaceObject(new bullet2)
 	 * 			|	this.getWorld().createSpaceObject(new bullet3)
+	 * @effect 	If this ship can't fire bullets nothing happens
+	 * 			| if (!canFireBullet())
+	 * 			| 	return
 	 * @effect 	This world contains the new bullet(s) that are created.
 	 * 			| for each bullet in newBullets
 	 * 			|   this.getWorld().containsSpaceObject(new bullet1)
@@ -284,8 +287,43 @@ public class Ship extends SpaceObject implements IShip {
 			this.getWorld().addBullet(middleBullet);
 			this.getWorld().addBullet(rightBullet);
 		}
-
 	}
+	
+	/**
+	 * Check if bullets max bullets are fired in the world of this ship.
+	 * @Return	True if this ship has fewer then 3 bullets in its world if 
+	 * 			trishotpowerup is not activated or if this ship has fewer then 7
+	 * 			bullets in this world if trishotpowerup is activated.
+	 * 			| if(!isTriShotBulletsActivated()){
+	 *			|	if (bulletsFired < MAX_EXISTING_BULLETS)
+	 *			|		return true;
+	 *			| }
+	 *			| else {
+	 *			|	if (bulletsFired <= 2*MAX_EXISTING_BULLETS) 
+	 *			|		return true;
+	 *			| }		
+	 */
+	public boolean canFireBullet(){
+		byte bulletsFired = 0;
+		for (Bullet bullet : this.getWorld().getAllBullets()){
+			if (bullet.getSource() == this)
+				bulletsFired++;
+		}
+		if(!isTriShotBulletsActivated()){
+			if (bulletsFired < MAX_EXISTING_BULLETS)
+				return true;
+		}
+		else {
+			if (bulletsFired <= 2*MAX_EXISTING_BULLETS) // each shot makes 3 bullets, 3 shots allowed.
+				return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * Holds the maximum number of bullets a ship can have in its world.
+	 */
+	public static final byte MAX_EXISTING_BULLETS = 3;
 
 	/**
 	 * Holds the multiplier for the speed of bullets shot by this ship.

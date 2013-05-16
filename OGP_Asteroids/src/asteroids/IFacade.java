@@ -201,6 +201,11 @@ public interface IFacade<World, Ship, Asteroid, Bullet, PowerUp, Program> {
 	  public void fireBullet(Ship ship);
 
 	  /**
+	   * returns whether a given ship can fire a bullet
+	   */
+	  public boolean canFireBullet(Object ship);
+	  
+	  /**
 	   * Create a new non-null asteroid with the given position, velocity and
 	   * radius.
 	   * 

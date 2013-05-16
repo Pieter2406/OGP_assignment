@@ -325,7 +325,7 @@ public class World {
 		if (time < 0) //Cannot move over a negative amount of time.
 			time = 0;
 		for (SpaceObject obj : visibleObjects())
-			obj.move(time);
+			obj.move(time); // moves objects + updates velocity of ships.
 		
 		for(Ship ship : getAllShips()){
 			if(System.currentTimeMillis() - ship.getProgram().getLastRunTime() > Program.DEFAULT_RUN_FREQUENCY){
