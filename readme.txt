@@ -6,21 +6,14 @@ OGP Project
 
 List of Issues:
 
-
-* Ship.fireBullet(): Handle immediate collision situations and situations where the 
-	new bullet is partly off the screen.
-* The revalidate() method in Asteroids.java is not recognized.
-	Fix: This method is introduced in java 7. While windows 7 and 8 versions are usually updated to java 7,
-	Mac OS versions before 10.7 have java 6 instead of java 7 installed. More importantly, versions prior to
-	10.7(Lion) cannot upgrade java to version 7.
-	Solution: replace "revalidate();" by "invalidate(); validate();"
-* Finish test cases for World
+* Finish test cases for World FIXED
 * Review World.java invariants and Data Structures
 	using methods for manipulating associated SpaceObjects in collision 
 	calculations, rather than manipulating the data structures directly.
-* Collisions with walls while thruster is enabled are not working correctly.
-* getTimeToCollision test cases do not pass.
-* Introduce timers for every powerup.
+* Collisions with walls while thruster is enabled are not working correctly. FIXED
+* getTimeToCollision test cases do not pass. FIXED
+* Introduce timers for every powerup. FIXED (powerups now dissapear after 10 seconds)
+* firing bullet close to wall creates a bullet behind the wall, revision of wall collision necessary.
 
 Changes:
 
