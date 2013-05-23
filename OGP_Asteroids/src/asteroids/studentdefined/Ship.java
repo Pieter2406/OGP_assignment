@@ -62,7 +62,6 @@ public class Ship extends SpaceObject implements IShip {
 		super(x,y,velocityX,velocityY,radius,10, mass, world);
 		this.setAngle(angle);
 		this.thruster = new Thruster(this);
-		this.program = new Program(this);
 	}
 
 	/**
@@ -134,8 +133,7 @@ public class Ship extends SpaceObject implements IShip {
 	}
 
 	public void setProgram(Program program){
-		if(program != null)
-			this.program = program;
+		this.program = program;
 	}
 
 	private Program program;

@@ -1,14 +1,24 @@
 package asteroids.studentdefined;
 
+import java.util.List;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Set;
+
+import org.antlr.runtime.RecognitionException;
+
 
 import asteroids.CollisionListener;
 import asteroids.IFacade;
 import asteroids.IShip;
+import asteroids.model.programs.parsing.ProgramParser;
+import asteroids.program.Expression;
+import asteroids.program.ProgramConstructor;
+import asteroids.program.Statement;
+import asteroids.program.Type;
 
 public class Facade implements IFacade {
 
@@ -323,9 +333,16 @@ public class Facade implements IFacade {
 	 * 
 	 */
 	@Override
-	public ParseOutcome parseProgram(String text) {
-		// TODO Auto-generated method stub
-		return null;
+	public ParseOutcome<Program> parseProgram(String text) {
+		ProgramConstructor factory = new ProgramConstructor();
+	    ProgramParser<Expression, Statement, Type> parser = new ProgramParser<>(factory);
+	    parser.parse(text);
+		List<String> errors = parser.getErrors();
+		if(! errors.isEmpty()) {
+		  return ParseOutcome.failure(errors.get(0));
+		} else {
+		  return ParseOutcome.success(new Program(parser.getGlobals(), parser.getStatement()));
+		} // 8====D~~~~~{(|)}
 	}
 
 	/**
@@ -370,7 +387,7 @@ public class Facade implements IFacade {
 	 */
 	@Override
 	public void setShipProgram(Object ship, Object program) {
-		// TODO Auto-generated method stub
+		((Ship) ship).setProgram((Program) program);
 		
 	}
 
