@@ -272,7 +272,9 @@ public class Ship extends SpaceObject implements IShip {
 			if(!isTriShotBulletsActivated()){
 				double bulletX = this.getPosition().getX() + this.getRadius() * Math.cos(this.getAngle());
 				double bulletY = this.getPosition().getY() + this.getRadius() * Math.sin(this.getAngle());
-				this.getWorld().addBullet(new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier, bulletScaleMultiplier, this.getAngle()));
+				Bullet newBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier, bulletScaleMultiplier, this.getAngle());
+				if (canCreateBullet(newBullet))
+					this.getWorld().addBullet(newBullet);
 			}else{
 				//bullet position
 				double bulletX = this.getPosition().getX() + this.getRadius() * Math.cos(this.getAngle());
@@ -283,9 +285,13 @@ public class Ship extends SpaceObject implements IShip {
 				Bullet middleBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaleMultiplier, this.getAngle());
 				//right bullet relative to Ship
 				Bullet rightBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaleMultiplier, this.getAngle() + TRIPLE_ANGLE_OFFSET);
-				this.getWorld().addBullet(leftBullet);
-				this.getWorld().addBullet(middleBullet);
-				this.getWorld().addBullet(rightBullet);
+				
+				if (canCreateBullet(leftBullet))
+					this.getWorld().addBullet(leftBullet);
+				if (canCreateBullet(middleBullet))
+					this.getWorld().addBullet(middleBullet);
+				if (canCreateBullet(rightBullet))
+					this.getWorld().addBullet(rightBullet);
 			}
 		}
 	}
@@ -319,6 +325,25 @@ public class Ship extends SpaceObject implements IShip {
 				return true;
 		}
 		return false;
+	}
+	
+	/**
+	 * Check if a new bullet can be created.
+	 * @param 	bullet
+	 * 			The bullet to be checked for creation.
+	 * @return	True if the bullet does not overlap with the walls of a this ships world.
+	 * 			| result == true
+	 * 			| for (Wall wall : getWorld().getAllWalls()){
+	 *			|	if (bullet.overlap(wall))
+	 *			|		result = false;
+	 */
+	public boolean canCreateBullet(Bullet bullet){
+		Boolean canBeCreated = true;
+		for (Wall wall : getWorld().getAllWalls()){
+			if (bullet.overlap(wall))
+				canBeCreated = false;
+		}
+		return canBeCreated;
 	}
 
 	/**

@@ -353,7 +353,7 @@ public class World {
 			do{
 				rndX = rnd.nextInt((int) (getWidth() - 2 * PowerUp.DEFAULT_RADIUS)) + PowerUp.DEFAULT_RADIUS;
 				rndY = rnd.nextInt((int) (getHeight() - 2 * PowerUp.DEFAULT_RADIUS)) + PowerUp.DEFAULT_RADIUS;
-			}while((shp.getPosition().getDistanceBetween(new Coordinate(rndX,rndY))) < 0);
+			}while((shp.getPosition().getDistanceBetween(new Coordinate(rndX,rndY))) - PowerUp.DEFAULT_RADIUS - shp.getRadius()< 0);
 
 		}		
 		switch(rnd.nextInt(6)){			
@@ -616,6 +616,14 @@ public class World {
 		Set<Asteroid> setOfAsteroids = new HashSet<Asteroid>();
 		setOfAsteroids.addAll(visibleAsteroids);
 		return setOfAsteroids;
+	}
+	
+	/**
+	 * Returns the walls (4) of this world.
+	 * @return A collection of all walls in the world.
+	 */
+	public Collection<Wall> getAllWalls(){
+		return boundaryWalls;
 	}
 
 	/**

@@ -393,6 +393,39 @@ public abstract class SpaceObject {
 			throw new IllegalArgumentException ("Not an initialized given SpaceObject");
 		}
 	}
+	
+	/**
+	 * Return the distance between this SpaceObject and a given wall.
+	 * @param 	other
+	 * 			A given wall used to calculate a distance between it and this SpaceObject.
+	 * @throws  IllegalArgumentException
+	 * 			The other SpaceObject is not effective.
+	 * 			| other == null
+	 * @return  The distance between this spaceobject and a point on the wall perpendicular to this point is computed.
+	 * 			| if (other.getOrientation().equals("horizontal"))
+	 * 			|	perpendicularPoint = new Coordinate(getPosition().getX(), other.getP1().getY())
+	 * 			| else
+	 * 			|	perpendicularPoint = new Coordinate(other.getP1().getX(), getPosition().getY())
+	 * 			| getPosition().getDistanceBetween(perpendicularPoint) - this.getRadius()
+	 */
+	public double getDistanceBetween(Wall other) throws IllegalArgumentException{
+		try {
+			double distance;
+			if (other.getOrientation().equals("horizontal")){
+				Coordinate perpendicularPoint = new Coordinate(getPosition().getX(), other.getP1().getY()); 
+				distance = getPosition().getDistanceBetween(perpendicularPoint) - getRadius();
+			}
+			else {
+				Coordinate perpendicularPoint = new Coordinate(other.getP1().getX(), getPosition().getY()); 
+				distance = getPosition().getDistanceBetween(perpendicularPoint) - getRadius();
+			}
+			return distance;
+		}
+		catch (NullPointerException excError){
+			assert (other == null);
+			throw new IllegalArgumentException ("Not an initialized given wall");
+		}
+	}
 
 	/**
 	 * Return true if this SpaceObject overlaps with the given SpaceObject.
@@ -404,7 +437,7 @@ public abstract class SpaceObject {
 	 * @return  True if and only if the given SpaceObject is the same as this SpaceObject,
 	 * 			or the distance between both SpaceObjcts is smaller than zero.
 	 * 			| result == 
-	 * 			|	(other == this
+	 * 			|	(other == this)
 	 * 			|	|| getDistanceBetween(other) < 0)
 	 */
 	public boolean overlap(SpaceObject other){
@@ -418,6 +451,29 @@ public abstract class SpaceObject {
 		catch (NullPointerException excError){
 			assert (other == null);
 			throw new IllegalArgumentException ("Not an initialized given SpaceObject");
+		}
+	}
+	
+	/**
+	 * Return true if this SpaceObject overlaps with the given wall.
+	 * @param 	other
+	 * 			A given wall used to check if it overlaps with this SpaceObject.
+	 * @throws  IllegalArgumentException
+	 * 			The wall is not effective.
+	 * 			| other == null
+	 * @return  True if the distance between this spaceobject and the given wall is smaller than zero.
+	 * 			| result == 
+	 * 			|	getDistanceBetween(other) < 0
+	 */
+	public boolean overlap(Wall other){
+		try {
+			if (getDistanceBetween(other) < 0)
+				return true;
+			return false;
+		}
+		catch (NullPointerException excError){
+			assert (other == null);
+			throw new IllegalArgumentException ("Not an initialized given wall");
 		}
 	}
 
