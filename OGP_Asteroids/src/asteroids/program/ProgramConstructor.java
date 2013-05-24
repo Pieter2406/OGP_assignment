@@ -7,6 +7,7 @@ import asteroids.program.actions.ShootAction;
 import asteroids.program.actions.SkipAction;
 import asteroids.program.actions.ThrusterOffAction;
 import asteroids.program.actions.ThrusterOnAction;
+import asteroids.program.expression.Expression;
 import asteroids.program.single.*;
 import asteroids.studentdefined.Program;
 

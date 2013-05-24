@@ -18,10 +18,10 @@ import asteroids.CollisionListener;
 import asteroids.IFacade;
 import asteroids.IShip;
 import asteroids.model.programs.parsing.ProgramParser;
-import asteroids.program.Expression;
 import asteroids.program.ProgramConstructor;
 import asteroids.program.Statement;
 import asteroids.program.Type;
+import asteroids.program.expression.Expression;
 
 public class Facade implements IFacade {
 
