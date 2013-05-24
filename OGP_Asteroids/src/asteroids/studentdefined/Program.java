@@ -5,7 +5,7 @@ import java.util.Map;
 
 import asteroids.program.ProgramConstructor;
 import asteroids.program.Statement;
-import asteroids.program.Type;
+import asteroids.program.types.Type;
 /**
  * 
  * @author 	Kristof Bruyninckx
@@ -25,8 +25,8 @@ public class Program {
 	public Program(){
 	}	
 	
-	public Program(Map<String, Type> globals, Statement statement) {
-		this.globals = globals;
+	public Program(Map<String, Type> map, Statement statement) {
+		this.globals = map;
 		this.statement = statement;
 		statement.setSource(this);
 		currentInstruction = 0;
@@ -66,5 +66,8 @@ public class Program {
 	
 	public int getIC(){
 		return currentInstruction;
+	}
+	public Map<String,Type> getGlobals(){
+		return globals;
 	}
 }

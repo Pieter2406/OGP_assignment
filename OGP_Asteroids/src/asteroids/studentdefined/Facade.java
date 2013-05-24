@@ -20,8 +20,8 @@ import asteroids.IShip;
 import asteroids.model.programs.parsing.ProgramParser;
 import asteroids.program.ProgramConstructor;
 import asteroids.program.Statement;
-import asteroids.program.Type;
 import asteroids.program.expression.Expression;
+import asteroids.program.types.Type;
 
 public class Facade implements IFacade {
 
@@ -362,7 +362,7 @@ public class Facade implements IFacade {
 	 * 
 	 */
 	@Override
-	public ParseOutcome loadProgramFromUrl(URL url) throws IOException {
+	public ParseOutcome<Program> loadProgramFromUrl(URL url) throws IOException {
 		ProgramConstructor factory = new ProgramConstructor();
 		ProgramParser<Expression, Statement, Type> parser = new ProgramParser<>(factory);
 		BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));

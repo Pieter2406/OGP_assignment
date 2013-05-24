@@ -12,7 +12,7 @@ public class ShootAction extends ActionStatement {
 	@Override
 	public void execute() {
 		sourceProgram.getSourceShip().fireBullet();
-		this.setProgramLine();
+		setProgramLine();
 	}
 
 }

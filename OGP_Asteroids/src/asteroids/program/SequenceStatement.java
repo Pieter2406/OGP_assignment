@@ -22,7 +22,7 @@ public class SequenceStatement extends Statement {
 	@Override
 	public void execute() {
 		for(Statement statement : subStatements){
-			if (statement.getLine() > sourceProgram.getIC()){ // ineffecient to traverse all program statements.
+			if (statement.getLine() > sourceProgram.getIC() || statement instanceof SequenceStatement){ // ineffecient to traverse all program statements.
 				if (statement instanceof ActionStatement){
 					statement.execute();
 					break; // break when encountering action statement.

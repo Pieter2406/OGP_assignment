@@ -39,4 +39,8 @@ public abstract class Statement {
 	
 	public abstract void execute();
 	
+	public Program getSourceProgram() {
+		return sourceProgram;
+	}
+	
 }

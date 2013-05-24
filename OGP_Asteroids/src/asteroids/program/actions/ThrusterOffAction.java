@@ -12,6 +12,6 @@ public class ThrusterOffAction extends ActionStatement {
 	@Override
 	public void execute() {
 		sourceProgram.getSourceShip().getThruster().disable();
-		this.setProgramLine();
+		setProgramLine();
 	}
 }

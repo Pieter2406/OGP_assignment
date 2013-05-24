@@ -1,0 +1,18 @@
+package asteroids.program.expression;
+
+import asteroids.program.types.BooleanType;
+
+public class ComparisonBooleanExpression extends BooleanExpression {
+
+	public ComparisonBooleanExpression(int line, int column) {
+		super(line, column);
+	}
+
+	@Override
+	public BooleanType getType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+}

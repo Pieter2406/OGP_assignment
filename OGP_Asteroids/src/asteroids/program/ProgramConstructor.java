@@ -3,13 +3,14 @@ package asteroids.program;
 import java.util.List;
 
 import asteroids.model.programs.parsing.ProgramFactory;
-import asteroids.program.actions.ShootAction;
-import asteroids.program.actions.SkipAction;
-import asteroids.program.actions.ThrusterOffAction;
-import asteroids.program.actions.ThrusterOnAction;
-import asteroids.program.expression.Expression;
+import asteroids.program.actions.*;
+import asteroids.program.expression.*;
+import asteroids.program.expression.binary.*;
+import asteroids.program.expression.property.*;
+import asteroids.program.expression.unary.*;
 import asteroids.program.single.*;
-import asteroids.studentdefined.Program;
+import asteroids.program.types.*;
+
 
 public class ProgramConstructor implements ProgramFactory<Expression, Statement, Type> {
 
@@ -19,68 +20,57 @@ public class ProgramConstructor implements ProgramFactory<Expression, Statement,
 
 	@Override
 	public Expression createDoubleLiteral(int line, int column, double d) {
-		// TODO Auto-generated method stub
-		return null;
+		return new LiteralDoubleExpression(line,column,d);
 	}
 
 	@Override
 	public Expression createBooleanLiteral(int line, int column, boolean b) {
-		// TODO Auto-generated method stub
-		return null;
+		return new LiteralBooleanExpression(line,column,b);
 	}
 
 	@Override
 	public Expression createAnd(int line, int column, Expression e1, Expression e2) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Conjunction(line,column,e1,e2);
 	}
 
 	@Override
 	public Expression createOr(int line, int column, Expression e1, Expression e2) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Disjunction(line,column,e1,e2);
 	}
 
 	@Override
 	public Expression createNot(int line, int column, Expression e) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Not(line,column,e);
 	}
 
 	@Override
 	public Expression createNull(int line, int column) {
-		// TODO Auto-generated method stub
-		return null;
+		return new EntityExpression(line,column);
 	}
 
 	@Override
 	public Expression createSelf(int line, int column) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Expression createGetX(int line, int column, Expression e) {
-		// TODO Auto-generated method stub
-		return null;
+		return new GetX(line,column, e);
 	}
 
 	@Override
 	public Expression createGetY(int line, int column, Expression e) {
-		// TODO Auto-generated method stub
-		return null;
+		return new GetY(line, column, e);
 	}
 
 	@Override
 	public Expression createGetVX(int line, int column, Expression e) {
-		// TODO Auto-generated method stub
-		return null;
+		return new GetVx(line, column,e);
 	}
 
 	@Override
 	public Expression createGetVY(int line, int column, Expression e) {
-		// TODO Auto-generated method stub
-		return null;
+		return new GetVy(line,column,e);
 	}
 
 	@Override
@@ -199,14 +189,12 @@ public class ProgramConstructor implements ProgramFactory<Expression, Statement,
 
 	@Override
 	public Statement createTurn(int line, int column, Expression angle) {
-		// TODO Auto-generated method stub
-		return null;
+		return new TurnAction(line, column, angle);
 	}
 
 	@Override
 	public Statement createAssignment(int line, int column, String variable, Expression rhs) {
-		// TODO Auto-generated method stub
-		return null;
+		return new AssignmentSingleStatement(line,column,variable,rhs);
 	}
 
 	@Override
@@ -241,26 +229,22 @@ public class ProgramConstructor implements ProgramFactory<Expression, Statement,
 
 	@Override
 	public Statement createPrint(int line, int column, Expression e) {
-		// TODO Auto-generated method stub
-		return null;
+		return new PrintSingleStatement(line,column,e);
 	}
 
 	@Override
 	public Type createDoubleType() {
-		// TODO Auto-generated method stub
-		return null;
+		return new DoubleType();
 	}
 
 	@Override
 	public Type createBooleanType() {
-		// TODO Auto-generated method stub
-		return null;
+		return new BooleanType();
 	}
 
 	@Override
 	public Type createEntityType() {
-		// TODO Auto-generated method stub
-		return null;
+		return new EntityType();
 	}
 
 }

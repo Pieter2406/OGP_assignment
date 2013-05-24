@@ -11,7 +11,7 @@ public class SkipAction extends ActionStatement {
 
 	@Override
 	public void execute(){
-		this.setProgramLine();
+		setProgramLine();
 	}
 
 }

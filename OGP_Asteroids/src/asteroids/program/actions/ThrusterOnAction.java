@@ -12,7 +12,7 @@ public class ThrusterOnAction extends ActionStatement {
 	@Override
 	public void execute() {
 		sourceProgram.getSourceShip().getThruster().enable();
-		this.setProgramLine();
+		setProgramLine();
 	}
 
 }
