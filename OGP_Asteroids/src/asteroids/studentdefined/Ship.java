@@ -134,6 +134,7 @@ public class Ship extends SpaceObject implements IShip {
 
 	public void setProgram(Program program){
 		this.program = program;
+		program.attachShip(this);
 	}
 
 	private Program program;
@@ -267,26 +268,28 @@ public class Ship extends SpaceObject implements IShip {
 	 * 			| 	(new bullet3).getY() == this.getPosition().getY() + this.getRadius() * Math.sin(this.getAngle() - Ship.tripleShotAngleOffset)
 	 */
 	public void fireBullet() {
-		if(!isTriShotBulletsActivated()){
-			double bulletX = this.getPosition().getX() + this.getRadius() * Math.cos(this.getAngle());
-			double bulletY = this.getPosition().getY() + this.getRadius() * Math.sin(this.getAngle());
-			this.getWorld().addBullet(new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier, bulletScaleMultiplier, this.getAngle()));
-		}else{
-			//bullet position
-			double bulletX = this.getPosition().getX() + this.getRadius() * Math.cos(this.getAngle());
-			double bulletY = this.getPosition().getY() + this.getRadius() * Math.sin(this.getAngle());
-			//left bullet relative to Ship
-			Bullet leftBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaleMultiplier, this.getAngle() - TRIPLE_ANGLE_OFFSET);
-			//middle bullet relative to Ship
-			Bullet middleBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaleMultiplier, this.getAngle());
-			//right bullet relative to Ship
-			Bullet rightBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaleMultiplier, this.getAngle() + TRIPLE_ANGLE_OFFSET);
-			this.getWorld().addBullet(leftBullet);
-			this.getWorld().addBullet(middleBullet);
-			this.getWorld().addBullet(rightBullet);
+		if(canFireBullet()){
+			if(!isTriShotBulletsActivated()){
+				double bulletX = this.getPosition().getX() + this.getRadius() * Math.cos(this.getAngle());
+				double bulletY = this.getPosition().getY() + this.getRadius() * Math.sin(this.getAngle());
+				this.getWorld().addBullet(new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier, bulletScaleMultiplier, this.getAngle()));
+			}else{
+				//bullet position
+				double bulletX = this.getPosition().getX() + this.getRadius() * Math.cos(this.getAngle());
+				double bulletY = this.getPosition().getY() + this.getRadius() * Math.sin(this.getAngle());
+				//left bullet relative to Ship
+				Bullet leftBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaleMultiplier, this.getAngle() - TRIPLE_ANGLE_OFFSET);
+				//middle bullet relative to Ship
+				Bullet middleBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaleMultiplier, this.getAngle());
+				//right bullet relative to Ship
+				Bullet rightBullet = new Bullet(bulletX,bulletY,this,this.getWorld(),bulletSpeedMultiplier,bulletScaleMultiplier, this.getAngle() + TRIPLE_ANGLE_OFFSET);
+				this.getWorld().addBullet(leftBullet);
+				this.getWorld().addBullet(middleBullet);
+				this.getWorld().addBullet(rightBullet);
+			}
 		}
 	}
-	
+
 	/**
 	 * Check if bullets max bullets are fired in the world of this ship.
 	 * @Return	True if this ship has fewer then 3 bullets in its world if 
@@ -317,7 +320,7 @@ public class Ship extends SpaceObject implements IShip {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Holds the maximum number of bullets a ship can have in its world.
 	 */

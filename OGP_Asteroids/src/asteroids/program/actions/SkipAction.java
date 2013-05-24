@@ -5,12 +5,13 @@ import asteroids.studentdefined.Program;
 
 public class SkipAction extends ActionStatement {
 
-	public SkipAction(int line, int collumn, Program source) {
-		super(line, collumn, source);
+	public SkipAction(int line, int column) {
+		super(line, column);
 	}
 
+	@Override
 	public void execute(){
-
+		this.setProgramLine();
 	}
 
 }

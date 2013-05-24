@@ -6,8 +6,8 @@ import asteroids.studentdefined.Program;
 
 public class AssignmentSingleStatement extends SingleStatement {
 
-	public AssignmentSingleStatement(int line, int collumn, Program source) {
-		super(line, collumn,source);
+	public AssignmentSingleStatement(int line, int column) {
+		super(line, column);
 	}
 	
 }

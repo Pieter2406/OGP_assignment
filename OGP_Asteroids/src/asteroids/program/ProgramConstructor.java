@@ -4,14 +4,14 @@ import java.util.List;
 
 import asteroids.model.programs.parsing.ProgramFactory;
 import asteroids.program.actions.ShootAction;
+import asteroids.program.actions.SkipAction;
+import asteroids.program.actions.ThrusterOffAction;
+import asteroids.program.actions.ThrusterOnAction;
 import asteroids.program.single.*;
 import asteroids.studentdefined.Program;
 
 public class ProgramConstructor implements ProgramFactory<Expression, Statement, Type> {
-	private Program sourceProgram;
-	public ProgramConstructor(Program sourceProgram) {
-		this.sourceProgram = sourceProgram;
-	}
+
 	public ProgramConstructor(){
 		
 	}
@@ -182,19 +182,17 @@ public class ProgramConstructor implements ProgramFactory<Expression, Statement,
 	
 	@Override
 	public Statement createEnableThruster(int line, int column) {
-		// TODO Auto-generated method stub
-		return null;
+		return new ThrusterOnAction(line,column);
 	}
 
 	@Override
 	public Statement createDisableThruster(int line, int column) {
-		// TODO Auto-generated method stub
-		return null;
+		return new ThrusterOffAction(line,column);
 	}
 
 	@Override
 	public Statement createFire(int line, int column) {
-		ActionStatement shoot = new ShootAction(line, column, sourceProgram); 
+		ActionStatement shoot = new ShootAction(line, column); 
 		return shoot;
 	}
 
@@ -232,14 +230,12 @@ public class ProgramConstructor implements ProgramFactory<Expression, Statement,
 
 	@Override
 	public Statement createSkip(int line, int column) {
-		// TODO Auto-generated method stub
-		return null;
+		return new SkipAction(line,column);
 	}
 
 	@Override
 	public Statement createSequence(int line, int column, List<Statement> statements) {
-		// TODO Auto-generated method stub
-		return null;
+		return new SequenceStatement(line,column,statements);
 	}
 
 	@Override

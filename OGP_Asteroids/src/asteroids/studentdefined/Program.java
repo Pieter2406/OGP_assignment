@@ -16,38 +16,32 @@ import asteroids.program.Type;
  *
  */
 public class Program {
-	private ArrayList<Statement> instructions;
 	public static final long DEFAULT_RUN_FREQUENCY = 200;
 	private Ship sourceShip;
-	private ProgramConstructor programConstructor;
 	private Map<String, Type> globals;
 	private Statement statement;
+	private int currentInstruction; // keep track of the current instruction, so that the program continues at the right spot.
 	
 	public Program(){
-		this.instructions = new ArrayList<Statement>();
-		this.programConstructor = new ProgramConstructor(this);
-	}
-	
+	}	
 	
 	public Program(Map<String, Type> globals, Statement statement) {
-		this.instructions = new ArrayList<Statement>();
-		this.programConstructor = new ProgramConstructor(this);
 		this.globals = globals;
 		this.statement = statement;
+		statement.setSource(this);
+		currentInstruction = 0;
 	}
 
 	public Ship getSourceShip() {
 		return sourceShip;
 	}
-
-	public ProgramConstructor getProgramConstructor(){
-		return this.programConstructor;
+	public void attachShip(Ship ship){
+		this.sourceShip = ship;
 	}
 
 	public void run() {
-		// TODO Write run method in program
+		statement.execute();
 	}
-
 
 	public long getLastRunTime() {
 		return lastRunTime;
@@ -64,5 +58,13 @@ public class Program {
 
 	private boolean isValidTime(long time) {
 		return(time > 0 && time < Long.MAX_VALUE);
+	}
+
+	public void setIC(int line) {
+		currentInstruction = line;
+	}
+	
+	public int getIC(){
+		return currentInstruction;
 	}
 }

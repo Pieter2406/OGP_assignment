@@ -328,6 +328,8 @@ public class World {
 			obj.move(time); // moves objects + updates velocity of ships.
 		
 		for(Ship ship : getAllShips()){
+			if(ship.getProgram() == null)
+				continue;
 			if(System.currentTimeMillis() - ship.getProgram().getLastRunTime() > Program.DEFAULT_RUN_FREQUENCY){
 				ship.getProgram().run();
 				ship.getProgram().setLastRunTime(System.currentTimeMillis());

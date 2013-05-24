@@ -5,12 +5,12 @@ import asteroids.studentdefined.Program;
 
 public class TurnAction extends ActionStatement {
 
-	public TurnAction(int line, int collumn, Program source) {
-		super(line, collumn, source);
+	public TurnAction(int line, int column) {
+		super(line, column);
 	}
 
 	public void execute() {
-		
+		this.setProgramLine();
 	}
 
 }

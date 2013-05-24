@@ -1,8 +1,11 @@
 package asteroids.studentdefined;
 
 import java.util.List;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
@@ -51,7 +54,7 @@ public class Facade implements IFacade {
 	public Set getBullets(Object world) {
 		return (Set) ((World)world).getAllBullets();
 	}
-	
+
 	public Set getPowerUps(Object world){
 		return (Set) ((World)world).getAllPowerUps();
 	}
@@ -59,7 +62,7 @@ public class Facade implements IFacade {
 	@Override
 	public void addShip(Object world, Object ship) {
 		((World)world).addShip((Ship)ship);
-		
+
 	}
 
 	@Override
@@ -70,19 +73,19 @@ public class Facade implements IFacade {
 	@Override
 	public void removeShip(Object world, Object ship) {
 		((World)world).removeSpaceObject((SpaceObject)ship);
-		
+
 	}
 
 	@Override
 	public void removeAsteroid(Object world, Object asteroid) {
 		((World)world).removeSpaceObject((SpaceObject)asteroid);
-		
+
 	}
 
 	@Override
 	public void evolve(Object world, double dt,CollisionListener collisionListener) {
 		((World)world).evolve(dt,collisionListener);
-		
+
 	}
 
 	@Override
@@ -104,7 +107,7 @@ public class Facade implements IFacade {
 	@Override
 	public double getShipY(Object ship) {
 		return ((Ship) ship).getPosition().getY();
-		
+
 	}
 
 	@Override
@@ -141,32 +144,32 @@ public class Facade implements IFacade {
 	public boolean isShipThrusterActive(Object ship) {
 		return ((Ship)ship).getThruster().isEnabled();
 	}
-	
+
 	@Override
 	public boolean getisShieldActive(Object ship) {
 		return ((Ship)ship).getShield() > 0;
 	}
-	
+
 	@Override
 	public void setThrusterActive(Object ship, boolean active) {
 		if (active)
 			((Ship)ship).enableThruster();
 		else
 			((Ship)ship).disableThruster();
-		
+
 	}
 
 	@Override
 	public void turn(Object ship, double angle) {
 		((Ship)ship).turn(angle);
-		
+
 	}
 
 	@Override
 	public void fireBullet(Object ship) {
 		((Ship)ship).fireBullet();	
 	}
-	
+
 	@Override
 	public boolean canFireBullet(Object ship){
 		if (((Ship)ship).canFireBullet())	
@@ -298,7 +301,7 @@ public class Facade implements IFacade {
 	public double getPowerUpYVelocity(Object powerup) {
 		return ((PowerUp)powerup).getVelocity().getVelocityY();
 	}
-	
+
 	@Override
 	public double getPowerUpRadius(Object powerup) {
 		return ((PowerUp)powerup).getRadius();
@@ -323,7 +326,7 @@ public class Facade implements IFacade {
 		return o instanceof Wall;
 	}
 
-	
+
 	@Override
 	public boolean isPowerUp(Object o) {
 		return o instanceof PowerUp;
@@ -335,14 +338,14 @@ public class Facade implements IFacade {
 	@Override
 	public ParseOutcome<Program> parseProgram(String text) {
 		ProgramConstructor factory = new ProgramConstructor();
-	    ProgramParser<Expression, Statement, Type> parser = new ProgramParser<>(factory);
-	    parser.parse(text);
+		ProgramParser<Expression, Statement, Type> parser = new ProgramParser<>(factory);
+		parser.parse(text);
 		List<String> errors = parser.getErrors();
 		if(! errors.isEmpty()) {
-		  return ParseOutcome.failure(errors.get(0));
+			return ParseOutcome.failure(errors.get(0));
 		} else {
-		  return ParseOutcome.success(new Program(parser.getGlobals(), parser.getStatement()));
-		} // 8====D~~~~~{(|)}
+			return ParseOutcome.success(new Program(parser.getGlobals(), parser.getStatement()));
+		} 
 	}
 
 	/**
@@ -360,8 +363,26 @@ public class Facade implements IFacade {
 	 */
 	@Override
 	public ParseOutcome loadProgramFromUrl(URL url) throws IOException {
-		// TODO Auto-generated method stub
-		return null;
+		ProgramConstructor factory = new ProgramConstructor();
+		ProgramParser<Expression, Statement, Type> parser = new ProgramParser<>(factory);
+		BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+
+		String text;
+		String program = "";
+		while ((text = in.readLine()) != null) {
+			// Keep in mind that readLine() strips the newline characters
+			program += (text + "\n");
+		}
+		parser.parse(program);
+		List<String> errors = parser.getErrors();
+		if(! errors.isEmpty()) {
+			return ParseOutcome.failure(errors.get(0));
+		} else {
+			return ParseOutcome.success(new Program(parser.getGlobals(), parser.getStatement()));
+		} 
+
+
+
 	}
 
 	/**
@@ -388,7 +409,6 @@ public class Facade implements IFacade {
 	@Override
 	public void setShipProgram(Object ship, Object program) {
 		((Ship) ship).setProgram((Program) program);
-		
 	}
 
 }

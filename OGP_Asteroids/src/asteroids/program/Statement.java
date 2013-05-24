@@ -17,19 +17,26 @@ import be.kuleuven.cs.som.annotate.*;
 public abstract class Statement {
 	protected final int line;
 	protected final int column;
-	protected final Program sourceProgram;
+	protected Program sourceProgram;
 	@Raw @Model
-	protected Statement(int line, int column, Program source){
+	protected Statement(int line, int column){
 		this.line = line;
 		this.column = column;
-		this.sourceProgram = source;
 	}
-	
+	public void setSource(Program sourceProgram){
+		this.sourceProgram = sourceProgram;
+	}
 	public int getLine(){
 		return line;
 	}
-	public int getCollumn(){
+	public int getColumn(){
 		return column;
 	}
+	
+	public void setProgramLine(){
+		sourceProgram.setIC(getLine());
+	}
+	
+	public abstract void execute();
 	
 }

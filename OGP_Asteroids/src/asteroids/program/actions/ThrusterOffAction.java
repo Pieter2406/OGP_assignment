@@ -5,11 +5,13 @@ import asteroids.studentdefined.Program;
 
 public class ThrusterOffAction extends ActionStatement {
 
-	public ThrusterOffAction(int line, int collumn, Program source) {
-		super(line, collumn, source);
+	public ThrusterOffAction(int line, int column) {
+		super(line, column);
 	}
 
+	@Override
 	public void execute() {
-		
+		sourceProgram.getSourceShip().getThruster().disable();
+		this.setProgramLine();
 	}
 }

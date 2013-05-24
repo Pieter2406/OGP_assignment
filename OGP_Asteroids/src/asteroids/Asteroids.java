@@ -92,7 +92,8 @@ public class Asteroids<World, Ship, Asteroid, Bullet, PowerUp, Program> extends 
       ParseOutcome<Program> parseOutcome;
       try {
         parseOutcome = facade.loadProgramFromUrl(aiProgramUrl);
-      } catch (IOException e) {
+    	//parseOutcome = facade.parseProgram("fire; fire;");
+      } catch (Exception e) {
         System.err.println(e.getMessage());
         sound.play("load-error");
         return;
@@ -117,6 +118,7 @@ public class Asteroids<World, Ship, Asteroid, Bullet, PowerUp, Program> extends 
         return;
       }
     }
+    /*
     Asteroid asteroid1 = facade.createAsteroid(width / 2.5, height / 2.5, 25, 50, 75);
     facade.addAsteroid(world, asteroid1);
     Asteroid asteroid2 = facade.createAsteroid(600, 100, -30, -40, 40);
@@ -125,6 +127,7 @@ public class Asteroids<World, Ship, Asteroid, Bullet, PowerUp, Program> extends 
     facade.addAsteroid(world, asteroid3);
     Asteroid asteroid4 = facade.createAsteroid(40, height - 100, 10, -8, 15);
     facade.addAsteroid(world, asteroid4);
+    */
     view = new WorldView<World, Ship, Asteroid, Bullet, PowerUp, Program>(this, world, player1, player2, vsAI);
     if (!isUndecorated())
       view.setPreferredSize(new Dimension(width, height));
