@@ -2,20 +2,36 @@ package asteroids.program;
 
 import java.util.List;
 
+
 import asteroids.model.programs.parsing.ProgramFactory;
-import asteroids.program.actions.*;
-import asteroids.program.expression.*;
-import asteroids.program.expression.binary.*;
-import asteroids.program.expression.property.*;
-import asteroids.program.expression.unary.*;
-import asteroids.program.single.*;
+import asteroids.program.expressions.*;
+import asteroids.program.expressions.booleans.BooleanExpression;
+import asteroids.program.expressions.booleans.LiteralBooleanExpression;
+import asteroids.program.expressions.booleans.binary.Conjunction;
+import asteroids.program.expressions.booleans.binary.Disjunction;
+import asteroids.program.expressions.booleans.binary.Equality;
+import asteroids.program.expressions.booleans.binary.GreaterThan;
+import asteroids.program.expressions.booleans.binary.GreaterThanOrEqualTo;
+import asteroids.program.expressions.booleans.binary.InEquality;
+import asteroids.program.expressions.booleans.binary.LessThan;
+import asteroids.program.expressions.booleans.binary.LessThanOrEqualTo;
+import asteroids.program.expressions.booleans.unary.Not;
+import asteroids.program.expressions.doubles.LiteralDoubleExpression;
+import asteroids.program.expressions.doubles.binary.*;
+import asteroids.program.expressions.doubles.property.*;
+import asteroids.program.expressions.doubles.unary.*;
+import asteroids.program.expressions.entities.SelfEntityExpression;
+import asteroids.program.statements.SequenceStatement;
+import asteroids.program.statements.Statement;
+import asteroids.program.statements.conditionals.WhileConditionalStatement;
+import asteroids.program.statements.single.*;
+import asteroids.program.statements.single.actions.*;
 import asteroids.program.types.*;
 
 
 public class ProgramConstructor implements ProgramFactory<Expression, Statement, Type> {
-
 	public ProgramConstructor(){
-		
+
 	}
 
 	@Override
@@ -50,7 +66,7 @@ public class ProgramConstructor implements ProgramFactory<Expression, Statement,
 
 	@Override
 	public Expression createSelf(int line, int column) {
-		return null;
+		return new SelfEntityExpression(line,column);
 	}
 
 	@Override
@@ -75,50 +91,57 @@ public class ProgramConstructor implements ProgramFactory<Expression, Statement,
 
 	@Override
 	public Expression createGetRadius(int line, int column, Expression e) {
-		// TODO Auto-generated method stub
-		return null;
+		return new GetRadius(line, column, e);
 	}
 
 	@Override
 	public Expression createVariable(int line, int column, String name) {
-		// TODO Auto-generated method stub
-		return null;
+		Expression exp =  new VariableExpression(line, column, name);
+		if(exp.getType()!= null){
+			if (exp.getType() instanceof DoubleType){
+				return new LiteralDoubleExpression(line, column ,((DoubleExpression)exp).getType().getValue());
+			}else if(exp.getType() instanceof BooleanType){
+				return new LiteralBooleanExpression(line,column,((BooleanExpression)exp).getType().getValue());
+			}else if(exp.getType() instanceof EntityType){
+				return (EntityExpression)exp;
+			}else{
+				System.out.println("test");
+				return null;
+			}
+		}else{
+			System.out.println("test");
+			return null;
+		}
 	}
 
 	@Override
 	public Expression createLessThan(int line, int column, Expression e1, Expression e2) {
-		// TODO Auto-generated method stub
-		return null;
+		return new LessThan(line,column,e1,e2);
 	}
 
 	@Override
 	public Expression createGreaterThan(int line, int column, Expression e1, Expression e2) {
-		// TODO Auto-generated method stub
-		return null;
+		return new GreaterThan(line,column,e1,e2);
 	}
 
 	@Override
 	public Expression createLessThanOrEqualTo(int line, int column, Expression e1, Expression e2) {
-		// TODO Auto-generated method stub
-		return null;
+		return new LessThanOrEqualTo(line,column,e1,e2);
 	}
 
 	@Override
 	public Expression createGreaterThanOrEqualTo(int line, int column, Expression e1, Expression e2) {
-		// TODO Auto-generated method stub
-		return null;
+		return new GreaterThanOrEqualTo(line,column,e1,e2);
 	}
 
 	@Override
 	public Expression createEquality(int line, int column, Expression e1, Expression e2) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Equality(line,column,e1,e2);
 	}
 
 	@Override
 	public Expression createInequality(int line, int column, Expression e1, Expression e2) {
-		// TODO Auto-generated method stub
-		return null;
+		return new InEquality(line,column,e1,e2);
 	}
 
 	@Override
@@ -170,7 +193,7 @@ public class ProgramConstructor implements ProgramFactory<Expression, Statement,
 	}
 
 	/*___________________________________________________________________*/
-	
+
 	@Override
 	public Statement createEnableThruster(int line, int column) {
 		return new ThrusterOnAction(line,column);
@@ -194,7 +217,7 @@ public class ProgramConstructor implements ProgramFactory<Expression, Statement,
 
 	@Override
 	public Statement createAssignment(int line, int column, String variable, Expression rhs) {
-		return new AssignmentSingleStatement(line,column,variable,rhs);
+		return new AssignmentStatement(line,column,variable,rhs);
 	}
 
 	@Override
@@ -205,8 +228,7 @@ public class ProgramConstructor implements ProgramFactory<Expression, Statement,
 
 	@Override
 	public Statement createWhile(int line, int column, Expression condition, Statement body) {
-		// TODO Auto-generated method stub
-		return null;
+		return new WhileConditionalStatement(line, column, condition, body);
 	}
 
 	@Override

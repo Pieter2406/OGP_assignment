@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import asteroids.program.ProgramConstructor;
-import asteroids.program.Statement;
+import asteroids.program.statements.Statement;
 import asteroids.program.types.Type;
 /**
  * 
@@ -20,6 +20,8 @@ public class Program {
 	private Ship sourceShip;
 	private Map<String, Type> globals;
 	private Statement statement;
+	private boolean hasFinished = false;
+	@Deprecated
 	private int currentInstruction; // keep track of the current instruction, so that the program continues at the right spot.
 	
 	public Program(){
@@ -40,7 +42,10 @@ public class Program {
 	}
 
 	public void run() {
-		statement.execute();
+		if(!hasFinished){
+			hasFinished = statement.execute();
+		}
+		
 	}
 
 	public long getLastRunTime() {

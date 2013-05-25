@@ -19,8 +19,8 @@ import asteroids.IFacade;
 import asteroids.IShip;
 import asteroids.model.programs.parsing.ProgramParser;
 import asteroids.program.ProgramConstructor;
-import asteroids.program.Statement;
-import asteroids.program.expression.Expression;
+import asteroids.program.expressions.Expression;
+import asteroids.program.statements.Statement;
 import asteroids.program.types.Type;
 
 public class Facade implements IFacade {
