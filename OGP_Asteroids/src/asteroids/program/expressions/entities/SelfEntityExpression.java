@@ -6,7 +6,7 @@ import asteroids.program.types.EntityType;
 
 public class SelfEntityExpression extends EntityExpression {
 	public SelfEntityExpression(int line, int column) {
-		super(line, column);
+		super(line, column, null);
 		this.type = null;
 	}
 	@Override

@@ -1,18 +1,19 @@
 package asteroids.program.expressions.doubles.property;
 
-import asteroids.program.expressions.EntityExpression;
 import asteroids.program.expressions.Expression;
 import asteroids.program.expressions.doubles.PropertyDoubleExpression;
 import asteroids.program.types.DoubleType;
+import asteroids.program.types.EntityType;
 
 public class GetVx extends PropertyDoubleExpression {
 	public GetVx(int line, int column, Expression e) {
-		super(line,column,(EntityExpression) e);
+		super(line,column, e);
 	}
 	
 	@Override
 	public DoubleType getType() {
-		DoubleType velocityX = new DoubleType(expression.getType().getValue().getVelocity().getVelocityX());
+		EntityType spaceObject = (EntityType) expression.getType();
+		DoubleType velocityX = new DoubleType(spaceObject.getValue().getVelocity().getVelocityX());
 		return velocityX;
 	}
 

@@ -4,15 +4,17 @@ import asteroids.program.expressions.EntityExpression;
 import asteroids.program.expressions.Expression;
 import asteroids.program.expressions.doubles.PropertyDoubleExpression;
 import asteroids.program.types.DoubleType;
+import asteroids.program.types.EntityType;
 
 public class GetY extends PropertyDoubleExpression {
 	public GetY(int line, int column, Expression e) {
-		super(line,column,(EntityExpression) e);
+		super(line,column, e);
 	}
 	
 	@Override
 	public DoubleType getType() {
-		DoubleType yPos = new DoubleType(expression.getType().getValue().getPosition().getY());
+		EntityType spaceObject = (EntityType) expression.getType();
+		DoubleType yPos = new DoubleType(spaceObject.getValue().getPosition().getY());
 		return yPos;
 	}
 }

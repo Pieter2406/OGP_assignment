@@ -9,10 +9,6 @@ public class EntityExpression extends Expression{
 		super(line,column);
 		this.entity = entity;
 	}
-	public EntityExpression(int line, int column){
-		super(line,column);
-		this.entity = null;
-	}
 	
 	@Override
 	public EntityType getType(){

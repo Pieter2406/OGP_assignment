@@ -17,9 +17,4 @@ public abstract class Expression{
 	public String toString(){
 		return getType().toString();
 	}
-	/*
-	public void setSourceProgram(Program sourceProgram){
-		this.sourceProgram = sourceProgram;
-	}
-	*/
 }

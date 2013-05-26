@@ -62,7 +62,7 @@ public class ProgramConstructor implements ProgramFactory<Expression, Statement,
 
 	@Override
 	public Expression createNull(int line, int column) {
-		return new EntityExpression(line,column);
+		return new NullExpression(line,column);
 	}
 
 	@Override

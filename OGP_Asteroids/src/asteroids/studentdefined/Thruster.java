@@ -47,7 +47,7 @@ public class Thruster {
 			FORCE_EXERTED = FORCE_EXERTED_DEFAULT;
 		}
 		if(Ship.isValidShip(source)){
-			ACCELERATION = FORCE_EXERTED / source.getMass().getMass();
+			ACCELERATION = FORCE_EXERTED / source.getMass().getValue();
 		}else{
 			ACCELERATION = 0;
 		}

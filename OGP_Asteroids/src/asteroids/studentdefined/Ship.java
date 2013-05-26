@@ -637,7 +637,7 @@ public class Ship extends SpaceObject implements IShip {
 		 * 			and the given ship has a mass that is smaller than or equal to the mass of this ship.
 		 */
 		public boolean canHaveAsContained(Ship ship) {
-			if (ship != null && ship.canBeContained() && this.canContainShip() && (this.getMass().getValue() > ship.getMass().getValue())
+			if (ship != null && ship.canBeContained() && this.canContainShip() && (this.getMass().getValue() > ship.getMass().getValue()))
 				return true;
 			else
 				return false;

@@ -132,7 +132,7 @@ public class Facade implements IFacade {
 
 	@Override
 	public double getShipMass(Object ship) {
-		return ((Ship)ship).getMass().getMass();
+		return ((Ship)ship).getMass().getValue();
 	}
 
 	@Override
@@ -222,7 +222,7 @@ public class Facade implements IFacade {
 
 	@Override
 	public double getAsteroidMass(Object asteroid) {
-		return ((Asteroid)asteroid).getMass().getMass();
+		return ((Asteroid)asteroid).getMass().getValue();
 
 	}
 
@@ -267,7 +267,7 @@ public class Facade implements IFacade {
 
 	@Override
 	public double getBulletMass(Object bullet) {
-		return ((Bullet)bullet).getMass().getMass();
+		return ((Bullet)bullet).getMass().getValue();
 
 	}
 
@@ -309,7 +309,7 @@ public class Facade implements IFacade {
 
 	@Override
 	public double getPowerUpMass(Object powerup) {
-		return ((PowerUp)powerup).getMass().getMass();
+		return ((PowerUp)powerup).getMass().getValue();
 	}
 
 	@Override

@@ -190,7 +190,7 @@ public abstract class SpaceObject {
 	 */
 	@Raw
 	public void setMass(double newMass){
-		this.mass.setMass(newMass);
+		this.mass.setValue(newMass);
 	}
 
 	/**
