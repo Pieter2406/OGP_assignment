@@ -56,6 +56,7 @@ public class WorldTest {
 		testworld.addAsteroid(asteroidtest);
 		testworld.addBullet(bullettest);
 		testworld.evolve(2,null);
+		assertTrue(shiptest.getProgram().getLastRunTime() > 0);
 		assertEquals(200,shiptest.getPosition().getX(),Util.EPSILON);
 		assertEquals(400,shiptest.getPosition().getY(),Util.EPSILON);
 		testworld.evolve(2, null);
