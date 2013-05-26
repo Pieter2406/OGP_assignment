@@ -52,7 +52,7 @@ public class ShipTest {
 	@Before 
 	public void setUpMutableFixture(){
 		world = new World(100, 100);
-		ship_Origin_1Vel = new Ship(0,0,1,1,15,0, 10, null);
+		ship_Origin_1Vel = new Ship(0,0,1,1,15,0, 10, world);
 		ship_VertCol = new Ship(86,50,1,0,10,0, 1, null);
 		ship_HorCol = new Ship(50,86,0,1,10,Math.PI/2, 1, null);
 		ship_HorCol_Slowdown = new Ship(50,16,0,-4,10,Math.PI/2, 1, null);
@@ -136,6 +136,15 @@ public class ShipTest {
 		    		|| Util.fuzzyEquals(bullet.getAngle() - ship_Origin_1Vel.getAngle() - Ship.TRIPLE_ANGLE_OFFSET, 0));
 		    
 		}
+	}
+	@Test
+	public void fireBullet_NotPossible(){
+		ship_Origin_1Vel.fireBullet();
+		ship_Origin_1Vel.fireBullet();
+		ship_Origin_1Vel.fireBullet();
+		
+		ship_Origin_1Vel.fireBullet();
+		assertTrue(world.getAllBullets().size() == 3);
 	}
 	
 	@Test 
@@ -224,5 +233,33 @@ public class ShipTest {
 		ship_HorCol_Slowdown.setThruster(new Thruster(ship_HorCol_Slowdown, 1));
 		ship_HorCol_Slowdown.enableThruster();
 		assertEquals(2,ship_HorCol_Slowdown.getTimeToCollision(bottomwall),Util.EPSILON);
+	}
+	@Test
+	public void canFireBullet_NormalTrue(){
+		assertTrue(ship_Origin_1Vel.canFireBullet());
+	}
+	@Test
+	public void canFireBullet_NormalFalse(){	
+		ship_Origin_1Vel.fireBullet();
+		ship_Origin_1Vel.fireBullet();
+		ship_Origin_1Vel.fireBullet();
+		assertFalse(ship_Origin_1Vel.canFireBullet());
+	}
+	@Test
+	public void canFireBullet_TriShotTrue(){
+		ship_Origin_1Vel.toggleTriShotBullets(true)
+		assertTrue(ship_Origin_1Vel.canFireBullet());
+	}
+	@Test
+	public void canFireBullet_TriShotFalse(){
+		ship_Origin_1Vel.fireBullet();
+		ship_Origin_1Vel.fireBullet();
+		ship_Origin_1Vel.fireBullet();
+		ship_Origin_1Vel.fireBullet();
+		ship_Origin_1Vel.fireBullet();
+		ship_Origin_1Vel.fireBullet();
+		ship_Origin_1Vel.fireBullet();
+		ship_Origin_1Vel.toggleTriShotBullets(true)
+		assertFalse(ship_Origin_1Vel.canFireBullet());
 	}
 }
