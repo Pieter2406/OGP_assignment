@@ -1,5 +1,6 @@
 package asteroids.program.expressions;
 
+import asteroids.program.ProgramContainer;
 import asteroids.program.types.Type;
 
 public class VariableExpression extends Expression {
@@ -12,6 +13,7 @@ public class VariableExpression extends Expression {
 
 	@Override
 	public Type getType() {
-		return sourceProgram.getGlobals().get(name);
+		Type t = ProgramContainer.getGlobal(name);
+		return t;
 	}
 }

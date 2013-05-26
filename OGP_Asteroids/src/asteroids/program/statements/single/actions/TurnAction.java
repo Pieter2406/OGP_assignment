@@ -1,19 +1,17 @@
 package asteroids.program.statements.single.actions;
 
 import asteroids.program.expressions.Expression;
-import asteroids.program.expressions.doubles.LiteralDoubleExpression;
 import asteroids.program.statements.single.ActionStatement;
-import asteroids.studentdefined.Program;
 
 public class TurnAction extends ActionStatement {
-	private LiteralDoubleExpression angle;
+	private Expression angle;
 	public TurnAction(int line, int column, Expression angle) {
 		super(line, column);
-		this.angle = (LiteralDoubleExpression) angle;
+		this.angle = angle;
 	}
 
 	public boolean execute() {
-		this.sourceProgram.getSourceShip().setAngle(angle.getType().getValue());
+		this.sourceProgram.getSourceShip().setAngle((double)angle.getType().getValue());
 		setProgramLine();
 		return true;
 	}

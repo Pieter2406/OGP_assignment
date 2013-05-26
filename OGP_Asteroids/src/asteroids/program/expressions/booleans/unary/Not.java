@@ -12,7 +12,7 @@ public class Not extends ComposedBooleanExpression {
 
 	@Override
 	public BooleanType getType() {
-		return new BooleanType(!rhs.getType().getValue());
+		return new BooleanType(!(boolean)rhs.getType().getValue());
 	}
 
 }

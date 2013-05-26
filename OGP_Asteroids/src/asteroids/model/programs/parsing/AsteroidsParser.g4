@@ -81,10 +81,11 @@ DOUBLE:    'double';
 ENTITY:    'entity';
 VOID:      'void';
 
-entityspec: SHIP | ASTEROID | BULLET | ANY;
+entityspec: SHIP | ASTEROID | BULLET | POWERUP | ANY;
 SHIP:      'ship';
 ASTEROID:  'asteroid';
 BULLET:    'bullet';
+POWERUP:   'powerup';
 ANY:       'any';
 
 

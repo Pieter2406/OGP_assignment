@@ -1,17 +1,18 @@
 package asteroids.program.expressions.doubles.unary;
 
+import asteroids.program.expressions.Expression;
 import asteroids.program.expressions.doubles.UnaryComposedDoubleExpression;
+import asteroids.program.types.DoubleType;
 
 public class Sin extends UnaryComposedDoubleExpression {
 
-	public Sin() {
-		// TODO Auto-generated constructor stub
+	public Sin(int line, int column, Expression e) {
+		super(line,column, e);
 	}
 
 	@Override
-	public Double getType() {
-		// TODO Auto-generated method stub
-		return null;
+	public DoubleType getType() {
+		return new DoubleType(Math.sin((double)e.getType().getValue()));
 	}
 
 }

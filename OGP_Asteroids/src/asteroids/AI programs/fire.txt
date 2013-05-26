@@ -1,8 +1,9 @@
-fire;
 double b; 
-b := 0;
-while(b < 4){
-  fire;
-  turn b;
-  b := b + 1;
+b := 0.1;
+while(true){
+	turn b;
+	foreach(bullet, bul) do{
+		fire;
+	}
+  	b := b + 0.1;
 }

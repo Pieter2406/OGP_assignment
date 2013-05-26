@@ -1,6 +1,5 @@
 package asteroids.program.expressions.booleans.binary;
 
-import asteroids.program.expressions.DoubleExpression;
 import asteroids.program.expressions.Expression;
 import asteroids.program.expressions.booleans.ComposedBooleanExpression;
 import asteroids.program.types.BooleanType;
@@ -13,7 +12,7 @@ public class Equality extends ComposedBooleanExpression {
 
 	@Override
 	public BooleanType getType() {
-		return new BooleanType(((DoubleExpression)lhs).getType().getValue() == ((DoubleExpression)rhs).getType().getValue());
+		return new BooleanType((boolean)lhs.getType().getValue() == (boolean)rhs.getType().getValue());
 	}
 
 }

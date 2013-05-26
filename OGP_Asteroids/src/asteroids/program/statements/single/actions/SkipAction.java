@@ -1,7 +1,6 @@
 package asteroids.program.statements.single.actions;
 
 import asteroids.program.statements.single.ActionStatement;
-import asteroids.studentdefined.Program;
 
 public class SkipAction extends ActionStatement {
 

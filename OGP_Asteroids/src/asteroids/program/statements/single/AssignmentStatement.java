@@ -1,5 +1,6 @@
 package asteroids.program.statements.single;
 
+import asteroids.program.ProgramContainer;
 import asteroids.program.expressions.Expression;
 import asteroids.program.statements.SingleStatement;
 
@@ -14,7 +15,7 @@ public class AssignmentStatement extends SingleStatement {
 
 	@Override
 	public boolean execute() {
-		sourceProgram.getGlobals().put(name, rhs.getType());
+		ProgramContainer.getGlobals().put(name, rhs.getType());
 		return true;
 	}
 

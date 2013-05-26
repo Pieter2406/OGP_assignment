@@ -1,9 +1,8 @@
 package asteroids.studentdefined;
 
-import java.util.ArrayList;
 import java.util.Map;
 
-import asteroids.program.ProgramConstructor;
+import asteroids.program.ProgramContainer;
 import asteroids.program.statements.Statement;
 import asteroids.program.types.Type;
 /**
@@ -16,7 +15,7 @@ import asteroids.program.types.Type;
  *
  */
 public class Program {
-	public static final long DEFAULT_RUN_FREQUENCY = 200;
+	public static final long DEFAULT_RUN_FREQUENCY = 20;
 	private Ship sourceShip;
 	private Map<String, Type> globals;
 	private Statement statement;
@@ -31,6 +30,7 @@ public class Program {
 		this.globals = map;
 		this.statement = statement;
 		statement.setSource(this);
+		ProgramContainer.setProgram(this);
 		currentInstruction = 0;
 	}
 

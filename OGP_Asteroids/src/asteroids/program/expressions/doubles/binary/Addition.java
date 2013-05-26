@@ -13,6 +13,7 @@ public class Addition extends BinaryComposedDoubleExpression {
 
 	@Override
 	public DoubleType getType() {
-		return new DoubleType(this.lhs.getType().getValue() + this.rhs.getType().getValue());
+		type = new DoubleType((double) this.lhs.getType().getValue() + (double) this.rhs.getType().getValue());
+		return (DoubleType) type;
 	}
 }

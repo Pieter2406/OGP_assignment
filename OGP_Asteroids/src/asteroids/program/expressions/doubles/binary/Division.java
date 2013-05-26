@@ -7,16 +7,14 @@ import asteroids.program.types.DoubleType;
 public class Division extends BinaryComposedDoubleExpression {
 
 	public Division(int line, int column, Expression e1, Expression e2) {
-		// TODO Auto-generated constructor stub
+		super(line,column,e1,e2);
+		this.type = null;
 	}
 
-	/**
-	 * 
-	 */
 	@Override
 	public DoubleType getType() {
-		// TODO Auto-generated method stub
-		return null;
+		type = new DoubleType((double) this.lhs.getType().getValue() / (double) this.rhs.getType().getValue());
+		return (DoubleType) type;
 	}
 
 }

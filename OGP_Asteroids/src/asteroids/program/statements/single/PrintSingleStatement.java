@@ -2,7 +2,6 @@ package asteroids.program.statements.single;
 
 import asteroids.program.expressions.Expression;
 import asteroids.program.statements.SingleStatement;
-import asteroids.studentdefined.Program;
 
 
 public class PrintSingleStatement extends SingleStatement {
@@ -13,7 +12,8 @@ public class PrintSingleStatement extends SingleStatement {
 	}
 
 	@Override
-	public void execute(){
+	public boolean execute(){
 		System.out.println(this.expression.toString());
+		return true;
 	}
 }

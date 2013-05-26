@@ -1,6 +1,5 @@
 package asteroids.program.expressions.booleans.binary;
 
-import asteroids.program.expressions.DoubleExpression;
 import asteroids.program.expressions.Expression;
 import asteroids.program.expressions.booleans.ComposedBooleanExpression;
 import asteroids.program.types.BooleanType;
@@ -12,7 +11,7 @@ public class GreaterThan extends ComposedBooleanExpression {
 	
 	@Override
 	public BooleanType getType() {
-		return new BooleanType(((DoubleExpression)lhs).getType().getValue() > ((DoubleExpression)rhs).getType().getValue());
+		return new BooleanType((double)lhs.getType().getValue() > (double) rhs.getType().getValue());
 	}
 	
 	

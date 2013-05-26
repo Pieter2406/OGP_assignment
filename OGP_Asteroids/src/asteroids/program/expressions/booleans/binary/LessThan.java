@@ -1,11 +1,9 @@
 package asteroids.program.expressions.booleans.binary;
 
-import asteroids.program.expressions.DoubleExpression;
 import asteroids.program.expressions.Expression;
-import asteroids.program.expressions.VariableExpression;
 import asteroids.program.expressions.booleans.ComposedBooleanExpression;
 import asteroids.program.types.BooleanType;
-import asteroids.program.types.DoubleType;
+
 
 public class LessThan extends ComposedBooleanExpression {
 

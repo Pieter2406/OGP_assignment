@@ -1,8 +1,12 @@
 package asteroids.program.expressions.doubles;
 
-public abstract class UnaryComposedDoubleExpression extends ComposedDoubleExpression {
+import asteroids.program.expressions.Expression;
 
-	public UnaryComposedDoubleExpression(int line, int column) {
+
+
+public abstract class UnaryComposedDoubleExpression extends ComposedDoubleExpression {
+	protected Expression e;
+	public UnaryComposedDoubleExpression(int line, int column, Expression e) {
 		super(line,column);
 	}
 

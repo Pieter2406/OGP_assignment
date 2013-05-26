@@ -1,8 +1,6 @@
 package asteroids.program.expressions;
 
 import asteroids.program.types.EntityType;
-import asteroids.program.types.Type;
-import asteroids.studentdefined.SpaceObject;
 
 
 public class EntityExpression extends Expression{

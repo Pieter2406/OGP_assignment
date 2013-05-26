@@ -23,7 +23,8 @@ import asteroids.program.expressions.doubles.unary.*;
 import asteroids.program.expressions.entities.SelfEntityExpression;
 import asteroids.program.statements.SequenceStatement;
 import asteroids.program.statements.Statement;
-import asteroids.program.statements.conditionals.WhileConditionalStatement;
+import asteroids.program.statements.loops.ForEachLoopStatement;
+import asteroids.program.statements.loops.WhileLoopStatement;
 import asteroids.program.statements.single.*;
 import asteroids.program.statements.single.actions.*;
 import asteroids.program.types.*;
@@ -96,12 +97,7 @@ public class ProgramConstructor implements ProgramFactory<Expression, Statement,
 
 	@Override
 	public Expression createVariable(int line, int column, String name) {
-		Expression exp =  new VariableExpression(line,column,name);
-		if (exp.getType() instanceof DoubleType){
-			return new LiteralDoubleExpression(line,column,(double)exp.getType().getValue());
-		}else{
-			return null;
-		}
+		return new VariableExpression(line,column,name);
 	}
 
 	@Override
@@ -210,15 +206,14 @@ public class ProgramConstructor implements ProgramFactory<Expression, Statement,
 
 	@Override
 	public Statement createWhile(int line, int column, Expression condition, Statement body) {
-		return new WhileConditionalStatement(line, column, condition, body);
+		return new WhileLoopStatement(line, column, condition, body);
 	}
 
 	@Override
-	public Statement createForeach(int line, int column,
-			asteroids.model.programs.parsing.ProgramFactory.ForeachType type,
+	public Statement createForeach(int line, int column, asteroids.model.programs.parsing.ProgramFactory.ForeachType type,
 			String variableName, Statement body) {
-		// TODO Auto-generated method stub
-		return null;
+		return new ForEachLoopStatement(line, column,type,variableName,body);
+		
 	}
 
 	@Override

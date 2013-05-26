@@ -2,7 +2,6 @@ package asteroids.program.expressions.doubles;
 
 import asteroids.program.expressions.DoubleExpression;
 import asteroids.program.types.DoubleType;
-import asteroids.program.types.Type;
 
 public class LiteralDoubleExpression extends DoubleExpression {
 	public LiteralDoubleExpression(int line, int column, double d) {

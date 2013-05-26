@@ -1,7 +1,6 @@
 package asteroids.program.expressions.booleans.binary;
 
 import asteroids.program.expressions.Expression;
-import asteroids.program.expressions.booleans.BooleanExpression;
 import asteroids.program.expressions.booleans.ComposedBooleanExpression;
 import asteroids.program.types.BooleanType;
 
@@ -13,7 +12,7 @@ public class Disjunction extends ComposedBooleanExpression {
 
 	@Override
 	public BooleanType getType() {
-		return new BooleanType(((BooleanExpression)lhs).getType().getValue() || ((BooleanExpression)rhs).getType().getValue());
+		return new BooleanType((boolean)lhs.getType().getValue() || (boolean)rhs.getType().getValue());
 	}
 
 }

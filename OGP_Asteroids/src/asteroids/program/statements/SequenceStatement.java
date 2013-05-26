@@ -1,8 +1,6 @@
 package asteroids.program.statements;
 
 import java.util.List;
-
-import asteroids.program.statements.single.ActionStatement;
 import asteroids.studentdefined.Program;
 
 public class SequenceStatement extends Statement {
@@ -42,17 +40,6 @@ public class SequenceStatement extends Statement {
 		}
 	}
 
-	/*
-		for(Statement statement : subStatements){
-			if (statement.getLine() > sourceProgram.getIC() || statement instanceof SequenceStatement){ // ineffecient to traverse all program statements.
-				if (statement instanceof ActionStatement){
-					statement.execute();
-					break; // break when encountering action statement.
-				}
-				statement.execute();
-			}
-		}
-	 */
 }
 
 

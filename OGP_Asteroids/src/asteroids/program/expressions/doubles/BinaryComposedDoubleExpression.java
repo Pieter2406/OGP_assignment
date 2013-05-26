@@ -1,16 +1,15 @@
 package asteroids.program.expressions.doubles;
 
-import asteroids.program.expressions.DoubleExpression;
 import asteroids.program.expressions.Expression;
 import asteroids.program.types.DoubleType;
 
 public abstract class BinaryComposedDoubleExpression extends ComposedDoubleExpression {
-	protected DoubleExpression lhs;
-	protected DoubleExpression rhs;
+	protected Expression lhs;
+	protected Expression rhs;
 	public BinaryComposedDoubleExpression(int line, int column, Expression lhs, Expression rhs) {
 		super(line,column);
-		this.lhs = (DoubleExpression) lhs;
-		this.rhs = (DoubleExpression) rhs;
+		this.lhs = lhs;
+		this.rhs = rhs;
 	}
 
 	@Override

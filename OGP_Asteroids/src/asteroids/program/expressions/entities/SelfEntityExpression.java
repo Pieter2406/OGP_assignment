@@ -1,10 +1,8 @@
 package asteroids.program.expressions.entities;
 
-import asteroids.program.ProgramConstructor;
+import asteroids.program.ProgramContainer;
 import asteroids.program.expressions.EntityExpression;
 import asteroids.program.types.EntityType;
-import asteroids.studentdefined.Program;
-import asteroids.studentdefined.SpaceObject;
 
 public class SelfEntityExpression extends EntityExpression {
 	public SelfEntityExpression(int line, int column) {
@@ -13,7 +11,7 @@ public class SelfEntityExpression extends EntityExpression {
 	}
 	@Override
 	public EntityType getType(){
-		return new EntityType(Program.getSourceShip());
+		return new EntityType(ProgramContainer.getProgram().getSourceShip());
 	}
 	
 

@@ -1,7 +1,6 @@
 package asteroids.program.expressions.booleans.binary;
 
 import asteroids.program.expressions.Expression;
-import asteroids.program.expressions.booleans.BooleanExpression;
 import asteroids.program.expressions.booleans.ComposedBooleanExpression;
 import asteroids.program.types.BooleanType;
 
