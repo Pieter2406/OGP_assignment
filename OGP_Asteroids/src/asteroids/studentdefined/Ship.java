@@ -658,6 +658,7 @@ public class Ship extends SpaceObject implements IShip {
 			if (this.canContainShip && canHaveAsContained(ship)) {
 				this.containedShips.add(ship);
 				ship.getWorld().removeShip(ship);
+				this.getMass().setValue(this.getMass().getValue() + ship.getMass().getValue());
 			}
 			else
 				throw new IllegalArgumentException("Given ship cannot be contained in this ship");
