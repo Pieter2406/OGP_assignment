@@ -49,12 +49,14 @@ public class WorldTest {
 	@Test
 	public void evolve_PositiveTime(){
 		Ship shiptest = new Ship(100,400,50, 0, 0, 0, 0, testworld);
+		Program program = new Program();
 		Bullet bullettest = new Bullet(200, 400, shiptest, testworld, 1, 1, 0);
 		Asteroid asteroidtest = new Asteroid(450, 400, 0, 0, 29, null);
 		testworld.addShip(shiptest);
 		testworld.addAsteroid(asteroidtest);
 		testworld.addBullet(bullettest);
 		testworld.evolve(2,null);
+		assertTrue(shiptest.getProgram().getLastRunTime() > 0);
 		assertEquals(200,shiptest.getPosition().getX(),Util.EPSILON);
 		assertEquals(400,shiptest.getPosition().getY(),Util.EPSILON);
 		testworld.evolve(2, null);
