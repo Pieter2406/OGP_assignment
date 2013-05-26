@@ -2,6 +2,7 @@ package asteroids.studentdefined;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 
 import asteroids.IShip;
 import asteroids.Util;
@@ -595,7 +596,90 @@ public class Ship extends SpaceObject implements IShip {
 			}
 		}
 	}
-
+	
+	/*________________________________Containing other ships____________________________________________*/
+	
+		
+		private boolean canContainShip = true;
+		public boolean canContainShip() { return canContainShip; }
+		private boolean canBeContained = false;
+		public boolean canBeContained() { return canBeContained; }
+		
+		public void setCanContainShip(boolean bool) {
+			this.canContainShip = bool;
+		}
+		public void setCanBeContained(boolean bool) {
+			this.canBeContained = bool;
+		}
+		/**
+		 * A ship can only be contained in one ship at the same time.
+		 */
+		private Ship mothership;
+		
+		/**
+		 * Contains all ships that are currently contained by this ship.
+		 * @invar	Every contained ship has this ship as its mothership.
+		 * 			|for each ship in containedShips
+		 * 			|	ship.getMothership() == this
+		 */
+		private List<Ship> containedShips = new ArrayList<Ship>();
+		
+		/**
+		 * Check whether the given ship can be contained in this ship.
+		 * @param ship The ship to be contained.
+		 * @return True if the given ship is a valid ship, that can be contained, and this ship can contain other ships,
+		 * 			and the given ship has a mass that is smaller than or equal to the mass of this ship.
+		 */
+		public boolean canHaveAsContained(Ship ship) {
+			if (ship != null && ship.canBeContained() && this.canContainShip() && (this.getMass().getValue() > ship.getMass().getValue())
+				return true;
+			else
+				return false;
+		}
+		/**
+		 * 
+		 * @param ship The ship to be contained in.
+		 * @return True if the given ship is a valid ship, that can contain a ship, and this ship can be contained.
+		 */
+		public boolean canHaveAsMothership(Ship ship) {
+			if (ship != null && ship.canContainShip() && this.canBeContained())
+				return true;
+			else
+				return false;
+		}
+		/**
+		 * Contain the given ship in this ship, if possible. Remove the given ship from this ships world to prevent it
+		 * from getting drawn.
+		 * @param ship
+		 * @throws IllegalArgumentException	if the given ship can not be contained, or this ship cannot contain
+		 * 			other ships.
+		 */
+		public void contain(Ship ship) {
+			if (this.canContainShip && canHaveAsContained(ship)) {
+				this.containedShips.add(ship);
+				ship.getWorld().removeShip(ship);
+			}
+			else
+				throw new IllegalArgumentException("Given ship cannot be contained in this ship");
+		}
+		/**
+		 * Release the given ship from the contained ships. The mass of this ship is updated to reflect the
+		 * release.
+		 * @param ship
+		 * @post	the given ship does not appear in this ship's containedShips, and is attached to the world
+		 * 			this ship is currently attached to.
+		 */
+		public void release(Ship ship) {
+			if (containedShips.contains(ship)) {
+				containedShips.remove(ship);
+				ship.setWorld(this.getWorld());
+				this.getMass().setValue(this.getMass().getValue() - ship.getMass().getValue());
+			}
+		}
+		
+		
+	/*__________________________________________________________________________________________________*/
+	
 	@Override
 	public void terminate(){
 		this.thruster.setSource(null);
