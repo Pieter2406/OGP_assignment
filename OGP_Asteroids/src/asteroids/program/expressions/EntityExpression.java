@@ -20,6 +20,7 @@ public class EntityExpression extends Expression{
 	public EntityType getType(){
 		return entity;
 	}
+	
 }
 
 

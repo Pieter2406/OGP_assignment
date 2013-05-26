@@ -1,3 +1,4 @@
+fire;
 double b; 
 b := 0;
 while(b < 4){

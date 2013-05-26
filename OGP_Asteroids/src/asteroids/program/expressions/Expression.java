@@ -1,7 +1,6 @@
 package asteroids.program.expressions;
 
 import asteroids.program.types.Type;
-import asteroids.studentdefined.Program;
 
 public abstract class Expression{
 	protected final int line;
@@ -13,7 +12,7 @@ public abstract class Expression{
 		this.column = column;
 	}
 	public abstract Type getType();
-	
+
 	@Override
 	public String toString(){
 		return getType().toString();

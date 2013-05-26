@@ -14,5 +14,4 @@ public class LiteralDoubleExpression extends DoubleExpression {
 	public DoubleType getType() {
 		return (DoubleType) this.type;
 	}
-
 }

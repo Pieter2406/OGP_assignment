@@ -13,7 +13,7 @@ public class Conjunction extends ComposedBooleanExpression {
 
 	@Override
 	public BooleanType getType() {
-		return new BooleanType(((BooleanExpression) lhs).getType().getValue() && ((BooleanExpression)rhs).getType().getValue());
-	}
+		return new BooleanType((boolean) lhs.getType().getValue() && (boolean) rhs.getType().getValue());
+		}
 
 }

@@ -12,5 +12,4 @@ public abstract class DoubleExpression extends Expression {
 	@Override
 	public abstract DoubleType getType();
 
-
 }

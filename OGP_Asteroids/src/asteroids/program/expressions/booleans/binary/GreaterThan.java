@@ -6,11 +6,10 @@ import asteroids.program.expressions.booleans.ComposedBooleanExpression;
 import asteroids.program.types.BooleanType;
 
 public class GreaterThan extends ComposedBooleanExpression {
-
 	public GreaterThan(int line, int column, Expression lhs, Expression rhs) {
 		super(line, column, lhs, rhs);
 	}
-
+	
 	@Override
 	public BooleanType getType() {
 		return new BooleanType(((DoubleExpression)lhs).getType().getValue() > ((DoubleExpression)rhs).getType().getValue());

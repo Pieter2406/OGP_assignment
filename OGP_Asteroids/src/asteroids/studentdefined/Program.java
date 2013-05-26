@@ -38,7 +38,7 @@ public class Program {
 		return sourceShip;
 	}
 	public void attachShip(Ship ship){
-		this.sourceShip = ship;
+		sourceShip = ship;
 	}
 
 	public void run() {

@@ -1,4 +1,4 @@
-// Generated from AsteroidsParser.g4 by ANTLR 4.0
+// Generated from C:\Antlr\AsteroidsParser.g4 by ANTLR 4.0
  package asteroids.model.programs.parsing; 
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -15,17 +15,17 @@ public class AsteroidsParserParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		SELF=1, TRUE=2, FALSE=3, NULL=4, BOOL=5, DOUBLE=6, ENTITY=7, SHIP=8, ASTEROID=9, 
-		BULLET=10, ANY=11, GETRADIUS=12, GETX=13, GETY=14, GETVX=15, GETVY=16, 
-		GETDIR=17, SQRT=18, SIN=19, COS=20, NOT=21, THRUSTON=22, THRUSTOFF=23, 
-		TURN=24, FIRE=25, SKIP=26, PRINT=27, IF=28, THEN=29, ELSE=30, WHILE=31, 
-		DO=32, FOREACH=33, ASSIGN=34, MUL=35, DIV=36, ADD=37, SUB=38, EQ=39, NEQ=40, 
-		LT=41, GT=42, LEQ=43, GEQ=44, AND=45, OR=46, NUMBER=47, FLOAT=48, INTEGER=49, 
-		IDENTIFIER=50, LEFT_PAREN=51, RIGHT_PAREN=52, LEFT_BRACE=53, RIGHT_BRACE=54, 
-		SEMICOLON=55, COMMA=56, WHITESPACE=57, SINGLE_COMMENT=58;
+		SELF=1, TRUE=2, FALSE=3, NULL=4, BOOL=5, DOUBLE=6, ENTITY=7, VOID=8, SHIP=9, 
+		ASTEROID=10, BULLET=11, ANY=12, GETRADIUS=13, GETX=14, GETY=15, GETVX=16, 
+		GETVY=17, GETDIR=18, SQRT=19, SIN=20, COS=21, NOT=22, THRUSTON=23, THRUSTOFF=24, 
+		TURN=25, FIRE=26, SKIP=27, PRINT=28, IF=29, THEN=30, ELSE=31, WHILE=32, 
+		DO=33, FOREACH=34, ASSIGN=35, MUL=36, DIV=37, ADD=38, SUB=39, EQ=40, NEQ=41, 
+		LT=42, GT=43, LEQ=44, GEQ=45, AND=46, OR=47, NUMBER=48, FLOAT=49, INTEGER=50, 
+		IDENTIFIER=51, LEFT_PAREN=52, RIGHT_PAREN=53, LEFT_BRACE=54, RIGHT_BRACE=55, 
+		SEMICOLON=56, COMMA=57, WHITESPACE=58, SINGLE_COMMENT=59;
 	public static final String[] tokenNames = {
 		"<INVALID>", "'self'", "'true'", "'false'", "'null'", "'bool'", "'double'", 
-		"'entity'", "'ship'", "'asteroid'", "'bullet'", "'any'", "'getradius'", 
+		"'entity'", "'void'", "'ship'", "'asteroid'", "'bullet'", "'any'", "'getradius'", 
 		"'getx'", "'gety'", "'getvx'", "'getvy'", "'getdir'", "'sqrt'", "'sin'", 
 		"'cos'", "'!'", "'thrust'", "'thrust_off'", "'turn'", "'fire'", "'skip'", 
 		"'print'", "'if'", "'then'", "'else'", "'while'", "'do'", "'foreach'", 
@@ -36,11 +36,12 @@ public class AsteroidsParserParser extends Parser {
 	public static final int
 		RULE_eval = 0, RULE_decl = 1, RULE_action = 2, RULE_unop = 3, RULE_ctrl = 4, 
 		RULE_ifthenelse = 5, RULE_whiledo = 6, RULE_foreach = 7, RULE_assign = 8, 
-		RULE_expr = 9, RULE_namedconst = 10, RULE_type = 11, RULE_entityspec = 12, 
-		RULE_binop = 13;
+		RULE_functioncall = 9, RULE_function = 10, RULE_expr = 11, RULE_namedconst = 12, 
+		RULE_type = 13, RULE_entityspec = 14, RULE_binop = 15;
 	public static final String[] ruleNames = {
 		"eval", "decl", "action", "unop", "ctrl", "ifthenelse", "whiledo", "foreach", 
-		"assign", "expr", "namedconst", "type", "entityspec", "binop"
+		"assign", "functioncall", "function", "expr", "namedconst", "type", "entityspec", 
+		"binop"
 	};
 
 	@Override
@@ -104,18 +105,19 @@ public class AsteroidsParserParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(48);
+			setState(52);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BOOL) | (1L << DOUBLE) | (1L << ENTITY) | (1L << THRUSTON) | (1L << THRUSTOFF) | (1L << TURN) | (1L << FIRE) | (1L << SKIP) | (1L << PRINT) | (1L << IF) | (1L << WHILE) | (1L << FOREACH) | (1L << IDENTIFIER) | (1L << SEMICOLON))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BOOL) | (1L << DOUBLE) | (1L << ENTITY) | (1L << VOID) | (1L << THRUSTON) | (1L << THRUSTOFF) | (1L << TURN) | (1L << FIRE) | (1L << SKIP) | (1L << PRINT) | (1L << IF) | (1L << WHILE) | (1L << FOREACH) | (1L << IDENTIFIER) | (1L << SEMICOLON))) != 0)) {
 				{
-				setState(43);
+				setState(47);
 				switch (_input.LA(1)) {
 				case BOOL:
 				case DOUBLE:
 				case ENTITY:
+				case VOID:
 					{
-					setState(28); decl();
-					setState(29); match(SEMICOLON);
+					setState(32); decl();
+					setState(33); match(SEMICOLON);
 					}
 					break;
 				case THRUSTON:
@@ -124,43 +126,43 @@ public class AsteroidsParserParser extends Parser {
 				case FIRE:
 				case SKIP:
 					{
-					setState(31); action();
-					setState(32); match(SEMICOLON);
+					setState(35); action();
+					setState(36); match(SEMICOLON);
 					}
 					break;
 				case IDENTIFIER:
 					{
-					setState(34); assign();
-					setState(35); match(SEMICOLON);
+					setState(38); assign();
+					setState(39); match(SEMICOLON);
 					}
 					break;
 				case PRINT:
 					{
-					setState(37); match(PRINT);
-					setState(38); expr(0);
-					setState(39); match(SEMICOLON);
+					setState(41); match(PRINT);
+					setState(42); expr(0);
+					setState(43); match(SEMICOLON);
 					}
 					break;
 				case IF:
 				case WHILE:
 				case FOREACH:
 					{
-					setState(41); ctrl();
+					setState(45); ctrl();
 					}
 					break;
 				case SEMICOLON:
 					{
-					setState(42); match(SEMICOLON);
+					setState(46); match(SEMICOLON);
 					}
 					break;
 				default:
 					throw new NoViableAltException(this);
 				}
-				setState(46);
+				setState(50);
 				switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 				case 1:
 					{
-					setState(45); eval();
+					setState(49); eval();
 					}
 					break;
 				}
@@ -210,14 +212,14 @@ public class AsteroidsParserParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(50); type();
-			setState(51); match(IDENTIFIER);
-			setState(54);
+			setState(54); type();
+			setState(55); match(IDENTIFIER);
+			setState(58);
 			_la = _input.LA(1);
 			if (_la==ASSIGN) {
 				{
-				setState(52); match(ASSIGN);
-				setState(53); expr(0);
+				setState(56); match(ASSIGN);
+				setState(57); expr(0);
 				}
 			}
 
@@ -261,37 +263,37 @@ public class AsteroidsParserParser extends Parser {
 		ActionContext _localctx = new ActionContext(_ctx, getState());
 		enterRule(_localctx, 4, RULE_action);
 		try {
-			setState(62);
+			setState(66);
 			switch (_input.LA(1)) {
 			case THRUSTON:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(56); match(THRUSTON);
+				setState(60); match(THRUSTON);
 				}
 				break;
 			case THRUSTOFF:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(57); match(THRUSTOFF);
+				setState(61); match(THRUSTOFF);
 				}
 				break;
 			case TURN:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(58); match(TURN);
-				setState(59); expr(0);
+				setState(62); match(TURN);
+				setState(63); expr(0);
 				}
 				break;
 			case FIRE:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(60); match(FIRE);
+				setState(64); match(FIRE);
 				}
 				break;
 			case SKIP:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(61); match(SKIP);
+				setState(65); match(SKIP);
 				}
 				break;
 			default:
@@ -342,75 +344,75 @@ public class AsteroidsParserParser extends Parser {
 		UnopContext _localctx = new UnopContext(_ctx, getState());
 		enterRule(_localctx, 6, RULE_unop);
 		try {
-			setState(91);
+			setState(95);
 			switch (_input.LA(1)) {
 			case GETRADIUS:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(64); match(GETRADIUS);
-				setState(65); expr(0);
+				setState(68); match(GETRADIUS);
+				setState(69); expr(0);
 				}
 				break;
 			case GETX:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(66); match(GETX);
-				setState(67); expr(0);
+				setState(70); match(GETX);
+				setState(71); expr(0);
 				}
 				break;
 			case GETY:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(68); match(GETY);
-				setState(69); expr(0);
+				setState(72); match(GETY);
+				setState(73); expr(0);
 				}
 				break;
 			case GETVX:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(70); match(GETVX);
-				setState(71); expr(0);
+				setState(74); match(GETVX);
+				setState(75); expr(0);
 				}
 				break;
 			case GETVY:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(72); match(GETVY);
-				setState(73); expr(0);
+				setState(76); match(GETVY);
+				setState(77); expr(0);
 				}
 				break;
 			case SQRT:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(74); match(SQRT);
-				setState(75); match(LEFT_PAREN);
-				setState(76); expr(0);
-				setState(77); match(RIGHT_PAREN);
+				setState(78); match(SQRT);
+				setState(79); match(LEFT_PAREN);
+				setState(80); expr(0);
+				setState(81); match(RIGHT_PAREN);
 				}
 				break;
 			case SIN:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(79); match(SIN);
-				setState(80); match(LEFT_PAREN);
-				setState(81); expr(0);
-				setState(82); match(RIGHT_PAREN);
+				setState(83); match(SIN);
+				setState(84); match(LEFT_PAREN);
+				setState(85); expr(0);
+				setState(86); match(RIGHT_PAREN);
 				}
 				break;
 			case COS:
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(84); match(COS);
-				setState(85); match(LEFT_PAREN);
-				setState(86); expr(0);
-				setState(87); match(RIGHT_PAREN);
+				setState(88); match(COS);
+				setState(89); match(LEFT_PAREN);
+				setState(90); expr(0);
+				setState(91); match(RIGHT_PAREN);
 				}
 				break;
 			case NOT:
 				enterOuterAlt(_localctx, 9);
 				{
-				setState(89); match(NOT);
-				setState(90); expr(0);
+				setState(93); match(NOT);
+				setState(94); expr(0);
 				}
 				break;
 			default:
@@ -456,24 +458,24 @@ public class AsteroidsParserParser extends Parser {
 		CtrlContext _localctx = new CtrlContext(_ctx, getState());
 		enterRule(_localctx, 8, RULE_ctrl);
 		try {
-			setState(96);
+			setState(100);
 			switch (_input.LA(1)) {
 			case IF:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(93); ifthenelse();
+				setState(97); ifthenelse();
 				}
 				break;
 			case WHILE:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(94); whiledo();
+				setState(98); whiledo();
 				}
 				break;
 			case FOREACH:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(95); foreach();
+				setState(99); foreach();
 				}
 				break;
 			default:
@@ -533,27 +535,27 @@ public class AsteroidsParserParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(98); match(IF);
-			setState(99); expr(0);
-			setState(101);
+			setState(102); match(IF);
+			setState(103); expr(0);
+			setState(105);
 			_la = _input.LA(1);
 			if (_la==THEN) {
 				{
-				setState(100); match(THEN);
+				setState(104); match(THEN);
 				}
 			}
 
-			setState(103); match(LEFT_BRACE);
-			setState(104); eval();
-			setState(105); match(RIGHT_BRACE);
-			setState(111);
+			setState(107); match(LEFT_BRACE);
+			setState(108); eval();
+			setState(109); match(RIGHT_BRACE);
+			setState(115);
 			_la = _input.LA(1);
 			if (_la==ELSE) {
 				{
-				setState(106); match(ELSE);
-				setState(107); match(LEFT_BRACE);
-				setState(108); eval();
-				setState(109); match(RIGHT_BRACE);
+				setState(110); match(ELSE);
+				setState(111); match(LEFT_BRACE);
+				setState(112); eval();
+				setState(113); match(RIGHT_BRACE);
 				}
 			}
 
@@ -602,19 +604,19 @@ public class AsteroidsParserParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(113); match(WHILE);
-			setState(114); expr(0);
-			setState(116);
+			setState(117); match(WHILE);
+			setState(118); expr(0);
+			setState(120);
 			_la = _input.LA(1);
 			if (_la==DO) {
 				{
-				setState(115); match(DO);
+				setState(119); match(DO);
 				}
 			}
 
-			setState(118); match(LEFT_BRACE);
-			setState(119); eval();
-			setState(120); match(RIGHT_BRACE);
+			setState(122); match(LEFT_BRACE);
+			setState(123); eval();
+			setState(124); match(RIGHT_BRACE);
 			}
 		}
 		catch (RecognitionException re) {
@@ -664,23 +666,23 @@ public class AsteroidsParserParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(122); match(FOREACH);
-			setState(123); match(LEFT_PAREN);
-			setState(124); entityspec();
-			setState(125); match(COMMA);
-			setState(126); match(IDENTIFIER);
-			setState(127); match(RIGHT_PAREN);
-			setState(129);
+			setState(126); match(FOREACH);
+			setState(127); match(LEFT_PAREN);
+			setState(128); entityspec();
+			setState(129); match(COMMA);
+			setState(130); match(IDENTIFIER);
+			setState(131); match(RIGHT_PAREN);
+			setState(133);
 			_la = _input.LA(1);
 			if (_la==DO) {
 				{
-				setState(128); match(DO);
+				setState(132); match(DO);
 				}
 			}
 
-			setState(131); match(LEFT_BRACE);
-			setState(132); eval();
-			setState(133); match(RIGHT_BRACE);
+			setState(135); match(LEFT_BRACE);
+			setState(136); eval();
+			setState(137); match(RIGHT_BRACE);
 			}
 		}
 		catch (RecognitionException re) {
@@ -720,9 +722,176 @@ public class AsteroidsParserParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(135); match(IDENTIFIER);
-			setState(136); match(ASSIGN);
-			setState(137); expr(0);
+			setState(139); match(IDENTIFIER);
+			setState(140); match(ASSIGN);
+			setState(141); expr(0);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class FunctioncallContext extends ParserRuleContext {
+		public TerminalNode LEFT_PAREN() { return getToken(AsteroidsParserParser.LEFT_PAREN, 0); }
+		public TerminalNode RIGHT_PAREN() { return getToken(AsteroidsParserParser.RIGHT_PAREN, 0); }
+		public TerminalNode COMMA(int i) {
+			return getToken(AsteroidsParserParser.COMMA, i);
+		}
+		public ExprContext expr(int i) {
+			return getRuleContext(ExprContext.class,i);
+		}
+		public List<TerminalNode> COMMA() { return getTokens(AsteroidsParserParser.COMMA); }
+		public List<ExprContext> expr() {
+			return getRuleContexts(ExprContext.class);
+		}
+		public TerminalNode IDENTIFIER() { return getToken(AsteroidsParserParser.IDENTIFIER, 0); }
+		public TypeContext type() {
+			return getRuleContext(TypeContext.class,0);
+		}
+		public FunctioncallContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_functioncall; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof AsteroidsParserListener ) ((AsteroidsParserListener)listener).enterFunctioncall(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof AsteroidsParserListener ) ((AsteroidsParserListener)listener).exitFunctioncall(this);
+		}
+	}
+
+	public final FunctioncallContext functioncall() throws RecognitionException {
+		FunctioncallContext _localctx = new FunctioncallContext(_ctx, getState());
+		enterRule(_localctx, 18, RULE_functioncall);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(143); type();
+			setState(144); match(IDENTIFIER);
+			setState(145); match(LEFT_PAREN);
+			setState(154);
+			_la = _input.LA(1);
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SELF) | (1L << TRUE) | (1L << FALSE) | (1L << NULL) | (1L << GETRADIUS) | (1L << GETX) | (1L << GETY) | (1L << GETVX) | (1L << GETVY) | (1L << GETDIR) | (1L << SQRT) | (1L << SIN) | (1L << COS) | (1L << NOT) | (1L << NUMBER) | (1L << IDENTIFIER) | (1L << LEFT_PAREN))) != 0)) {
+				{
+				setState(146); expr(0);
+				setState(151);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				while (_la==COMMA) {
+					{
+					{
+					setState(147); match(COMMA);
+					setState(148); expr(0);
+					}
+					}
+					setState(153);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				}
+				}
+			}
+
+			setState(156); match(RIGHT_PAREN);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class FunctionContext extends ParserRuleContext {
+		public TerminalNode RIGHT_BRACE() { return getToken(AsteroidsParserParser.RIGHT_BRACE, 0); }
+		public TerminalNode LEFT_PAREN() { return getToken(AsteroidsParserParser.LEFT_PAREN, 0); }
+		public TerminalNode RIGHT_PAREN() { return getToken(AsteroidsParserParser.RIGHT_PAREN, 0); }
+		public TerminalNode COMMA(int i) {
+			return getToken(AsteroidsParserParser.COMMA, i);
+		}
+		public EvalContext eval() {
+			return getRuleContext(EvalContext.class,0);
+		}
+		public ExprContext expr(int i) {
+			return getRuleContext(ExprContext.class,i);
+		}
+		public List<TerminalNode> COMMA() { return getTokens(AsteroidsParserParser.COMMA); }
+		public List<ExprContext> expr() {
+			return getRuleContexts(ExprContext.class);
+		}
+		public TerminalNode LEFT_BRACE() { return getToken(AsteroidsParserParser.LEFT_BRACE, 0); }
+		public TerminalNode IDENTIFIER() { return getToken(AsteroidsParserParser.IDENTIFIER, 0); }
+		public TypeContext type(int i) {
+			return getRuleContext(TypeContext.class,i);
+		}
+		public List<TypeContext> type() {
+			return getRuleContexts(TypeContext.class);
+		}
+		public FunctionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_function; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof AsteroidsParserListener ) ((AsteroidsParserListener)listener).enterFunction(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof AsteroidsParserListener ) ((AsteroidsParserListener)listener).exitFunction(this);
+		}
+	}
+
+	public final FunctionContext function() throws RecognitionException {
+		FunctionContext _localctx = new FunctionContext(_ctx, getState());
+		enterRule(_localctx, 20, RULE_function);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(158); type();
+			setState(159); match(IDENTIFIER);
+			setState(160); match(LEFT_PAREN);
+			setState(172);
+			_la = _input.LA(1);
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BOOL) | (1L << DOUBLE) | (1L << ENTITY) | (1L << VOID))) != 0)) {
+				{
+				setState(161); type();
+				setState(162); expr(0);
+				setState(169);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				while (_la==COMMA) {
+					{
+					{
+					setState(163); match(COMMA);
+					setState(164); type();
+					setState(165); expr(0);
+					}
+					}
+					setState(171);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				}
+				}
+			}
+
+			setState(174); match(RIGHT_PAREN);
+			setState(175); match(LEFT_BRACE);
+			setState(176); eval();
+			setState(177); match(RIGHT_BRACE);
 			}
 		}
 		catch (RecognitionException re) {
@@ -779,34 +948,34 @@ public class AsteroidsParserParser extends Parser {
 		int _parentState = getState();
 		ExprContext _localctx = new ExprContext(_ctx, _parentState, _p);
 		ExprContext _prevctx = _localctx;
-		int _startState = 18;
+		int _startState = 22;
 		enterRecursionRule(_localctx, RULE_expr);
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(149);
+			setState(189);
 			switch (_input.LA(1)) {
 			case NUMBER:
 				{
-				setState(140); match(NUMBER);
+				setState(180); match(NUMBER);
 				}
 				break;
 			case IDENTIFIER:
 				{
-				setState(141); match(IDENTIFIER);
+				setState(181); match(IDENTIFIER);
 				}
 				break;
 			case GETDIR:
 				{
-				setState(142); match(GETDIR);
+				setState(182); match(GETDIR);
 				}
 				break;
 			case LEFT_PAREN:
 				{
-				setState(143); match(LEFT_PAREN);
-				setState(144); expr(0);
-				setState(145); match(RIGHT_PAREN);
+				setState(183); match(LEFT_PAREN);
+				setState(184); expr(0);
+				setState(185); match(RIGHT_PAREN);
 				}
 				break;
 			case SELF:
@@ -814,7 +983,7 @@ public class AsteroidsParserParser extends Parser {
 			case FALSE:
 			case NULL:
 				{
-				setState(147); namedconst();
+				setState(187); namedconst();
 				}
 				break;
 			case GETRADIUS:
@@ -827,16 +996,16 @@ public class AsteroidsParserParser extends Parser {
 			case COS:
 			case NOT:
 				{
-				setState(148); unop();
+				setState(188); unop();
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(157);
+			setState(197);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,12,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,16,_ctx);
 			while ( _alt!=2 && _alt!=-1 ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
@@ -845,16 +1014,16 @@ public class AsteroidsParserParser extends Parser {
 					{
 					_localctx = new ExprContext(_parentctx, _parentState, _p);
 					pushNewRecursionContext(_localctx, _startState, RULE_expr);
-					setState(151);
+					setState(191);
 					if (!(1 >= _localctx._p)) throw new FailedPredicateException(this, "1 >= $_p");
-					setState(152); binop();
-					setState(153); expr(0);
+					setState(192); binop();
+					setState(193); expr(0);
 					}
 					} 
 				}
-				setState(159);
+				setState(199);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,12,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,16,_ctx);
 			}
 			}
 		}
@@ -890,12 +1059,12 @@ public class AsteroidsParserParser extends Parser {
 
 	public final NamedconstContext namedconst() throws RecognitionException {
 		NamedconstContext _localctx = new NamedconstContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_namedconst);
+		enterRule(_localctx, 24, RULE_namedconst);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(160);
+			setState(200);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SELF) | (1L << TRUE) | (1L << FALSE) | (1L << NULL))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -916,6 +1085,7 @@ public class AsteroidsParserParser extends Parser {
 
 	public static class TypeContext extends ParserRuleContext {
 		public TerminalNode DOUBLE() { return getToken(AsteroidsParserParser.DOUBLE, 0); }
+		public TerminalNode VOID() { return getToken(AsteroidsParserParser.VOID, 0); }
 		public TerminalNode ENTITY() { return getToken(AsteroidsParserParser.ENTITY, 0); }
 		public TerminalNode BOOL() { return getToken(AsteroidsParserParser.BOOL, 0); }
 		public TypeContext(ParserRuleContext parent, int invokingState) {
@@ -934,14 +1104,14 @@ public class AsteroidsParserParser extends Parser {
 
 	public final TypeContext type() throws RecognitionException {
 		TypeContext _localctx = new TypeContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_type);
+		enterRule(_localctx, 26, RULE_type);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(162);
+			setState(202);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BOOL) | (1L << DOUBLE) | (1L << ENTITY))) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BOOL) | (1L << DOUBLE) | (1L << ENTITY) | (1L << VOID))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			consume();
@@ -979,12 +1149,12 @@ public class AsteroidsParserParser extends Parser {
 
 	public final EntityspecContext entityspec() throws RecognitionException {
 		EntityspecContext _localctx = new EntityspecContext(_ctx, getState());
-		enterRule(_localctx, 24, RULE_entityspec);
+		enterRule(_localctx, 28, RULE_entityspec);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(164);
+			setState(204);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SHIP) | (1L << ASTEROID) | (1L << BULLET) | (1L << ANY))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -1032,12 +1202,12 @@ public class AsteroidsParserParser extends Parser {
 
 	public final BinopContext binop() throws RecognitionException {
 		BinopContext _localctx = new BinopContext(_ctx, getState());
-		enterRule(_localctx, 26, RULE_binop);
+		enterRule(_localctx, 30, RULE_binop);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(166);
+			setState(206);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << MUL) | (1L << DIV) | (1L << ADD) | (1L << SUB) | (1L << EQ) | (1L << NEQ) | (1L << LT) | (1L << GT) | (1L << LEQ) | (1L << GEQ) | (1L << AND) | (1L << OR))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -1058,7 +1228,7 @@ public class AsteroidsParserParser extends Parser {
 
 	public boolean sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
 		switch (ruleIndex) {
-		case 9: return expr_sempred((ExprContext)_localctx, predIndex);
+		case 11: return expr_sempred((ExprContext)_localctx, predIndex);
 		}
 		return true;
 	}
@@ -1070,55 +1240,70 @@ public class AsteroidsParserParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\2\3<\u00ab\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4"+
-		"\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\3\2\3\2\3"+
-		"\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\5\2.\n\2\3\2\5\2\61"+
-		"\n\2\5\2\63\n\2\3\3\3\3\3\3\3\3\5\39\n\3\3\4\3\4\3\4\3\4\3\4\3\4\5\4A"+
-		"\n\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3"+
-		"\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\5\5^\n\5\3\6\3\6\3\6\5\6c\n"+
-		"\6\3\7\3\7\3\7\5\7h\n\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7r\n\7\3\b\3"+
-		"\b\3\b\5\bw\n\b\3\b\3\b\3\b\3\b\3\t\3\t\3\t\3\t\3\t\3\t\3\t\5\t\u0084"+
-		"\n\t\3\t\3\t\3\t\3\t\3\n\3\n\3\n\3\n\3\13\3\13\3\13\3\13\3\13\3\13\3\13"+
-		"\3\13\3\13\3\13\5\13\u0098\n\13\3\13\3\13\3\13\3\13\7\13\u009e\n\13\f"+
-		"\13\16\13\u00a1\13\13\3\f\3\f\3\r\3\r\3\16\3\16\3\17\3\17\3\17\2\20\2"+
-		"\4\6\b\n\f\16\20\22\24\26\30\32\34\2\6\3\3\6\3\7\t\3\n\r\3%\60\u00bc\2"+
-		"\62\3\2\2\2\4\64\3\2\2\2\6@\3\2\2\2\b]\3\2\2\2\nb\3\2\2\2\fd\3\2\2\2\16"+
-		"s\3\2\2\2\20|\3\2\2\2\22\u0089\3\2\2\2\24\u0097\3\2\2\2\26\u00a2\3\2\2"+
-		"\2\30\u00a4\3\2\2\2\32\u00a6\3\2\2\2\34\u00a8\3\2\2\2\36\37\5\4\3\2\37"+
-		" \79\2\2 .\3\2\2\2!\"\5\6\4\2\"#\79\2\2#.\3\2\2\2$%\5\22\n\2%&\79\2\2"+
-		"&.\3\2\2\2\'(\7\35\2\2()\5\24\13\2)*\79\2\2*.\3\2\2\2+.\5\n\6\2,.\79\2"+
-		"\2-\36\3\2\2\2-!\3\2\2\2-$\3\2\2\2-\'\3\2\2\2-+\3\2\2\2-,\3\2\2\2.\60"+
-		"\3\2\2\2/\61\5\2\2\2\60/\3\2\2\2\60\61\3\2\2\2\61\63\3\2\2\2\62-\3\2\2"+
-		"\2\62\63\3\2\2\2\63\3\3\2\2\2\64\65\5\30\r\2\658\7\64\2\2\66\67\7$\2\2"+
-		"\679\5\24\13\28\66\3\2\2\289\3\2\2\29\5\3\2\2\2:A\7\30\2\2;A\7\31\2\2"+
-		"<=\7\32\2\2=A\5\24\13\2>A\7\33\2\2?A\7\34\2\2@:\3\2\2\2@;\3\2\2\2@<\3"+
-		"\2\2\2@>\3\2\2\2@?\3\2\2\2A\7\3\2\2\2BC\7\16\2\2C^\5\24\13\2DE\7\17\2"+
-		"\2E^\5\24\13\2FG\7\20\2\2G^\5\24\13\2HI\7\21\2\2I^\5\24\13\2JK\7\22\2"+
-		"\2K^\5\24\13\2LM\7\24\2\2MN\7\65\2\2NO\5\24\13\2OP\7\66\2\2P^\3\2\2\2"+
-		"QR\7\25\2\2RS\7\65\2\2ST\5\24\13\2TU\7\66\2\2U^\3\2\2\2VW\7\26\2\2WX\7"+
-		"\65\2\2XY\5\24\13\2YZ\7\66\2\2Z^\3\2\2\2[\\\7\27\2\2\\^\5\24\13\2]B\3"+
-		"\2\2\2]D\3\2\2\2]F\3\2\2\2]H\3\2\2\2]J\3\2\2\2]L\3\2\2\2]Q\3\2\2\2]V\3"+
-		"\2\2\2][\3\2\2\2^\t\3\2\2\2_c\5\f\7\2`c\5\16\b\2ac\5\20\t\2b_\3\2\2\2"+
-		"b`\3\2\2\2ba\3\2\2\2c\13\3\2\2\2de\7\36\2\2eg\5\24\13\2fh\7\37\2\2gf\3"+
-		"\2\2\2gh\3\2\2\2hi\3\2\2\2ij\7\67\2\2jk\5\2\2\2kq\78\2\2lm\7 \2\2mn\7"+
-		"\67\2\2no\5\2\2\2op\78\2\2pr\3\2\2\2ql\3\2\2\2qr\3\2\2\2r\r\3\2\2\2st"+
-		"\7!\2\2tv\5\24\13\2uw\7\"\2\2vu\3\2\2\2vw\3\2\2\2wx\3\2\2\2xy\7\67\2\2"+
-		"yz\5\2\2\2z{\78\2\2{\17\3\2\2\2|}\7#\2\2}~\7\65\2\2~\177\5\32\16\2\177"+
-		"\u0080\7:\2\2\u0080\u0081\7\64\2\2\u0081\u0083\7\66\2\2\u0082\u0084\7"+
-		"\"\2\2\u0083\u0082\3\2\2\2\u0083\u0084\3\2\2\2\u0084\u0085\3\2\2\2\u0085"+
-		"\u0086\7\67\2\2\u0086\u0087\5\2\2\2\u0087\u0088\78\2\2\u0088\21\3\2\2"+
-		"\2\u0089\u008a\7\64\2\2\u008a\u008b\7$\2\2\u008b\u008c\5\24\13\2\u008c"+
-		"\23\3\2\2\2\u008d\u008e\b\13\1\2\u008e\u0098\7\61\2\2\u008f\u0098\7\64"+
-		"\2\2\u0090\u0098\7\23\2\2\u0091\u0092\7\65\2\2\u0092\u0093\5\24\13\2\u0093"+
-		"\u0094\7\66\2\2\u0094\u0098\3\2\2\2\u0095\u0098\5\26\f\2\u0096\u0098\5"+
-		"\b\5\2\u0097\u008d\3\2\2\2\u0097\u008f\3\2\2\2\u0097\u0090\3\2\2\2\u0097"+
-		"\u0091\3\2\2\2\u0097\u0095\3\2\2\2\u0097\u0096\3\2\2\2\u0098\u009f\3\2"+
-		"\2\2\u0099\u009a\6\13\2\3\u009a\u009b\5\34\17\2\u009b\u009c\5\24\13\2"+
-		"\u009c\u009e\3\2\2\2\u009d\u0099\3\2\2\2\u009e\u00a1\3\2\2\2\u009f\u009d"+
-		"\3\2\2\2\u009f\u00a0\3\2\2\2\u00a0\25\3\2\2\2\u00a1\u009f\3\2\2\2\u00a2"+
-		"\u00a3\t\2\2\2\u00a3\27\3\2\2\2\u00a4\u00a5\t\3\2\2\u00a5\31\3\2\2\2\u00a6"+
-		"\u00a7\t\4\2\2\u00a7\33\3\2\2\2\u00a8\u00a9\t\5\2\2\u00a9\35\3\2\2\2\17"+
-		"-\60\628@]bgqv\u0083\u0097\u009f";
+		"\2\3=\u00d3\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4"+
+		"\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20"+
+		"\4\21\t\21\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2"+
+		"\5\2\62\n\2\3\2\5\2\65\n\2\5\2\67\n\2\3\3\3\3\3\3\3\3\5\3=\n\3\3\4\3\4"+
+		"\3\4\3\4\3\4\3\4\5\4E\n\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5"+
+		"\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\5\5b"+
+		"\n\5\3\6\3\6\3\6\5\6g\n\6\3\7\3\7\3\7\5\7l\n\7\3\7\3\7\3\7\3\7\3\7\3\7"+
+		"\3\7\3\7\5\7v\n\7\3\b\3\b\3\b\5\b{\n\b\3\b\3\b\3\b\3\b\3\t\3\t\3\t\3\t"+
+		"\3\t\3\t\3\t\5\t\u0088\n\t\3\t\3\t\3\t\3\t\3\n\3\n\3\n\3\n\3\13\3\13\3"+
+		"\13\3\13\3\13\3\13\7\13\u0098\n\13\f\13\16\13\u009b\13\13\5\13\u009d\n"+
+		"\13\3\13\3\13\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\7\f\u00aa\n\f\f\f\16"+
+		"\f\u00ad\13\f\5\f\u00af\n\f\3\f\3\f\3\f\3\f\3\f\3\r\3\r\3\r\3\r\3\r\3"+
+		"\r\3\r\3\r\3\r\3\r\5\r\u00c0\n\r\3\r\3\r\3\r\3\r\7\r\u00c6\n\r\f\r\16"+
+		"\r\u00c9\13\r\3\16\3\16\3\17\3\17\3\20\3\20\3\21\3\21\3\21\2\22\2\4\6"+
+		"\b\n\f\16\20\22\24\26\30\32\34\36 \2\6\3\3\6\3\7\n\3\13\16\3&\61\u00e6"+
+		"\2\66\3\2\2\2\48\3\2\2\2\6D\3\2\2\2\ba\3\2\2\2\nf\3\2\2\2\fh\3\2\2\2\16"+
+		"w\3\2\2\2\20\u0080\3\2\2\2\22\u008d\3\2\2\2\24\u0091\3\2\2\2\26\u00a0"+
+		"\3\2\2\2\30\u00bf\3\2\2\2\32\u00ca\3\2\2\2\34\u00cc\3\2\2\2\36\u00ce\3"+
+		"\2\2\2 \u00d0\3\2\2\2\"#\5\4\3\2#$\7:\2\2$\62\3\2\2\2%&\5\6\4\2&\'\7:"+
+		"\2\2\'\62\3\2\2\2()\5\22\n\2)*\7:\2\2*\62\3\2\2\2+,\7\36\2\2,-\5\30\r"+
+		"\2-.\7:\2\2.\62\3\2\2\2/\62\5\n\6\2\60\62\7:\2\2\61\"\3\2\2\2\61%\3\2"+
+		"\2\2\61(\3\2\2\2\61+\3\2\2\2\61/\3\2\2\2\61\60\3\2\2\2\62\64\3\2\2\2\63"+
+		"\65\5\2\2\2\64\63\3\2\2\2\64\65\3\2\2\2\65\67\3\2\2\2\66\61\3\2\2\2\66"+
+		"\67\3\2\2\2\67\3\3\2\2\289\5\34\17\29<\7\65\2\2:;\7%\2\2;=\5\30\r\2<:"+
+		"\3\2\2\2<=\3\2\2\2=\5\3\2\2\2>E\7\31\2\2?E\7\32\2\2@A\7\33\2\2AE\5\30"+
+		"\r\2BE\7\34\2\2CE\7\35\2\2D>\3\2\2\2D?\3\2\2\2D@\3\2\2\2DB\3\2\2\2DC\3"+
+		"\2\2\2E\7\3\2\2\2FG\7\17\2\2Gb\5\30\r\2HI\7\20\2\2Ib\5\30\r\2JK\7\21\2"+
+		"\2Kb\5\30\r\2LM\7\22\2\2Mb\5\30\r\2NO\7\23\2\2Ob\5\30\r\2PQ\7\25\2\2Q"+
+		"R\7\66\2\2RS\5\30\r\2ST\7\67\2\2Tb\3\2\2\2UV\7\26\2\2VW\7\66\2\2WX\5\30"+
+		"\r\2XY\7\67\2\2Yb\3\2\2\2Z[\7\27\2\2[\\\7\66\2\2\\]\5\30\r\2]^\7\67\2"+
+		"\2^b\3\2\2\2_`\7\30\2\2`b\5\30\r\2aF\3\2\2\2aH\3\2\2\2aJ\3\2\2\2aL\3\2"+
+		"\2\2aN\3\2\2\2aP\3\2\2\2aU\3\2\2\2aZ\3\2\2\2a_\3\2\2\2b\t\3\2\2\2cg\5"+
+		"\f\7\2dg\5\16\b\2eg\5\20\t\2fc\3\2\2\2fd\3\2\2\2fe\3\2\2\2g\13\3\2\2\2"+
+		"hi\7\37\2\2ik\5\30\r\2jl\7 \2\2kj\3\2\2\2kl\3\2\2\2lm\3\2\2\2mn\78\2\2"+
+		"no\5\2\2\2ou\79\2\2pq\7!\2\2qr\78\2\2rs\5\2\2\2st\79\2\2tv\3\2\2\2up\3"+
+		"\2\2\2uv\3\2\2\2v\r\3\2\2\2wx\7\"\2\2xz\5\30\r\2y{\7#\2\2zy\3\2\2\2z{"+
+		"\3\2\2\2{|\3\2\2\2|}\78\2\2}~\5\2\2\2~\177\79\2\2\177\17\3\2\2\2\u0080"+
+		"\u0081\7$\2\2\u0081\u0082\7\66\2\2\u0082\u0083\5\36\20\2\u0083\u0084\7"+
+		";\2\2\u0084\u0085\7\65\2\2\u0085\u0087\7\67\2\2\u0086\u0088\7#\2\2\u0087"+
+		"\u0086\3\2\2\2\u0087\u0088\3\2\2\2\u0088\u0089\3\2\2\2\u0089\u008a\78"+
+		"\2\2\u008a\u008b\5\2\2\2\u008b\u008c\79\2\2\u008c\21\3\2\2\2\u008d\u008e"+
+		"\7\65\2\2\u008e\u008f\7%\2\2\u008f\u0090\5\30\r\2\u0090\23\3\2\2\2\u0091"+
+		"\u0092\5\34\17\2\u0092\u0093\7\65\2\2\u0093\u009c\7\66\2\2\u0094\u0099"+
+		"\5\30\r\2\u0095\u0096\7;\2\2\u0096\u0098\5\30\r\2\u0097\u0095\3\2\2\2"+
+		"\u0098\u009b\3\2\2\2\u0099\u0097\3\2\2\2\u0099\u009a\3\2\2\2\u009a\u009d"+
+		"\3\2\2\2\u009b\u0099\3\2\2\2\u009c\u0094\3\2\2\2\u009c\u009d\3\2\2\2\u009d"+
+		"\u009e\3\2\2\2\u009e\u009f\7\67\2\2\u009f\25\3\2\2\2\u00a0\u00a1\5\34"+
+		"\17\2\u00a1\u00a2\7\65\2\2\u00a2\u00ae\7\66\2\2\u00a3\u00a4\5\34\17\2"+
+		"\u00a4\u00ab\5\30\r\2\u00a5\u00a6\7;\2\2\u00a6\u00a7\5\34\17\2\u00a7\u00a8"+
+		"\5\30\r\2\u00a8\u00aa\3\2\2\2\u00a9\u00a5\3\2\2\2\u00aa\u00ad\3\2\2\2"+
+		"\u00ab\u00a9\3\2\2\2\u00ab\u00ac\3\2\2\2\u00ac\u00af\3\2\2\2\u00ad\u00ab"+
+		"\3\2\2\2\u00ae\u00a3\3\2\2\2\u00ae\u00af\3\2\2\2\u00af\u00b0\3\2\2\2\u00b0"+
+		"\u00b1\7\67\2\2\u00b1\u00b2\78\2\2\u00b2\u00b3\5\2\2\2\u00b3\u00b4\79"+
+		"\2\2\u00b4\27\3\2\2\2\u00b5\u00b6\b\r\1\2\u00b6\u00c0\7\62\2\2\u00b7\u00c0"+
+		"\7\65\2\2\u00b8\u00c0\7\24\2\2\u00b9\u00ba\7\66\2\2\u00ba\u00bb\5\30\r"+
+		"\2\u00bb\u00bc\7\67\2\2\u00bc\u00c0\3\2\2\2\u00bd\u00c0\5\32\16\2\u00be"+
+		"\u00c0\5\b\5\2\u00bf\u00b5\3\2\2\2\u00bf\u00b7\3\2\2\2\u00bf\u00b8\3\2"+
+		"\2\2\u00bf\u00b9\3\2\2\2\u00bf\u00bd\3\2\2\2\u00bf\u00be\3\2\2\2\u00c0"+
+		"\u00c7\3\2\2\2\u00c1\u00c2\6\r\2\3\u00c2\u00c3\5 \21\2\u00c3\u00c4\5\30"+
+		"\r\2\u00c4\u00c6\3\2\2\2\u00c5\u00c1\3\2\2\2\u00c6\u00c9\3\2\2\2\u00c7"+
+		"\u00c5\3\2\2\2\u00c7\u00c8\3\2\2\2\u00c8\31\3\2\2\2\u00c9\u00c7\3\2\2"+
+		"\2\u00ca\u00cb\t\2\2\2\u00cb\33\3\2\2\2\u00cc\u00cd\t\3\2\2\u00cd\35\3"+
+		"\2\2\2\u00ce\u00cf\t\4\2\2\u00cf\37\3\2\2\2\u00d0\u00d1\t\5\2\2\u00d1"+
+		"!\3\2\2\2\23\61\64\66<Dafkuz\u0087\u0099\u009c\u00ab\u00ae\u00bf\u00c7";
 	public static final ATN _ATN =
 		ATNSimulator.deserialize(_serializedATN.toCharArray());
 	static {

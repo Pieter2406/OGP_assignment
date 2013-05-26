@@ -10,7 +10,6 @@ public abstract class BooleanExpression extends Expression {
 	}
 
 	@Override
-	public abstract BooleanType getType() ;
-
+	public abstract BooleanType getType();
 	
 }

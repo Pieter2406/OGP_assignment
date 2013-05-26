@@ -1,6 +1,7 @@
 package asteroids.program.expressions.booleans;
 
 import asteroids.program.types.BooleanType;
+import asteroids.program.types.Type;
 
 public class ComparisonBooleanExpression extends BooleanExpression {
 
@@ -10,7 +11,6 @@ public class ComparisonBooleanExpression extends BooleanExpression {
 
 	@Override
 	public BooleanType getType() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

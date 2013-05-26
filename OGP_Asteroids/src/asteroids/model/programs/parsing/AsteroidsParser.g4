@@ -48,6 +48,10 @@ whiledo:    WHILE expr (DO)? LEFT_BRACE eval RIGHT_BRACE;
 foreach:    FOREACH LEFT_PAREN entityspec COMMA IDENTIFIER RIGHT_PAREN
             (DO)? LEFT_BRACE eval RIGHT_BRACE;
 assign:     IDENTIFIER ASSIGN expr;
+functioncall:  type IDENTIFIER LEFT_PAREN (expr (COMMA expr)*)? RIGHT_PAREN;
+function:   type IDENTIFIER LEFT_PAREN (type expr (COMMA type expr)*)? RIGHT_PAREN
+            LEFT_BRACE eval RIGHT_BRACE;
+
 expr:       NUMBER
             | IDENTIFIER
             | GETDIR
@@ -71,10 +75,11 @@ NULL:      'null';
 // ------------------------------------------------------------------------
 // --- Types and Specifiers -----------------------------------------------
 // ------------------------------------------------------------------------
-type:   BOOL | DOUBLE | ENTITY;
+type:   BOOL | DOUBLE | ENTITY | VOID;
 BOOL:      'bool';
 DOUBLE:    'double';
 ENTITY:    'entity';
+VOID:      'void';
 
 entityspec: SHIP | ASTEROID | BULLET | ANY;
 SHIP:      'ship';
@@ -118,7 +123,6 @@ ELSE:      'else';
 WHILE:     'while';
 DO:        'do';
 FOREACH:   'foreach';
-
 
 // ------------------------------------------------------------------------
 // --- Assignment and Arithmetics -----------------------------------------

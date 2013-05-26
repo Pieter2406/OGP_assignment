@@ -96,20 +96,10 @@ public class ProgramConstructor implements ProgramFactory<Expression, Statement,
 
 	@Override
 	public Expression createVariable(int line, int column, String name) {
-		Expression exp =  new VariableExpression(line, column, name);
-		if(exp.getType()!= null){
-			if (exp.getType() instanceof DoubleType){
-				return new LiteralDoubleExpression(line, column ,((DoubleExpression)exp).getType().getValue());
-			}else if(exp.getType() instanceof BooleanType){
-				return new LiteralBooleanExpression(line,column,((BooleanExpression)exp).getType().getValue());
-			}else if(exp.getType() instanceof EntityType){
-				return (EntityExpression)exp;
-			}else{
-				System.out.println("test");
-				return null;
-			}
+		Expression exp =  new VariableExpression(line,column,name);
+		if (exp.getType() instanceof DoubleType){
+			return new LiteralDoubleExpression(line,column,(double)exp.getType().getValue());
 		}else{
-			System.out.println("test");
 			return null;
 		}
 	}
@@ -146,50 +136,42 @@ public class ProgramConstructor implements ProgramFactory<Expression, Statement,
 
 	@Override
 	public Expression createAdd(int line, int column, Expression e1, Expression e2) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Addition(line, column, e1, e2);
 	}
 
 	@Override
 	public Expression createSubtraction(int line, int column, Expression e1, Expression e2) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Subtraction(line, column, e1, e2);
 	}
 
 	@Override
 	public Expression createMul(int line, int column, Expression e1, Expression e2) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Multiplication(line, column, e1, e2);
 	}
 
 	@Override
 	public Expression createDivision(int line, int column, Expression e1, Expression e2) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Division(line, column, e1, e2);
 	}
 
 	@Override
 	public Expression createSqrt(int line, int column, Expression e) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Sqrt(line,column,e);
 	}
 
 	@Override
 	public Expression createGetDirection(int line, int column) {
-		// TODO Auto-generated method stub
-		return null;
+		return new getDirection(line,column);
 	}
 
 	@Override
 	public Expression createSin(int line, int column, Expression e) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Sin(line,column,e);
 	}
 
 	@Override
 	public Expression createCos(int line, int column, Expression e) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Cos(line,column,e);
 	}
 
 	/*___________________________________________________________________*/
