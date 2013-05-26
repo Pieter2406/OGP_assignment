@@ -1,4 +1,5 @@
 package asteroids.studentdefined;
+import asteroids.Util;
 import be.kuleuven.cs.som.annotate.*;
 
 /**
@@ -24,7 +25,8 @@ import be.kuleuven.cs.som.annotate.*;
  * @author Pieter Verlinden
  *
  */
-public class Velocity {
+@Value
+public class Velocity implements Comparable<Velocity>{
 	/**
 	 * Initialize this new velocity with the given velocity in the x direction, 
 	 * the given velocity in the y direction and a given maximum velocity (never higher than
@@ -222,4 +224,32 @@ public class Velocity {
 		return Math.sin(angle) * trueVelocity;
 	}
 
+	// Value class method overides
+	//_____________________________________________________________________________________
+	
+	@Override
+	public int compareTo(Velocity other) {
+		if (other == null)
+			return 1; // if other does not exist this velocity is always bigger (total programming).
+		if (Util.fuzzyEquals(computeVelocity(getVelocityX(),getVelocityY()),computeVelocity(other.getVelocityX(), other.getVelocityY())))
+			return 0;
+		if (computeVelocity(getVelocityX(),getVelocityY()) < computeVelocity(other.getVelocityX(), other.getVelocityY()))
+			return -1;
+		else
+			return 1;
+	}
+	
+	
+	
+	@Override
+	public int hashCode(){
+		Double velocityX = ((Double)getVelocityX());
+		Double velocityY = ((Double)getVelocityY());
+		return velocityX.hashCode() + velocityY.hashCode();
+	}
+	
+	@Override
+	public String toString(){
+		return computeVelocity(getVelocityX(),getVelocityY()) + "";
+	}
 }

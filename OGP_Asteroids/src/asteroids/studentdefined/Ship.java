@@ -23,6 +23,8 @@ import be.kuleuven.cs.som.annotate.*;
  * 			| isValidbulletScaleMultiplier(getScaler())
  * @invar 	The number of shields of a ship must always be between zero and the MAX_SHIELDS constant.
  * 			| shield > 0 && shield < MAX_SHIELDS
+ * @invar	The program of a ship must be valid
+ * 			| isValidProgram(getProgram())
  * @version 1.1
  * 
  * @author Kristof Bruyninckx
@@ -130,6 +132,10 @@ public class Ship extends SpaceObject implements IShip {
 	@Basic @Raw
 	public Program getProgram(){
 		return program;
+	}
+	
+	public boolean isValidProgram(Program program){
+		return (program != null);
 	}
 
 	public void setProgram(Program program){
