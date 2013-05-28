@@ -1,6 +1,8 @@
 package asteroids.program.statements;
 
 import java.util.List;
+
+import asteroids.program.statements.single.ActionStatement;
 import asteroids.studentdefined.Program;
 
 public class SequenceStatement extends Statement {
@@ -24,17 +26,20 @@ public class SequenceStatement extends Statement {
 
 	@Override
 	public boolean execute() {
-		boolean success;
+		boolean success = true;
 		if(subStatements.isEmpty()){
 			return true;
 		}
-		success = subStatements.get(IIC).execute();
-		if(success){
-			IIC++;
-		}
-		if(IIC == this.subStatements.size()) {
+		while(success && IIC < subStatements.size()){
+			success = subStatements.get(IIC).execute();
+			if(success || (subStatements.get(IIC) instanceof ActionStatement)){
+				IIC++;
+			}
+			
+		}			
+		if(IIC >= this.subStatements.size()) {
 			IIC = 0;
-			return true;
+			return success;
 		}else{
 			return false;
 		}

@@ -1,0 +1,43 @@
+double a;
+double b;
+bool c;
+bool d;
+
+a := 2;
+b := 2;
+c := true;
+d := false;
+if(a == b) then{
+	print c;
+}else{
+	print d;
+}
+
+if(a != b) then{
+	print d;
+}else{
+	print c;
+}
+if(c || d) then{
+	print c;
+}else{
+	print d;
+}
+
+if(c && d) then{
+	print d;
+}else{
+	print c;
+} 
+
+if(sqrt(4) == a){
+	turn a;
+	a := a + 1;
+	print a;
+	a := a - 1;
+	print a;
+	a := a / 2;
+	print a;
+	a := a*2;
+	print a;	
+}

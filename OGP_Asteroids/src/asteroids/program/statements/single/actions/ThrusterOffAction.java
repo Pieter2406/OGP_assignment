@@ -12,6 +12,6 @@ public class ThrusterOffAction extends ActionStatement {
 	public boolean execute() {
 		sourceProgram.getSourceShip().getThruster().disable();
 		setProgramLine();
-		return true;
+		return false;
 	}
 }

@@ -1,13 +1,16 @@
 package asteroids.program.types;
 
+import asteroids.program.ProgramContainer;
+import asteroids.studentdefined.Ship;
 import asteroids.studentdefined.SpaceObject;
 
 public class EntityType extends Type<SpaceObject> {
 
 	public EntityType(SpaceObject object) {
-		this.value = object;
+		super(object);
 	}
 
-	public EntityType() {
+	public EntityType() { 
+		super(ProgramContainer.getNullShip());
 	}
 }

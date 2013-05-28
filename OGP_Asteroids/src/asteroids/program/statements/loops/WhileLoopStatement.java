@@ -10,6 +10,7 @@ public class WhileLoopStatement extends LoopStatement {
 	@Deprecated
 	private int startInstruction;
 	private Expression condition;
+	private boolean inBody = false;
 	private boolean success = true;
 	public WhileLoopStatement(int line, int column, Expression condition, Statement body) {
 		super(line, column, body);
@@ -24,21 +25,59 @@ public class WhileLoopStatement extends LoopStatement {
 	}
 	@Override
 	public boolean execute() {
-		/* 
+		/*
+		 * While wordt opgeroepen
+		 * Als nog niet in body:
+		 * 		check condition
+		 * 			voer body uit
+		 * 		conditie niet voldaan
+		 * 			return true
+		 * Als wel in body:
+		 * 		voer body uit
+		 * 
+		 * Als body false returned 
+		 * 		this.execute
+		 */
+						
+		if(!inBody){
+			boolean loopCondition = (boolean) condition.getType().getValue();
+			if(loopCondition){
+				inBody = !body.execute();
+			}else{
+				return true;
+			}
+		}else{
+			inBody = !body.execute();
+			if(!inBody){
+				this.execute();
+			}
+		}
+		
+		return !inBody;
+	
+		/*
+		 * 
+		 
+		
+		 
 		 * If the condition is met or the inner iteration is not yet finished
 		 * execute the body of the while loop.
-		 */
-		if((boolean) condition.getType().getValue() || success == false){
+		 
+		while(loopCondition && inBody){
 			success = body.execute();
-		/*
+			if (success)
+				inBody = false;
+			else
+				inBody = true;
+		
 		 * If the condition is not met and the inner iteration is finished. This breaks out the loop.
-		 */
-		}else if(!(boolean) condition.getType().getValue()){
+		 
+		}if(!(boolean) condition.getType().getValue()){
 			return true;
-		/*
+		
 		 * In all other cases, if the inner body is finished, proceed whit this iteration. If the inner body
 		 * is not yet finished return false. This will continue the loop the next time.
-		 */
+		 
 		}else{
 			if(success){
 				this.execute();
@@ -47,8 +86,8 @@ public class WhileLoopStatement extends LoopStatement {
 			} 
 		}
 		return false;
-
-
+		 */
+		
 
 		/*
 			if ((boolean) condition.getType().getValue()){

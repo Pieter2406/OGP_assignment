@@ -1,0 +1,57 @@
+double TURN_SPEED := 0.1;
+double OFFSET := 20;
+double pX; 
+double pY;
+double sX;
+double sY;
+entity enemy;
+bool foundPlayer := false;
+turn 1.55;
+thrust;
+//Find player
+foreach (ship, s){
+	if (s != self) then {
+		enemy := s;
+	}
+}
+thrust_off;
+
+
+while (true) {
+
+while (!foundPlayer){
+thrust;
+	// turn to player
+	pX := getx enemy;
+	pY := gety enemy;
+	print pY;
+	//print pX;
+	sX := getx self;
+	sY := gety self;
+	print sY;
+	//print sX;
+	if(pY < sY) then{
+		turn (getdir + TURN_SPEED);
+	}else{
+		turn (getdir - TURN_SPEED);
+	}
+	
+	double dX := (pX - sX);
+	double dY := (pY - sY);
+	double eRadius := getradius enemy;
+	double upperDY := (dY + eRadius);
+	double lowerDY := (dY - eRadius);
+	double upperBound := (sqrt((dX * dX) + (upperDY * upperDY)) + OFFSET);
+	double lowerBound := (sqrt((dX * dX) + (lowerDY * lowerDY)) - OFFSET);
+	double distanceToEnemy := (dX/(sin(getdir))); 
+	if ((distanceToEnemy > lowerBound) && (distanceToEnemy < upperBound)) then {
+		foundPlayer := true;
+	}
+	fire;
+	print foundPlayer;
+	thrust_off;	
+}
+fire;
+foundPlayer := false;
+}
+

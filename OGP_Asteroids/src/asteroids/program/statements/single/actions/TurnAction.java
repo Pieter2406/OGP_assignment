@@ -13,7 +13,7 @@ public class TurnAction extends ActionStatement {
 	public boolean execute() {
 		this.sourceProgram.getSourceShip().setAngle((double)angle.getType().getValue());
 		setProgramLine();
-		return true;
+		return false;
 	}
 
 }

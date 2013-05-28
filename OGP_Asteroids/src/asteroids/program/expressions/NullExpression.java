@@ -1,6 +1,9 @@
 package asteroids.program.expressions;
 
+import asteroids.program.ProgramContainer;
+import asteroids.program.types.EntityType;
 import asteroids.program.types.Type;
+import asteroids.studentdefined.Ship;
 
 public class NullExpression extends Expression {
 
@@ -11,7 +14,8 @@ public class NullExpression extends Expression {
 
 	@Override
 	public Type getType() {
-		return null;
+		this.type = new EntityType(ProgramContainer.getNullShip());
+		return type;
 	}
 
 }

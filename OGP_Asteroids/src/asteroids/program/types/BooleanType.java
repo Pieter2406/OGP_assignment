@@ -3,7 +3,10 @@ package asteroids.program.types;
 public class BooleanType extends Type<Boolean> {
 
 	public BooleanType(boolean b) {
-		this.value = b;
+		super(b);
 	}
-	public BooleanType(){}
+	public BooleanType(){
+		super(false);
+	}
+	
 }

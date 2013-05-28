@@ -12,7 +12,7 @@ public class GreaterThanOrEqualTo extends ComposedBooleanExpression {
 
 	@Override
 	public BooleanType getType() {
-		return new BooleanType((double)lhs.getType().getValue() <= (double) rhs.getType().getValue());
+		return new BooleanType((double)lhs.getType().getValue() >= (double) rhs.getType().getValue());
 	}
 
 }

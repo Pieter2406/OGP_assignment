@@ -130,15 +130,15 @@ public class ShipShipCollision implements CollisionType {
 		double dX = o2.getPosition().getX() - o1.getPosition().getX();
 		double dY = o2.getPosition().getY() - o1.getPosition().getY();
 		double dR = Math.sqrt(Math.pow(dX, 2) + Math.pow(dY, 2));
-		double j = (2 * o1.getMass().getMass()*o2.getMass().getMass()*(dV*dR))/(sigma*(o1.getMass().getMass() + o2.getMass().getMass()));
+		double j = (2 * o1.getMass().getValue()*o2.getMass().getValue()*(dV*dR))/(sigma*(o1.getMass().getValue() + o2.getMass().getValue()));
 		double jX = (j*dX)/sigma;
 		double jY = (j*dY)/sigma;
 
-		double newVelocityO1X = o1.getVelocity().getVelocityX() - (jX / o1.getMass().getMass());
-		double newVelocityO1Y = o1.getVelocity().getVelocityY() - (jY / o1.getMass().getMass());
+		double newVelocityO1X = o1.getVelocity().getVelocityX() - (jX / o1.getMass().getValue());
+		double newVelocityO1Y = o1.getVelocity().getVelocityY() - (jY / o1.getMass().getValue());
 
-		double newVelocityO2X = o2.getVelocity().getVelocityX() + (jX / o2.getMass().getMass());
-		double newVelocityO2Y = o2.getVelocity().getVelocityY() + (jY / o2.getMass().getMass());
+		double newVelocityO2X = o2.getVelocity().getVelocityX() + (jX / o2.getMass().getValue());
+		double newVelocityO2Y = o2.getVelocity().getVelocityY() + (jY / o2.getMass().getValue());
 
 		o1.setVelocity(newVelocityO1X, newVelocityO1Y);
 		o2.setVelocity(newVelocityO2X, newVelocityO2Y);
