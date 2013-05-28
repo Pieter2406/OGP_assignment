@@ -1,22 +1,16 @@
 package asteroids.studentdefined;
 
-import java.util.List;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-import org.antlr.runtime.RecognitionException;
-
-
 import asteroids.CollisionListener;
 import asteroids.IFacade;
-import asteroids.IShip;
 import asteroids.model.programs.parsing.ProgramParser;
 import asteroids.program.ProgramConstructor;
 import asteroids.program.expressions.Expression;
