@@ -7,11 +7,11 @@ import asteroids.program.types.EntityType;
 public class SelfEntityExpression extends EntityExpression {
 	public SelfEntityExpression(int line, int column) {
 		super(line, column, null);
-		this.type = null;
 	}
 	@Override
 	public EntityType getType(){
-		return new EntityType(ProgramContainer.getProgram().getSourceShip());
+		type = new EntityType(ProgramContainer.getProgram().getSourceShip());
+		return (EntityType) type;
 	}
 	
 

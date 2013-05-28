@@ -12,7 +12,7 @@ public class ThrusterOnAction extends ActionStatement {
 	public boolean execute() {
 		sourceProgram.getSourceShip().getThruster().enable();
 		setProgramLine();
-		return true;
+		return false;
 	}
 
 }

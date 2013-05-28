@@ -15,7 +15,7 @@ import asteroids.program.types.Type;
  *
  */
 public class Program {
-	public static final long DEFAULT_RUN_FREQUENCY = 20;
+	public static final long DEFAULT_RUN_FREQUENCY = 200;
 	private Ship sourceShip;
 	private Map<String, Type> globals;
 	private Statement statement;
@@ -45,7 +45,6 @@ public class Program {
 		if(!hasFinished){
 			hasFinished = statement.execute();
 		}
-		
 	}
 
 	public long getLastRunTime() {

@@ -11,7 +11,7 @@ public class SkipAction extends ActionStatement {
 	@Override
 	public boolean execute(){
 		setProgramLine();
-		return true;
+		return false;
 	}
 
 }

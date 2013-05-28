@@ -14,7 +14,8 @@ public class LessThan extends ComposedBooleanExpression {
 	}
 	@Override
 	public BooleanType getType() {
-		return new BooleanType((double)lhs.getType().getValue() < (double) rhs.getType().getValue());
+		this.type = new BooleanType((double)lhs.getType().getValue() < (double) rhs.getType().getValue());
+		return (BooleanType) type;
 	}
 
 }

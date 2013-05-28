@@ -4,15 +4,14 @@ import asteroids.program.types.EntityType;
 
 
 public class EntityExpression extends Expression{
-	private EntityType entity;
 	public EntityExpression(int line, int column, EntityType entity) {
 		super(line,column);
-		this.entity = entity;
+		this.type = entity;
 	}
 	
 	@Override
 	public EntityType getType(){
-		return entity;
+		return (EntityType) this.type;
 	}
 	
 }

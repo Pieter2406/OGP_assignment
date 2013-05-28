@@ -1,0 +1,29 @@
+double d := 10;
+double c := 5;
+entity enemy;
+while(d>c){
+	if (d>c) then {
+		fire;
+		turn -1;
+	}
+	else {
+		fire;
+		turn 1;
+	}
+	c := c + 1;
+}
+foreach (ship, s) {
+	if (s != self) then {
+		fire;
+		enemy := s;
+	}
+}
+double sY := gety self; 
+double pY := getx enemy;
+while(true){
+	if(sY < pY) then{
+		turn (getdir + 0.1);
+	}else{
+		turn (getdir - 0.1);
+	}
+}

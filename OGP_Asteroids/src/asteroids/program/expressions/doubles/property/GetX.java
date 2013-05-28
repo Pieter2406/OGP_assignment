@@ -1,6 +1,5 @@
 package asteroids.program.expressions.doubles.property;
 
-import asteroids.program.expressions.EntityExpression;
 import asteroids.program.expressions.Expression;
 import asteroids.program.expressions.doubles.PropertyDoubleExpression;
 import asteroids.program.types.DoubleType;

@@ -13,7 +13,7 @@ public class LessThanOrEqualTo extends ComposedBooleanExpression {
 
 	@Override
 	public BooleanType getType() {
-		return new BooleanType(((DoubleExpression)lhs).getType().getValue() >= ((DoubleExpression)rhs).getType().getValue());
+		return new BooleanType(((DoubleExpression)lhs).getType().getValue() <= ((DoubleExpression)rhs).getType().getValue());
 	}
 
 }

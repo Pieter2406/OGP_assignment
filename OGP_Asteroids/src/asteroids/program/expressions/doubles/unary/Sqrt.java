@@ -12,7 +12,8 @@ public class Sqrt extends UnaryComposedDoubleExpression {
 
 	@Override
 	public DoubleType getType() {
-		return new DoubleType(Math.sqrt((double)e.getType().getValue()));
+		this.type = new DoubleType((double)e.getType().getValue());
+		return (DoubleType) this.type;
 	}
 
 }

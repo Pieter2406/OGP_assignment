@@ -8,6 +8,7 @@ public abstract class UnaryComposedDoubleExpression extends ComposedDoubleExpres
 	protected Expression e;
 	public UnaryComposedDoubleExpression(int line, int column, Expression e) {
 		super(line,column);
+		this.e = e;
 	}
 
 }

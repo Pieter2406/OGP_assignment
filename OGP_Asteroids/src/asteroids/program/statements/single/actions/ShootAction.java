@@ -12,7 +12,7 @@ public class ShootAction extends ActionStatement {
 	public boolean execute() {
 		sourceProgram.getSourceShip().fireBullet();
 		setProgramLine();
-		return true;
+		return false;
 	}
 
 }

@@ -21,6 +21,7 @@ import asteroids.program.expressions.doubles.binary.*;
 import asteroids.program.expressions.doubles.property.*;
 import asteroids.program.expressions.doubles.unary.*;
 import asteroids.program.expressions.entities.SelfEntityExpression;
+import asteroids.program.statements.IfThenStatement;
 import asteroids.program.statements.SequenceStatement;
 import asteroids.program.statements.Statement;
 import asteroids.program.statements.loops.ForEachLoopStatement;
@@ -200,8 +201,7 @@ public class ProgramConstructor implements ProgramFactory<Expression, Statement,
 
 	@Override
 	public Statement createIf(int line, int column, Expression condition, Statement then, Statement otherwise) {
-		// TODO Auto-generated method stub
-		return null;
+		return new IfThenStatement(line,column,condition,then,otherwise);
 	}
 
 	@Override

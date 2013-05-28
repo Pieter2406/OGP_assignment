@@ -14,6 +14,7 @@ public class VariableExpression extends Expression {
 	@Override
 	public Type getType() {
 		Type t = ProgramContainer.getGlobal(name);
+		this.type = t;
 		return t;
 	}
 }

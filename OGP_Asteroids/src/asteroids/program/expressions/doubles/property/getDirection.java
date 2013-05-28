@@ -13,7 +13,8 @@ public class getDirection extends PropertyDoubleExpression {
 
 	@Override
 	public DoubleType getType() {
-		return new DoubleType(ProgramContainer.getProgram().getSourceShip().getAngle());
+		this.type = new DoubleType(ProgramContainer.getProgram().getSourceShip().getAngle());
+		return (DoubleType) type;
 	}
 
 }

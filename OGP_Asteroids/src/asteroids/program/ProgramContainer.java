@@ -5,11 +5,12 @@ import java.util.Map;
 
 import asteroids.program.types.Type;
 import asteroids.studentdefined.Program;
+import asteroids.studentdefined.Ship;
 
 public class ProgramContainer {
 
 	private static Program program;
-	
+	private static Ship nullShip = new Ship(0,0,0,0,0,null);
 	public static void setProgram(Program program){
 		ProgramContainer.program = program;
 	}
@@ -36,4 +37,8 @@ public class ProgramContainer {
 			 getGlobals().put(name, type);
 		}
 	}
+	public static Ship getNullShip(){
+		return nullShip;
+	}
+	
 }
