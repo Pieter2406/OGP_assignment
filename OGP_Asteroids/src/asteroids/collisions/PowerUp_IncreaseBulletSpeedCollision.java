@@ -32,23 +32,19 @@ public class PowerUp_IncreaseBulletSpeedCollision extends ShipPowerUpCollision i
 	/**
 	 * Handle the collision between the ship and the increase bullet speed powerup.
 	 * 
-	 * @post	The speed of the bullets, fired by the ship, is increased with a
-	 * 			factor upto a maximum of 4 times its initial speed. 
-	 * 			| o1.setBulletSpeedMultiplier(o1.getBulletSpeedMultiplier + 1)
-	 * 	@effect The powerup is terminated and thus deleted out of the world of the ship.
-	 * 			| o2.terminate()
+	 * @effect	The sourceship of the powerup is set to the ship colliding with it.
+	 * 			The powerup is added to the list of active powerups of the ship.
+	 * 			| o2.attachToShip(o1);	
+	 * @effect	The powerup is activated. The ships bullet speed is increased
+	 * 			with its speed factor.
+	 * 			| o2.activate()
 	 * 			
 	 */
 	@Override
 	public void collide() {
-		o2.terminate();
-		double speed;
-		if(o1.getBulletSpeedMultiplier() < 4){
-			speed = o1.getBulletSpeedMultiplier() + 1;
-		}
-		else
-			speed = 4;
-		o1.setBulletSpeedMultiplier(speed);
+		o2.attachToShip(o1);
+		o2.activate();
+		
 	}
 
 }

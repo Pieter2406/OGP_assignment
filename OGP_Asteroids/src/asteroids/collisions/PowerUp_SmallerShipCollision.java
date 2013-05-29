@@ -33,18 +33,19 @@ public class PowerUp_SmallerShipCollision extends ShipPowerUpCollision {
 	/**
 	 * Handle the collision between a ship and a smaller ship size powerup.
 	 * 
+	 * @effect	All associations with the powerup and its world are broken and
+	 * 			a new association is made with its ship. In other words it is attached
+	 * 			to the given ship.
+	 * 			| o2.attachToShip(o1);
 	 * @effect	The radius of the ship is set to a new radius smaller than
 	 * 			its previous radius.
-	 * 			| o1.setRadius(NEW_RADIUS)
-	 * @effect 	The powerup is deleted from the world of this ship.
-	 * 			| o1.terminate()
+	 * 			| o2.activate
 	 */
 
 	@Override
 	public void collide() {
-		o2.terminate();
-		o1.setRadius(NEW_RADIUS);
+		o2.attachToShip(o1);
+		o2.activate();
 	}
 	
-	private static final double NEW_RADIUS = 30;
 }

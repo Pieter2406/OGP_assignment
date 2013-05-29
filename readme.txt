@@ -15,16 +15,6 @@ List of Issues:
 * Introduce timers for every powerup. FIXED (powerups now dissapear after 10 seconds)
 * firing bullet close to wall creates a bullet behind the wall, revision of wall collision necessary. POSSIBLE FIX
 * Powerups spawn overlapping with ships. POSSIBLE FIX
+* SmallerShipPowerup gives error after colliding with other ship.
 
-Changes:
-
-	*** Pieter ***
-* Updated TODO list;
-* Made templates for future testcases
-* Added tests in SpaceObjectTest and VelocityTest
-* CHANGED EVOLVE METHOD, MAYBE WORSE THAN BEFORE OR BETTER
-* Changed Bullet:
-	* initialized with pendingVelocityChange = true;
-	* handleCollisions(): added method updateCollisions()
-* Added template methods for WorldTest
 ____________________________________________________

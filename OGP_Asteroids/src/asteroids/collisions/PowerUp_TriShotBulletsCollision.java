@@ -33,15 +33,17 @@ public class PowerUp_TriShotBulletsCollision extends ShipPowerUpCollision {
 	/**
 	 * Handle the collision between a ship and a tri shot bullet powerup.
 	 * 
+	 * @effect	All associations with the powerup and its world are broken and
+	 * 			a new association is made with its ship. In other words it is attached
+	 * 			to the given ship.
+	 * 			| o2.attachToShip(o1);
 	 * @effect	Set the flag for triple bullet shots true in ship.
-	 * 			|o1.toggleTriShotBullets(true);
-	 * @effect	Terminate the powerup and thus delete it from the world
-	 * 			of the ship.
+	 * 			|sourceShip.toggleTriShotBullets(true);
 	 */
 	@Override
 	public void collide() {
-	o2.terminate();
-	o1.toggleTriShotBullets(true);
+		o2.attachToShip(o1);
+		o2.activate();
 	}
 
 }

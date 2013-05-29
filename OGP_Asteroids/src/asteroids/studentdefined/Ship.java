@@ -692,12 +692,15 @@ public class Ship extends SpaceObject implements IShip {
 		this.thruster.setSource(null);
 		super.terminate();
 	}
-	//	private Collection<PowerUp> activePowerUps = new ArrayList<PowerUp>();
-	//
-	//	public Collection<PowerUp> getActivePowerUps(){
-	//		return activePowerUps;
-	//	}
-	//	public void addPowerUp(PowerUp powerup){
-	//		activePowerUps.add(powerup);
-	//	}
+		private Collection<PowerUp> activePowerUps = new ArrayList<PowerUp>();
+	
+		public ArrayList<PowerUp> getActivePowerUps(){
+			return (ArrayList<PowerUp>) activePowerUps;
+		}
+		public void addPowerUp(PowerUp powerup){
+			activePowerUps.add(powerup);
+		}
+		public void removePowerUp(PowerUp powerup){
+			activePowerUps.remove(powerup);
+		}
 }

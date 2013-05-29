@@ -1,0 +1,19 @@
+
+entity enemy;
+foreach (ship, s) {
+	if (s != self) then {
+		enemy := s;
+	}
+}
+while(true){
+	double sY := gety self; 
+	double pY := gety enemy;
+	print sY;
+	print pY;
+	print (sY < pY);
+	if (sY < pY) then{
+		turn (getdir + 0.1);
+	}else{
+		turn (getdir - 0.1);
+	}
+}

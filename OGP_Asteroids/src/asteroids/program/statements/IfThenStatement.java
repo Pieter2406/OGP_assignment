@@ -45,9 +45,17 @@ public class IfThenStatement extends Statement {
 				return success;
 			}
 		}else if(inThen == true){
-			return then.execute();
+			success = then.execute();
+			if(success){
+				inThen = false;
+			}
+			return success;
 		}else if(inOtherwise == true){
-			return otherwise.execute();
+			success = otherwise.execute();
+			if(success){
+				inOtherwise = false;
+			}
+			return success;
 		}else{
 			return false;
 		}

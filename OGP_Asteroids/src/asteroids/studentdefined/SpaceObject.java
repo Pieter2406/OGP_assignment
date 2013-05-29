@@ -663,6 +663,6 @@ public abstract class SpaceObject {
 	/**
 	 * 
 	 */
-	private boolean isTerminated = false;
+	protected boolean isTerminated = false;
 
 }

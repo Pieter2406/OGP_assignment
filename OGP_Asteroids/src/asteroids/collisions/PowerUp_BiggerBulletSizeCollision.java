@@ -32,24 +32,18 @@ public class PowerUp_BiggerBulletSizeCollision extends ShipPowerUpCollision{
 	
 	/**
 	 * Handle the collision between a ship and a bigger bullet size powerup.
-	 * 
-	 * @effect	The scale of the bullets that the ship fires are scaled with a factor
-	 * 			upto a maximum of 4 times its initial size.
-	 * 			| o1.setBulletScaleMultiplier(o1.getBulletScaleMultiplier() + 1)
-	 * @effect	The powerup is terminated and thus
-	 * 			deleted out of the world of the ship.
-	 * 			| o2.terminate()
+	 * @effect	The sourceship of the powerup is set to the ship colliding with it.
+	 * 			The powerup is added to the list of active powerups of the ship.
+	 * 			Associations with the world of the powerup are broken.
+	 * 			| o2.attachToShip(o1);	
+	 * @effect	The powerup is activated. The ships bullet scale is increased
+	 * 			with its growth factor.
+	 * 			| o2.activate()
 	 */
 	@Override
 	public void collide() {
-		double scale;
-		if(o1.getBulletScaleMultiplier() < 4){
-			scale = o1.getBulletScaleMultiplier() + 1;
-		}else{
-			scale = o1.getBulletScaleMultiplier();
-		}
-		o1.setBulletScaleMultiplier(scale);
-		o2.terminate();
+		o2.attachToShip(o1);
+		o2.activate();
 	}
 
 }

@@ -32,16 +32,17 @@ public class PowerUp_ShipShieldCollision extends ShipPowerUpCollision {
 
 	/**
 	 * Handle the collision between a ship and a ship shield powerup.
-	 * 
-	 * @effect	The powerup is terminated.
-	 * 			| o2.terminated()
+	 * @effect	The source ship of the powerup is set to the ship colliding
+	 * 			with this one. any associations with the world are broken and
+	 * 			a new association is set between the powerup and its source ship.
+	 * 			| o2.attachToShip(o1)
 	 * @effect	The shield of the ship is increased with 1.
-	 * 			| o1.incShield()
+	 * 			| o2.activate()
 	 */
 	@Override
 	public void collide() {
-		o1.incShield();
-		o2.terminate();
+		o2.attachToShip(o1);
+		o2.activate();
 		
 	}
 

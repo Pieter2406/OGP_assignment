@@ -350,10 +350,12 @@ public class WorldView<World, Ship, Asteroid, Bullet, PowerUp, Program> extends 
   
   public class ShipVisualization extends Visualization<Ship> {
 	  private Image smallerShip;
+	  private Image normalShip;
 	  private final double initialRadius;
     public ShipVisualization(Color color, Ship ship, Image image) {
       super(color, ship, image);
       this.smallerShip = image.getScaledInstance(60,60, Image.SCALE_DEFAULT);
+      this.normalShip = image;
       initialRadius = facade.getShipRadius(ship);
     }
 
@@ -377,7 +379,7 @@ public class WorldView<World, Ship, Asteroid, Bullet, PowerUp, Program> extends 
         if(radius < this.initialRadius){
         	g2d.drawImage(this.smallerShip,T,null);
         }else{
-        	g2d.drawImage(this.getImage(),T,null);
+        	g2d.drawImage(this.normalShip,T,null);
         }
         
       }

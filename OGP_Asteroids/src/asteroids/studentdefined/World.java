@@ -1,5 +1,6 @@
 package asteroids.studentdefined;
 
+import java.util.AbstractSet;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -88,7 +89,7 @@ public class World {
 	/**
 	 * Holds the time, how long a powerup lasts in this world in milliseconds.
 	 */
-	public static final long POWER_UP_LIFE_TIME = 10000;
+	public static final double POWER_UP_LIFE_TIME = Double.POSITIVE_INFINITY;
 
 	/*_________________________________________Add/remove objects__________________________________________*/
 	//Methods to add visible Objects to this world that should be drawn.
@@ -324,6 +325,15 @@ public class World {
 	private void advanceAll(double time) {
 		if (time < 0) //Cannot move over a negative amount of time.
 			time = 0;
+		
+		for (Ship ship : getAllShips()){
+			ArrayList<PowerUp> tempPwpActiveList = new ArrayList<PowerUp>();
+			//tempList to avoid the ConcurrentmodificationException
+			tempPwpActiveList.addAll(ship.getActivePowerUps());
+			for(PowerUp pwp : tempPwpActiveList){
+				pwp.evaluate();
+			}
+		}
 		for (SpaceObject obj : visibleObjects())
 			obj.move(time); // moves objects + updates velocity of ships.
 		
@@ -357,12 +367,12 @@ public class World {
 
 		}		
 		switch(rnd.nextInt(6)){			
-		case 0: return new SmallerShipPowerUp(rndX,rndY,this);
-		case 1: return new IncreaseBulletSpeedPowerUp(rndX,rndY,this);
-		case 2: return new BiggerBulletSizePowerUp(rndX,rndY,this);
-		case 3: return new TriShotBulletsPowerUp(rndX, rndY,this);
-		case 4: return new ShipShieldPowerUp(rndX,rndY,this);
-		case 5: return new RadiusAsteroidPushPowerUp(rndX,rndY,this);
+		case 0: return new SmallerShipPowerUp(rndX,rndY,this,null);
+		case 1: return new IncreaseBulletSpeedPowerUp(rndX,rndY,this,null);
+		case 2: return new BiggerBulletSizePowerUp(rndX,rndY,this,null);
+		case 3: return new TriShotBulletsPowerUp(rndX, rndY,this,null);
+		case 4: return new ShipShieldPowerUp(rndX,rndY,this,null);
+		case 5: return new RadiusAsteroidPushPowerUp(rndX,rndY,this,null);
 		default: return null;
 		}
 	}

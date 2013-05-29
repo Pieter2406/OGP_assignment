@@ -19,7 +19,7 @@ import asteroids.studentdefined.Velocity;
  * @version 1.0
  */
 public class PowerUp_RadiusAsteroidPushCollision extends ShipPowerUpCollision  {
-	
+
 	/**
 	 * Initializes the radius asteroid push collision with a given ship and a 
 	 * given radius asteroid push powerup.
@@ -30,46 +30,21 @@ public class PowerUp_RadiusAsteroidPushCollision extends ShipPowerUpCollision  {
 	public PowerUp_RadiusAsteroidPushCollision(Ship o1, RadiusAsteroidPushPowerUp o2) {
 		super(o1,o2);
 	}
-	
+
 	/**
-	 * Holds the range in which the push effect is effective.
+	 * Handle the collision between a ship and a radius asteroid push powerup.
+	 * 
+	 * @effect	The sourceship of the powerup is set to the ship colliding with it.
+	 * 			The powerup is added to the list of active powerups of the ship.
+	 * 			| o2.attachToShip(o1);	
+	 * @effect	The powerup is activated. All asteroids in a certain radius away from the
+	 * 			powerup are pushed away from it.	
+	 * 			| o2.activate()
 	 */
-	private static final double PUSH_RADIUS = 1000;
-	
-	
-	
-	 /**
-	  * Handle the collision between a ship and a radius asteroid push powerup.
-	  * 
-	  * @post	The asteroids, surrounding the ship in a certain asteroid: PUSH_RADIUS,
-	  * 		are pushed away from the ship.
-	  * 		| angle = Math.atan(dY/dX)
-	  * 		| newVelocityX == velocity * Math.cos(angle)
-	  * 		| newVelocityY == velocity * Math.sin(angle)
-	  * 		| for each Asteroid ast in o1.getWorld().getAllAsteroids()
-	  * 		|		if ast.getDistanceBetween(o1) < PUSH_RADIUS
-	  * 		|			ast.setVelocity(newVelocityX, newVelocityY)
-	  * @effect	The powerup is terminated and thus deleted from the world of this ship.
-	  * 		| o2.terminate()
-	  */
 	@Override
 	public void collide() {
-		for(Asteroid ast : o1.getWorld().getAllAsteroids()){
-			if(ast.getDistanceBetween(o1) < PUSH_RADIUS){
-				double dX = ast.getPosition().getX() - o1.getPosition().getX();
-				double dY = ast.getPosition().getY() - o1.getPosition().getY();
-				double astV = Velocity.computeVelocity(ast.getVelocity().getVelocityX(), ast.getVelocity().getVelocityY());
-				double angle = Math.atan(dY/dX);
-				if(dX < 0){
-					angle += Math.PI;
-				}
-				double newVx = astV * Math.cos(angle);
-				double newVy = astV * Math.sin(angle);
-				
-				ast.setVelocity(newVx, newVy);
-			}
-		}
-		o2.terminate();
+		o2.attachToShip(o1);
+		o2.activate();
 	}
-	
+
 }
