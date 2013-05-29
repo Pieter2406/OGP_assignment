@@ -1,10 +1,11 @@
 package asteroids.program.expressions.booleans.binary;
 
 import asteroids.program.expressions.Expression;
+import asteroids.program.expressions.booleans.BinaryComposedBooleanExpression;
 import asteroids.program.expressions.booleans.ComposedBooleanExpression;
 import asteroids.program.types.BooleanType;
 
-public class Conjunction extends ComposedBooleanExpression {
+public class Conjunction extends BinaryComposedBooleanExpression {
 
 	public Conjunction(int line, int column, Expression lhs, Expression rhs) {
 		super(line, column,lhs, rhs);

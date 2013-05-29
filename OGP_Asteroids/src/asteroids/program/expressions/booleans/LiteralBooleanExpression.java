@@ -14,4 +14,9 @@ public class LiteralBooleanExpression extends BooleanExpression {
 		return (BooleanType) type;
 	}
 
+	@Override
+	public boolean isTypeCorrect() {
+		return true; // always type correct.
+	}
+
 }

@@ -19,4 +19,11 @@ public class AssignmentStatement extends SingleStatement {
 		return true;
 	}
 
+	@Override
+	public boolean typeCheck() {
+		if (ProgramContainer.getGlobal(name) == null)
+			return false; // variable must exist!
+		// make sure that the type of the expression corresponds with the type from the list of global variables.
+		return (rhs.isTypeCorrect() && rhs.getType().getClass() == ProgramContainer.getGlobal(name).getClass());
+	}
 }

@@ -14,4 +14,11 @@ public abstract class BinaryComposedDoubleExpression extends ComposedDoubleExpre
 
 	@Override
 	public abstract DoubleType getType();
+	
+	@Override
+	public boolean isTypeCorrect(){
+		if (lhs.getType() instanceof DoubleType && (rhs.getType() instanceof DoubleType)) // lhs and rhs of BinaryComposedDoubleExpression must be of type double.
+			return true;
+		return false;
+	}
 }

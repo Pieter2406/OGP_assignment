@@ -15,4 +15,10 @@ public class ShootAction extends ActionStatement {
 		return false;
 	}
 
+	@Override
+	public boolean typeCheck() {
+		return true; // The action fire is always type correct.
+	}
+	
+
 }

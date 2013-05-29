@@ -14,4 +14,9 @@ public class SkipAction extends ActionStatement {
 		return false;
 	}
 
+	@Override
+	public boolean typeCheck() {
+		return true; // the action skip is always type correct.
+	}
+
 }

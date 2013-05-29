@@ -13,4 +13,9 @@ public class LiteralDoubleExpression extends DoubleExpression {
 	public DoubleType getType() {
 		return (DoubleType) this.type;
 	}
+
+	@Override
+	public boolean isTypeCorrect() {
+		return true; // Only doubles can be given in the constructor.
+	}
 }

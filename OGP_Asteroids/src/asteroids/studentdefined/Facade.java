@@ -384,8 +384,7 @@ public class Facade implements IFacade {
 	 */
 	@Override
 	public boolean isTypeCheckingSupported() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	/**
@@ -393,8 +392,11 @@ public class Facade implements IFacade {
 	 */
 	@Override
 	public TypeCheckOutcome typeCheckProgram(Object program) {
-		// TODO Auto-generated method stub
-		return null;
+		if (((Program) program).typeCheck()){
+			return IFacade.TypeCheckOutcome.success();
+		}
+		else
+			return IFacade.TypeCheckOutcome.failure("Program is not type correct!");
 	}
 
 	/**

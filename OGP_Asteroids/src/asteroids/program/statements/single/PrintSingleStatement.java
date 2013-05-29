@@ -16,4 +16,11 @@ public class PrintSingleStatement extends SingleStatement {
 		System.out.println(this.expression.toString());
 		return true;
 	}
+
+	@Override
+	public boolean typeCheck() {
+		return (expression.isTypeCorrect());
+	}
+	
+	
 }

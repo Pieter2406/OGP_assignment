@@ -52,6 +52,11 @@ public class IfThenStatement extends Statement {
 			return false;
 		}
 	}
-	
-
+	@Override
+	public boolean typeCheck() {
+		if (!then.typeCheck() || !otherwise.typeCheck()){
+			return false; // if then or otherwise is type incorrect return false, else return true.
+		}
+		return true;
+	}
 }

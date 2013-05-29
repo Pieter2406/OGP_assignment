@@ -74,4 +74,9 @@ public class Program {
 	public Map<String,Type> getGlobals(){
 		return globals;
 	}
+	
+	public boolean typeCheck(){
+		return statement.typeCheck();
+	}
+	
 }

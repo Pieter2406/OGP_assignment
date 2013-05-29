@@ -15,4 +15,9 @@ public class ThrusterOnAction extends ActionStatement {
 		return false;
 	}
 
+	@Override
+	public boolean typeCheck() {
+		return true; // The action thruster on is always type correct.
+	}
+
 }

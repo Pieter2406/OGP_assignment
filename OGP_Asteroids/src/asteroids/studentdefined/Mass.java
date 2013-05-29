@@ -121,14 +121,14 @@ public class Mass implements Comparable<Mass>{
 	/*____________________________MASS____________________________*/
 	
 	/**
-	 * Set the current mass to the given mass.
+	 * Set the current mass to the given value.
 	 * 
 	 * @param 	newMass
 	 * 			The value for the new mass.
 	 * @post 	If the given mass is a valid mass, the current mass is set to the 
 	 * 			new given mass.
 	 * 			| if(isValidMass(newMass)
-	 * 			| 	new.getMass() == newMass
+	 * 			| 	new.getValue() == newMass
 	 * @throws	IllegalValueException
 	 * 			The given mass is not a valid mass
 	 * 			| !isValidMass(newMass)

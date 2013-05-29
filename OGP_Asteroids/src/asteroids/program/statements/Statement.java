@@ -43,4 +43,6 @@ public abstract class Statement {
 		return sourceProgram;
 	}
 	
+	public abstract boolean typeCheck(); // each statement should be typechecked.
+	
 }

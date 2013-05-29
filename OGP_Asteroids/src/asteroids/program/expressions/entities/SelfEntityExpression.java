@@ -13,8 +13,4 @@ public class SelfEntityExpression extends EntityExpression {
 		type = new EntityType(ProgramContainer.getProgram().getSourceShip());
 		return (EntityType) type;
 	}
-	
-
-
-
 }
