@@ -44,6 +44,14 @@ public class SequenceStatement extends Statement {
 			return false;
 		}
 	}
+	@Override
+	public boolean typeCheck() {
+		for (Statement s : subStatements){
+			if (!s.typeCheck())
+				return false; // if a statement of substatements is type incorrect return false, if none is found return true.
+		}
+		return true;
+	}
 
 }
 

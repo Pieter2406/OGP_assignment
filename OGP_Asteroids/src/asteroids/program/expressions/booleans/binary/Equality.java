@@ -1,13 +1,14 @@
 package asteroids.program.expressions.booleans.binary;
 
 import asteroids.program.expressions.Expression;
+import asteroids.program.expressions.booleans.BinaryComposedBooleanExpression;
 import asteroids.program.expressions.booleans.ComposedBooleanExpression;
 import asteroids.program.types.BooleanType;
 import asteroids.program.types.DoubleType;
 import asteroids.program.types.EntityType;
 import asteroids.studentdefined.SpaceObject;
 
-public class Equality extends ComposedBooleanExpression {
+public class Equality extends BinaryComposedBooleanExpression {
 
 	public Equality(int line, int column, Expression lhs, Expression rhs) {
 		super(line, column, lhs, rhs);

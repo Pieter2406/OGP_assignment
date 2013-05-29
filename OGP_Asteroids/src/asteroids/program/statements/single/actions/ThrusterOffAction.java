@@ -14,4 +14,9 @@ public class ThrusterOffAction extends ActionStatement {
 		setProgramLine();
 		return false;
 	}
+
+	@Override
+	public boolean typeCheck() {
+		return true; // The action thruster off is always type correct.
+	}
 }

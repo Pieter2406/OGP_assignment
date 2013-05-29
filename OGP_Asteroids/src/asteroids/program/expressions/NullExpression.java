@@ -9,13 +9,17 @@ public class NullExpression extends Expression {
 
 	public NullExpression(int line, int column) {
 		super(line, column);
-		
+		this.type = new EntityType(ProgramContainer.getNullShip());
 	}
 
 	@Override
 	public Type getType() {
-		this.type = new EntityType(ProgramContainer.getNullShip());
 		return type;
+	}
+
+	@Override
+	public boolean isTypeCorrect() {
+		return true; // always type correct.
 	}
 
 }

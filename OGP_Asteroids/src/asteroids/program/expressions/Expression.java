@@ -17,4 +17,6 @@ public abstract class Expression{
 	public String toString(){
 		return getType().toString();
 	}
+	
+	public abstract boolean isTypeCorrect(); // each expression must be type correct and must contain this checker.
 }

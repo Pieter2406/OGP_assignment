@@ -17,4 +17,11 @@ public class VariableExpression extends Expression {
 		this.type = t;
 		return t;
 	}
+	
+	@Override
+	public boolean isTypeCorrect(){
+		if (ProgramContainer.getGlobals().containsKey(name)) // Check if the name of this variable is in globals.
+			return true;
+		return false;
+	}
 }

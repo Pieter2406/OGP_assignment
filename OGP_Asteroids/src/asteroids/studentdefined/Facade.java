@@ -1,22 +1,16 @@
 package asteroids.studentdefined;
 
-import java.util.List;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-import org.antlr.runtime.RecognitionException;
-
-
 import asteroids.CollisionListener;
 import asteroids.IFacade;
-import asteroids.IShip;
 import asteroids.model.programs.parsing.ProgramParser;
 import asteroids.program.ProgramConstructor;
 import asteroids.program.expressions.Expression;
@@ -390,8 +384,7 @@ public class Facade implements IFacade {
 	 */
 	@Override
 	public boolean isTypeCheckingSupported() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	/**
@@ -399,8 +392,11 @@ public class Facade implements IFacade {
 	 */
 	@Override
 	public TypeCheckOutcome typeCheckProgram(Object program) {
-		// TODO Auto-generated method stub
-		return null;
+		if (((Program) program).typeCheck()){
+			return IFacade.TypeCheckOutcome.success();
+		}
+		else
+			return IFacade.TypeCheckOutcome.failure("Program is not type correct!");
 	}
 
 	/**

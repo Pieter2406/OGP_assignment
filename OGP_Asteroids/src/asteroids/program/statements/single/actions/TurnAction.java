@@ -16,4 +16,9 @@ public class TurnAction extends ActionStatement {
 		return false;
 	}
 
+	@Override
+	public boolean typeCheck() {
+		return angle.isTypeCorrect();
+	}
+
 }

@@ -2,6 +2,7 @@ package asteroids.program.statements.loops;
 
 import java.util.ArrayList;
 
+import asteroids.model.programs.parsing.ProgramFactory;
 import asteroids.model.programs.parsing.ProgramFactory.ForeachType;
 import asteroids.program.ProgramContainer;
 import asteroids.program.statements.*;
@@ -18,9 +19,6 @@ public class ForEachLoopStatement extends LoopStatement {
 		super(line,column,body);
 		this.variableName = variableName;
 		this.foreachEnum = type;
-
-
-
 	}
 	public void setSource(Program sourceProgram){
 		this.sourceProgram = sourceProgram;
@@ -72,5 +70,4 @@ public class ForEachLoopStatement extends LoopStatement {
 	public void setEntity(SpaceObject entity){
 		ProgramContainer.setGlobal(variableName, new EntityType(entity));
 	}
-
 }

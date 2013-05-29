@@ -13,6 +13,11 @@ public class EntityExpression extends Expression{
 	public EntityType getType(){
 		return (EntityType) this.type;
 	}
+
+	@Override
+	public boolean isTypeCorrect(){
+		return true; // entityexpression is always type correct.
+	}
 	
 }
 
