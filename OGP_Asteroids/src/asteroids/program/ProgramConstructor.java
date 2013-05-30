@@ -21,6 +21,8 @@ import asteroids.program.expressions.doubles.binary.*;
 import asteroids.program.expressions.doubles.property.*;
 import asteroids.program.expressions.doubles.unary.*;
 import asteroids.program.expressions.entities.SelfEntityExpression;
+import asteroids.program.functions.Argument;
+import asteroids.program.functions.FunctionCall;
 import asteroids.program.statements.IfThenStatement;
 import asteroids.program.statements.SequenceStatement;
 import asteroids.program.statements.Statement;
@@ -245,5 +247,13 @@ public class ProgramConstructor implements ProgramFactory<Expression, Statement,
 	public Type createEntityType() {
 		return new EntityType();
 	}
+
+	public FunctionCall createFunctionCall(int line, int column, String name,
+			List<Argument> arguments) {
+		return new FunctionCall(line, column, name, arguments);
+		
+	}
+
+
 
 }

@@ -16,15 +16,16 @@ public class FunctionTester {
 	
 
 	public static void loadFunction() {
-		String name = "test";
-		List<Argument> arguments = new ArrayList<Argument>();
-		List<Argument> formalArguments = new ArrayList<Argument>();
-		List<Statement> subStatements = new ArrayList<Statement>();
-		Statement sequence = new SequenceStatement(0, 0, subStatements);
-		
-		
-		ProgramConstructor c = new ProgramConstructor();
-		c.createFunctionCall(0, 0, name,arguments);
-		c.createFunctionStatement(1, 0, name, sequence, formalArguments);
+		throw new RuntimeException("Not Implemented"); //FunctionTester cannot access neccesary data to pass arguments to the programconstructor and programcontainer.
+//		String name = "test";
+//		List<Argument> arguments = new ArrayList<Argument>();
+//		List<Argument> formalArguments = new ArrayList<Argument>();
+//		List<Statement> subStatements = new ArrayList<Statement>();
+//		Statement sequence = new SequenceStatement(0, 0, subStatements);
+//		
+//		
+//		ProgramConstructor c = new ProgramConstructor();
+//		c.createFunctionCall(0, 0, name,arguments);
+//		c.createFunctionStatement(1, 0, name, sequence, formalArguments);
 	}
 }
