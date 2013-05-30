@@ -1,7 +1,6 @@
 package asteroids.program.expressions.booleans.unary;
 
 import asteroids.program.expressions.Expression;
-import asteroids.program.expressions.booleans.ComposedBooleanExpression;
 import asteroids.program.expressions.booleans.UnaryComposedBooleanExpression;
 import asteroids.program.types.BooleanType;
 
@@ -16,4 +15,9 @@ public class Not extends UnaryComposedBooleanExpression {
 		return new BooleanType(!(boolean)expression.getType().getValue());
 	}
 
+	@Override
+	public String toString() {
+		return "Not [expression=" + expression + ", value=" + type.toString() + "]";
+	}
+	
 }

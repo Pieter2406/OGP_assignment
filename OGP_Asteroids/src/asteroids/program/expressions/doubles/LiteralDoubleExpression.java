@@ -18,4 +18,10 @@ public class LiteralDoubleExpression extends DoubleExpression {
 	public boolean isTypeCorrect() {
 		return true; // Only doubles can be given in the constructor.
 	}
+
+	@Override
+	public String toString() {
+		return "Literal double [value=" + type.toString() + "]";
+	}
+	
 }

@@ -19,4 +19,9 @@ public class LiteralBooleanExpression extends BooleanExpression {
 		return true; // always type correct.
 	}
 
+	@Override
+	public String toString() {
+		return "Literal boolean [value=" + type.toString() + "]";
+	}
+	
 }

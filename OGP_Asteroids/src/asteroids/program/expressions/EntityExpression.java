@@ -18,6 +18,13 @@ public class EntityExpression extends Expression{
 	public boolean isTypeCorrect(){
 		return true; // entityexpression is always type correct.
 	}
+
+	@Override
+	public String toString() {
+		return "Entity [value=" + type.toString() + "]";
+	}
+	
+	
 	
 }
 

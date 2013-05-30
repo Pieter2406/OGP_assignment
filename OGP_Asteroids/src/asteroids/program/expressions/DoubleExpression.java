@@ -13,4 +13,12 @@ public abstract class DoubleExpression extends Expression {
 	public abstract DoubleType getType();
 
 	public abstract boolean isTypeCorrect();
+
+
+	@Override
+	public String toString() {
+		return "Double [value=" + type.toString() + "]";
+	}
+	
+	
 }

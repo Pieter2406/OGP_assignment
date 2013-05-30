@@ -1,6 +1,5 @@
 package asteroids.program.expressions.booleans;
 
-import asteroids.program.expressions.Expression;
 import asteroids.program.types.BooleanType;
 
 public abstract class ComposedBooleanExpression extends BooleanExpression {
@@ -9,5 +8,11 @@ public abstract class ComposedBooleanExpression extends BooleanExpression {
 	}
 
 	@Override
-	public abstract BooleanType getType() ;
+	public abstract BooleanType getType();
+
+	@Override
+	public String toString() {
+		return "Boolean [value=" + type.toString() + "]";
+	}
+	
 }

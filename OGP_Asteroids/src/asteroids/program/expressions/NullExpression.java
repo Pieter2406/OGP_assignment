@@ -22,4 +22,8 @@ public class NullExpression extends Expression {
 		return true; // always type correct.
 	}
 
+	@Override
+	public String toString() {
+		return "Null";
+	}
 }

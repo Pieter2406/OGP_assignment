@@ -12,11 +12,10 @@ public abstract class Expression{
 		this.column = column;
 	}
 	public abstract Type getType();
-
-	@Override
-	public String toString(){
-		return getType().toString();
-	}
 	
+	@Override
+	public String toString() {
+		return "Expression [value=" + type.toString() + "]";
+	}
 	public abstract boolean isTypeCorrect(); // each expression must be type correct and must contain this checker.
 }

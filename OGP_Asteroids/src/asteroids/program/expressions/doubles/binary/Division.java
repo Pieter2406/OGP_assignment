@@ -17,4 +17,9 @@ public class Division extends BinaryComposedDoubleExpression {
 		return (DoubleType) type;
 	}
 
+	@Override
+	public String toString() {
+		return "Division [left expression=" + lhs.toString() + ", right expression=" + rhs.toString() + ", outcome value=" + type.toString()
+				+ "]";
+	}
 }

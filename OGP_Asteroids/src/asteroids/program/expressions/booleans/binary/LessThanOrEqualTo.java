@@ -3,7 +3,6 @@ package asteroids.program.expressions.booleans.binary;
 import asteroids.program.expressions.DoubleExpression;
 import asteroids.program.expressions.Expression;
 import asteroids.program.expressions.booleans.BinaryComposedBooleanExpression;
-import asteroids.program.expressions.booleans.ComposedBooleanExpression;
 import asteroids.program.types.BooleanType;
 
 public class LessThanOrEqualTo extends BinaryComposedBooleanExpression {
@@ -15,6 +14,12 @@ public class LessThanOrEqualTo extends BinaryComposedBooleanExpression {
 	@Override
 	public BooleanType getType() {
 		return new BooleanType(((DoubleExpression)lhs).getType().getValue() <= ((DoubleExpression)rhs).getType().getValue());
+	}
+
+	@Override
+	public String toString() {
+		return "LessThanOrEqualTo [left expression=" + lhs.toString() + ", right expression=" + rhs.toString() + ", outcome value=" + type.toString()
+				+ "]";
 	}
 
 }

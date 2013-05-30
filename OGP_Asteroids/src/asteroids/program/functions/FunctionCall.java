@@ -21,18 +21,18 @@ public class FunctionCall extends SingleStatement {
 	private RunningFunctionStatement runningCopy;
 	private boolean success = false;
 	private String name;
-	private List<Type> arguments;
+	private List<Argument> actualArguments; //Holds an index and a type
 	
 	/**
 	 * 
 	 * @param name 		The name of the function to be called.
-	 * @param arguments	The arguments that should be passed with this function call.
+	 * @param actualArguments	The arguments that should be passed with this function call.
 	 */
-	public FunctionCall(int line, int column, String name, List<Type> arguments) {
+	public FunctionCall(int line, int column, String name, List<Argument> arguments) {
 		super(line, column);
 		runningCopy = null;
 		this.name = name;
-		this.arguments = arguments;
+		this.actualArguments = arguments;
 	}
 
 
@@ -51,12 +51,22 @@ public class FunctionCall extends SingleStatement {
 		else { //Not currently executing, attach a new runningCopy
 			
 			//Find the corresponding function body in the programs list and verify if the given arguments match. If so, attach a RunningFunctionStatement based on the found result.
-			if (sourceProgram.functions.get(name).checkArguments(this.arguments)) {
-				this.runningCopy = new RunningFunctionStatement(sourceProgram.functions.get(name), this.arguments);
+			if (ProgramContainer.getFunctions().get(name).checkArguments(this.actualArguments)) {
+				this.runningCopy = new RunningFunctionStatement(ProgramContainer.getFunctions().get(name), this.actualArguments);
 				return this.execute();
 			} else
 				throw new RuntimeException("Function not found."); //Throw error when the given function cannot be recognized, should never happen if functions are typechecked.
 		}
+	}
+
+
+	/**
+	 * 
+	 */
+	@Override
+	public boolean typeCheck() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

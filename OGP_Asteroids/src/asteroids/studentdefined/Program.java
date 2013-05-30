@@ -1,8 +1,10 @@
 package asteroids.studentdefined;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import asteroids.program.ProgramContainer;
+import asteroids.program.functions.FunctionStatement;
 import asteroids.program.statements.Statement;
 import asteroids.program.types.Type;
 /**
@@ -18,6 +20,8 @@ public class Program {
 	public static final long DEFAULT_RUN_FREQUENCY = 200;
 	private Ship sourceShip;
 	private Map<String, Type> globals;
+	private Map<String, FunctionStatement> functions;
+	private Map<String, Map<String,Type>> locals;
 	private Statement statement;
 	private boolean hasFinished = false;
 	@Deprecated
@@ -29,6 +33,7 @@ public class Program {
 	public Program(Map<String, Type> map, Statement statement) {
 		this.globals = map;
 		this.statement = statement;
+		this.functions = new HashMap<String, FunctionStatement>();
 		statement.setSource(this);
 		ProgramContainer.setProgram(this);
 		currentInstruction = 0;
@@ -74,7 +79,12 @@ public class Program {
 	public Map<String,Type> getGlobals(){
 		return globals;
 	}
-	
+	public Map<String, FunctionStatement> getFunctions(){
+		return functions;
+	}
+	public Map<String, Map<String,Type>> getLocals(){
+		return locals;
+	}
 	public boolean typeCheck(){
 		return statement.typeCheck();
 	}

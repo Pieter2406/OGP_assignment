@@ -18,4 +18,9 @@ public class Multiplication extends BinaryComposedDoubleExpression {
 		return (DoubleType) type;
 	}
 
+	@Override
+	public String toString() {
+		return "Multiplication [left expression=" + lhs.toString() + ", right expression=" + rhs.toString() + ", outcome value=" + type.toString()
+				+ "]";
+	}
 }

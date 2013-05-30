@@ -2,7 +2,6 @@ package asteroids.program.expressions.booleans.binary;
 
 import asteroids.program.expressions.Expression;
 import asteroids.program.expressions.booleans.BinaryComposedBooleanExpression;
-import asteroids.program.expressions.booleans.ComposedBooleanExpression;
 import asteroids.program.types.BooleanType;
 
 public class GreaterThanOrEqualTo extends BinaryComposedBooleanExpression {
@@ -16,4 +15,11 @@ public class GreaterThanOrEqualTo extends BinaryComposedBooleanExpression {
 		return new BooleanType((double)lhs.getType().getValue() >= (double) rhs.getType().getValue());
 	}
 
+	@Override
+	public String toString() {
+		return "GreaterThanOrEqualTo [left expression=" + lhs.toString() + ", right expression=" + rhs.toString() + ", outcome value=" + type.toString()
+				+ "]";
+	}
+
+	
 }
