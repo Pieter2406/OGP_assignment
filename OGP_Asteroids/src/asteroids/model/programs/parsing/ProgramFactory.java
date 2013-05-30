@@ -2,6 +2,9 @@ package asteroids.model.programs.parsing;
 
 import java.util.List;
 
+import asteroids.program.functions.Argument;
+import asteroids.program.functions.FunctionCall;
+
 /**
  * Factory for creating expressions, statements and types.
  */
@@ -47,6 +50,8 @@ public interface ProgramFactory<E, S, T> {
   public S createSkip(int line, int column);
   public S createSequence(int line, int column, List<S> statements);
   public S createPrint(int line, int column, E e);
+  public S createFunctionCall(int line, int column, String name,
+			List<Argument> arguments);
   
   public T createDoubleType();
   public T createBooleanType();
