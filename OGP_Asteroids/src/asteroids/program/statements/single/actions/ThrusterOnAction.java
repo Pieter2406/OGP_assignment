@@ -20,4 +20,9 @@ public class ThrusterOnAction extends ActionStatement {
 		return true; // The action thruster on is always type correct.
 	}
 
+	@Override
+	public String toString() {
+		return "ThrusterOnAction [line=" + line + ", column=" + column + "]";
+	}
+	
 }

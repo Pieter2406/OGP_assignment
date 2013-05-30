@@ -4,11 +4,11 @@
 package asteroids.program.statements;
 
 import asteroids.program.expressions.Expression;
-import asteroids.program.expressions.doubles.PropertyDoubleExpression;
 import asteroids.studentdefined.Program;
 
 public class IfThenStatement extends Statement {
 
+	
 	private Expression condition;
 	private Statement then;
 	private Statement otherwise;
@@ -69,5 +69,12 @@ public class IfThenStatement extends Statement {
 			return false; // if then or otherwise is type incorrect return false, else return true.
 		}
 		return true;
+	}
+	
+	@Override
+	public String toString() {
+		return "IfThenStatement [condition=" + condition + ", then=" + then
+				+ ", otherwise=" + otherwise + ", inThen=" + inThen
+				+ ", inOtherwise=" + inOtherwise + "]";
 	}
 }

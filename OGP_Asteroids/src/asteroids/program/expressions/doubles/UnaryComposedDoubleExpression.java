@@ -18,35 +18,4 @@ public abstract class UnaryComposedDoubleExpression extends ComposedDoubleExpres
 			return true;
 		return false;
 	}
-
-	@Override
-	public String toString() {
-		return "Unary double [expression=" + e.toString() + ", value=" + type.toString() +  "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((e == null) ? 0 : e.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		UnaryComposedDoubleExpression other = (UnaryComposedDoubleExpression) obj;
-		if (e == null) {
-			if (other.e != null)
-				return false;
-		} else if (!e.equals(other.e))
-			return false;
-		return true;
-	}
-
 }

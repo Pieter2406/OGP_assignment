@@ -16,5 +16,9 @@ public class GetVy extends PropertyDoubleExpression {
 		DoubleType velocityY = new DoubleType(spaceObject.getValue().getVelocity().getVelocityY());
 		return velocityY;
 	}
-
+	
+	@Override
+	public String toString() {
+		return "Get y velocity property [expression=" + expression + "]";
+	}
 }

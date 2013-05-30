@@ -13,9 +13,7 @@ public abstract class Expression{
 	}
 	public abstract Type getType();
 	
-	@Override
-	public String toString() {
-		return "Expression [value=" + type.toString() + "]";
-	}
 	public abstract boolean isTypeCorrect(); // each expression must be type correct and must contain this checker.
+
+	public abstract String toString();
 }

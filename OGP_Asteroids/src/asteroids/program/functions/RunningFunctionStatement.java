@@ -43,6 +43,10 @@ public class RunningFunctionStatement {
 	 * 
 	 */
 	private void loadArguments(){
+		for(int i = 0 ; i < formalArguments.size(); i++){
+			locals.put(formalArguments.get(i).getName(), actualArguments.get(i).getType()); 
+		}
+		/*
 		for(Argument fArg : formalArguments){
 			for(Argument aArg : actualArguments){
 				if(fArg.getIndex() == aArg.getIndex()){
@@ -50,6 +54,7 @@ public class RunningFunctionStatement {
 				}
 			}
 		}
+		*/
 	}
 	
 }

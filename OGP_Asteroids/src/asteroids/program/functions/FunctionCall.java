@@ -60,13 +60,22 @@ public class FunctionCall extends SingleStatement {
 	}
 
 
-	/**
-	 * 
-	 */
+	
 	@Override
 	public boolean typeCheck() {
-		// TODO Auto-generated method stub
-		return false;
+		if(ProgramContainer.getFunctions().get(name) == null){ //Check if function exists.
+			return false;
+		}
+		for(int i = 0 ; i < this.actualArguments.size(); i++){ //Check whether the types of the formal arguments corresponds with the types of the actual arguments.
+			if(this.actualArguments.get(i).getType().getClass().equals(ProgramContainer.getFunctions().get(name).getFormalArguments().get(i).getType().getClass()));
+		}
+		return true;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Function: " + name + " (" + actualArguments.toString() + ") ";
 	}
 
 }

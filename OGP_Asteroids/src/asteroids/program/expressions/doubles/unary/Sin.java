@@ -14,5 +14,8 @@ public class Sin extends UnaryComposedDoubleExpression {
 	public DoubleType getType() {
 		return new DoubleType(Math.sin((double)e.getType().getValue()));
 	}
-
+	@Override
+	public String toString() {
+		return "Get sine [expression=" + e + "]";
+	}
 }

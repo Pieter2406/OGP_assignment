@@ -2,8 +2,6 @@ package asteroids.program.expressions;
 
 import asteroids.program.ProgramContainer;
 import asteroids.program.types.EntityType;
-import asteroids.program.types.Type;
-import asteroids.studentdefined.Ship;
 
 public class NullExpression extends EntityExpression { // special sort of entity expression, null is only valid for entities
 

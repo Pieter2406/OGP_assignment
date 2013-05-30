@@ -4,7 +4,6 @@ import asteroids.program.expressions.Expression;
 import asteroids.program.expressions.booleans.BinaryComposedBooleanExpression;
 import asteroids.program.types.BooleanType;
 import asteroids.program.types.DoubleType;
-import asteroids.program.types.EntityType;
 
 public class GreaterThan extends BinaryComposedBooleanExpression {
 	public GreaterThan(int line, int column, Expression lhs, Expression rhs) {

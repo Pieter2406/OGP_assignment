@@ -19,4 +19,9 @@ public class SkipAction extends ActionStatement {
 		return true; // the action skip is always type correct.
 	}
 
+	@Override
+	public String toString() {
+		return "SkipAction [line=" + line + ", column=" + column + "]";
+	}
+
 }

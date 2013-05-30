@@ -14,5 +14,10 @@ public class Cos extends UnaryComposedDoubleExpression {
 	public DoubleType getType() {
 		return new DoubleType(Math.cos((double)e.getType().getValue()));
 	}
+	
+	@Override
+	public String toString() {
+		return "Get cosine [expression=" + e + "]";
+	}
 
 }

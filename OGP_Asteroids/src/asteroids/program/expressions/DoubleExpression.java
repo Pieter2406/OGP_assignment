@@ -8,17 +8,7 @@ public abstract class DoubleExpression extends Expression {
 		super(line,column);
 	}
 
-	
 	@Override
 	public abstract DoubleType getType();
 
-	public abstract boolean isTypeCorrect();
-
-
-	@Override
-	public String toString() {
-		return "Double [value=" + type.toString() + "]";
-	}
-	
-	
 }

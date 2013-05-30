@@ -21,6 +21,12 @@ public class PrintSingleStatement extends SingleStatement {
 	public boolean typeCheck() {
 		return (expression.isTypeCorrect());
 	}
+
+	@Override
+	public String toString() {
+		return "PrintSingleStatement [expression=" + expression + ", line="
+				+ line + ", column=" + column + "]";
+	}
 	
 	
 }

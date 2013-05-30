@@ -2,9 +2,7 @@ package asteroids.program.statements.single;
 
 import asteroids.program.ProgramContainer;
 import asteroids.program.expressions.Expression;
-import asteroids.program.expressions.doubles.PropertyDoubleExpression;
 import asteroids.program.statements.SingleStatement;
-import asteroids.program.types.DoubleType;
 
 public class AssignmentStatement extends SingleStatement {
 	private String name;
@@ -31,5 +29,12 @@ public class AssignmentStatement extends SingleStatement {
 		// Selse
 			return (rhs.isTypeCorrect() && rhs.getType().getClass() == ProgramContainer.getGlobal(name).getClass());
 	}
+
+	@Override
+	public String toString() {
+		return "AssignmentStatement [name=" + name + ", rhs=" + rhs + ", line="
+				+ line + ", column=" + column + "]";
+	}
+	
 }
 

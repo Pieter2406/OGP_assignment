@@ -64,4 +64,10 @@ public class WhileLoopStatement extends LoopStatement {
 			return false; // if a statement of the body is type incorrect return false, if none is found return true.
 		return true;
 	}
+	@Override
+	public String toString() {
+		return "WhileLoopStatement [condition=" + condition + ", inBody=" + inBody
+				+ ", success=" + success + "]";
+	}
+	
 }

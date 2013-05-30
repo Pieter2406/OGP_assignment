@@ -197,9 +197,9 @@ public class Mass implements Comparable<Mass>{
 		double factor = getMassUnit().getExchangeFactor(other.getMassUnit());
 		if (other == null)
 			throw new IllegalArgumentException("Mass is not effective"); ;
-		if (Util.fuzzyEquals(getValue(),other.getValue() / factor))
+		if (Util.fuzzyEquals(getValue(),other.getValue() * factor))
 			return 0;
-		if (getValue() < other.getValue() / factor)
+		if (getValue() < other.getValue() * factor)
 			return -1;
 		else
 			return 1;

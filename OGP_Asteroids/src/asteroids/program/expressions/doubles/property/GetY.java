@@ -1,6 +1,5 @@
 package asteroids.program.expressions.doubles.property;
 
-import asteroids.program.expressions.EntityExpression;
 import asteroids.program.expressions.Expression;
 import asteroids.program.expressions.doubles.PropertyDoubleExpression;
 import asteroids.program.types.DoubleType;
@@ -16,5 +15,9 @@ public class GetY extends PropertyDoubleExpression {
 		EntityType spaceObject = (EntityType) expression.getType();
 		DoubleType yPos = new DoubleType(spaceObject.getValue().getPosition().getY());
 		return yPos;
+	}
+	@Override
+	public String toString() {
+		return "Get y position property [expression=" + expression + "]";
 	}
 }
