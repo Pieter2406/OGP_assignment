@@ -304,7 +304,7 @@ public abstract class SpaceObject {
 		assert
 		(world != null || getWorld() == null || !getWorld().containsSpaceObject(this));
 		this.world = world;
-	}
+		}
 
 	/**
 	 * Returns whether this space object has a proper world to which it is attached;
