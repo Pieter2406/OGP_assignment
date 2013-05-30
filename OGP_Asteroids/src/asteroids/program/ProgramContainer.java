@@ -1,6 +1,5 @@
 package asteroids.program;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import asteroids.program.types.Type;

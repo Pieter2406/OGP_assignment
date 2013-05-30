@@ -16,5 +16,6 @@ public class Division extends BinaryComposedDoubleExpression {
 		type = new DoubleType((double) this.lhs.getType().getValue() / (double) this.rhs.getType().getValue());
 		return (DoubleType) type;
 	}
+	
 
 }

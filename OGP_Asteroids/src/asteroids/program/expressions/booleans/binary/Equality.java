@@ -26,4 +26,15 @@ public class Equality extends BinaryComposedBooleanExpression {
 		}
 	}
 
+	@Override
+	public boolean isTypeCorrect() {
+		if (lhs.getType() instanceof BooleanType && rhs.getType() instanceof BooleanType)
+			return true;
+		if (lhs.getType() instanceof EntityType && rhs.getType() instanceof EntityType)
+			return true;
+		if (lhs.getType() instanceof DoubleType && rhs.getType() instanceof DoubleType)
+			return true;
+		return false;
+	}
+
 }

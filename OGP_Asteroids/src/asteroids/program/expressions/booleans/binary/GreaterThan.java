@@ -4,6 +4,8 @@ import asteroids.program.expressions.Expression;
 import asteroids.program.expressions.booleans.BinaryComposedBooleanExpression;
 import asteroids.program.expressions.booleans.ComposedBooleanExpression;
 import asteroids.program.types.BooleanType;
+import asteroids.program.types.DoubleType;
+import asteroids.program.types.EntityType;
 
 public class GreaterThan extends BinaryComposedBooleanExpression {
 	public GreaterThan(int line, int column, Expression lhs, Expression rhs) {
@@ -15,6 +17,11 @@ public class GreaterThan extends BinaryComposedBooleanExpression {
 		return new BooleanType((double)lhs.getType().getValue() > (double) rhs.getType().getValue());
 	}
 	
-	
+	@Override
+	public boolean isTypeCorrect() {
+		if (lhs.getType() instanceof DoubleType && rhs.getType() instanceof DoubleType)
+			return true;
+		return false;
+	}
 
 }

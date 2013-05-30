@@ -30,8 +30,8 @@ public class Program {
 		this.globals = map;
 		this.statement = statement;
 		statement.setSource(this);
-		ProgramContainer.setProgram(this);
 		currentInstruction = 0;
+		ProgramContainer.setProgram(this);
 	}
 
 	public Ship getSourceShip() {

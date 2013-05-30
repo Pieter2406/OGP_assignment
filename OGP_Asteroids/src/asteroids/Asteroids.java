@@ -33,6 +33,7 @@ public class Asteroids<World, Ship, Asteroid, Bullet, PowerUp, Program> extends 
     this.aiProgramUrl = aiProgramUrl;
     menu = new AsteroidsMenu<World, Ship, Asteroid, Bullet, PowerUp, Program>(this);
     this.facade = facade;
+    startMultiPlayerGame(true);
     setUndecorated(undecorated);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     setResizable(false);

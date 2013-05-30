@@ -1,5 +1,6 @@
 double b; 
 b := 0.1;
+entity bul;
 while(true){
 	turn b;
 	foreach(bullet, bul) do{

@@ -16,4 +16,11 @@ public class Disjunction extends BinaryComposedBooleanExpression {
 		return new BooleanType((boolean)lhs.getType().getValue() || (boolean)rhs.getType().getValue());
 	}
 
+	@Override
+	public boolean isTypeCorrect(){
+		if (lhs.getType() instanceof BooleanType && rhs.getType() instanceof BooleanType) // for comparisons this method is Overriden.
+			return true;
+		return false;
+	}
+	
 }

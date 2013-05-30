@@ -1,7 +1,9 @@
 package asteroids.program.statements.single.actions;
 
+import asteroids.program.expressions.DoubleExpression;
 import asteroids.program.expressions.Expression;
 import asteroids.program.statements.single.ActionStatement;
+import asteroids.program.types.DoubleType;
 
 public class TurnAction extends ActionStatement {
 	private Expression angle;
@@ -18,7 +20,7 @@ public class TurnAction extends ActionStatement {
 
 	@Override
 	public boolean typeCheck() {
-		return angle.isTypeCorrect();
+		return angle.isTypeCorrect() && angle.getType() instanceof DoubleType; // angle must be a double expression
 	}
 
 }

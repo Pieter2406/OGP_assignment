@@ -10,17 +10,16 @@ public abstract class PropertyDoubleExpression extends DoubleExpression {
 	
 	public PropertyDoubleExpression(int line, int column, Expression exp) {
 		super(line,column);
-		this.expression = exp; 
+		this.expression = exp;
 	}
 
 	@Override
 	public abstract DoubleType getType();
-	
+
 	@Override
 	public boolean isTypeCorrect(){
-		if (expression.getType() instanceof EntityType)
+		if (expression == null || expression.getType() instanceof EntityType) // expression == null --> type == entity (Entities are the only expression that contain null).
 			return true;
 		return false;
 	}
-
 }
