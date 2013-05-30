@@ -35,8 +35,8 @@ public class Program {
 		this.statement = statement;
 		this.functions = new HashMap<String, FunctionStatement>();
 		statement.setSource(this);
-		ProgramContainer.setProgram(this);
 		currentInstruction = 0;
+		ProgramContainer.setProgram(this);
 	}
 
 	public Ship getSourceShip() {

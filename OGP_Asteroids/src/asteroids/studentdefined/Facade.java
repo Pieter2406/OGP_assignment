@@ -13,6 +13,7 @@ import asteroids.CollisionListener;
 import asteroids.IFacade;
 import asteroids.model.programs.parsing.ProgramParser;
 import asteroids.program.ProgramConstructor;
+import asteroids.program.ProgramContainer;
 import asteroids.program.expressions.Expression;
 import asteroids.program.statements.Statement;
 import asteroids.program.types.Type;
@@ -392,6 +393,7 @@ public class Facade implements IFacade {
 	 */
 	@Override
 	public TypeCheckOutcome typeCheckProgram(Object program) {
+		((Program)program).attachShip(ProgramContainer.getNullShip()); // assign the null ship so that expressions containing self entities can be type checked.
 		if (((Program) program).typeCheck()){
 			return IFacade.TypeCheckOutcome.success();
 		}

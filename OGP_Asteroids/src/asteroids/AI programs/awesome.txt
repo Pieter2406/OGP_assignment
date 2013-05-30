@@ -4,6 +4,7 @@ double pX;
 double pY;
 double sX;
 double sY;
+entity s;
 entity enemy;
 bool foundPlayer := false;
 //Find player
@@ -18,6 +19,7 @@ foreach (ship, s){
 
 while (true){
 	// turn to player
+	if (enemy != null) then {
 	pX := getx enemy;
 	pY := gety enemy;
 	sX := getx self;
@@ -33,6 +35,7 @@ while (true){
 	double sinus := sin(getdir);
 	if((sinus < totalOffset/side) || (sinus > (-1) * (totalOffset/side))) then{
 		fire;
+	}
 	}
 		
 }

@@ -4,6 +4,7 @@
 package asteroids.program.statements;
 
 import asteroids.program.expressions.Expression;
+import asteroids.program.expressions.doubles.PropertyDoubleExpression;
 import asteroids.studentdefined.Program;
 
 public class IfThenStatement extends Statement {
@@ -62,6 +63,8 @@ public class IfThenStatement extends Statement {
 	}
 	@Override
 	public boolean typeCheck() {
+		if (!condition.isTypeCorrect())
+			return false;
 		if (!then.typeCheck() || !otherwise.typeCheck()){
 			return false; // if then or otherwise is type incorrect return false, else return true.
 		}

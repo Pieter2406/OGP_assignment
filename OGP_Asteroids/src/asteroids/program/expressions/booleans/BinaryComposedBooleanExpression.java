@@ -2,6 +2,7 @@ package asteroids.program.expressions.booleans;
 
 import asteroids.program.expressions.Expression;
 import asteroids.program.types.BooleanType;
+import asteroids.program.types.DoubleType;
 
 public abstract class BinaryComposedBooleanExpression extends ComposedBooleanExpression {
 	protected Expression rhs;
@@ -14,13 +15,6 @@ public abstract class BinaryComposedBooleanExpression extends ComposedBooleanExp
 
 	@Override
 	public abstract BooleanType getType();
-
-	@Override
-	public boolean isTypeCorrect(){
-		if (lhs.getType() instanceof BooleanType && rhs.getType() instanceof BooleanType)
-			return true;
-		return false;
-	}
 
 	@Override
 	public String toString() {
@@ -58,6 +52,5 @@ public abstract class BinaryComposedBooleanExpression extends ComposedBooleanExp
 			return false;
 		return true;
 	}
-	
 	
 }

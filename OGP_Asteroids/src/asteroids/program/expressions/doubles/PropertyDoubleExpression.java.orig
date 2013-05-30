@@ -22,6 +22,8 @@ public abstract class PropertyDoubleExpression extends DoubleExpression {
 			return true;
 		return false;
 	}
+<<<<<<< HEAD
+
 	@Override
 	public String toString() {
 		return "Property double [expression=" + expression.toString() + ", value=" + type.toString() +  "]";
@@ -55,4 +57,6 @@ public abstract class PropertyDoubleExpression extends DoubleExpression {
 	
 
 	
+=======
+>>>>>>> 315fd65ee945a7c8fad87c7e1587852d4724348a
 }

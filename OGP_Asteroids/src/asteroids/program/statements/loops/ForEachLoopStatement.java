@@ -70,4 +70,15 @@ public class ForEachLoopStatement extends LoopStatement {
 	public void setEntity(SpaceObject entity){
 		ProgramContainer.setGlobal(variableName, new EntityType(entity));
 	}
+	
+	@Override
+	public boolean typeCheck() {
+		if (ProgramContainer.getGlobal(variableName) == null || !(ProgramContainer.getGlobal(variableName) instanceof EntityType))
+			return false;
+		// Note that our foreach loop supports action statements, this does not need to be checked.
+		// No typecheck on variablename because this does not need to be a global vairiable, the foreachloop creates the proper type itself.
+		if (!body.typeCheck())
+			return false; // if a statement of the body is type incorrect return false, if none is found return true.
+		return true;
+	}
 }

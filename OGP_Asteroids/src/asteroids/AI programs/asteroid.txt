@@ -1,7 +1,7 @@
 double x;
 double y;
 double r;
-double nearestAsteroid;
+entity nearestAsteroid;
 entity a;
 double distance;
 double distanceToNearestAsteroid;

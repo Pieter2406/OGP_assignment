@@ -3,6 +3,7 @@ package asteroids.program.expressions.booleans.binary;
 import asteroids.program.expressions.Expression;
 import asteroids.program.expressions.booleans.BinaryComposedBooleanExpression;
 import asteroids.program.types.BooleanType;
+import asteroids.program.types.DoubleType;
 
 
 public class LessThan extends BinaryComposedBooleanExpression {
@@ -23,4 +24,11 @@ public class LessThan extends BinaryComposedBooleanExpression {
 				+ "]";
 	}
 
+	@Override
+	public boolean isTypeCorrect() {
+		if (lhs.getType() instanceof DoubleType && rhs.getType() instanceof DoubleType)
+			return true;
+		return false;
+	}
+	
 }

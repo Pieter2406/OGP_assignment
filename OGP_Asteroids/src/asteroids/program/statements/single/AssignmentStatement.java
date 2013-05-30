@@ -2,7 +2,9 @@ package asteroids.program.statements.single;
 
 import asteroids.program.ProgramContainer;
 import asteroids.program.expressions.Expression;
+import asteroids.program.expressions.doubles.PropertyDoubleExpression;
 import asteroids.program.statements.SingleStatement;
+import asteroids.program.types.DoubleType;
 
 public class AssignmentStatement extends SingleStatement {
 	private String name;
@@ -24,6 +26,10 @@ public class AssignmentStatement extends SingleStatement {
 		if (ProgramContainer.getGlobal(name) == null)
 			return false; // variable must exist!
 		// make sure that the type of the expression corresponds with the type from the list of global variables.
-		return (rhs.isTypeCorrect() && rhs.getType().getClass() == ProgramContainer.getGlobal(name).getClass());
+		// if (rhs instanceof PropertyDoubleExpression) // Can't be checked the same way because the program does not belong to a ship / world when typechecking.
+		//	return (rhs.isTypeCorrect() && ProgramContainer.getGlobal(name) instanceof DoubleType);
+		// Selse
+			return (rhs.isTypeCorrect() && rhs.getType().getClass() == ProgramContainer.getGlobal(name).getClass());
 	}
 }
+

@@ -16,18 +16,19 @@ public class Conjunction extends BinaryComposedBooleanExpression {
 	}
 
 	@Override
+<<<<<<< HEAD
+	public String toString() {
+		return "Conjunction [left expression=" + lhs.toString() + ", right expression=" + rhs.toString() + ", outcome value=" + type.toString()
+				+ "]";
+	}
+	
+	
+=======
 	public boolean isTypeCorrect(){
 		if (lhs.getType() instanceof BooleanType && rhs.getType() instanceof BooleanType) // for comparisons this method is Overriden.
 			return true;
 		return false;
 	}
 	
-	@Override
-	public String toString() {
-		return "Conjunction [left expression=" + lhs.toString() + ", right expression=" + rhs.toString() + ", outcome value=" + type.toString()
-				+ "]";
-	}
-	
-
-	
+>>>>>>> 315fd65ee945a7c8fad87c7e1587852d4724348a
 }

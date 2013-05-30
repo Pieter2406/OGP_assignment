@@ -7,9 +7,9 @@ import asteroids.program.types.DoubleType;
 import asteroids.program.types.EntityType;
 import asteroids.studentdefined.SpaceObject;
 
-public class Equality extends BinaryComposedBooleanExpression {
+public class InEquality extends BinaryComposedBooleanExpression {
 
-	public Equality(int line, int column, Expression lhs, Expression rhs) {
+	public InEquality(int line, int column, Expression lhs, Expression rhs) {
 		super(line, column, lhs, rhs);
 	}
 
@@ -17,14 +17,25 @@ public class Equality extends BinaryComposedBooleanExpression {
 	public BooleanType getType() {
 		if(lhs.getType() instanceof EntityType || rhs.getType() instanceof EntityType){
 			boolean isEqual = ((SpaceObject)lhs.getType().getValue()).equals((SpaceObject) rhs.getType().getValue());
-			return new BooleanType(isEqual);
+			this.type = new BooleanType(!isEqual);
 		}else if(lhs.getType() instanceof DoubleType || rhs.getType() instanceof DoubleType){
-			return new BooleanType((double)lhs.getType().getValue() == (double)rhs.getType().getValue());
+			this.type = new BooleanType((double)lhs.getType().getValue() != (double)rhs.getType().getValue());
 		}else{
-			return new BooleanType(false);
+			this.type =  new BooleanType(false);
 		}
+		return (BooleanType) this.type;
+		
+	}
+<<<<<<< HEAD
+
+	@Override
+	public String toString() {
+		return "InEquality [left expression=" + lhs.toString() + ", right expression=" + rhs.toString() + ", outcome value=" + type.toString()
+				+ "]";
 	}
 
+=======
+	
 	@Override
 	public boolean isTypeCorrect() {
 		if (lhs.getType() instanceof BooleanType && rhs.getType() instanceof BooleanType)
@@ -35,12 +46,5 @@ public class Equality extends BinaryComposedBooleanExpression {
 			return true;
 		return false;
 	}
-	
-	@Override
-	public String toString() {
-		return "Equality [left expression=" + lhs.toString() + ", right expression=" + rhs.toString() + ", outcome value=" + type.toString()
-				+ "]";
-	}
-
-
+>>>>>>> 315fd65ee945a7c8fad87c7e1587852d4724348a
 }

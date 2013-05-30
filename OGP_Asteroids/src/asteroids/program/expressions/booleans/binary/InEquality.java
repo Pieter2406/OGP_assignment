@@ -32,5 +32,15 @@ public class InEquality extends BinaryComposedBooleanExpression {
 		return "InEquality [left expression=" + lhs.toString() + ", right expression=" + rhs.toString() + ", outcome value=" + type.toString()
 				+ "]";
 	}
-
+	
+	@Override
+	public boolean isTypeCorrect() {
+		if (lhs.getType() instanceof BooleanType && rhs.getType() instanceof BooleanType)
+			return true;
+		if (lhs.getType() instanceof EntityType && rhs.getType() instanceof EntityType)
+			return true;
+		if (lhs.getType() instanceof DoubleType && rhs.getType() instanceof DoubleType)
+			return true;
+		return false;
+	}
 }

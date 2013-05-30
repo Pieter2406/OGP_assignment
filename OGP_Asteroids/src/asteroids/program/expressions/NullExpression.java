@@ -5,16 +5,16 @@ import asteroids.program.types.EntityType;
 import asteroids.program.types.Type;
 import asteroids.studentdefined.Ship;
 
-public class NullExpression extends Expression {
+public class NullExpression extends EntityExpression { // special sort of entity expression, null is only valid for entities
 
 	public NullExpression(int line, int column) {
-		super(line, column);
+		super(line, column, null);
 		this.type = new EntityType(ProgramContainer.getNullShip());
 	}
 
 	@Override
-	public Type getType() {
-		return type;
+	public EntityType getType() {
+		return (EntityType)type;
 	}
 
 	@Override

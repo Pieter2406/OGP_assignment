@@ -1,33 +1,33 @@
-package asteroids.program.expressions.doubles;
+package asteroids.program.expressions.booleans;
 
-import asteroids.program.expressions.DoubleExpression;
 import asteroids.program.expressions.Expression;
+import asteroids.program.types.BooleanType;
 import asteroids.program.types.DoubleType;
 
-public abstract class BinaryComposedDoubleExpression extends ComposedDoubleExpression {
-	protected Expression lhs;
+public abstract class BinaryComposedBooleanExpression extends ComposedBooleanExpression {
 	protected Expression rhs;
-	public BinaryComposedDoubleExpression(int line, int column, Expression lhs, Expression rhs) {
-		super(line,column);
-		this.lhs = lhs;
-		this.rhs = rhs;
+	protected Expression lhs;
+	public BinaryComposedBooleanExpression(int line, int column, Expression lhs, Expression rhs) {
+		super(line, column);
+		this.rhs =  rhs;
+		this.lhs =  lhs;
 	}
 
 	@Override
-	public abstract DoubleType getType();
-	
+<<<<<<< HEAD
+	public abstract BooleanType getType();
+
 	@Override
 	public boolean isTypeCorrect(){
-		if (lhs.getType() instanceof DoubleType && (rhs.getType() instanceof DoubleType)) // lhs and rhs of BinaryComposedDoubleExpression must be of type double.
+		if (lhs.getType() instanceof BooleanType && rhs.getType() instanceof BooleanType)
 			return true;
 		return false;
 	}
 
-	
 	@Override
 	public String toString() {
-		return "Binary double [left expression=" + lhs.toString() + ", right expression=" + rhs.toString() + ", outcome value=" + type.toString()
-				+ "]";
+		return "Boolean [left expression=" + lhs.toString() + ", right expression=" + rhs.toString()
+				+ ", value=" + type.toString() + "]";
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public abstract class BinaryComposedDoubleExpression extends ComposedDoubleExpre
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		BinaryComposedDoubleExpression other = (BinaryComposedDoubleExpression) obj;
+		BinaryComposedBooleanExpression other = (BinaryComposedBooleanExpression) obj;
 		if (lhs == null) {
 			if (other.lhs != null)
 				return false;
@@ -61,4 +61,11 @@ public abstract class BinaryComposedDoubleExpression extends ComposedDoubleExpre
 		return true;
 	}
 	
+	
+=======
+	public BooleanType getType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+>>>>>>> 315fd65ee945a7c8fad87c7e1587852d4724348a
 }

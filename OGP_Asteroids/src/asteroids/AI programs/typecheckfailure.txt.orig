@@ -1,0 +1,7 @@
+<<<<<<< HEAD
+double b;
+
+b := 1;
+=======
+turn (getdir);
+>>>>>>> 315fd65ee945a7c8fad87c7e1587852d4724348a
