@@ -16,5 +16,8 @@ public class GetX extends PropertyDoubleExpression {
 		DoubleType xPos = new DoubleType(spaceObject.getValue().getPosition().getX());
 		return xPos;
 	}
-
+	@Override
+	public String toString() {
+		return "Get x position property [expression=" + expression + "]";
+	}
 }

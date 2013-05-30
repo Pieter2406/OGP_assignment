@@ -13,4 +13,9 @@ public class SelfEntityExpression extends EntityExpression {
 		type = new EntityType(ProgramContainer.getProgram().getSourceShip());
 		return (EntityType) type;
 	}
+	
+	@Override
+	public String toString() {
+		return "Return this ship as entity";
+	}
 }

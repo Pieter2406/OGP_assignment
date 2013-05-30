@@ -18,7 +18,7 @@ public class Argument {
 	public Argument(String name,int index){
 		this(name,null,index);
 	}
-	
+
 	public int getIndex() {
 		return index;
 	}
@@ -28,4 +28,10 @@ public class Argument {
 	public String getName() {
 		return name;
 	}
+	@Override
+	public String toString() {
+		return type + " " + name;
+	}
+
+
 }

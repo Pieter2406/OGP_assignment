@@ -10,9 +10,4 @@ public abstract class ComposedBooleanExpression extends BooleanExpression {
 	@Override
 	public abstract BooleanType getType();
 
-	@Override
-	public String toString() {
-		return "Boolean [value=" + type.toString() + "]";
-	}
-	
 }

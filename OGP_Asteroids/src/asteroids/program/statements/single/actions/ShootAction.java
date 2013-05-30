@@ -19,6 +19,10 @@ public class ShootAction extends ActionStatement {
 	public boolean typeCheck() {
 		return true; // The action fire is always type correct.
 	}
-	
+
+	@Override
+	public String toString() {
+		return "ShootAction [line=" + line + ", column=" + column + "]";
+	}
 
 }

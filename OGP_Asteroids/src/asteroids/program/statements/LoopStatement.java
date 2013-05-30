@@ -6,4 +6,12 @@ public abstract class LoopStatement extends Statement {
 		super(line, column);
 		this.body = body;
 	}
+	
+	@Override
+	public String toString() {
+		return "LoopStatement [body=" + body + ", line=" + line + ", column="
+				+ column + "]";
+	}
+	
+	
 }

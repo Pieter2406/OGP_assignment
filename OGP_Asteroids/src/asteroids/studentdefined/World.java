@@ -1,6 +1,5 @@
 package asteroids.studentdefined;
 
-import java.util.AbstractSet;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -313,6 +312,16 @@ public class World {
 	 * Update the position of each space object in this world.
 	 * @param 	time
 	 * 			Given time that determines the amount of movement of each object.
+	 * @effect	For each ship which contains a program, the program is executed
+	 * 			every 0,2s.
+	 * 			| for each Ship ship in visibleObjects
+	 * 			|	if (ship.getProgram() != null)
+	 * 			|		if(system.currentTimeMillis() - ship.getProgram().getLastRunTime() >= Program.DEFAULT_RUN_FREQUENCY)
+	 * 			|			ship.getProgram().run();
+	 * @effect	For each ship, evaluate the active time of its active powerups.
+	 * 			| for each Ship ship in visibleObjects
+	 * 			|	for each PowerUp pwp in ship.getActivePowerUps()
+	 * 			|		pwp.evaluate()
 	 * @effect	Each Object of this world has an updated position based on the
 	 * 			given time.
 	 * 			| for each SpaceObject obj in visibleObjects

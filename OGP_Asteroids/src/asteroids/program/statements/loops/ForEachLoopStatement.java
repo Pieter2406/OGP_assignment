@@ -2,7 +2,6 @@ package asteroids.program.statements.loops;
 
 import java.util.ArrayList;
 
-import asteroids.model.programs.parsing.ProgramFactory;
 import asteroids.model.programs.parsing.ProgramFactory.ForeachType;
 import asteroids.program.ProgramContainer;
 import asteroids.program.statements.*;
@@ -81,4 +80,13 @@ public class ForEachLoopStatement extends LoopStatement {
 			return false; // if a statement of the body is type incorrect return false, if none is found return true.
 		return true;
 	}
+	
+	@Override
+	public String toString() {
+		return "ForEachLoopStatement [variableName=" + variableName
+				+ ", foreachEnum=" + foreachEnum + ", IIC=" + IIC
+				+ ", spaceObjectList=" + spaceObjectList + "]";
+	}
+	
+	
 }

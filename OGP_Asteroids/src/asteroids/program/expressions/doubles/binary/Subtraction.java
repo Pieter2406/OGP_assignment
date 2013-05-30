@@ -18,4 +18,9 @@ public class Subtraction extends BinaryComposedDoubleExpression {
 		return (DoubleType) type;
 	}
 
+	@Override
+	public String toString() {
+		return "Subtraction [left expression=" + lhs.toString() + ", right expression=" + rhs.toString() + ", outcome value=" + type.toString()
+				+ "]";
+	}
 }

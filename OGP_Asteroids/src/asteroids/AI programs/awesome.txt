@@ -33,9 +33,9 @@ while (true){
 	double totalOffset := (getradius enemy) + OFFSET;
 	double side := sqrt((dX*dX) + (totalOffset*totalOffset));
 	double sinus := sin(getdir);
-	if((sinus < totalOffset/side) || (sinus > (-1) * (totalOffset/side))) then{
-		fire;
-	}
+	//if((sinus < totalOffset/side) || (sinus > (-1) * (totalOffset/side))) then{
+	//	fire;
+	//}
 	}
 		
 }

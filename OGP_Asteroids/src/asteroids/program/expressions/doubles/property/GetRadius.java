@@ -17,4 +17,8 @@ public class GetRadius extends PropertyDoubleExpression {
 		return radius;
 	}
 
+	@Override
+	public String toString() {
+		return "Get radius property [expression=" + expression + "]";
+	}
 }

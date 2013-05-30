@@ -19,4 +19,10 @@ public class ThrusterOffAction extends ActionStatement {
 	public boolean typeCheck() {
 		return true; // The action thruster off is always type correct.
 	}
+
+	@Override
+	public String toString() {
+		return "ThrusterOffAction [line=" + line + ", column=" + column + "]";
+	}
+	
 }

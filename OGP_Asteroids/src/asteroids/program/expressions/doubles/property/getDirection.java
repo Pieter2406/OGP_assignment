@@ -17,4 +17,10 @@ public class getDirection extends PropertyDoubleExpression {
 		return (DoubleType) type;
 	}
 
+
+	@Override
+	public String toString() {
+		return "Get direction property of the source ship";
+	}
+	
 }

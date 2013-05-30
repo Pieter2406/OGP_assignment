@@ -15,5 +15,8 @@ public class Sqrt extends UnaryComposedDoubleExpression {
 		this.type = new DoubleType((double)e.getType().getValue());
 		return (DoubleType) this.type;
 	}
-
+	@Override
+	public String toString() {
+		return "Get square root [expression=" + e + "]";
+	}
 }

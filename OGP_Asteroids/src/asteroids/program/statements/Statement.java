@@ -45,4 +45,8 @@ public abstract class Statement {
 	
 	public abstract boolean typeCheck(); // each statement should be typechecked.
 	
+	@Override
+	public abstract String toString();
+	
+	
 }

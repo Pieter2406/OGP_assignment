@@ -52,6 +52,11 @@ public class SequenceStatement extends Statement {
 		}
 		return true;
 	}
+	@Override
+	public String toString() {
+		return "SequenceStatement [subStatements=" + subStatements + ", IIC="
+				+ IIC + ", line=" + line + ", column=" + column + "]";
+	}
 
 }
 
